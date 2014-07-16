@@ -49,6 +49,15 @@ public class HealthProfile {
          this.date = date;
       }
    }
+   
+   /**
+    * TODO
+    * @return
+    */
+   public double calculateBMI(){
+      double heightInMeters = (double) height/100;
+      return weight/(heightInMeters*heightInMeters);
+   }
 
 
    /**
