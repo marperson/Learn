@@ -1,0 +1,8 @@
+package Exercise_3_16;
+import java.util.Date;
+
+public class HeartRates {
+	private String firstName;
+	private String lastName;
+	private Date date
+}

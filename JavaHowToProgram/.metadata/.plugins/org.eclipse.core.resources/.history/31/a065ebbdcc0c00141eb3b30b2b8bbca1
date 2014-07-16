@@ -1,0 +1,13 @@
+package Exercise_3_14;
+
+public class EmployeeTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Employee myEmployee = new Employee("Frank", "he", 1000);
+	}
+
+}

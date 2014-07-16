@@ -1,0 +1,14 @@
+package test;
+import math;
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyMath math = new MyMath();
+		
+	}
+
+}
