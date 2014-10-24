@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/">
+<map version="docear 1.1" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <node TEXT="Java" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1401558886544"><hook NAME="MapStyle" zoom="0.91">
     <properties show_note_icons="true"/>
@@ -50,7 +50,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="7"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="12"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <node TEXT="1. Intro" POSITION="right" ID="ID_681498878" CREATED="1401558866369" MODIFIED="1401558875917">
 <edge COLOR="#ff0000"/>
@@ -947,10 +947,45 @@
 <node TEXT="For precise floating-point numbers, Java provides class BigDecimal (package java.math)." ID="ID_59322345" CREATED="1405493705168" MODIFIED="1405493710857"/>
 </node>
 <node TEXT="3.8 GUI and Graphics Case Study: Using Dialog Boxes" ID="ID_1919849830" CREATED="1405494796355" MODIFIED="1405494808263">
-<node TEXT="Graphical user interfaces (GUIs)" ID="ID_1373810511" CREATED="1405494832158" MODIFIED="1405497170080"/>
+<node TEXT="Graphical user interfaces (GUIs)" ID="ID_1373810511" CREATED="1405494832158" MODIFIED="1405497170080">
+<node ID="ID_239690213" CREATED="1409046550972" MODIFIED="1409046653443"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Class <font color="#0000ff">JOption-Pane</font>&#160;provides prebuilt dialog boxes that enable programs to display windows containing messages&#8212;such windows are called <font color="#0000ff">message dialogs</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1198977376" CREATED="1409046666382" MODIFIED="1409046710743"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">javax.swing</font>&#160;package has <font color="#0000ff">JOptionPane</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="showMessage Dialog is static method" ID="ID_1262791754" CREATED="1409046711149" MODIFIED="1409046761496"/>
+<node TEXT="" ID="ID_1005283334" CREATED="1409046811927" MODIFIED="1409046811927">
+<node TEXT="Java_6218397922165376084.png" ID="ID_733898120" CREATED="1409046827337" MODIFIED="1409046827337">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6218397922165376084.png" SIZE="0.7894737" NAME="ExternalObject"/>
 </node>
 </node>
-<node TEXT="4.5. Control Statements" POSITION="right" ID="ID_1475984073" CREATED="1405655840321" MODIFIED="1405655850142">
+</node>
+</node>
+</node>
+<node TEXT="4. Control Statements Part 1" POSITION="right" ID="ID_1475984073" CREATED="1405655840321" MODIFIED="1411920242195">
 <edge COLOR="#7c0000"/>
 <node TEXT="4.2 Algorithm" ID="ID_254060895" CREATED="1405655850157" MODIFIED="1405655897516">
 <node TEXT="Definition" ID="ID_1743170481" CREATED="1405655899246" MODIFIED="1405655902082">
@@ -966,7 +1001,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <hook NAME="FirstGroupNode"/>
 </node>
@@ -982,7 +1016,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="" ID="ID_394191837" CREATED="1405656049892" MODIFIED="1405656049893">
@@ -999,7 +1032,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -1019,7 +1051,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="" ID="ID_1284237601" CREATED="1405656178945" MODIFIED="1405656178945"/>
 </node>
@@ -1039,7 +1070,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_1092056252" CREATED="1405656537137" MODIFIED="1405656543242"><richcontent TYPE="NODE">
 
@@ -1053,7 +1083,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="" ID="ID_864320456" CREATED="1405656546061" MODIFIED="1405656546061">
 <node TEXT="Java_2327348432647743084.png" ID="ID_1108270367" CREATED="1405657089941" MODIFIED="1405657089941">
@@ -1074,7 +1103,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1846459593" CREATED="1405656342895" MODIFIED="1405656355236"><richcontent TYPE="NODE">
@@ -1089,7 +1117,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -1106,7 +1133,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1051358166" CREATED="1405656388086" MODIFIED="1405656516676" MOVED="1405656474801"><richcontent TYPE="NODE">
@@ -1121,19 +1147,1305 @@
     </p>
   </body>
 </html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Java Select Statements" ID="ID_180686493" CREATED="1406527956335" MODIFIED="1406528258103">
+<hook NAME="FirstGroupNode"/>
+<node TEXT="If" ID="ID_1852730516" CREATED="1406527966290" MODIFIED="1406527968665">
+<node ID="ID_1401025561" CREATED="1406527978526" MODIFIED="1406528082950"><richcontent TYPE="NODE">
 
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Single-Selection Statement</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_3115363290244293408.png" ID="ID_713244657" CREATED="1406528362543" MODIFIED="1406528362543">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3115363290244293408.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_931126660" CREATED="1406528378060" MODIFIED="1406528878197"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Single Entre/Single Exit Statement</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="If...else" ID="ID_767861126" CREATED="1406527969697" MODIFIED="1406528133426">
+<node ID="ID_1674918953" CREATED="1406527997342" MODIFIED="1406528085919"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Double-Selection Statement</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_5070740450966569174.png" ID="ID_1249036591" CREATED="1406528427584" MODIFIED="1406528427584">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5070740450966569174.png" SIZE="0.82191783" NAME="ExternalObject"/>
+</node>
+<node ID="ID_1530272988" CREATED="1406528817375" MODIFIED="1406528926268"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Conditional Operator</font>&#160;(<font color="#0000ff">? :</font>). i.e. System.out.println( studentGrade &gt;= 60 ? &quot;Passed&quot; : &quot;Failed&quot; );
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_428449184" CREATED="1406528880588" MODIFIED="1406528912843"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This is the Only one Java <font color="#0000ff">ternary operator</font>&#160;(operator that takes three operands)
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_753868879" CREATED="1406529032160" MODIFIED="1406529067196"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Nested If...else</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_5090534640161190709.png" ID="ID_1489995232" CREATED="1406529155115" MODIFIED="1406529247302">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5090534640161190709.png" SIZE="1.0" NAME="ExternalObject"/>
+<hook NAME="FirstGroupNode"/>
+</node>
+<node TEXT="Java_6001730002743348099.png" ID="ID_683136524" CREATED="1406529191809" MODIFIED="1406529191809">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6001730002743348099.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+<node TEXT="2nd one is prefered" ID="ID_1909579477" CREATED="1406529247302" MODIFIED="1406529255631">
+<hook NAME="SummaryNode"/>
+</node>
+</node>
+<node ID="ID_1183635703" CREATED="1406529266430" MODIFIED="1406529272274"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Dangling-else Problem</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_4024292174005829204.png" ID="ID_201569401" CREATED="1406529309606" MODIFIED="1406529309606">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4024292174005829204.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Need to put brace to avoid java compilation failure" ID="ID_551211284" CREATED="1406529588940" MODIFIED="1406529610147"/>
+<node ID="ID_580766668" CREATED="1406529638510" MODIFIED="1406529645746"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Blocks</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_1831354719102896821.png" ID="ID_1036054131" CREATED="1406529669187" MODIFIED="1406529669187">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1831354719102896821.png" SIZE="0.9244992" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Switch" ID="ID_943012444" CREATED="1406527973197" MODIFIED="1406527975651">
+<node ID="ID_535717587" CREATED="1406528012266" MODIFIED="1406528097874"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Multiple Selection Statement</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_10583649" CREATED="1406600675101" MODIFIED="1406601339477"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">UML Merge Symbol</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="Java_6036288228971726692.png" ID="ID_369961078" CREATED="1406600701138" MODIFIED="1406600701138">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6036288228971726692.png" SIZE="0.8042895" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Java Repetition Statement (Loop Statement)" ID="ID_1285576097" CREATED="1406528065620" MODIFIED="1406528127254">
+<node TEXT="While" ID="ID_1645999766" CREATED="1406528135395" MODIFIED="1406528137662"/>
+<node TEXT="Do...while" ID="ID_1284881988" CREATED="1406528138021" MODIFIED="1406528141709"/>
+<node TEXT="For" ID="ID_641953068" CREATED="1406528142037" MODIFIED="1406528143475"/>
+</node>
+<node TEXT="Control Statement Stacking and Control Statement Nesting" ID="ID_826827286" CREATED="1406528258103" MODIFIED="1406528350462">
+<hook NAME="SummaryNode"/>
+</node>
+</node>
+<node TEXT="4.8 Formulating Algorithms: Counter-Controlled&#xa;Repetition" ID="ID_1266250243" CREATED="1406601354669" MODIFIED="1406601362785">
+<node TEXT="Count until number reaches total" ID="ID_1975500147" CREATED="1406601620590" MODIFIED="1406602303298">
+<node TEXT="" ID="ID_726266723" CREATED="1409201062388" MODIFIED="1409201062388"/>
+</node>
+</node>
+<node TEXT="4.9 Formulating Algorithms: Sentinel(Guard)-Controlled&#xa;Repetition" ID="ID_381280814" CREATED="1406601392877" MODIFIED="1410745197071" MOVED="1410745171698">
+<node TEXT="i.e. Please enter &quot;quit&quot; to exit" ID="ID_25218685" CREATED="1406601570304" MODIFIED="1406601619735">
+<node ID="ID_1655658885" CREATED="1409201125438" MODIFIED="1409201195771" MOVED="1409201130297"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      special value called a <font color="#0000ff">sentinel value</font>&#160;(also called a <font color="#0000ff">signal </font>
+    </p>
+    <p>
+      <font color="#0000ff">value</font>, a <font color="#0000ff">dummy value</font>&#160;or a <font color="#0000ff">flag value</font>) is used to indicate &#8220;end of data entry.&#8221;
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Explicitly and Implicitly Converting Between Primitive Types" ID="ID_438196466" CREATED="1406602304223" MODIFIED="1406602306606">
+<node ID="ID_1226326291" CREATED="1406602412081" MODIFIED="1406602430701"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Explicit conversion</font>&#160;or <font color="#0000ff">type casting</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1935203332" CREATED="1406602307915" MODIFIED="1406602572395" MOVED="1406602423240"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Result is Int, floating-point calculation with integer values,&#160;temporarily treat these values as floating-point numbers for use in the calculation. Java provides the <font color="#0000ff">unary cast operator,</font><font color="#000000">&#160;like</font><font color="#0000ff">&#160;(double)</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_682169309" CREATED="1406602432510" MODIFIED="1406602474346"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Implicit conversion</font>&#160;or <font color="#0000ff">promotion</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1848259238" CREATED="1406602509000" MODIFIED="1409201228451"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Result is double, in an expression containing values of the types int and double, the int values are <font color="#0000ff">promoted</font>&#160;to double values for use in the expression
+    </p>
+  </body>
+</html>
 </richcontent>
 </node>
 </node>
 </node>
 </node>
+<node TEXT="4.10 Formulating Algorithms: Nested Control Statements" ID="ID_503587822" CREATED="1406602633505" MODIFIED="1406602636340"/>
+<node TEXT="4.11 Compound Assignment Operators" ID="ID_1178234714" CREATED="1406602825993" MODIFIED="1406602827840">
+<node ID="ID_1957742327" CREATED="1406602836591" MODIFIED="1406603259453"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">compound assignment operators</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1723252500" CREATED="1406602863393" MODIFIED="1406602877716"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">+, -, *, / or %</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="variable = variable operator expression" ID="ID_170491978" CREATED="1409201293377" MODIFIED="1409201381210"/>
+<node TEXT="variable operator= expression" ID="ID_383119317" CREATED="1409201301096" MODIFIED="1409201308315"/>
+</node>
+</node>
+<node ID="ID_283946249" CREATED="1406602854919" MODIFIED="1406603261478"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">addition compound assignment operator</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_8662778" CREATED="1406602873017" MODIFIED="1406602875732"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">+=</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="4.12 Increment and Decrement Operators" ID="ID_558531751" CREATED="1406602890275" MODIFIED="1406603234605">
+<node ID="ID_73908277" CREATED="1406603236635" MODIFIED="1406603263356"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">increment operator</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="++" ID="ID_940981489" CREATED="1406603240997" MODIFIED="1406603378906">
+<hook NAME="FirstGroupNode"/>
+<node TEXT="Java_2487047647819309869.png" ID="ID_1064783535" CREATED="1406603395134" MODIFIED="1406603395134">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2487047647819309869.png" SIZE="0.83916086" NAME="ExternalObject"/>
+<node ID="ID_1853854020" CREATED="1406603559150" MODIFIED="1406603579886"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">preincrementing </font>
+    </p>
+    <p>
+      <font color="#0000ff">predecrementing </font>
+    </p>
+    <p>
+      <font color="#0000ff">postincrementing </font>
+    </p>
+    <p>
+      <font color="#0000ff">postdecrementing</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node ID="ID_1821939537" CREATED="1406603251546" MODIFIED="1406603266028"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">decrement operator</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="--" ID="ID_1432185866" CREATED="1406603267561" MODIFIED="1406603378912">
+<hook NAME="FirstGroupNode"/>
+<node TEXT="Java_4636216638335678021.png" ID="ID_1099085436" CREATED="1406603421906" MODIFIED="1406603421906">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4636216638335678021.png" SIZE="0.83682007" NAME="ExternalObject"/>
+<node ID="ID_1349577621" CREATED="1406603486523" MODIFIED="1406603518993" MOVED="1406603551050"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">prefix increment </font>
+    </p>
+    <p>
+      <font color="#0000ff">prefix decrement operator </font>
+    </p>
+    <p>
+      <font color="#0000ff">postfix increment </font>
+    </p>
+    <p>
+      <font color="#0000ff">postfix decrement operator</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Order" ID="ID_275840924" CREATED="1406603645556" MODIFIED="1406603647311">
+<node TEXT="Java_9002439934041735260.png" ID="ID_932559649" CREATED="1406603651278" MODIFIED="1406603651278">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_9002439934041735260.png" SIZE="0.913242" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="4.13 Primitive Types" ID="ID_517278227" CREATED="1406603716393" MODIFIED="1406603718183">
+<node TEXT="Java is strongly typed language" ID="ID_56245461" CREATED="1406603731634" MODIFIED="1406604088522"/>
+</node>
+<node TEXT="4.14 (Optional) GUI and Graphics Case Study: Creating Simple Drawings" ID="ID_661648595" CREATED="1406604091324" MODIFIED="1406604095905">
+<node ID="ID_463669953" CREATED="1406604106795" MODIFIED="1406604121698"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Java's Coordinate System</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_4562894417866249571.png" ID="ID_369486766" CREATED="1406604147660" MODIFIED="1406604147660">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4562894417866249571.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+<node ID="ID_1346554970" CREATED="1406605587350" MODIFIED="1409048534428"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A coordinate pair is composed of an <font color="#0000ff">x-coordinate</font>&#160;(the <font color="#0000ff">horizontal coordinate</font>) and a <font color="#0000ff">y-coordinate</font>&#160;(the <font color="#0000ff">vertical coordinate</font>)
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Inheritage" ID="ID_609478189" CREATED="1409048535178" MODIFIED="1409048542429">
+<node ID="ID_627092437" CREATED="1409048542460" MODIFIED="1409048588943"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      keyword <font color="#0000ff">extends</font>&#160;to indicate that class DrawPanel is an enhanced type of JPanel. The keyword <font color="#0000ff">extends</font>&#160;represents a so-called inheritance relationship in which our new class DrawPanel begins with the existing members (data and methods) from class JPanel. The class from which DrawPanel <font color="#0000ff">inherits</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_371074570" CREATED="1409048599584" MODIFIED="1409048768475"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      JPanel is called the <font color="#0000ff">superclass</font>&#160;and DrawPanel is
+    </p>
+    <p>
+      called the <font color="#0000ff">subclass</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Create UI" ID="ID_284392745" CREATED="1409049182109" MODIFIED="1409049190441">
+<node TEXT="DrawPanel panel = new DrawPanel();" ID="ID_340495633" CREATED="1409049190461" MODIFIED="1409049199651"/>
+<node TEXT="Frame application = new JFrame();" ID="ID_1429275351" CREATED="1409049200089" MODIFIED="1409049212030"/>
+</node>
+</node>
+</node>
+<node TEXT="5. Control Statement Part 2" POSITION="right" ID="ID_1334082526" CREATED="1410636719087" MODIFIED="1411920264134">
+<edge COLOR="#00007c"/>
+<node TEXT="5.2 While Counter-Controlled Repetition" ID="ID_1613126296" CREATED="1410636757683" MODIFIED="1410636991914">
+<node TEXT="A Control Variable" ID="ID_736527559" CREATED="1410636786466" MODIFIED="1410636794082"/>
+<node TEXT="Initial Value" ID="ID_1379382739" CREATED="1410636794523" MODIFIED="1410636799804"/>
+<node TEXT="Increment or decrement" ID="ID_371586265" CREATED="1410636808133" MODIFIED="1410636957069">
+<node TEXT="Because floating-point values may be approximate, controlling loops with floating-point variables may result in imprecise counter values and inaccurate termination tests." ID="ID_817080046" CREATED="1410636960334" MODIFIED="1410636966772"/>
+</node>
+<node TEXT="Loop-Continuration condidtion" ID="ID_1737992131" CREATED="1410636814102" MODIFIED="1410636835922"/>
+</node>
+<node TEXT="5.3 For Repetion Statement" ID="ID_1648618410" CREATED="1410636980976" MODIFIED="1410637003868">
+<node TEXT="Use &lt; 10 instead of &lt;=10 is called common logic error called an off-by-one error." ID="ID_245006454" CREATED="1410637087419" MODIFIED="1410637442057"/>
+<node TEXT="For statement header" ID="ID_1972609556" CREATED="1410637443291" MODIFIED="1410637447713">
+<node TEXT="Java_4627575665090283967.png" ID="ID_701194747" CREATED="1410637494622" MODIFIED="1410637494622">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4627575665090283967.png" SIZE="0.99502486" NAME="ExternalObject"/>
+</node>
+<node ID="ID_1086179083" CREATED="1410637582220" MODIFIED="1410637618363"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The control variable can be used only in that for statement&#8212;it will not exist outside it. This restricted use is known as the variable's <font color="#0000ff">scope</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="All three expressions in a for header are optional" ID="ID_1958412274" CREATED="1410637644442" MODIFIED="1410637646521"/>
+<node TEXT="When the for statement begins executing, its control variable is declared and initialized. Next,&#xa;the program checks the loop-continuation condition. If the condition is initially true, the body&#xa;executes. After executing the loop&#x2019;s body, the increment expression executes. Then the loop-con&#xa;tinuation test is performed again to determine whether the program should continue with the&#xa;next iteration of the loop" ID="ID_452452587" CREATED="1410745695212" MODIFIED="1410745711655"/>
+</node>
+<node TEXT="Placing Arithmetic Expressions in a for Statement&apos;s Header" ID="ID_51909255" CREATED="1410637573454" MODIFIED="1410657699074">
+<node TEXT="for ( int j = x; j &lt;= 4 * x * y; j += y / x )" ID="ID_831968552" CREATED="1410657700527" MODIFIED="1410657704121"/>
+<node TEXT="for ( int j = 2; j &lt;= 80; j += 5 )" ID="ID_1594471188" CREATED="1410657710122" MODIFIED="1410657712122"/>
+<node TEXT="for ( int number = 2; number &lt;= 20; total += number, number += 2 )&#xa;; // empty statement" ID="ID_3772103" CREATED="1410657932008" MODIFIED="1410657938415"/>
+</node>
+<node TEXT="Formatting Strings with Field Widths and Justification" ID="ID_581055274" CREATED="1410666286923" MODIFIED="1410666294142">
+<node TEXT="System.out.printf( &quot;%s%20s\n&quot;, &quot;Year&quot;, &quot;Amount on deposit&quot; );" ID="ID_1028644401" CREATED="1410666300673" MODIFIED="1410666543717">
+<node TEXT="The integer 20 between the % and the conversion character s indicates that the value should be displayed with a field width of 20&#x2014;that is, printf displays the value with at least 20 character positions. If the value to be output is less than 20 character positions wide (17 characters in this example), the value is right justified in the field by default" ID="ID_1571049305" CREATED="1410666324268" MODIFIED="1410666335113"/>
+<node TEXT="To output values left justified, simply precede the field width with the minus sign (&#x2013;) formatting flag (e.g., %-20s" ID="ID_1363336107" CREATED="1410666342941" MODIFIED="1410666347660"/>
+</node>
+<node TEXT="The amount is output as a floating-point number with the format specifier %,20.2f. The comma&#xa;(,) formatting flag indicates that the floating-point value should be output with a grouping separator. i.e. 3,456 = 3456" ID="ID_1659116815" CREATED="1410746036592" MODIFIED="1410746894653"/>
+</node>
+<node TEXT="Static Method" ID="ID_629842535" CREATED="1410666432212" MODIFIED="1410666437227">
+<node TEXT="ClassName.methodName( arguments )" ID="ID_395508446" CREATED="1410666438790" MODIFIED="1410666443212">
+<node TEXT="Math.pow(a,b)" ID="ID_395888577" CREATED="1410666444900" MODIFIED="1410666453260"/>
+</node>
+</node>
+<node TEXT="Performance tips" ID="ID_276396332" CREATED="1410666544593" MODIFIED="1410666551140">
+<node TEXT="In loops, avoid calculations for which the result never changes&#x2014;such calculations should typically be placed before the loop. Many of today&#x2019;s sophisticated optimizing compilers will place such calculations outside loops in the compiled code." ID="ID_537375407" CREATED="1410666552687" MODIFIED="1410666562015"/>
+</node>
+<node TEXT="Warning about Displaying Rounded Values" ID="ID_716942511" CREATED="1410729245996" MODIFIED="1410729250981">
+<node TEXT="Two doubles which are displayed as 14.234 which would normally be rounded to 14.23 for display purposes and 18.673 which would normally be rounded to 18.67, the sum is 32.90 but two doubles would be 32.91" ID="ID_1510117313" CREATED="1410729261200" MODIFIED="1410729331563"/>
+<node TEXT="Using a floating-point number to control a for statement may not work, because floating-point numbers are represented only approximately by most computers" ID="ID_1457426136" CREATED="1410748753400" MODIFIED="1410748758297"/>
+</node>
+</node>
+<node TEXT="5.5 do&#x2026;while Repetition Statement" ID="ID_1475406400" CREATED="1410729343798" MODIFIED="1410729349001">
+<node TEXT="do{&#xa;System.out.printf( &quot;%d &quot;, counter );&#xa;++counter;&#xa;} while ( counter &lt;= 10 ); // end do...while" ID="ID_1228150750" CREATED="1410729375065" MODIFIED="1410729383644"/>
+</node>
+<node TEXT="5.6 switch Multiple-Selection Statement" ID="ID_520096681" CREATED="1410729588342" MODIFIED="1410729597811">
+<node TEXT="The switch multiple-selection statement performs different actions based on the possible values of a constant integral expression of type byte, short, int String or char" ID="ID_503910366" CREATED="1410729612984" MODIFIED="1410737277436">
+<node TEXT="switch s&#xa;case 1: do something;&#xa;                break;&#xa;default: do something:&#xa;                break;  //optional" ID="ID_93799318" CREATED="1410729834761" MODIFIED="1410737256667"/>
+<node TEXT="If no match occurs and the switch does not contain a default case, program&#xa;control simply continues with the first statement after the switch." ID="ID_903213618" CREATED="1410746906186" MODIFIED="1410746907519"/>
+</node>
+<node ID="ID_1165572151" CREATED="1410733677089" MODIFIED="1410733709169"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The switch statement consists of a block that contains a sequence of <font color="#0000ff">case labels</font>&#160;and an optional <font color="#0000ff">default case</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_247492087" CREATED="1410733710716" MODIFIED="1410733728498"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      When the flow of control reaches the switch, the program evaluates the expression in the parentheses (grade / 10) following keyword switch. This is the switch's <font color="#0000ff">controlling expression</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="end-of-file indicator" ID="ID_1453761252" CREATED="1410730689931" MODIFIED="1410730709213">
+<node TEXT="On UNIX/Linux/Mac OS X systems, &lt;Ctrl&gt; d" ID="ID_1986381143" CREATED="1410730709229" MODIFIED="1410730730746"/>
+<node TEXT="On Windows systems, &lt;Ctrl&gt; z" ID="ID_1149390215" CREATED="1410730715917" MODIFIED="1410730734465"/>
+<node TEXT="On some systems, you must press Enter after typing the end-of-file key sequence." ID="ID_46177842" CREATED="1410730757872" MODIFIED="1410730760560"/>
+</node>
+</node>
+<node TEXT="5.7 break and continue Statements" ID="ID_1370090951" CREATED="1410737278070" MODIFIED="1410737495750">
+<node ID="ID_1371813193" CREATED="1410737509126" MODIFIED="1410738922440"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Break</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Common uses of the break statement are to escape early from a loop or to&#xa;skip the remainder of a switch" ID="ID_1339894155" CREATED="1410737545284" MODIFIED="1410737548159"/>
+</node>
+<node ID="ID_1229671924" CREATED="1410738079438" MODIFIED="1410738925018"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Continue</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="The continue statement, when executed in a while, for or do&#x2026;while, skips the remaining statements in the loop body and proceeds with the next iteration of the loop" ID="ID_1598317855" CREATED="1410738119659" MODIFIED="1410738125784"/>
+</node>
+</node>
+<node TEXT="5.8 Logical Operators" ID="ID_662177646" CREATED="1410738589407" MODIFIED="1410738663036">
+<node ID="ID_461485583" CREATED="1410738664052" MODIFIED="1410738917471"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Conditional AND (&amp;&amp;) Operator</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1079821763" CREATED="1410738708148" MODIFIED="1410738920471"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Conditional OR (||) Operator</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_483412072" CREATED="1410738855843" MODIFIED="1410738928722" MOVED="1410739028446"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">short-circuit evaluation</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="The parts of an expression containing &amp;&amp; or || operators are evaluated only until it&apos;s known whether the condition is true or false, if one part is false, then &amp;&amp; stop immediatly" ID="ID_1705051562" CREATED="1410738874063" MODIFIED="1410738913424"/>
+</node>
+<node ID="ID_78138203" CREATED="1410738981928" MODIFIED="1410739129545"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Boolean Logical AND (&amp;)</font>&#160;and <font color="#0000ff">Boolean Logical Inclusive OR (|)</font>&#160;Operators
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_896846225" CREATED="1410739000679" MODIFIED="1410739025274"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The<font color="#0000ff">&#160;boolean logical AND&#160;(&amp;)</font>&#160;and <font color="#0000ff">boolean logical inclusive OR (|)</font>&#160;operators are identical
+    </p>
+    <p>
+      to the &amp;&amp; and || operators, except that the &amp; and | operators always evaluate both of
+    </p>
+    <p>
+      their operands (i.e., they do not perform <font color="#0000ff">short-circuit evaluation</font>).
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1169281903" CREATED="1410739052541" MODIFIED="1410739097184"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This is useful if the right operand of the boolean logical AND or boolean logical inclusive OR operator has a required <font color="#0000ff">side effect</font>&#8212;a modification of a variable's value.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="birthday == true ) | ( ++age &gt;= 65 )" ID="ID_1675447260" CREATED="1410739068995" MODIFIED="1410739070667"/>
+</node>
+</node>
+<node ID="ID_1506598849" CREATED="1410739097949" MODIFIED="1410739101121"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Boolean Logical Exclusive OR (^)</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="A simple condition containing the boolean logical exclusive OR (^) operator is true if&#xa;and only if one of its operands is true and the other is false." ID="ID_588952619" CREATED="1410739130404" MODIFIED="1410739132951"/>
+<node ID="ID_546932701" CREATED="1410739142764" MODIFIED="1410739151561"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Truth table</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_4489831668110243618.png" ID="ID_548601268" CREATED="1410739170984" MODIFIED="1410739170984">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4489831668110243618.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node ID="ID_1770846344" CREATED="1410739187298" MODIFIED="1410739220659"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Logical Negation (!) Operator</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_149616185" CREATED="1410739221659" MODIFIED="1410739290366"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The ! (<font color="#0000ff">logical NOT</font>, also called<font color="#0000ff">&#160;logical negation</font>&#160;or <font color="#0000ff">logical complement</font>) operator &#8220;reverses&#8221;
+    </p>
+    <p>
+      the meaning of a condition. The logical negation operator is a unary operator that has only a single condition as an operand
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="The operator is placed before a condition to choose a path of execution if the original condition (without the logical negation operator) is false, as in the program segment" ID="ID_1106315248" CREATED="1410739255348" MODIFIED="1410739299476">
+<node TEXT="if ( ! ( grade == sentinelValue ) )&#xa;System.out.printf( &quot;The next grade is %d\n&quot;, grade );" ID="ID_1179664546" CREATED="1410739262677" MODIFIED="1410739277802"/>
+</node>
+</node>
+<node ID="ID_413475534" CREATED="1410739439780" MODIFIED="1410739455702"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">%b format specifier</font>&#160;to display the word &#8220;true&#8221; or the word &#8220;false&#8221; based on a boolean expression's value.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="System.out.printf( &quot;%s\n%s: %b\n%s: %b\n%s: %b\n%s: %b\n\n&quot;, &quot;Conditional AND (&amp;&amp;)&quot;, &quot;false &amp;&amp; false&quot;,(false &amp;&amp; false), &quot;false &amp;&amp; true&quot;,(false &amp;&amp; true) , &quot;true &amp;&amp; false&quot;,(true &amp;&amp; false) , &quot;true &amp;&amp; true&quot;, (true &amp;&amp; true));" ID="ID_606707791" CREATED="1410739466203" MODIFIED="1410739576099"/>
+<node TEXT="" ID="ID_1106897005" CREATED="1410739578834" MODIFIED="1410739578834">
+<node TEXT="Java_3662617877830543142.png" ID="ID_1093944351" CREATED="1410739585912" MODIFIED="1410739585912">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3662617877830543142.png" SIZE="0.7915567" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="5.9 Structured Programming Summary" ID="ID_499632956" CREATED="1410742047419" MODIFIED="1410742051920">
+<node TEXT="Java includes only single-entry/single-exit control statements" ID="ID_1666964835" CREATED="1410742722930" MODIFIED="1410742755088"/>
+<node TEXT="The control statements are placed one after another in a program in sequence. We call this control-statement stacking." ID="ID_836346029" CREATED="1410742755275" MODIFIED="1410742765979"/>
+<node TEXT="The rules for forming structured programs also allow for control statements to be&#xa;nested." ID="ID_1107836513" CREATED="1410742776917" MODIFIED="1410743494939"/>
+<node TEXT="Conclusion" ID="ID_688938048" CREATED="1410743495705" MODIFIED="1410743500792" MOVED="1410743694080">
+<node TEXT="Three forms of control in Structure Programming" ID="ID_1470812743" CREATED="1410743501580" MODIFIED="1410743679509">
+<node TEXT="Selection" ID="ID_829649505" CREATED="1410743564657" MODIFIED="1410743566035" MOVED="1410743578608">
+<node TEXT="if statement (single selection)" ID="ID_1094185951" CREATED="1410743589966" MODIFIED="1410743598704"/>
+<node TEXT="if&#x2026;else statement (double selection)" ID="ID_296721876" CREATED="1410743599099" MODIFIED="1410743607991"/>
+<node TEXT="switch statement (multiple selection)" ID="ID_1849685811" CREATED="1410743608417" MODIFIED="1410743610102"/>
+</node>
+<node TEXT="Repetition" ID="ID_1910492889" CREATED="1410743534474" MODIFIED="1410743576608">
+<node TEXT="while statement" ID="ID_1305813330" CREATED="1410743615995" MODIFIED="1410743616918"/>
+<node TEXT="do&#x2026;while statement" ID="ID_157807374" CREATED="1410743617188" MODIFIED="1410743622475"/>
+<node TEXT="for statement" ID="ID_335113894" CREATED="1410743622670" MODIFIED="1410743627032"/>
+</node>
+<node TEXT="Sequence" ID="ID_1600315742" CREATED="1410743569637" MODIFIED="1410743570765">
+<node TEXT="Stacking" ID="ID_1438080840" CREATED="1410743654010" MODIFIED="1410743657060"/>
+<node TEXT="Nesting" ID="ID_73839724" CREATED="1410743657314" MODIFIED="1410743659380"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="5.10 GUI" ID="ID_587493843" CREATED="1410743688235" MODIFIED="1410745679614"/>
+</node>
+<node TEXT="6. Methods" POSITION="right" ID="ID_692885229" CREATED="1411920264774" MODIFIED="1411920276228">
+<edge COLOR="#007c7c"/>
+<node TEXT="6.1 Intro" ID="ID_1609556834" CREATED="1411920371530" MODIFIED="1411923330644">
+<node ID="ID_1969477221" CREATED="1411920374655" MODIFIED="1411922926975"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The best way to develop and maintain a large program is to construct it from small, simple pieces, or <font color="#0000ff">modules</font>. This technique is called <font color="#0000ff">divide and conquer</font>. Methods, which we introduced in Chapter 3, help you modularize programs.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="6.2 Program Modules in Java" ID="ID_688641363" CREATED="1411921193129" MODIFIED="1411923334771">
+<node ID="ID_1117239574" CREATED="1411921218661" MODIFIED="1411921286696"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      You write Java programs by combining new methods and classes with predefined ones available in the <font color="#0000ff">Java Application Programming Interface</font>&#160; (also referred to as the Java API or Java class library) and in various other class libraries. Related classes are typically grouped into packages so that they can be imported into programs and reused
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1154915017" CREATED="1411921265710" MODIFIED="1411922855429"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Methods (called <font color="#0000ff">functions</font>&#160;or <font color="#0000ff">procedures</font>&#160;in some languages) help you modularize a
+    </p>
+    <p>
+      program by separating its tasks into self-contained units
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="6.3 Static method, static field and static math" ID="ID_1412994270" CREATED="1411923335738" MODIFIED="1411923362980">
+<node ID="ID_1904286592" CREATED="1411923485153" MODIFIED="1411923594188"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">static method</font>&#160;&#160;= <font color="#0000ff">class method</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Math" ID="ID_452140147" CREATED="1411923601579" MODIFIED="1411923604016">
+<node TEXT="Java_22475198188937535.png" ID="ID_15618882" CREATED="1411923618027" MODIFIED="1411923618027">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_22475198188937535.png" SIZE="0.7853403" NAME="ExternalObject"/>
+</node>
+<node ID="ID_1167059986" CREATED="1411923728267" MODIFIED="1411923817725"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Math.PI </font>and <font color="#0000ff">Math.E</font>. Math.PI (3.141592653589793) is the ratio of a circle&#8217;s circumference
+    </p>
+    <p>
+      to its diameter. Math.E (2.718281828459045) is the base value for natural logarithms
+    </p>
+    <p>
+      (calculated with static Math method log).
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_801191352" CREATED="1411923818210" MODIFIED="1411923825351"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Any field declared with keyword <font color="#0000ff">final</font>&#160;is constant&#8212;its value cannot
+    </p>
+    <p>
+      change after the field is initialized. PI and E are declared final
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Why Main is static" ID="ID_408794084" CREATED="1411924071599" MODIFIED="1411924077552">
+<node TEXT="When you execute the Java Virtual Machine (JVM) with the java command, the JVM&#xa;attempts to invoke the main method of the class you specify&#x2014;when no objects of the class&#xa;have been created. Declaring main as static allows the JVM to invoke main without creating&#xa;an instance of the class." ID="ID_1354038327" CREATED="1411924221335" MODIFIED="1411924225820"/>
+</node>
+</node>
+</node>
+<node TEXT="6.4 Declaring Methods with Multiple Parameters" ID="ID_936341409" CREATED="1411924243573" MODIFIED="1411924270829">
+<node ID="ID_481208771" CREATED="1411924953477" MODIFIED="1411924956602"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">string concatenation</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="+" ID="ID_1357334327" CREATED="1411924957712" MODIFIED="1411924959524">
+<node TEXT="Primitive values used in String concatenation are converted to Strings." ID="ID_853564488" CREATED="1411925026351" MODIFIED="1411925028023"/>
+<node TEXT="A boolean concatenated with a String is converted to the String &quot;true&quot; or &quot;false&quot;." ID="ID_442182514" CREATED="1411925032664" MODIFIED="1411925043185"/>
+<node TEXT="All objects have a toString method that returns a String representation of the object." ID="ID_1957673164" CREATED="1411925055311" MODIFIED="1411925059952"/>
+</node>
+<node TEXT="Confusing the + operator used for string concatenation with the + operator used for addition&#xa;can lead to strange results. Java evaluates the operands of an operator from left to&#xa;right. For example, if integer variable y has the value 5, the expression &quot;y + 2 = &quot; + y + 2&#xa;results in the string &quot;y + 2 = 52&quot;, not &quot;y + 2 = 7&quot;, because first the value of y (5) is concatenated&#xa;to the string &quot;y + 2 = &quot;, then the value 2 is concatenated to the new larger string&#xa;&quot;y + 2 = 5&quot;. The expression &quot;y + 2 = &quot; + (y + 2) produces the desired result &quot;y + 2 = 7&quot;." ID="ID_1715150208" CREATED="1411925166902" MODIFIED="1411925169543"/>
+<node TEXT="Every primitive value and object in Java has a String representation. When an object is concatenated&#xa;with a String, the object is converted to a String, then the two Strings are concatenated." ID="ID_910496718" CREATED="1412048502632" MODIFIED="1412048507351"/>
+<node TEXT="If a boolean is concatenated with a String, the word &quot;true&quot; or the word &quot;false&quot; is used to represent the boolean value." ID="ID_1522456225" CREATED="1412048534978" MODIFIED="1412048550463"/>
+<node ID="ID_613063132" CREATED="1412048581668" MODIFIED="1412048628889"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      All objects in Java have a special method named <font color="#0000ff">toString</font>&#160;that returns a String representation of the object's contents. When an object is concatenated with a String, the JVM implicitly calls the object's toString method to obtain the string representation of the object.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="YoucanbreaklargeString literals into several smaller Strings and place them on multiple lines of code for readability, then reassemble the Strings using concatenation" ID="ID_201029844" CREATED="1412048618216" MODIFIED="1412048623154"/>
+</node>
+</node>
+<node TEXT="6.5 Notes on Declaring and Using Methods" ID="ID_1292676053" CREATED="1411925180262" MODIFIED="1411925195117">
+<node TEXT="3 ways to call a method" ID="ID_196093523" CREATED="1411925316266" MODIFIED="1411925327661">
+<node TEXT="1. Using a method name by itself to call another method of the same class&#x2014;such as maximum(number1, number2, number3) in line 21 of Fig. 6.3." ID="ID_920053493" CREATED="1411925329004" MODIFIED="1411925347677"/>
+<node TEXT="2. Using a variable that contains a reference to an object, followed by a dot (.) and the method name to call a non-static method of the referenced object." ID="ID_1540349409" CREATED="1411925347974" MODIFIED="1411925377055"/>
+<node TEXT="3. Using the class name and a dot (.) to call a static method of a class" ID="ID_186384135" CREATED="1411925383774" MODIFIED="1411925386478"/>
+</node>
+<node TEXT="3 Ways to return control" ID="ID_1755880168" CREATED="1411944087114" MODIFIED="1411944100224">
+<node TEXT="If the method does not return a result," ID="ID_1490849518" CREATED="1411944102193" MODIFIED="1411944194603">
+<node TEXT="1. control returns when the program flow reaches the method-ending right brace" ID="ID_287734000" CREATED="1411944184759" MODIFIED="1411944190697" MOVED="1411944196603"/>
+<node TEXT="2. return;" ID="ID_1889504860" CREATED="1411944128366" MODIFIED="1411944135850" MOVED="1411944177774"/>
+</node>
+<node TEXT="3. If the method returns a result, the statement&#xa;retrun  expression;" ID="ID_667126428" CREATED="1411944155258" MODIFIED="1411944171243"/>
+</node>
+<node TEXT="Declaring a method outside the body of a class declaration or inside the body of another method is a syntax error." ID="ID_1442372315" CREATED="1411944230105" MODIFIED="1411944246809"/>
+<node TEXT="A method can return at most one value, but the returned value could be a reference to an object that contains many values." ID="ID_248112724" CREATED="1412048431441" MODIFIED="1412048438348"/>
+</node>
+<node TEXT="6.6 Method-Call Stack and Activation Records" ID="ID_1895405040" CREATED="1411944247543" MODIFIED="1411944254637">
+<node ID="ID_490504582" CREATED="1411951217670" MODIFIED="1411951223733"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Stack</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1793101888" CREATED="1411951223764" MODIFIED="1411951918038"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">last-in, first-out (LIFO) data structures</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1963786968" CREATED="1411951919351" MODIFIED="1411951931586"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">pushing</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1591517337" CREATED="1411951922304" MODIFIED="1411951930039"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">poping</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_1634700295" CREATED="1411952072908" MODIFIED="1411952103941"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">program-execution stack = method-call stack</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1462214060" CREATED="1411952105035" MODIFIED="1411952108442"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">activation record or stack frame</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_749061904" CREATED="1411952115192" MODIFIED="1411952118130"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">stack overflow</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="6.7 Argument Promotion and Casting" ID="ID_585681100" CREATED="1411952128021" MODIFIED="1411952275217">
+<node ID="ID_323824249" CREATED="1411952276561" MODIFIED="1411952279171"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">argument promotion</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Argument promotion (p. 207) converts an argument&#x2019;s value to the type that the method expects to receive in its corresponding parameter." ID="ID_32466823" CREATED="1412049447936" MODIFIED="1412049454280" MOVED="1412049455811"/>
+<node TEXT="System.out.println( Math.sqrt( 4 ) ); 4 is promoted to 4.0 before used in sqrt." ID="ID_514786632" CREATED="1411952615938" MODIFIED="1411953311082" MOVED="1411953378054"/>
+<node ID="ID_1171929536" CREATED="1411952279186" MODIFIED="1411952287093"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">promotion rules</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_8200671089646448186.png" ID="ID_511096735" CREATED="1411952301360" MODIFIED="1411952301360">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8200671089646448186.png" SIZE="0.91463417" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node ID="ID_210199007" CREATED="1411953313770" MODIFIED="1411953358537"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      in cases where information may be lost due to conversion, the Java compiler requires you to use a <font color="#0000ff">cast operator</font>&#160;&#160;to explicitly force the conversion to occur&#8212;otherwise a compilation error occurs.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1714816088" CREATED="1411953335927" MODIFIED="1411953366710"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      square( <b>(int)</b>&#160;doubleValue )
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="6.8 Java API Packages" ID="ID_264517355" CREATED="1411953499544" MODIFIED="1411954455605"/>
+<node TEXT="6.9 Case Study" ID="ID_398357427" CREATED="1411954457309" MODIFIED="1411954464371">
+<node ID="ID_1255724474" CREATED="1411954465293" MODIFIED="1411954469543"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">shifting value</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="face = 1 + randomNumbers.nextInt( 6 );" ID="ID_1126111830" CREATED="1411954470794" MODIFIED="1411954477341">
+<node TEXT="Change from [0,5] to [1,6]" ID="ID_1995566943" CREATED="1411954480919" MODIFIED="1411954514967"/>
+</node>
+<node TEXT="number = 2 + 3 * randomNumbers.nextInt( 5 );" ID="ID_1942715131" CREATED="1411954515686" MODIFIED="1411954517124">
+<node TEXT="" ID="ID_1794735134" CREATED="1411954518311" MODIFIED="1411954518311">
+<node TEXT="number = shiftingValue +&#xa;differenceBetweenValues * randomNumbers.nextInt( scalingFactor );" ID="ID_1618090602" CREATED="1411954523624" MODIFIED="1411954524952"/>
+<node TEXT="change from {0, 3, 6, 9, 12.} to {2, 5, 8, 11,14}" ID="ID_612455344" CREATED="1411954525843" MODIFIED="1411954571298"/>
+</node>
+</node>
+</node>
+<node ID="ID_1087686563" CREATED="1411954654537" MODIFIED="1411954657006"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">seed value</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Random randomNumbers = new Random( seedValue );" ID="ID_881083546" CREATED="1411954662678" MODIFIED="1411954664131"/>
+<node TEXT="randomNumbers.set( seedValue );" ID="ID_688390934" CREATED="1411954697367" MODIFIED="1411954698867"/>
+<node TEXT="then each time application creates same random value if we use same seed value" ID="ID_204316129" CREATED="1411954664490" MODIFIED="1411954696711"/>
+</node>
+<node ID="ID_650053811" CREATED="1411956727912" MODIFIED="1411957196667"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">enumeration</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="An enumeration (p. 218) is introduced by the keyword enum and a type name. As with any class, braces ({ and }) delimit the body of an enum declaration. Inside the braces is a comma-separated list of enumeration constants, each representing a unique value. The identifiers in an enum must be unique. Variables of an enum type can be assigned only constants of that enum type." ID="ID_813847789" CREATED="1412049925651" MODIFIED="1412049936402">
+<node TEXT="Java_7180998019109400909.png" ID="ID_611714088" CREATED="1414031965625" MODIFIED="1414031965625">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7180998019109400909.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_9015716782201543039.png" ID="ID_852074838" CREATED="1414032045311" MODIFIED="1414032045311">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_9015716782201543039.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Constant" ID="ID_1871674576" CREATED="1412049907728" MODIFIED="1412049911604">
+<node TEXT="Constants can also be declared as public final static variables. Such constants are declared by convention with all capital letters to make them stand out in the program." ID="ID_1435520454" CREATED="1412049911604" MODIFIED="1412049917182"/>
+</node>
+</node>
+<node TEXT="6.11 Scope of Declarations" ID="ID_567502271" CREATED="1411957197527" MODIFIED="1411957214231">
+<node ID="ID_594660531" CREATED="1411957642611" MODIFIED="1411957730912"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Scope</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="1. The scope of a parameter declaration is the body of the method in which the declaration appears." ID="ID_439984085" CREATED="1411957646486" MODIFIED="1411957658924"/>
+<node TEXT="2. The scope of a local-variable declaration is from the point at which the declaration appears to the end of that block" ID="ID_1559619483" CREATED="1411957659893" MODIFIED="1411957670221"/>
+<node TEXT="3. The scope of a local-variable declaration that appears in the initialization section of a for statement&apos;s header is the body of the for statement and the other expressions in the header." ID="ID_1270029660" CREATED="1411957679831" MODIFIED="1411957698348"/>
+<node TEXT="4. A method or field&apos;s scope is the entire body of the class. This enables non-static methods of a class to use the fields and other methods of the class." ID="ID_1323253661" CREATED="1411957705770" MODIFIED="1411957728787"/>
+<node ID="ID_790819232" CREATED="1411957771039" MODIFIED="1411957825651"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Any block may contain variable declarations. If a local variable or parameter in a method has the same name as a field of the class, the field is &#8220;hidden&#8221; until the block terminates execution&#8212;this is called <font color="#0000ff">shadowing</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="6.12 Method Overloading" ID="ID_760814545" CREATED="1411957879466" MODIFIED="1411957907217">
+<node ID="ID_1043822616" CREATED="1411957908420" MODIFIED="1411958480104"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Method Overloading</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Methods of the same name can be declared in the same class, as long as they have different&#xa;sets of parameters (determined by the number, types and order of the parameters)" ID="ID_1838739850" CREATED="1411957913248" MODIFIED="1411957919374"/>
+</node>
+</node>
+</node>
 <node TEXT="Java mindmap" POSITION="left" ID="ID_395131511" CREATED="1401559811759" MODIFIED="1401559816948">
 <edge COLOR="#00ff00"/>
+<node TEXT="Java_5448306434012902083.png" ID="ID_367293258" CREATED="1410729968971" MODIFIED="1410729968971">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5448306434012902083.png" SIZE="0.9302326" NAME="ExternalObject"/>
+</node>
 </node>
 <node TEXT="Java Class" POSITION="left" ID="ID_534322546" CREATED="1405494597084" MODIFIED="1405494605195">
 <edge COLOR="#00ffff"/>
 <node TEXT="import java.util.Scanner" ID="ID_1031334201" CREATED="1405494606273" MODIFIED="1405494705087"/>
-<node TEXT="import javax.swing.JOptionPane" ID="ID_377374602" CREATED="1405494612743" MODIFIED="1405494673175"/>
+<node TEXT="import javax.swing.JOptionPane" ID="ID_377374602" CREATED="1405494612743" MODIFIED="1406528545820">
+<arrowlink SHAPE="LINE" COLOR="#000000" WIDTH="2" TRANSPARENCY="80" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_377374602" STARTINCLINATION="40;0;" ENDINCLINATION="40;45;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
+</node>
+<node TEXT="Brute-Force computing" ID="ID_286759472" CREATED="1411705243384" MODIFIED="1411705251728"/>
 </node>
 <node TEXT="Eclipse Shot Cut" POSITION="left" ID="ID_947415317" CREATED="1405502574125" MODIFIED="1405502581396">
 <edge COLOR="#ffff00"/>
@@ -1154,6 +2466,11 @@
 </richcontent>
 </node>
 <node TEXT="Source -&gt; Generate Constructor" ID="ID_902225378" CREATED="1405502733351" MODIFIED="1405502746697"/>
+<node TEXT="Ctrl+Page up or Page down to switch between tabs" ID="ID_873168387" CREATED="1409049018258" MODIFIED="1409049157288"/>
+</node>
+<node TEXT="Knowledge" POSITION="left" ID="ID_1148771332" CREATED="1411920183817" MODIFIED="1411920187864">
+<edge COLOR="#7c007c"/>
+<node TEXT="a = p (1 + r)n&#xa;where&#xa;p is the original amount invested (i.e., the principal)&#xa;r is the annual interest rate (e.g., use 0.05 for 5%)&#xa;n is the number of years&#xa;a is the amount on deposit at the end of the nth year." ID="ID_122877944" CREATED="1411920188911" MODIFIED="1411920193693"/>
 </node>
 </node>
 </map>

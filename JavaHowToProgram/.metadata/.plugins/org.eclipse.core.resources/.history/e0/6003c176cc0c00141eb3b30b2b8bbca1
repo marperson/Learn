@@ -1,8 +1,0 @@
-package Exercise_3_14;
-
-public class Employee {
-	private String firstName;
-	private String lastName;
-	private double salary;
-
-}

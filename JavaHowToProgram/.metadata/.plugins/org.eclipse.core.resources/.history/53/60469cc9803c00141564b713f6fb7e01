@@ -1,0 +1,15 @@
+package Exercise_5_3;
+
+public class A_Sum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int sum=0;
+		for(int i=1;i++;i<100){
+			sum+=1;
+		}
+		System.out.printf("%f",sum);
+
+	}
+
+}

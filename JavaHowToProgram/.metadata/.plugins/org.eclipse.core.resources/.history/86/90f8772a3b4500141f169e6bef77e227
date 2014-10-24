@@ -1,0 +1,10 @@
+package Exercise_5_24;
+
+public class DiamondPrinting {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

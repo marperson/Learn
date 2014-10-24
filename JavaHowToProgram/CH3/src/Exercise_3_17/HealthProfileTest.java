@@ -11,6 +11,7 @@ public class HealthProfileTest {
       System.out.printf("You Age is: %d\n",hr1.calculateAge());
       System.out.printf("You max heart rate is %d and minimum heart rate is %d.\n",hr1.maxTargetHeartRate(),hr1.minTargetHeartRate());
       System.out.println("Your BMI is: "+hp1.calculateBMI());
+
    }
 
 }

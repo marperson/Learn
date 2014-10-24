@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Exercise_4_19.CommisionCalculator&apos; to &apos;CommissionCalculator&apos;&#x0D;&#x0A;- Original project: &apos;Ch4&apos;&#x0D;&#x0A;- Original element: &apos;Exercise_4_19.CommisionCalculator&apos;&#x0D;&#x0A;- Renamed element: &apos;Exercise_4_19.CommissionCalculator&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CommisionCalculator&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Exercise_4_19{CommisionCalculator.java[CommisionCalculator" matchStrategy="1" name="CommissionCalculator" qualified="false" references="true" similarDeclarations="false" stamp="1409625194915" textual="false" version="1.0"/>
+</session>
