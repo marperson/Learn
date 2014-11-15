@@ -50,7 +50,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="12"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="2"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <node TEXT="1. Intro" POSITION="right" ID="ID_681498878" CREATED="1401558866369" MODIFIED="1401558875917">
 <edge COLOR="#ff0000"/>
@@ -2219,6 +2219,7 @@
   </body>
 </html>
 </richcontent>
+<node TEXT="contains the memory for the local variables used in each invocation&#xa;of a method during a program&apos;s execution" ID="ID_1426478218" CREATED="1414330862075" MODIFIED="1414330884595"/>
 </node>
 <node ID="ID_1462214060" CREATED="1411952105035" MODIFIED="1411952108442"><richcontent TYPE="NODE">
 
@@ -2247,7 +2248,11 @@
   </body>
 </html>
 </richcontent>
+<node TEXT="If there are more method calls than can have their activation records stored on the program-execution stack" ID="ID_351475760" CREATED="1414330885500" MODIFIED="1414330896651"/>
 </node>
+</node>
+<node TEXT="Queue" ID="ID_1254211569" CREATED="1414171507339" MODIFIED="1414171735591">
+<node TEXT="FIFO" ID="ID_111751196" CREATED="1414171737591" MODIFIED="1414171743450"/>
 </node>
 </node>
 <node TEXT="6.7 Argument Promotion and Casting" ID="ID_585681100" CREATED="1411952128021" MODIFIED="1411952275217">
@@ -2354,6 +2359,7 @@
 <node TEXT="Random randomNumbers = new Random( seedValue );" ID="ID_881083546" CREATED="1411954662678" MODIFIED="1411954664131"/>
 <node TEXT="randomNumbers.set( seedValue );" ID="ID_688390934" CREATED="1411954697367" MODIFIED="1411954698867"/>
 <node TEXT="then each time application creates same random value if we use same seed value" ID="ID_204316129" CREATED="1411954664490" MODIFIED="1411954696711"/>
+<node TEXT="pass a long integer value as seed value to the Random objec&apos;s constructor, then use the seed value in random" ID="ID_636567642" CREATED="1414332697770" MODIFIED="1414333012421"/>
 </node>
 <node ID="ID_650053811" CREATED="1411956727912" MODIFIED="1411957196667"><richcontent TYPE="NODE">
 
@@ -2378,7 +2384,20 @@
 </node>
 </node>
 <node TEXT="Constant" ID="ID_1871674576" CREATED="1412049907728" MODIFIED="1412049911604">
-<node TEXT="Constants can also be declared as public final static variables. Such constants are declared by convention with all capital letters to make them stand out in the program." ID="ID_1435520454" CREATED="1412049911604" MODIFIED="1412049917182"/>
+<node ID="ID_1435520454" CREATED="1412049911604" MODIFIED="1414333197134"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Constants can also be declared as <font color="#0000ff">public final static</font>&#160;variables. Such constants are declared by convention with all capital letters to make them stand out in the program.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 </node>
 <node TEXT="6.11 Scope of Declarations" ID="ID_567502271" CREATED="1411957197527" MODIFIED="1411957214231">
@@ -2433,6 +2452,638 @@
 </node>
 </node>
 </node>
+<node TEXT="7. Array and ArrayLists" POSITION="right" ID="ID_870427389" CREATED="1414550285509" MODIFIED="1414553365662">
+<edge COLOR="#ff0000"/>
+<node TEXT="7.1 Intro" ID="ID_671763851" CREATED="1414629234373" MODIFIED="1414629238452" MOVED="1414629309534">
+<node ID="ID_203860003" CREATED="1414629249968" MODIFIED="1414629266063"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Arrays </font>are <font color="#0000ff">data structures</font>&#8212;collections of related data items.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_859355517" CREATED="1414629280188" MODIFIED="1414629306190"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">ArrayLists</font>&#160;can do dynamic resizing
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="7.2 Arrays" ID="ID_1524325971" CREATED="1414553368224" MODIFIED="1414553374021">
+<node ID="ID_775108625" CREATED="1414629338379" MODIFIED="1414629480683" MOVED="1414629345020"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Arrays are <font color="#0000ff">objects</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_807089497" CREATED="1414555549610" MODIFIED="1414898374542" MOVED="1414629498184"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      An array is a group of variables (called <font color="#0000ff">elements</font>&#160;or <font color="#0000ff">components</font>) containing values that all have the same type. Arrays are objects, so they're considered reference types.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1871450919" CREATED="1414555609702" MODIFIED="1414629515560" MOVED="1414629500294"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The elements of an array can be either primitive types or<font color="#0000ff">&#160;reference types</font>&#160;(including
+    </p>
+    <p>
+      arrays)
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_899492042" CREATED="1414555628838" MODIFIED="1414629483496"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The position number of the element is called the elements <font color="#0000ff">index</font>&#160;&#160;or <font color="#0000ff">subscript</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_753283045" CREATED="1414629409133" MODIFIED="1414629444275" MOVED="1414629485387"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A program refers to any one of these elements with an <font color="#0000ff">array-access expression</font>&#160; that includes the name of the array followed by the index of the particular element in <font color="#0000ff">square brackets ([])</font>. The first element in every array has <font color="#0000ff">index zero</font>&#160;and is sometimes called the <font color="#0000ff">zeroth element</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="An index must be a nonnegative integer." ID="ID_1530251248" CREATED="1414629528936" MODIFIED="1414629530295"/>
+<node TEXT="A program can use an expression as an index." ID="ID_1988213058" CREATED="1414629535030" MODIFIED="1414629536499">
+<node TEXT="c [ a + b ] += 2;" ID="ID_874403021" CREATED="1414629540937" MODIFIED="1414629547859">
+<node TEXT="The name of array is c" ID="ID_1094733249" CREATED="1414629614612" MODIFIED="1414629629426"/>
+<node ID="ID_1959536180" CREATED="1414629629832" MODIFIED="1414629655396"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Every array object knows its own length and stores it in a <font color="#0000ff">length instance variable</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node ID="ID_715564226" CREATED="1414629657724" MODIFIED="1414899434583"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">c.length</font>&#160;can return array length, Even though the length instance variable of an array is public, it cannot be changed because it's a <font color="#0000ff">final</font>&#160; variable
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_97327935" CREATED="1414856741194" MODIFIED="1414899500367" MOVED="1414899501930"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Declare array length by this method: <font color="#0000ff">final</font>&#160;int ARRAY_LENGTH = 10; // declare constant
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="7.3 Declaring and Creating Arrays" ID="ID_1791060492" CREATED="1414629719415" MODIFIED="1414629723024">
+<node ID="ID_773738181" CREATED="1414634204257" MODIFIED="1414634207851"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">array-creation expression</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="int[] c = new int[ 12 ];" ID="ID_1200536028" CREATED="1414634212289" MODIFIED="1414634214367"/>
+<node TEXT="int[] c; // declare the array variable&#xa;c = new int[ 12 ]; // create the array; assign to array variable" ID="ID_890693521" CREATED="1414634220617" MODIFIED="1414634257228"/>
+<node TEXT="String[] b = new String[ 100 ];" ID="ID_761118977" CREATED="1414634222633" MODIFIED="1414634268198"/>
+<node TEXT="String b[] = new String[ 100 ];" ID="ID_548353039" CREATED="1414634275870" MODIFIED="1414634277183"/>
+<node ID="ID_111427623" CREATED="1414634412127" MODIFIED="1414634451301" MOVED="1414899300772"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Array Initializer, </font><font color="#000000">a comma-separated </font>
+    </p>
+    <p>
+      <font color="#000000">list of expressions (called an initializer list) enclosed in braces.</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="int[] n = { 10, 20, 30, 40, 50 };" ID="ID_1320285783" CREATED="1414634457942" MODIFIED="1414634459645"/>
+</node>
+<node TEXT="When an array is created, each element receives a default value&#x2014;zero for numeric primitive-type elements, false for boolean elements and null for references." ID="ID_1048240971" CREATED="1414899282540" MODIFIED="1414899289003" MOVED="1414899297690"/>
+</node>
+<node TEXT="A program can declare arrays of any type" ID="ID_732667109" CREATED="1414634293449" MODIFIED="1414634295277">
+<node TEXT="primitive-type" ID="ID_1614996825" CREATED="1414634301246" MODIFIED="1414634409955"/>
+<node TEXT="reference type" ID="ID_923438193" CREATED="1414634310512" MODIFIED="1414634311622"/>
+</node>
+<node ID="ID_1683362094" CREATED="1414858000941" MODIFIED="1414858008926"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Exception handling</font>&#160;enables you to create <font color="#0000ff">fault-tolerant programs</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_412491086" CREATED="1414857625250" MODIFIED="1414858035552" MOVED="1414858027645"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000">Use TryCatch block to do </font><font color="#0000ff">bounds checking</font><font color="#000000">&#160;avoid </font><font color="#0000ff">ArrayIndexOutOfBoundsException</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_3110761710730492677.png" ID="ID_1869402069" CREATED="1414857758882" MODIFIED="1414857758882">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3110761710730492677.png" SIZE="0.8683068" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1221402708" CREATED="1414858072679" MODIFIED="1414858076164"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">try statement</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_930282404" CREATED="1414858081383" MODIFIED="1414858092008"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">try block</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="The try block contains the code that might throw an exception," ID="ID_30173312" CREATED="1414899784037" MODIFIED="1414899827211"/>
+<node TEXT="Whena try block terminates, any variables declared in the try block go out of scope" ID="ID_264510125" CREATED="1414899858618" MODIFIED="1414899881510"/>
+</node>
+<node ID="ID_500868619" CREATED="1414858087680" MODIFIED="1414858090211"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">catch block</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="The catch block contains the code that handles the exception if one occurs" ID="ID_1688334968" CREATED="1414899813460" MODIFIED="1414899822195"/>
+<node TEXT="You can have many catch blocks to handle different types of exceptions that might be thrown in&#xa;the corresponding try block." ID="ID_299907817" CREATED="1414899844696" MODIFIED="1414899857400"/>
+<node TEXT="An exception object&apos;s toString method returns the exception&apos;s error message." ID="ID_491506273" CREATED="1414899882198" MODIFIED="1414899891479"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="7.6 Enhanced for Statement" ID="ID_1621928988" CREATED="1414864631871" MODIFIED="1414864638231">
+<node ID="ID_308276440" CREATED="1414864669780" MODIFIED="1414864708438"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The <font color="#0000ff">enhanced for statement </font>iterates through the elements of an array without using a counter, thus avoiding the possibility of &#8220;stepping outside&#8221; the array.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="for ( parameter : arrayName )" ID="ID_1634374663" CREATED="1414864709547" MODIFIED="1414864710985">
+<node TEXT="where parameter has a type and an identifier (e.g., int number), and arrayName is the array&#xa;through which to iterate." ID="ID_11749678" CREATED="1414864946450" MODIFIED="1414864971342" MOVED="1414864954669"/>
+<node TEXT="The type of the parameter must be consistent with the type of the elements in the array." ID="ID_1238876486" CREATED="1414864972514" MODIFIED="1414864976280"/>
+<node TEXT="Java_8379132927860500323.png" ID="ID_1624576023" CREATED="1414864846164" MODIFIED="1414864846164">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8379132927860500323.png" SIZE="0.7202881" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="The enhanced for statement cannot be used to modify elements in an array. If a program needs to modify elements, use the traditional counter-controlled for statement." ID="ID_1387503942" CREATED="1414900016505" MODIFIED="1414900024380"/>
+</node>
+</node>
+<node TEXT="7.7 Passing Arrays to Methods" ID="ID_1088826118" CREATED="1414865060425" MODIFIED="1414865071347">
+<node TEXT="1. To pass an array argument to a method, specify the name of the array without any brackets." ID="ID_754314832" CREATED="1414865097474" MODIFIED="1414865563373">
+<node TEXT="Given Arrays: double[] hourlyTemperatures = new double[ 24 ];&#xa;then Method Call likes: modifyArray( hourlyTemperatures );" ID="ID_984674038" CREATED="1414865106959" MODIFIED="1414865519808"/>
+</node>
+<node TEXT="2. For a method to receive an array reference through a method call, the method&#x2019;s&#xa;parameter list must specify an array parameter" ID="ID_81582178" CREATED="1414865550310" MODIFIED="1414865566092">
+<node TEXT="void modifyArray( double[] b )" ID="ID_953038000" CREATED="1414865556638" MODIFIED="1414865558060"/>
+</node>
+<node TEXT="Passing Arguments to Methods" ID="ID_36027093" CREATED="1414868279371" MODIFIED="1414868283387">
+<node ID="ID_434005210" CREATED="1414868287387" MODIFIED="1414868309982"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">pass-by-value (call-by-value)</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="When an argument is passed by value, a copy of the argument&#x2019;s value is passed to the called method. The called method works exclusively with the copy. Changes to the called method&#x2019;s copy do not affect the original variable&#x2019;s value in the caller." ID="ID_1246787788" CREATED="1414868385970" MODIFIED="1414868403940"/>
+</node>
+<node ID="ID_791377897" CREATED="1414868294810" MODIFIED="1414868372985"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">pass-by-reference (call-by-reference)</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="When an argument is passed by reference, the called method can access the argument&#x2019;s value in the caller directly and modify that data, if necessary. Pass-by-reference improves performance by eliminating the need to copy possibly large amounts of data." ID="ID_429651874" CREATED="1414868404705" MODIFIED="1414868446848"/>
+</node>
+<node TEXT="Java does not allow you to choose pass-by-value or passby- reference&#x2014;all arguments are passed by value." ID="ID_1135482872" CREATED="1414868447567" MODIFIED="1414868452192">
+<node TEXT="When an argument is passed by value, a copy of the argument&#x2019;s value is made and passed to the&#xa;called method. The called method works exclusively with the copy." ID="ID_98970438" CREATED="1414902827281" MODIFIED="1414902829062" MOVED="1414902831437"/>
+<node TEXT="When an argument is passed by reference, the called method can access the argument&#x2019;s&#xa;value in the caller directly and possibly modify it." ID="ID_889413543" CREATED="1414902851766" MODIFIED="1414902861892">
+<node TEXT="changes to the parameter have no effect on the original argument value in the calling method" ID="ID_1276887289" CREATED="1414868489366" MODIFIED="1414902810155" MOVED="1414902872720"/>
+<node TEXT="Although an object&#x2019;s reference is passed by value, a method can still interact with the referenced object by calling its public methods using the copy of the object&#x2019;s reference." ID="ID_246973786" CREATED="1414868547228" MODIFIED="1414902815561" MOVED="1414902868486"/>
+<node TEXT="refer to the same object in memory." ID="ID_1432238451" CREATED="1414868607121" MODIFIED="1414868608528" MOVED="1414902871267"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="7.9 Multidimentional Arrays" ID="ID_1676864784" CREATED="1414872472101" MODIFIED="1414872505228">
+<node TEXT="Definition" ID="ID_874875788" CREATED="1414872971785" MODIFIED="1414872974660">
+<node TEXT="Two-dimensional arrays" ID="ID_416261422" CREATED="1414872505228" MODIFIED="1414872546421" MOVED="1414872976847">
+<node TEXT="the first identifies the element&apos;s row and the second its column" ID="ID_1819585978" CREATED="1414872531358" MODIFIED="1414872544499"/>
+</node>
+<node ID="ID_1258037295" CREATED="1414872566625" MODIFIED="1414872574672" MOVED="1414872978754"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      an array with m rows and n columns is called an <font color="#0000ff">m-by-n array</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Arrays of One-Dimensional Arrays" ID="ID_216185678" CREATED="1414872912579" MODIFIED="1414872933783">
+<node ID="ID_865620973" CREATED="1414872633659" MODIFIED="1414872636706" MOVED="1414872935861"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">nested array initializers</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="int[][] b = { { 1, 2 }, { 3, 4 } };" ID="ID_1913012587" CREATED="1414872641191" MODIFIED="1414872642972"/>
+</node>
+</node>
+<node TEXT="Two-Dimensional Arrays with Rows of Different Lengths" ID="ID_737045413" CREATED="1414872955753" MODIFIED="1414872957409">
+<node TEXT="int[][] b = { { 1, 2 }, { 3, 4, 5 } };" ID="ID_1583324129" CREATED="1414872966284" MODIFIED="1414872968222"/>
+</node>
+<node TEXT="Creating Two-Dimensional Arrays with Array-Creation Expressions" ID="ID_1165338268" CREATED="1414872996958" MODIFIED="1414873008161">
+<node TEXT="int[][] b = new int[ 3 ][ 4 ];" ID="ID_1397762287" CREATED="1414873009208" MODIFIED="1414873010927"/>
+<node TEXT="int[][] b = new int[ 2 ][ ]; // create 2 rows&#xa;b[ 0 ] = new int[ 5 ]; // create 5 columns for row 0&#xa;b[ 1 ] = new int[ 3 ]; // create 3 columns for row 1" ID="ID_595700642" CREATED="1414873029819" MODIFIED="1414873032912"/>
+<node ID="ID_1184521849" CREATED="1414873418733" MODIFIED="1414873504352"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      use <font color="#0000ff">array.length</font>&#160;to get row size and <font color="#0000ff">array[ row ].length</font>&#160;to get each column size(if ther are different)
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_1798323035034479619.png" ID="ID_1621488186" CREATED="1414873633173" MODIFIED="1414873633173">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1798323035034479619.png" SIZE="0.90771556" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="Use enhenced for Statement" ID="ID_1587719549" CREATED="1414874284270" MODIFIED="1414874320340">
+<node TEXT="Java_6414909574213950933.png" ID="ID_105423666" CREATED="1414874274946" MODIFIED="1414874274946" MOVED="1414874299363">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6414909574213950933.png" SIZE="0.8941878" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="7.11 Variable-Length Argument Lists" ID="ID_482001147" CREATED="1414874750593" MODIFIED="1414874787755">
+<node ID="ID_1722426057" CREATED="1414874788695" MODIFIED="1414874835393"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      With <font color="#0000ff">variable-length argument lists.</font>&#160;A type followed by an <font color="#0000ff">ellipsis (...)</font>&#160;in a method&#8217;s parameter list indicates that the method receives a variable number of arguments of that particular type.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="This use of the ellipsis can occur only once in a parameter list" ID="ID_1517608362" CREATED="1414874889156" MODIFIED="1414874906348"/>
+<node TEXT="Ellipsis, together with its type, must be placed at the end of the parameter list." ID="ID_164812219" CREATED="1414874897574" MODIFIED="1414874910209"/>
+<node TEXT="Java_3743980646760179993.png" ID="ID_1935649167" CREATED="1414875038574" MODIFIED="1414875038574">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3743980646760179993.png" SIZE="0.7490637" NAME="ExternalObject"/>
+</node>
+<node TEXT="Java_9160342370745256922.png" ID="ID_1255634971" CREATED="1414875059268" MODIFIED="1414875059268">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_9160342370745256922.png" SIZE="0.795756" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="7.12 Using Command-Line Arguments" ID="ID_1278258106" CREATED="1414875560793" MODIFIED="1414875570429">
+<node ID="ID_1390718628" CREATED="1414875588307" MODIFIED="1414875639795"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      It&#8217;s possible to pass arguments from the command line (these are known as <font color="#0000ff">command-line arguments</font>) to an application by including a parameter of type String[] (i.e., an array of Strings) in the parameter list of main, exactly as we&#8217;ve done in every application in the book. By convention, this parameter is named <b>args</b>.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="java InitArray 5 0 4" ID="ID_569958981" CREATED="1414875658007" MODIFIED="1414875659849"/>
+<node TEXT="When this command executes, InitArray&#x2019;s main method receives the three-element array args (i.e., args.length is 3) in which args[0] contains the String &quot;5&quot;, args[1] contains the String &quot;0&quot; and args[2] contains the String &quot;4&quot;" ID="ID_1344538199" CREATED="1414875688775" MODIFIED="1414875708635" MOVED="1415072086530"/>
+<node TEXT="Java_7742818214248985665.png" ID="ID_1485848877" CREATED="1414892935933" MODIFIED="1414892935933" MOVED="1415072074545">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7742818214248985665.png" SIZE="0.8888889" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="7.13 Class Arrays" ID="ID_315267892" CREATED="1414895035399" MODIFIED="1414895388901">
+<node TEXT="Arrays is a static class" ID="ID_823002148" CREATED="1415072902156" MODIFIED="1415072911188" MOVED="1415072913735"/>
+<node ID="ID_651110129" CREATED="1414895388917" MODIFIED="1415072635752"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Arrays.sort( doubleArray );</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1049337632" CREATED="1414895405025" MODIFIED="1415510512440"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Arrays.fill( filledIntArray, 7 );</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="This is only for one dimention array," ID="ID_200229168" CREATED="1415510514606" MODIFIED="1415510539770">
+<node TEXT="int rows = 10, int columns = 2&#xa;boolean rendered[][] = new boolean[rows][columns];&#xa;java.util.Arrays.fill(rendered[0], false);&#xa;java.util.Arrays.fill(rendered[1], false);" ID="ID_1246095704" CREATED="1415510542379" MODIFIED="1415510543989"/>
+</node>
+</node>
+<node ID="ID_458247730" CREATED="1414895418869" MODIFIED="1415072640221"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">System.arraycopy( intArray, 0, intArrayCopy, 0, intArray.length );</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1814092521" CREATED="1414895430432" MODIFIED="1415072646533"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">boolean b = Arrays.equals( intArray, intArrayCopy );</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_106342411" CREATED="1414895439464" MODIFIED="1415072649284"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">int location = Arrays.binarySearch( intArray, 5 );</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="7.14 Introduction to Collections and Class ArrayList" ID="ID_1433642275" CREATED="1414895676939" MODIFIED="1414895680971">
+<node ID="ID_1039881039" CREATED="1414895695706" MODIFIED="1414895788366"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Collections</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="The Java API provides several predefined data structures used to store groups of related objects." ID="ID_1178339625" CREATED="1414895702253" MODIFIED="1414895716488"/>
+<node TEXT="These classes provide efficient methods that organize, store and retrieve your data without requiring knowledge of how the data is being stored. This reduces application-development time." ID="ID_100898626" CREATED="1414895735536" MODIFIED="1414895742348"/>
+<node ID="ID_1046311721" CREATED="1414895768303" MODIFIED="1414895784303"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The collection class <font color="#0000ff">ArrayList&lt;T&gt;</font>&#160;(from package java.util) provides a convenient solution to this problem&#8212;it can dynamically change its size to accommodate more elements.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1293747350" CREATED="1414895820071" MODIFIED="1414895908466"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The T (by convention) is a <font color="#000000"><b>placeholder</b></font>&#8212;when declaring a new ArrayList, replace it with the type of elements that you want the ArrayList to hold.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_306420084" CREATED="1414895838290" MODIFIED="1414895926373"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      only <b>nonprimitive</b>&#160;types can be used with these collection classes
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1724353120" CREATED="1414895953030" MODIFIED="1414895963281"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Classes with this kind of placeholder that can be used with any type are called <font color="#0000ff">generic classes</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1496627352" CREATED="1414895850338" MODIFIED="1414895863885"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">ArrayList&lt; String &gt; list;</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="declares list as an ArrayList collection that can store only Strings." ID="ID_1039611426" CREATED="1414895859104" MODIFIED="1414895860713"/>
+</node>
+<node TEXT="Java_4837677958408622340.png" ID="ID_1876603554" CREATED="1414895985704" MODIFIED="1414895985704">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4837677958408622340.png" SIZE="0.89686096" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="8. Classes and Objects: A Deeper Look" POSITION="right" ID="ID_615930102" CREATED="1415767976263" MODIFIED="1415767985221">
+<edge COLOR="#0000ff"/>
+</node>
 <node TEXT="Java mindmap" POSITION="left" ID="ID_395131511" CREATED="1401559811759" MODIFIED="1401559816948">
 <edge COLOR="#00ff00"/>
 <node TEXT="Java_5448306434012902083.png" ID="ID_367293258" CREATED="1410729968971" MODIFIED="1410729968971">
@@ -2446,6 +3097,9 @@
 <arrowlink SHAPE="LINE" COLOR="#000000" WIDTH="2" TRANSPARENCY="80" FONT_SIZE="9" FONT_FAMILY="SansSerif" DESTINATION="ID_377374602" STARTINCLINATION="40;0;" ENDINCLINATION="40;45;" STARTARROW="NONE" ENDARROW="DEFAULT"/>
 </node>
 <node TEXT="Brute-Force computing" ID="ID_286759472" CREATED="1411705243384" MODIFIED="1411705251728"/>
+<node TEXT="In command line mode, you can&apos;t run java code from inside a package you are trying to reference. So cd .. then compile and run it outside of package by precise the path" ID="ID_765748530" CREATED="1415487980440" MODIFIED="1415489582493">
+<node TEXT="In Eclipse, use Run-&gt;Run Configuration-&gt;Arguments to activate Command line mode" ID="ID_22433839" CREATED="1415489590300" MODIFIED="1415510499338"/>
+</node>
 </node>
 <node TEXT="Eclipse Shot Cut" POSITION="left" ID="ID_947415317" CREATED="1405502574125" MODIFIED="1405502581396">
 <edge COLOR="#ffff00"/>

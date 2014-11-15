@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+package Exercise_7_20;
+
+/**
+ * @author hefang
+ *
+ */
+public class TotalSales {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int [][] sales = new int [4][5];
+		Random r = new Random();
+
+	}
+
+}

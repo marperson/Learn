@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package Exercise_7_14;
+
+/**
+ * @author hefang
+ *
+ */
+public class product {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

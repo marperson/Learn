@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+package Exercise_7_16;
+
+/**
+ * @author hefang
+ *
+ */
+public class EnhancedFor {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		if (args.length==0){
+			System.out.println("Enter two Double values");
+		}
+		else{
+			System.out.println("The product is :"+calculateProduct(args));
+		}
+		
+		
+
+	}
+	
+	static calculateProduct(double...args){
+		double product=1.0;
+		for(double value:args){
+			product*=value;
+		}
+		return product;
+	}
+
+}

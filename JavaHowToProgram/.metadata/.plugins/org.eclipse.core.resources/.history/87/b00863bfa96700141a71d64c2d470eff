@@ -1,0 +1,47 @@
+/**
+ * 
+ */
+package Exercise_7_19;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+/**
+ * @author hefang
+ *
+ */
+public class AirlineReservations {
+	static boolean []seat = new boolean[10];
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Arrays.fill(seat, false);
+		Scanner s = new Scanner(System.in);
+		System.out
+				.println("Please type 1 for First Class and Please type 2 for Economy.");
+		int type = s.nextInt();
+		selectSeat(type);
+		
+	}
+
+	static selectSeat(int type) {
+
+		if (type == 1) {
+			for(int i =0; i<5;i++){
+				if (!seat[i]){
+					seat[i]=true;
+					break;
+				}
+			}
+
+		} else if (type == 2) {
+
+		} else {
+
+		}
+	}
+
+}

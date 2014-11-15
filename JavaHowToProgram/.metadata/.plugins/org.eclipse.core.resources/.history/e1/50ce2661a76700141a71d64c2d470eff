@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package Exercise_7_19;
+
+/**
+ * @author hefang
+ *
+ */
+public class AirlineReservations {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

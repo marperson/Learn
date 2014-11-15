@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package Exercise_7_29;
+
+/**
+ * @author hefang
+ *
+ */
+public class Fibonacci {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	static int myFibonacci(int []n){
+		int f=0;
+		return 
+		
+	}
+
+}

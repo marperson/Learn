@@ -1,0 +1,27 @@
+/**
+ * 
+ */
+package Exercise_7_21;
+
+import java.util.Arrays;
+
+/**
+ * @author hefang
+ *
+ */
+public class TurtleGraphics {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner s = new Scanner(System.in);
+		int [][]floor = new int[20][20];
+		Arrays.fill(floor, 0);
+		
+
+	}
+
+}
