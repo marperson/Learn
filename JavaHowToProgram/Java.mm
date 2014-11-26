@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a">
+<map version="docear 1.1" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <node TEXT="Java" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1401558886544"><hook NAME="MapStyle" zoom="0.91">
     <properties show_note_icons="true"/>
@@ -3083,6 +3083,984 @@
 </node>
 <node TEXT="8. Classes and Objects: A Deeper Look" POSITION="right" ID="ID_615930102" CREATED="1415767976263" MODIFIED="1415767985221">
 <edge COLOR="#0000ff"/>
+<node TEXT="8.1 Intro" ID="ID_1335700626" CREATED="1416024614152" MODIFIED="1416024649504" VSHIFT="-10">
+<node TEXT="Public" ID="ID_1775988069" CREATED="1416024653948" MODIFIED="1416024656910">
+<node ID="ID_1442623070" CREATED="1416024660551" MODIFIED="1416024738809" MOVED="1416026119407"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      public method also called <font color="#0000ff">public service</font>s or the <font color="#0000ff">public interface</font>&#160; that the class provides to its clients
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="One file can not have two public classes" ID="ID_1180387575" CREATED="1416024622783" MODIFIED="1416024652778" MOVED="1416026128998"/>
+<node TEXT="when you compile a .java file containing more than one class, the compiler produces a separate&#xa;class file with the .class extension for every compiled class." ID="ID_801403538" CREATED="1416025989424" MODIFIED="1416025997734" MOVED="1416026126436"/>
+<node TEXT="A source-code file (.class) can contain only one public class&#x2014;otherwise, a compilation error occurs" ID="ID_706467016" CREATED="1416026089539" MODIFIED="1416026105118"/>
+<node TEXT="Non-public classes can be used only by other classes in the same package" ID="ID_476700742" CREATED="1416026112483" MODIFIED="1416026114243"/>
+</node>
+<node TEXT="Default Constractor" ID="ID_1930767009" CREATED="1416024739466" MODIFIED="1416024785494"/>
+<node TEXT="Exception" ID="ID_90565375" CREATED="1416024786518" MODIFIED="1416024792160">
+<node ID="ID_1747377374" CREATED="1416024856118" MODIFIED="1416024872851"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The <font color="#0000ff">throw</font>&#160;<font color="#0000ff">statement</font>&#160;(line 23) creates a new object of type IllegalArgumentException. The parentheses following the class name indicate a call to the IllegalArgumentException constructor.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_6296053244590988381.png" ID="ID_1059079285" CREATED="1416024795787" MODIFIED="1416024795787" MOVED="1416024877243">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6296053244590988381.png" SIZE="0.9118541" NAME="ExternalObject"/>
+</node>
+<node TEXT="Java_7555770704951546163.png" ID="ID_1296271452" CREATED="1416025104902" MODIFIED="1416025104902">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7555770704951546163.png" SIZE="0.9360374" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="toString" ID="ID_1185121171" CREATED="1416025019189" MODIFIED="1416025023040">
+<node TEXT="Time" ID="ID_1685810755" CREATED="1416025042480" MODIFIED="1416025044380">
+<node TEXT="Java_8452363390063145776.png" ID="ID_597526964" CREATED="1416025035182" MODIFIED="1416025035182" MOVED="1416025048218">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8452363390063145776.png" SIZE="0.8450704" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="8.3 Controlling Access to Members" ID="ID_246910087" CREATED="1416025233035" MODIFIED="1416025275991">
+<node ID="ID_1235917696" CREATED="1416025277051" MODIFIED="1416025289191"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">public</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_469428185" CREATED="1416025279810" MODIFIED="1416025290791"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">private</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1311555577" CREATED="1416025282533" MODIFIED="1416025291924"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">protected</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_535301803" CREATED="1416025379137" MODIFIED="1416025404290"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      8.4 Referring to the Current Object's Members with the <font color="#0000ff">this</font>&#160; Reference
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1509933384" CREATED="1416025440049" MODIFIED="1416025549293"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      When a <b>non-static method</b>&#160;is called for a particular object, the method's body implicitly uses keyword <font color="#0000ff">this</font>&#160;to refer to the object's instance variables and other methods. This enables the class's code to know which object should be manipulated.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_7266721087937276510.png" ID="ID_1907071723" CREATED="1416025908180" MODIFIED="1416025908180">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7266721087937276510.png" SIZE="0.98039216" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1816401628" CREATED="1416025529936" MODIFIED="1416025554950"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">this</font>&#160;cannot be used in a <b>static method</b>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="8.5 Overloaded Constructors" ID="ID_896541172" CREATED="1416026255931" MODIFIED="1416026269949">
+<node ID="ID_780895388" CREATED="1416026285532" MODIFIED="1416026288181"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">overloaded constructors</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="this" ID="ID_1072998687" CREATED="1416026408809" MODIFIED="1416026410616" MOVED="1416026414054">
+<node ID="ID_1362408931" CREATED="1416026650945" MODIFIED="1416027092862"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#ff0000">use of the </font><font color="#0000ff">this</font><font color="#ff0000">&#160;reference with parameters that's allowed <b>only as the first statement</b>&#160;&#160;in a constructor's body (same like super)</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Using the this reference as shown here is a popular way to reuse initialization code provided by another of the class&apos;s constructors rather than defining similar code in the no-argument constructor&apos;s body" ID="ID_942677129" CREATED="1416026790824" MODIFIED="1416026813414"/>
+<node TEXT="It&apos;s a compilation error when this is used in a constructor&apos;s body to call another constructor&#xa;of the same class if that call is not the first statement in the constructor." ID="ID_772421020" CREATED="1416026867583" MODIFIED="1416026876391"/>
+</node>
+<node TEXT="Same type and order for fields of class" ID="ID_1350666821" CREATED="1416026450435" MODIFIED="1416026470828"/>
+<node TEXT="Java_7626940034873152239.png" ID="ID_304432798" CREATED="1416026756610" MODIFIED="1416026756610">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7626940034873152239.png" SIZE="0.80862534" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="8.6 Default and No-Argument Constructors" ID="ID_1143997592" CREATED="1416027547506" MODIFIED="1416027594464">
+<node TEXT="default constructor" ID="ID_214415748" CREATED="1416026295047" MODIFIED="1416026393292" MOVED="1416027655831"/>
+<node TEXT="No-argument constructor" ID="ID_741130225" CREATED="1416027706657" MODIFIED="1416027729147">
+<node TEXT="Once you declare any constructors in a class, the compiler will not provide a default constructor." ID="ID_1046919561" CREATED="1416026549780" MODIFIED="1416026555854" MOVED="1416027731234">
+<node ID="ID_1966308935" CREATED="1416026561772" MODIFIED="1416027645013"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000">Manualy create a </font><font color="#0000ff">no-argument</font>&#160;<font color="#0000ff">constructor</font>&#160;to intialize default values. below Time2()
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Initialize values" ID="ID_1279168282" CREATED="1416027681406" MODIFIED="1416027700346">
+<node TEXT="zero for primitive numeric types, false for boolean values and null for references" ID="ID_1581349350" CREATED="1416027685806" MODIFIED="1416027691171"/>
+</node>
+</node>
+<node TEXT="8.7 Notes on Set and Get Methods" ID="ID_1212869799" CREATED="1416028919901" MODIFIED="1416028923438">
+<node TEXT="a class&apos;s private fields can be manipulated only by its methods." ID="ID_226605572" CREATED="1416028931608" MODIFIED="1416028935556">
+<node ID="ID_1115647018" CREATED="1416028977372" MODIFIED="1416029018396"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>Set</b>&#160;methods are also commonly called <font color="#0000ff">mutator</font>&#160;<font color="#0000ff">methods</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_255144715" CREATED="1416028988595" MODIFIED="1416029021975"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>Get</b>&#160;methods are also commonly called <font color="#0000ff">accessor methods or query methods</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Set and Get Methods vs. public Data" ID="ID_967506420" CREATED="1416029082847" MODIFIED="1416029084708">
+<node TEXT="Set and Get can control the data quality and privacy" ID="ID_850261189" CREATED="1416029085679" MODIFIED="1416029099519"/>
+</node>
+<node ID="ID_926201194" CREATED="1416029214346" MODIFIED="1416029216758"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">predicate methods</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_568846852" CREATED="1416029228137" MODIFIED="1416029233439"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Another common use for accessor methods is to test whether a condition is true or false&#8212;
+    </p>
+    <p>
+      such methods are often called <font color="#0000ff">predicate</font>&#160;<font color="#0000ff">methods</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="An example would be class ArrayList&apos;s isEmpty method, which returns true if the ArrayList is empty." ID="ID_288912943" CREATED="1416029242113" MODIFIED="1416029249280"/>
+</node>
+</node>
+</node>
+<node TEXT="8.8 Composition" ID="ID_1711525969" CREATED="1416029706632" MODIFIED="1416029739219">
+<node ID="ID_1928964710" CREATED="1416029739226" MODIFIED="1416029753431"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A class can have references to objects of other classes as members. This is called <font color="#0000ff">composition</font>&#160;and is sometimes referred to as a <font color="#0000ff">has-a relationship</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Example, instance of class is a reference of other class" ID="ID_730058516" CREATED="1416030194721" MODIFIED="1416030223782"/>
+</node>
+</node>
+<node TEXT="8.9 Enumerations" ID="ID_228949156" CREATED="1416030224450" MODIFIED="1416030225710">
+<node ID="ID_1502579953" CREATED="1416030236966" MODIFIED="1416030450484"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">enum declaration: </font><font color="#000000">comma-separated list of enum constants</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="1. enum constants are implicitly final, because they declare constants that shouldn&apos;t be modified." ID="ID_1200506341" CREATED="1416030268954" MODIFIED="1416030301066"/>
+<node TEXT="2. enum constants are implicitly static." ID="ID_1191252549" CREATED="1416030275189" MODIFIED="1416030276880"/>
+<node TEXT="3. Any attempt to create an object of an enum type with operator new results in a compilation error." ID="ID_31475170" CREATED="1416030277148" MODIFIED="1416030306127"/>
+<node TEXT="The enum constants can be used anywhere constants can be used, such as in the case labels&#xa;of switch statements and to control enhanced for statements." ID="ID_40526263" CREATED="1416030424254" MODIFIED="1416030425507"/>
+<node TEXT="" ID="ID_1698512321" CREATED="1416979929486" MODIFIED="1416979929486"/>
+<node TEXT="Enum Book" ID="ID_336746305" CREATED="1416030620612" MODIFIED="1416030628376">
+<node TEXT="Java_8251388669789032786.png" ID="ID_1976370862" CREATED="1416030497997" MODIFIED="1416030497997" MOVED="1416030631023">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8251388669789032786.png" SIZE="0.83798885" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node ID="ID_1791043316" CREATED="1416030464295" MODIFIED="1416030466547"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">enum constructor</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1278237545" CREATED="1416030569328" MODIFIED="1416030591787" MOVED="1416030575337"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      An <font color="#0000ff">enum</font>&#160;<font color="#0000ff">constructor</font>&#160;can specify any number of parameters and can be overloaded
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_2865563533807221710.png" ID="ID_1596128979" CREATED="1416030542522" MODIFIED="1416030542522" MOVED="1416030582146">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2865563533807221710.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="how to iterate through a range of enum constants. Two static methods" ID="ID_1538259613" CREATED="1416030754482" MODIFIED="1416030951351">
+<node TEXT="Java_4482145043962860004.png" ID="ID_440349371" CREATED="1416030769565" MODIFIED="1416030769565">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4482145043962860004.png" SIZE="0.8982036" NAME="ExternalObject"/>
+</node>
+<node ID="ID_1140621605" CREATED="1416030801864" MODIFIED="1416030815649"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">value</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_880042299" CREATED="1416030805534" MODIFIED="1416030972298"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">range</font><font color="#000000">&#160;in </font><font color="#0000ff">EnumSet</font><font color="#000000">&#160;class</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="8.10 Garbage Collection and Method finalize" ID="ID_1566501587" CREATED="1416031026308" MODIFIED="1416031028015">
+<node ID="ID_128636912" CREATED="1416031068915" MODIFIED="1416031080758"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">garbage collection</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_784839247" CREATED="1416031084406" MODIFIED="1416031107461"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The JVM performs automatic <font color="#0000ff">garbage collection</font>&#160;to reclaim the memory occupied by objects that are no longer used. When there are no more references to an object, the object is eligible to be collected. This typically occurs when the JVM executes its <font color="#0000ff">garbage collector</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_1067525403" CREATED="1416031146950" MODIFIED="1416031151177"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">finalize</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_239758342" CREATED="1416031151185" MODIFIED="1416031204564"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The <font color="#0000ff">finalize</font>&#160;<font color="#0000ff">method</font>&#160;is called by the garbage collector to perform <font color="#0000ff">termination housekeeping</font>&#160;on an object just before the garbage collector reclaims the object's memory.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1868200686" CREATED="1416031237077" MODIFIED="1416031277070"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Method finalize <font color="#0000ff">does not take parameters</font>&#160;and has <font color="#0000ff">return type void</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="A problem with method finalize is that the garbage collector is not guaranteed to execute at a specified time. In fact, the garbage collector may never execute before a program terminates. Thus,&#xa;it&#x2019;s unclear whether, or when, method finalize will be called. For this reason, most programmers&#xa;should avoid method finalize." ID="ID_532478506" CREATED="1416031278212" MODIFIED="1416031287843"/>
+</node>
+</node>
+</node>
+<node TEXT="8.11 static Class Members" ID="ID_1208068063" CREATED="1416031327657" MODIFIED="1416031353121">
+<node TEXT="Static Method" ID="ID_1128915144" CREATED="1416031354458" MODIFIED="1416031358372">
+<node TEXT="Every object has its own copy of all the instance variables of the class. In certain cases, only&#xa;one copy of a particular variable should be shared by all objects of a class." ID="ID_3093078" CREATED="1416031517277" MODIFIED="1416031535951" MOVED="1416031538882"/>
+<node ID="ID_1835418917" CREATED="1416031358379" MODIFIED="1416031487833"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A <font color="#0000ff">static</font>&#160;<font color="#0000ff">field</font>&#8212; called a <font color="#0000ff">class</font>&#160;<font color="#0000ff">variable</font>. A static variable represents classwide information&#8212;
+    </p>
+    <p>
+      all objects of the class share the same piece of data. The declaration of a static
+    </p>
+    <p>
+      variable begins with the keyword static.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Math.random()" ID="ID_1110008750" CREATED="1416031817377" MODIFIED="1416031828182">
+<node TEXT="static class members exist even when no objects of the class exist&#x2014;they&apos;re available as soon as the class is loaded into memory at execution time" ID="ID_938373569" CREATED="1416031801698" MODIFIED="1416031816007" MOVED="1416031830151"/>
+<node TEXT="Static class variables and methods exist, and can be used, even if no objects of that class&#xa;have been instantiated." ID="ID_1175080734" CREATED="1416031967394" MODIFIED="1416031973582"/>
+</node>
+<node TEXT="Math.PI" ID="ID_395363481" CREATED="1416031832800" MODIFIED="1416031838091">
+<node ID="ID_1419365265" CREATED="1416031883041" MODIFIED="1416031921687"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      To access a <b>public static</b>&#160;member when no objects of the class exist (and even when they do), prefix the class name and a dot (.) to the static member
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1338226641" CREATED="1416031921979" MODIFIED="1416031940867"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      To access a <b>private static</b>&#160;member when no objects of the class exist, provide a <b>public static method</b>&#160;and call it by qualifying its name with the class name and a dot.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="A static method cannot access non-static class members" ID="ID_1590171163" CREATED="1416032103667" MODIFIED="1416032117988">
+<node TEXT="Because a static method can be called even when no objects of the class have been instantiated." ID="ID_249138844" CREATED="1416032112849" MODIFIED="1416032150543">
+<node TEXT="A compilation error occurs if a static method calls an instance (non-static) method in&#xa;the same class by using only the method name. Similarly, a compilation error occurs if a&#xa;static method attempts to access an instance variable in the same class by using only the&#xa;variable name." ID="ID_118457168" CREATED="1416032280507" MODIFIED="1416032282319"/>
+</node>
+<node ID="ID_1825254009" CREATED="1416032151045" MODIFIED="1416032160286"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Example, the <b>this</b>&#160;reference cannot be used in a static method. The this reference must refer to
+    </p>
+    <p>
+      a specific object of the class, and when a static method is called, there might not be any
+    </p>
+    <p>
+      objects of its class in memory.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Referring to this in a static method is a compilation error" ID="ID_87512383" CREATED="1416032269773" MODIFIED="1416032272889"/>
+</node>
+<node TEXT="Employee.getCount() and Employee.count if in the same package" ID="ID_603597722" CREATED="1416032507377" MODIFIED="1416032540702">
+<node TEXT="Java_391814699388151228.png" ID="ID_526432089" CREATED="1416032566794" MODIFIED="1416032566794">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_391814699388151228.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node ID="ID_109114619" CREATED="1416032658583" MODIFIED="1416032670857"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      String objects in Java are <font color="#0000ff">immutable</font>&#8212;they cannot be modified after they're created.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="8.12 static Import" ID="ID_18811972" CREATED="1416032826386" MODIFIED="1416032828233">
+<node ID="ID_930188948" CREATED="1416032857724" MODIFIED="1416032890168"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A <font color="#0000ff">static import </font>declaration enables you to import the static members of a class or interface so you can access them via their unqualified names in your class&#8212;the class name and a dot (.) are not required to use an imported static member.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_493048868" CREATED="1416032891473" MODIFIED="1416032902178"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">single static import</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="one that imports a particular static member" ID="ID_348269586" CREATED="1416032932246" MODIFIED="1416032945775">
+<node TEXT="import static packageName.ClassName.staticMemberName;" ID="ID_1673286223" CREATED="1416032960221" MODIFIED="1416032961567"/>
+</node>
+</node>
+<node ID="ID_1832044259" CREATED="1416032898911" MODIFIED="1416032907598"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">static import on demand</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1547909163" CREATED="1416032946996" MODIFIED="1416032993779"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      imports all static members of a class (<font color="#0000ff">asterisk *</font>)
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="import static packageName.ClassName.*;" ID="ID_1837186797" CREATED="1416032968837" MODIFIED="1416032970090"/>
+</node>
+</node>
+<node TEXT="A compilation error occurs if a program attempts to import two or more classes&#x2019; static&#xa;methods that have the same signature or static fields that have the same name." ID="ID_607351840" CREATED="1416033047646" MODIFIED="1416033049288"/>
+<node TEXT="Java_6358616693562730591.png" ID="ID_94340182" CREATED="1416033064108" MODIFIED="1416033064108">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6358616693562730591.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="8.13 final Instance Variables" ID="ID_1680029108" CREATED="1416033076984" MODIFIED="1416033127214">
+<node ID="ID_873088939" CREATED="1416033127220" MODIFIED="1416033144054"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The <font color="#0000ff">principle of least privilege</font>&#160;is fundamental to good software engineering
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="In the context of an application, it states that code should be granted only the amount of privilege and access that it needs to accomplish its designated task, but no more." ID="ID_1192721551" CREATED="1416033145304" MODIFIED="1416033181880"/>
+<node ID="ID_1862385813" CREATED="1416033183024" MODIFIED="1416033228618"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      se the keyword <font color="#0000ff">final</font>&#160;to specify that a variable is not modifiable
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="private final int INCREMENT;" ID="ID_298020709" CREATED="1416033293534" MODIFIED="1416033300265"/>
+</node>
+<node TEXT="Declaring an instance variable as final helps enforce the principle of least privilege. If an&#xa;instance variable should not be modified, declare it to be final to prevent modification." ID="ID_1326515153" CREATED="1416033229765" MODIFIED="1416033236776">
+<node ID="ID_627418179" CREATED="1416033240104" MODIFIED="1416033259470"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Attempts to modify a final instance variable are caught at <font color="#0000ff">compilation time</font>&#160;rather than
+    </p>
+    <p>
+      causing <font color="#0000ff">execution-time errors</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_374451063" CREATED="1416033281803" MODIFIED="1416033356201"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A final field should also be declared <b>static</b>&#160;if it's initialized in its declaration to a value
+    </p>
+    <p>
+      that&#8217;s the same for all objects of the class. After this initialization, its value can never
+    </p>
+    <p>
+      change. Therefore, we don&#8217;t need a separate copy of the field for every object of the class.
+    </p>
+    <p>
+      Making the field static enables all objects of the class to share the final field.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="8.14 Packages" ID="ID_1508941954" CREATED="1416033358811" MODIFIED="1416033362669">
+<node TEXT="1. Declare a public class. If the class is not public, it can be used only by other&#xa;classes in the same package." ID="ID_367024228" CREATED="1416661007040" MODIFIED="1416661012801">
+<node TEXT="Java_6043168507474313752.png" ID="ID_48199435" CREATED="1416661279809" MODIFIED="1416661279809">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6043168507474313752.png" SIZE="0.8287293" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_294654179" CREATED="1416661026166" MODIFIED="1416661155791"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      2. Choose a unique package name and add a <font color="#0000ff">package declaration</font>&#160;to the source-code file for the reusable class declaration
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1087394464" CREATED="1416661057444" MODIFIED="1416661090468"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      In each Java source-code file there can be only one package declaration, and it must <b>precede all other declarations and statements</b>. Comments are not statements, so comments can be placed before a package statement in a file.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1886794133" CREATED="1416661233750" MODIFIED="1416661270993"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Only <b>package declarations</b>, <b>import declarations</b>&#160;and <b>comments</b>&#160; can appear outside the braces of
+    </p>
+    <p>
+      a class declaration
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="1. a package declaration (if any),&#xa;2. import declarations (if any), then&#xa;3. class declarations." ID="ID_1349460997" CREATED="1416661311806" MODIFIED="1416661313550"/>
+</node>
+<node ID="ID_852999260" CREATED="1416661411533" MODIFIED="1416661422850"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      To provide unique package names, start each one with your <b>Internet domain name</b>&#160;in
+    </p>
+    <p>
+      reverse order.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="For example, our domain name is deitel.com, so our package names begin with com.deitel. For the domain name yourcollege.edu, the package name should begin with edu.yourcollege." ID="ID_219807264" CREATED="1416661423932" MODIFIED="1416661430123"/>
+</node>
+<node ID="ID_545025565" CREATED="1416661109973" MODIFIED="1416661120709"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If no package statement is provided, the class is placed in the so-called <b>default package</b>&#160;and is accessible only to other classes in the default package that are located in the same directory
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="3. Compile the class so that it&apos;s placed in the appropriate package directory." ID="ID_1494357288" CREATED="1416661156775" MODIFIED="1416661163789">
+<node TEXT="javac -d . Time1.java&#xa;the &quot;d&quot; option resulting class file is placed in the directory specified by the declaration, compiler will create several folders according to the package declaration" ID="ID_828154664" CREATED="1416663375330" MODIFIED="1416663512961">
+<node TEXT="Java_8303893778970866887.png" ID="ID_362620571" CREATED="1416663432227" MODIFIED="1416663432227">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8303893778970866887.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Time1.class is placed under ch08 folder" ID="ID_822488779" CREATED="1416663528822" MODIFIED="1416663543240"/>
+<node ID="ID_1919777031" CREATED="1416663563016" MODIFIED="1416663576025"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The package name is part of the <font color="#0000ff">fully qualified class name</font>, so the name of class Time1
+    </p>
+    <p>
+      is actually <b>com.deitel.jhtp.ch08.Time1</b>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_373990539" CREATED="1416663603928" MODIFIED="1416663687739"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      You can use this fully qualified name in your programs, or you can import the class and use its <font color="#0000ff">simple name</font>&#160;(the class name by itself&#8212; Time1) in the program.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="If another package also contains a Time1 class, the fully qualified class names can be used to distinguish between the classes in the program and prevent a name conflict (also called a name collision)." ID="ID_1059138418" CREATED="1416663688687" MODIFIED="1416663693561"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="4. Import the reusable class into a program and use the class." ID="ID_243354208" CREATED="1416661173096" MODIFIED="1416661178290">
+<node TEXT="If two classes are in different packages" ID="ID_1474841571" CREATED="1416663749264" MODIFIED="1416663888652">
+<node ID="ID_1913527473" CREATED="1416663918313" MODIFIED="1416663995222"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">single-type-import declaration</font><font color="#000000">: the import declaration </font>
+    </p>
+    <p>
+      <font color="#000000">specifies one class to import</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_7456799986794436539.png" ID="ID_1250306932" CREATED="1416663892856" MODIFIED="1416663892856" MOVED="1416663924727">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7456799986794436539.png" SIZE="0.81632656" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1866390885" CREATED="1416663934970" MODIFIED="1416664028808"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">type-import-ondemand declaration</font><font color="#000000">: uses an asterisk (*) at its end to inform the compiler that all public classes from the java. util package are available for use in the program.</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_6077443722859621451.png" ID="ID_1200554479" CREATED="1416663960548" MODIFIED="1416663960548">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6077443722859621451.png" SIZE="0.9202454" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1392675206" CREATED="1416664040960" MODIFIED="1416664048615"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">import java.*</font>; causes a compilation error. You must specify the exact name of the package from which you want to import classes.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Specifying the Classpath During Compilation" ID="ID_623473209" CREATED="1416664343028" MODIFIED="1416664356162">
+<node ID="ID_452712732" CREATED="1416664356190" MODIFIED="1416664360028"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">class loader</font>&#160;to locate the classes it needs.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1777355529" CREATED="1416664387979" MODIFIED="1416664421106"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The class loader begins by searching the standard Java classes that are bundled with the JDK. Then it searches for <font color="#0000ff">optional packages</font>. Java provides an <font color="#0000ff">extension mechanism</font>&#160;that enables new (optional) packages to be added to Java for development and execution purposes.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_415963269" CREATED="1416664422811" MODIFIED="1416664480223"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If the class is not found in the standard Java classes or in the extension classes, the class loader searches the <font color="#0000ff">classpath</font>,which contains a list of locations in which classes are stored. The classpath consists of a list of directories or <font color="#0000ff">archive files</font>, each separated by a <font color="#0000ff">directory separator</font>&#8212;a semicolon (;) on Windows or a colon (:) on UNIX/Linux/Mac OS X.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Archive files are individual files that contain directories of other files, typically in a compressed format. ie. jar, zip" ID="ID_1004732456" CREATED="1416664481332" MODIFIED="1416664505109"/>
+</node>
+<node TEXT="By default, the classpath consists only of the current directory. However, the classpath can be modified by" ID="ID_311839625" CREATED="1416664519770" MODIFIED="1416664582974">
+<node ID="ID_1806337583" CREATED="1416664530847" MODIFIED="1416664553201"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      1. providing the <font color="#0000ff">-classpath </font>option to the javac compiler or
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1720889301" CREATED="1416664538865" MODIFIED="1416664547954"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      2. setting the<font color="#0000ff">&#160;CLASSPATH environment variable</font>&#160;(a special variable that you define
+    </p>
+    <p>
+      and the operating system maintains so that applications can search for classes in
+    </p>
+    <p>
+      the specified locations).
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="8.15 Package Access" ID="ID_1116714638" CREATED="1416664584219" MODIFIED="1416664601731">
+<node ID="ID_731278746" CREATED="1416664601737" MODIFIED="1416664640601"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If no access modifier (public, protected or private) is specified for a method or variable when it's declared in a class, the method or variable is considered to have <font color="#0000ff">package access</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_7247867312576629294.png" ID="ID_506731964" CREATED="1416664765740" MODIFIED="1416664765740">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7247867312576629294.png" SIZE="0.79787236" NAME="ExternalObject"/>
+</node>
+<node TEXT="Java_1413064192417295347.png" ID="ID_1735265950" CREATED="1416664786804" MODIFIED="1416664786804">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1413064192417295347.png" SIZE="0.9259259" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="Package access is rarely used" ID="ID_472294193" CREATED="1416664680532" MODIFIED="1416664760672"/>
+</node>
 </node>
 <node TEXT="Java mindmap" POSITION="left" ID="ID_395131511" CREATED="1401559811759" MODIFIED="1401559816948">
 <edge COLOR="#00ff00"/>
