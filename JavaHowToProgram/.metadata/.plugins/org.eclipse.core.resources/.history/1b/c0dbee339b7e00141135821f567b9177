@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+package Exercise_8_13;
+
+/**
+ * @author hefang
+ *
+ */
+public class IntegerSet {
+	private boolean array[100];
+
+}

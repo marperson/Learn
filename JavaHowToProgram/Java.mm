@@ -1,4 +1,4 @@
-<map version="docear 1.1" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/">
+<map version="docear 1.1" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <node TEXT="Java" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1401558886544"><hook NAME="MapStyle" zoom="0.91">
     <properties show_note_icons="true"/>
@@ -3209,7 +3209,7 @@
 <hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7266721087937276510.png" SIZE="0.98039216" NAME="ExternalObject"/>
 </node>
 </node>
-<node ID="ID_1816401628" CREATED="1416025529936" MODIFIED="1416025554950"><richcontent TYPE="NODE">
+<node ID="ID_1816401628" CREATED="1416025529936" MODIFIED="1418005518416"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -3217,10 +3217,11 @@
   </head>
   <body>
     <p>
-      <font color="#0000ff">this</font>&#160;cannot be used in a <b>static method</b>
+      <font color="#0000ff">this</font>&#160;can <b>not</b>&#160;be used in a <b>static method</b>
     </p>
   </body>
 </html>
+
 </richcontent>
 </node>
 </node>

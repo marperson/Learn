@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package Exercise_8_13;
+
+/**
+ * @author hefang
+ *
+ */
+public class IntegerSetTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

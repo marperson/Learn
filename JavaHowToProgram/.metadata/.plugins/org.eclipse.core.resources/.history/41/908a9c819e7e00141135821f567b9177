@@ -1,0 +1,56 @@
+/**
+ * 
+ */
+package Exercise_8_13;
+
+import java.util.Arrays;
+
+/**
+ * @author hefang
+ *
+ */
+public class IntegerSet {
+	private static boolean array[]= new boolean[100];
+	
+	IntegerSet(){
+		Arrays.fill(array, false);
+	}
+	
+	private static boolean[] union(boolean[] a, boolean[] b){
+		boolean []union = new boolean[100];
+		Arrays.fill(union, false);
+		for(int i=0;i<array.length;i++){
+			if (a[i]||b[i]){
+				union[i]=true;
+			}
+		}
+		return union;
+	}
+	
+	private static boolean[] interSection(boolean[] a, boolean[] b){
+		boolean []interSection = new boolean[100];
+		Arrays.fill(interSection, false);
+		for(int i=0;i<array.length;i++){
+			if (a[i]&&b[i]){
+				interSection[i]=true;
+			}
+		}
+		return interSection;
+	}
+	
+	private static void insertElement(int k){
+		Arrays.fill(array, k, k, true);
+	}
+	
+	private static void deleteElement(int m){
+		Arrays.fill(array, m, m, false);
+	}
+	
+	private static String toString(){
+		String s="null";
+		for(boolean value:array){
+			s + =value+" ";
+		}
+		return s;
+	}
+}
