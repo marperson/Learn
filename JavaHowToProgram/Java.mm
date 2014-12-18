@@ -50,7 +50,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="2"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="4"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <node TEXT="1. Intro" POSITION="right" ID="ID_681498878" CREATED="1401558866369" MODIFIED="1401558875917">
 <edge COLOR="#ff0000"/>
@@ -3221,7 +3221,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -4062,6 +4061,461 @@
 </node>
 <node TEXT="Package access is rarely used" ID="ID_472294193" CREATED="1416664680532" MODIFIED="1416664760672"/>
 </node>
+</node>
+<node TEXT="9. Object-Oriented Programming: Inheritance (OOP)" POSITION="right" ID="ID_275018899" CREATED="1418541246354" MODIFIED="1418541354782">
+<edge COLOR="#00ff00"/>
+<node ID="ID_471935093" CREATED="1418541354782" MODIFIED="1418541369204"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      9.1 <font color="#0000ff">Inherientance</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="SuperClass" ID="ID_1052176837" CREATED="1418541371658" MODIFIED="1418897714599">
+<hook NAME="FirstGroupNode"/>
+<node ID="ID_1517412188" CREATED="1418541405987" MODIFIED="1418541423629"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The existing class is called the <font color="#0000ff">superclass</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Subclass" ID="ID_429855305" CREATED="1418541377845" MODIFIED="1418541393924">
+<node ID="ID_964295605" CREATED="1418541424801" MODIFIED="1418541431254"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The newclass is the <font color="#0000ff">subclass</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1589248112" CREATED="1418542848319" MODIFIED="1418542877868"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      subclass can add its own fields and methods. Therefore, a subclass is more specific than its superclass and represents a more specialized group of objects. This is why inheritance is sometimes referred to as <font color="#0000ff">specialization</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_463708937" CREATED="1418542884556" MODIFIED="1418542907104"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The <font color="#0000ff">direct superclass</font>&#160;is the superclass from which the subclass explicitly inherits.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_744012615" CREATED="1418542908854" MODIFIED="1418542973154"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      &#160;An <font color="#0000ff">indirect superclass</font>&#160;is any class above the direct superclass in the class hierarchy, which
+    </p>
+    <p>
+      defines the inheritance relationships between classes
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Every object of a subclass is also an object of that class&apos;s superclass. However, a superclass object is not an object of its class&apos;s subclasses." ID="ID_481131567" CREATED="1418897714080" MODIFIED="1418897843551">
+<hook NAME="SummaryNode"/>
+</node>
+<node ID="ID_51278579" CREATED="1418542979811" MODIFIED="1418543017047"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Java supports only <font color="#0000ff">single inheritance</font>, in which each class is derived from exactly one direct superclass.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Unlike C++, Java does not support multiple inheritance" ID="ID_301042882" CREATED="1418542995030" MODIFIED="1418542999749"/>
+<node ID="ID_1671988668" CREATED="1418543019157" MODIFIED="1418543074644"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">extends</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Is-a Relationship" ID="ID_1809734953" CREATED="1418543078332" MODIFIED="1418543087130">
+<node ID="ID_1872886017" CREATED="1418543095271" MODIFIED="1418543117069"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Is-a represents inheritance. In an <font color="#0000ff">is-a relationship</font>, an object of a subclass can also be treated as an object of its superclass&#8212;e.g., a car is a vehicle.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Has-a Relationship" ID="ID_1467812547" CREATED="1418543087567" MODIFIED="1418543094364">
+<node ID="ID_1987940974" CREATED="1418543137742" MODIFIED="1418543153071"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      has-a represents composition. In a <font color="#0000ff">has-a relationship</font>, an object contains as members references to other objects&#8212; e.g., a car has a steering wheel (and a car object has a reference to a steering-wheel object).
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="class libraries" ID="ID_1709133964" CREATED="1418543197073" MODIFIED="1418543203386">
+<node ID="ID_1944578518" CREATED="1418543203401" MODIFIED="1418543227637"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      New classes can inherit from classes in <font color="#0000ff">class libraries</font>. Organizations develop their own class libraries and can take advantage of others available worldwide. Some day, most new software likely will be constructed from <font color="#0000ff">standardized reusable components.</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="9.2 Superclasses and subclasses" ID="ID_767136595" CREATED="1418543233309" MODIFIED="1418543609876">
+<node ID="ID_1479838724" CREATED="1418543678646" MODIFIED="1418543681115"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">inheritance hierarchy</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="University Community Member Hierarchy" ID="ID_727207319" CREATED="1418543796294" MODIFIED="1418543800809">
+<node TEXT="Each arrow in the hierarchy represents an is-a relationship." ID="ID_1738888811" CREATED="1418543729352" MODIFIED="1418543731305" MOVED="1418543802075">
+<node TEXT="&#x201c;an Employee is a Community- Member&#x201d; and &#x201c;a Teacher is a Faculty member.&#x201d;" ID="ID_137190569" CREATED="1418543739197" MODIFIED="1418543778886"/>
+</node>
+<node TEXT="Java_3939150823959671318.png" ID="ID_803210868" CREATED="1418543701350" MODIFIED="1418543701350" MOVED="1418543806575">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3939150823959671318.png" SIZE="0.96308184" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="Shape Hierarchy" ID="ID_885023356" CREATED="1418543818951" MODIFIED="1418543820576">
+<node TEXT="Java_252832473731045859.png" ID="ID_500473621" CREATED="1418543788543" MODIFIED="1418543788543" MOVED="1418543825436">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_252832473731045859.png" SIZE="0.71770334" NAME="ExternalObject"/>
+</node>
+<node TEXT="a Triangle is a TwoDimensionalShape and is a Shape, while a Sphere is a ThreeDimensionalShape and is a Shape" ID="ID_1763984548" CREATED="1418543843984" MODIFIED="1418543850703"/>
+</node>
+<node ID="ID_1121583" CREATED="1418543901705" MODIFIED="1418543934705"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Employee <font color="#ff0000">has a</font>&#160;BirthDate, and an Employee <font color="#ff0000">has a</font>&#160; TelephoneNumber
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="Objects of all classes that extend a common superclass can be treated as objects of that superclass&#x2014;such objects have an is-a relationship with the superclass." ID="ID_1264886033" CREATED="1418543935158" MODIFIED="1418543943128"/>
+</node>
+</node>
+<node TEXT="9.3 Protected members" ID="ID_472707144" CREATED="1418543947737" MODIFIED="1418543975864">
+<node TEXT="public" ID="ID_1144719763" CREATED="1418543977067" MODIFIED="1418543978989">
+<node TEXT="A class&#x2019;s public members are accessible wherever the program has a reference to an object of that class or one of its subclasses." ID="ID_197437955" CREATED="1418543994349" MODIFIED="1418544009334"/>
+</node>
+<node TEXT="private" ID="ID_1730125314" CREATED="1418543979473" MODIFIED="1418543983036">
+<node TEXT="A class&#x2019;s private members are accessible only within the class itself." ID="ID_927980101" CREATED="1418544011085" MODIFIED="1418544011085"/>
+</node>
+<node TEXT="protected" ID="ID_1354785269" CREATED="1418543983474" MODIFIED="1418543986505">
+<node ID="ID_1094081248" CREATED="1418544035086" MODIFIED="1418544533152"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Using <font color="#0000ff">protected</font>&#160;access offers an intermediate level of access between <font color="#0000ff">public</font>&#160;and <font color="#0000ff">private</font>. A superclass&#8217;s protected members can be accessed by members of that superclass, by members of its subclasses and by members of other classes in the same package&#8212;protected members also have package access
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="All public and protected superclass members retain their original access modifier&#xa;when they become members of the subclass&#x2014;public members of the superclass become&#xa;public members of the subclass, and protected members of the superclass become protected&#xa;members of the subclass. A superclass&#x2019;s private members are not accessible outside&#xa;the class itself. Rather, they&#x2019;re hidden in its subclasses and can be accessed only&#xa;through the public or protected methods inherited from the superclass." ID="ID_1866783125" CREATED="1418544534378" MODIFIED="1418544550137"/>
+<node ID="ID_986273210" CREATED="1418544599039" MODIFIED="1418544647129"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Subclass methods can refer to public and protected members inherited from the
+    </p>
+    <p>
+      superclass simply by using the member names. When a subclass method overrides an
+    </p>
+    <p>
+      inherited superclass method, the superclass method can be accessed from the subclass by
+    </p>
+    <p>
+      preceding the superclass method name with keyword <font color="#0000ff">super</font>&#160;and a dot (.) separator
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="9.4 Relationship between Superclasses and Subclasses" ID="ID_1391140944" CREATED="1418544695323" MODIFIED="1418546055763" MOVED="1418898140453">
+<node TEXT="9.4.1" ID="ID_238503983" CREATED="1418546846798" MODIFIED="1418546849846">
+<node TEXT="@Override annotation" ID="ID_1057139146" CREATED="1418546055771" MODIFIED="1418546064745" MOVED="1418546852280">
+<node ID="ID_505835419" CREATED="1418546069079" MODIFIED="1418546898527"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Line 99 uses the <font color="#0000ff">@Override annotation</font>&#160;to indicate that method toString should override a superclass method
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_5446620817464501295.png" ID="ID_1491071018" CREATED="1418546089103" MODIFIED="1418546089103">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5446620817464501295.png" SIZE="0.80106807" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="To override a superclass method, a subclass must declare a method with the same signature (method name, number of parameters, parameter types and order of parameter types) as the superclass method" ID="ID_932180546" CREATED="1418546619396" MODIFIED="1418546673224"/>
+<node TEXT="When the compiler encounters a method declared with @Override, it compares the method&#x2019;s signature with the superclass&#x2019;s method signatures. If there isn&#x2019;t an exact match, the compiler issues an error message, such as &#x201c;method does not override or implement a method from a supertype.&#x201d; This indicates that you&#x2019;ve accidentally overloaded a superclass method. You can then fix yourmethod&#x2019;s signature so that it matches one in the superclass." ID="ID_929938469" CREATED="1418546674680" MODIFIED="1418546686701"/>
+</node>
+<node TEXT="Constructors are not inherited." ID="ID_1646753379" CREATED="1418546483996" MODIFIED="1418546490982" MOVED="1418546855038">
+<node TEXT="However, a superclass&#x2019;s constructors are still available to subclasses. In fact, the first task of any subclass constructor is to call its direct superclass&#x2019;s constructor, either explicitly or implicitly (if no constructor call is specified)" ID="ID_1496509507" CREATED="1418546512613" MODIFIED="1418546618384"/>
+</node>
+<node TEXT="Do not override a method with a more restricted access modifier" ID="ID_806397863" CREATED="1418546812665" MODIFIED="1418546835781" MOVED="1418546857048">
+<node TEXT="It&#x2019;s a syntax error to override a method with a more restricted access modifier&#x2014;a public method of the superclass cannot become a protected or private method in the subclass; a protected method of the superclass cannot become a private method in the subclass." ID="ID_602745019" CREATED="1418546814039" MODIFIED="1418546821899"/>
+</node>
+</node>
+<node TEXT="9.4.2" ID="ID_1820340744" CREATED="1418546899299" MODIFIED="1418546902144">
+<node TEXT="When an object is output using the %s format specifier, the object&#x2019;s toString method is called&#xa;implicitly to obtain its String representation." ID="ID_1797616318" CREATED="1418898066835" MODIFIED="1418898101067"/>
+</node>
+<node TEXT="9.4.3" ID="ID_790674566" CREATED="1418547025970" MODIFIED="1418547104657">
+<node ID="ID_1044653222" CREATED="1418547174919" MODIFIED="1418547188319" MOVED="1418547202260"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">superclass constructor call syntax</font>&#8212;keyword <font color="#0000ff">super</font>, followed by a set of parentheses
+    </p>
+    <p>
+      containing the superclass constructor arguments
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_988112068561317636.png" ID="ID_626242456" CREATED="1418547109135" MODIFIED="1418547109135" MOVED="1418547191629">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_988112068561317636.png" SIZE="0.8426966" NAME="ExternalObject"/>
+</node>
+<node TEXT="This must appear as the first statement in the subclass constructor&#x2019;s body." ID="ID_499470856" CREATED="1418898015863" MODIFIED="1418898020192"/>
+</node>
+<node TEXT="Java_2342830614278026518.png" ID="ID_1885519962" CREATED="1418547136367" MODIFIED="1418547136367">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2342830614278026518.png" SIZE="0.80213904" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="9.4.4" ID="ID_783358312" CREATED="1418547230578" MODIFIED="1418547233109">
+<node TEXT="When possible, do not include protected instance variables in a superclass. Instead, include&#xa;non-private methods that access private instance variables. This will help ensure&#xa;that objects of the class maintain consistent states." ID="ID_517201895" CREATED="1418896287709" MODIFIED="1418896291290"/>
+</node>
+<node TEXT="9.4.5" ID="ID_521900407" CREATED="1418896296435" MODIFIED="1418896298612">
+<node TEXT="Call super class method" ID="ID_421096431" CREATED="1418896357027" MODIFIED="1418896364431">
+<node TEXT="Java_548067518067902703.png" ID="ID_1811597350" CREATED="1418896374214" MODIFIED="1418896374214">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_548067518067902703.png" SIZE="0.795756" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="9.5 Constructors in Subclasses" ID="ID_1785129177" CREATED="1418896427232" MODIFIED="1418896429943" MOVED="1418898111941">
+<node TEXT="The last constructor called in the chain is always the constructor for class Object." ID="ID_919466745" CREATED="1418896772637" MODIFIED="1418896815678"/>
+<node TEXT="Java ensures that even if a constructor does not assign a value to an instance variable, the variable is still initialized to its default value (e.g., 0 for primitive numeric types, false for booleans, null for references)." ID="ID_457145195" CREATED="1418896816644" MODIFIED="1418896823972"/>
+</node>
+<node TEXT="9.6 Software Engineering with Inheritance" ID="ID_1648418441" CREATED="1418896870344" MODIFIED="1418897154781" MOVED="1418898117247">
+<node TEXT="When you extend a class, the new class inherits the superclass&#x2019;s members&#x2014;though the&#xa;private superclass members are hidden in the new class. You can customize the new class&#xa;to meet your needs by including additional members and by overriding superclass members" ID="ID_245366438" CREATED="1418897176244" MODIFIED="1418897178359"/>
+</node>
+<node TEXT="9.7 Class Object" ID="ID_722666670" CREATED="1418897155231" MODIFIED="1418897175540" MOVED="1418898124463">
+<node TEXT="all classes in Java inherit directly or indirectly from the Object class (package java.lang), so its 11 methods (some are overloaded) are inherited by all other classes." ID="ID_518683895" CREATED="1418897221523" MODIFIED="1418897237219">
+<node TEXT="clone" ID="ID_244366884" CREATED="1418897286326" MODIFIED="1418897526398">
+<node ID="ID_1953490678" CREATED="1418897401122" MODIFIED="1418897460868"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This protected method, which takes no arguments and returns an Object reference,
+    </p>
+    <p>
+      makes a copy of the object on which it&#8217;s called. The default implementation
+    </p>
+    <p>
+      performs a so-called <font color="#0000ff">shallow copy</font>&#8212;instance-variable values in one
+    </p>
+    <p>
+      object are copied into another object of the same type. For reference types,
+    </p>
+    <p>
+      only the references are copied. A typical overridden clone method&#8217;s implementation
+    </p>
+    <p>
+      would perform a <font color="#0000ff">deep copy</font>&#160;that creates a new object for each reference-
+    </p>
+    <p>
+      type instance variable. Implementing clone correctly is difficult. For
+    </p>
+    <p>
+      this reason, its use is discouraged. Many industry experts suggest that object
+    </p>
+    <p>
+      serialization should be used instead.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node TEXT="equals" ID="ID_164392102" CREATED="1418897293853" MODIFIED="1418897522643">
+<node TEXT="This method compares two objects for equality and returns true if they&#x2019;re&#xa;equal and false otherwise. The method takes any Object as an argument.&#xa;When objects of a particular class must be compared for equality, the class&#xa;should override method equals to compare the contents of the two objects.&#xa;For the requirements of implementing this method, refer to the method&#x2019;s documentation&#xa;at download.oracle.com/javase/6/docs/api/java/lang/&#xa;Object.html# equals(java.lang.Object). The default equals implementation&#xa;uses operator == to determine whether two references refer to the same&#xa;object in memory. Section 16.3.3 demonstrates class String&#x2019;s equals method&#xa;and differentiates between comparing String objects with == and with equals." ID="ID_361845883" CREATED="1418897420400" MODIFIED="1418897429532"/>
+</node>
+<node TEXT="finalize" ID="ID_965649889" CREATED="1418897300172" MODIFIED="1418897519554">
+<node TEXT="This protected method (introduced in Section 8.10) is called by the garbage&#xa;collector to perform termination housekeeping on an object just before the&#xa;garbage collector reclaims the object&#x2019;s memory. Recall that it&#x2019;s unclear&#xa;whether, or when, method finalize will be called. For this reason, most programmers&#xa;should avoid method finalize." ID="ID_1542586723" CREATED="1418897430386" MODIFIED="1418897435461"/>
+</node>
+<node TEXT="getClass" ID="ID_469471078" CREATED="1418897312594" MODIFIED="1418897313861">
+<node TEXT="Every object in Java knows its own type at execution time. Method getClass&#xa;(used in Sections 10.5, 14.5 and 24.3) returns an object of class Class (package&#xa;java.lang) that contains information about the object&#x2019;s type, such as its&#xa;class name (returned by Class method getName)." ID="ID_332192868" CREATED="1418897462591" MODIFIED="1418897479174"/>
+</node>
+<node TEXT="hashCode" ID="ID_149210915" CREATED="1418897315573" MODIFIED="1418897318115">
+<node TEXT="Hashcodes are int values that are useful for high-speed storage and retrieval of&#xa;information stored in a data structure that&#x2019;s known as a hashtable (discussed&#xa;in Section 20.11). This method is also called as part of class Object&#x2019;s default&#xa;toString method implementation." ID="ID_1889618293" CREATED="1418897480054" MODIFIED="1418897492655"/>
+</node>
+<node TEXT="wait, notify, notifyAll" ID="ID_1791914940" CREATED="1418897319767" MODIFIED="1418897501085">
+<node TEXT="Methods notify, notifyAll and the three overloaded versions of wait are&#xa;related to multithreading, which is discussed in Chapter 26." ID="ID_1921435618" CREATED="1418897494738" MODIFIED="1418897496937"/>
+</node>
+<node TEXT="toString" ID="ID_548230686" CREATED="1418897502069" MODIFIED="1418897511564">
+<node TEXT="This method (introduced in Section 9.4.1) returns a String representation of&#xa;an object. The default implementation of this method returns the package&#xa;name and class name of the object&#x2019;s class followed by a hexadecimal representation&#xa;of the value returned by the object&#x2019;s hashCode method." ID="ID_563828049" CREATED="1418897511570" MODIFIED="1418897516948"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="10. Object-Oriented Programming: Polymorphism" POSITION="right" ID="ID_1481881824" CREATED="1418898145895" MODIFIED="1418898227735">
+<edge COLOR="#ff00ff"/>
+<node TEXT="10.1 Intro" ID="ID_54956382" CREATED="1418898228698" MODIFIED="1418898233161">
+<node ID="ID_875490967" CREATED="1418898315613" MODIFIED="1418898324365"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Polymorphism</font>&#160;with inheritance hierarchies
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node TEXT="Programming in the Specific" ID="ID_1241788190" CREATED="1418898670389" MODIFIED="1418898685595">
+<node TEXT="Occasionally, when performing polymorphic processing, we need to program &#x201c;in the specific.&#x201d;" ID="ID_492847759" CREATED="1418898685895" MODIFIED="1418898688407"/>
+</node>
+<node TEXT="Internface" ID="ID_1403033892" CREATED="1418898549544" MODIFIED="1418898553491">
+<node ID="ID_437033697" CREATED="1418898553497" MODIFIED="1418898597955"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      An interface describes a set of methods that can be called on an object, but does not provide concrete implementations for all the methods. You can declare classes that <font color="#0000ff">implement</font>&#160;(i.e., provide concrete implementations for the methods of) one or more interfaces. Each interface method must be declared in all the classes that explicitly implement the interface. Once a class implements an interface, all objects of that class have an is-a relationship with the interface type, and all objects of the class are guaranteed to provide the functionality described by the interface.
+    </p>
+    <p>
+      This is true of all subclasses of that class as well.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="10.2 Polymorphism Examples" ID="ID_1214906509" CREATED="1418898654223" MODIFIED="1418898669588">
+<node TEXT="Use polymorphism to facilitate adding new classes to a system&#xa;with minimal modifications to the system&#x2019;s code" ID="ID_974293156" CREATED="1418898779564" MODIFIED="1418898809489"/>
+</node>
+<node TEXT="" ID="ID_295177720" CREATED="1418898810075" MODIFIED="1418898810075"/>
 </node>
 <node TEXT="Java mindmap" POSITION="left" ID="ID_395131511" CREATED="1401559811759" MODIFIED="1401559816948">
 <edge COLOR="#00ff00"/>
