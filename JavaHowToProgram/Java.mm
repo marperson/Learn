@@ -50,7 +50,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="4"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <node TEXT="1. Intro" POSITION="right" ID="ID_681498878" CREATED="1401558866369" MODIFIED="1401558875917">
 <edge COLOR="#ff0000"/>
@@ -4445,7 +4445,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -4485,8 +4484,9 @@
     </p>
   </body>
 </html>
-
 </richcontent>
+<node TEXT="Polymorphism (p. 395) enables us to write programs that process objects that share the same superclass as if they&#x2019;re all objects of the superclass; this can simplify programming." ID="ID_696104813" CREATED="1420545148087" MODIFIED="1420545169479"/>
+<node TEXT="With polymorphism, we can design and implement systems that are easily extensible. The only&#xa;parts of a program that must be altered to accommodate new classes are those that require direct&#xa;knowledge of the new classes that you add to the hierarchy" ID="ID_1296321487" CREATED="1420545148087" MODIFIED="1420545172057"/>
 </node>
 <node TEXT="Programming in the Specific" ID="ID_1241788190" CREATED="1418898670389" MODIFIED="1418898685595">
 <node TEXT="Occasionally, when performing polymorphic processing, we need to program &#x201c;in the specific.&#x201d;" ID="ID_492847759" CREATED="1418898685895" MODIFIED="1418898688407"/>
@@ -4507,15 +4507,604 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
 </node>
 <node TEXT="10.2 Polymorphism Examples" ID="ID_1214906509" CREATED="1418898654223" MODIFIED="1418898669588">
-<node TEXT="Use polymorphism to facilitate adding new classes to a system&#xa;with minimal modifications to the system&#x2019;s code" ID="ID_974293156" CREATED="1418898779564" MODIFIED="1418898809489"/>
+<node TEXT="Use polymorphism to facilitate adding new classes to a system&#xa;with minimal modifications to the system&apos;s code" ID="ID_974293156" CREATED="1418898779564" MODIFIED="1419900257374">
+<node TEXT="Use draw to refresh screen for all the objects inherit super class" ID="ID_972804024" CREATED="1419900258702" MODIFIED="1419900300142"/>
 </node>
-<node TEXT="" ID="ID_295177720" CREATED="1418898810075" MODIFIED="1418898810075"/>
+</node>
+<node TEXT="10.3 Demonstrating Polymorphic Behavior" ID="ID_295177720" CREATED="1418898810075" MODIFIED="1419900305548">
+<node TEXT="Superclass variables are intended to refer to superclass objects" ID="ID_460511782" CREATED="1419900324643" MODIFIED="1419900356051"/>
+<node TEXT="Subclass variables are intended to refer to subclass objects." ID="ID_1958561220" CREATED="1419900361473" MODIFIED="1419900367130"/>
+<node TEXT="An object of a subclass can be treated as an object of its superclass," ID="ID_300145863" CREATED="1419900378443" MODIFIED="1419900419617">
+<node TEXT="A program can create an array of superclass variables that refer to objects of many subclass types. This is allowed because each subclass object is an object of its superclass." ID="ID_1967698222" CREATED="1419900519638" MODIFIED="1419900527013"/>
+<node ID="ID_484659928" CREATED="1419900694258" MODIFIED="1419900703989"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#ff0000">cannot</font>&#160;treat a superclass object as a subclass object, because a superclass object is not an object of any of its subclasses
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="The Java compiler does allow the assignment of a superclass reference to a subclass variable if we explicitly cast the superclass reference to the subclass type" ID="ID_1637238196" CREATED="1419900818523" MODIFIED="1419900875390">
+<node ID="ID_841543961" CREATED="1419900876692" MODIFIED="1419901382661"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If a program needs to perform a subclass-specific operation on a subclass object referenced by a superclass variable, the program must first cast the superclass reference to a subclass reference through a technique known as <font color="#0000ff">downcasting</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="10.4 Abstract Classes and Methods" ID="ID_1705575092" CREATED="1419901389113" MODIFIED="1419901405513">
+<node TEXT="Abstract Class" ID="ID_911066447" CREATED="1419901872297" MODIFIED="1419901924049">
+<node ID="ID_1653633780" CREATED="1419901406509" MODIFIED="1419901449934" MOVED="1419901881821"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      When we think of a class, we assume that programs will create objects of that type. Sometimes it's useful to declare classes&#8212;called <font color="#0000ff">abstract</font>&#160; <font color="#0000ff">classes</font>&#8212;for which you never intend to create objects
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1682350828" CREATED="1419901451126" MODIFIED="1419901514519"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Because they're used only as superclasses in inheritance hierarchies, we refer to them as <font color="#0000ff">abstract superclasses</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="public abstract class Employee" ID="ID_497782515" CREATED="1419903664180" MODIFIED="1419903666445"/>
+</node>
+<node TEXT="These classes cannot be used to instantiate objects, abstract classes are incomplete. Subclasses must declare the &#x201c;missing pieces&#x201d; to become  &#x201c;concrete&#x201d; classes, from which you can instantiate objects. Otherwise, these subclasses, too, will be abstract" ID="ID_1857071665" CREATED="1419901515487" MODIFIED="1419901546081"/>
+<node TEXT="Purpose of Abstract Classes" ID="ID_1001806823" CREATED="1419901777666" MODIFIED="1419901778806">
+<node TEXT="An abstract class&apos;s purpose is to provide an appropriate superclass from which other classes can inherit and thus share a common design" ID="ID_278139535" CREATED="1419901569618" MODIFIED="1420539965220" MOVED="1419901786179"/>
+<node TEXT="Abstract classes sometimes constitute several levels of a hierarchy" ID="ID_173863325" CREATED="1419901757611" MODIFIED="1419901759751" MOVED="1419901790414"/>
+<node ID="ID_1629753977" CREATED="1419901663555" MODIFIED="1420545441895" MOVED="1419901781739"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Classes that can be used to instantiate objects are called <font color="#0000ff">concrete classes</font>. They provide
+    </p>
+    <p>
+      implementations of every method they declare (some of the implementations can be inherited).
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="An abstract class declares common attributes and behaviors (both abstract and concrete)&#xa;of the various classes in a class hierarchy. An abstract class typically contains one or more&#xa;abstract methods that subclasses must override if they are to be concrete. The instance&#xa;variables and concrete methods of an abstract class are subject to the normal rules of&#xa;inheritance." ID="ID_1739466670" CREATED="1419902448971" MODIFIED="1419902723687"/>
+<node TEXT="Programmers often write client code that uses only abstract superclasses (p. 401) to reduce client&#xa;code&#x2019;s dependencies on specific subclass types." ID="ID_1128590401" CREATED="1420545501163" MODIFIED="1420545504679"/>
+<node TEXT="Abstract classes sometimes constitute several levels of a hierarchy" ID="ID_1522674547" CREATED="1420545511101" MODIFIED="1420545514382"/>
+<node TEXT="An abstract class normally contains one or more abstract methods" ID="ID_1076322287" CREATED="1420545524555" MODIFIED="1420545540868"/>
+</node>
+<node TEXT="Abstract Method" ID="ID_1711680160" CREATED="1419901885703" MODIFIED="1419901890221">
+<node ID="ID_764533638" CREATED="1419901816871" MODIFIED="1419901837904" MOVED="1420545566510"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      You make a class abstract by declaring it with keyword <font color="#0000ff">abstract</font>. An abstract class normally contains one or more <font color="#0000ff">abstract methods</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="public abstract void draw();" ID="ID_897984301" CREATED="1419901839090" MODIFIED="1419901840670"/>
+</node>
+<node ID="ID_394111157" CREATED="1419901925388" MODIFIED="1419901967080" MOVED="1420545568291"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Abstract methods do not provide implementations. <b>A class that contains any abstract </b>
+    </p>
+    <p>
+      <b>methods must be explicitly declared abstract</b>&#160;even if that class contains some concrete
+    </p>
+    <p>
+      (nonabstract) methods.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1491116687" CREATED="1419901968120" MODIFIED="1419901976253" MOVED="1420545570213"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>Each concrete subclass of an abstract superclass also must provide </b>
+    </p>
+    <p>
+      <b>concrete implementations of each of the superclass&#8217;s abstract methods</b>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_567232413" CREATED="1419901994137" MODIFIED="1419902019312" MOVED="1420545572057"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000"><b>Constructors and static methods cannot be declared abstract</b></font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Constructors are not inherited, so an abstract constructor could never be implemented." ID="ID_658489421" CREATED="1419902020270" MODIFIED="1419902042476"/>
+<node TEXT="Though non-private static methods are inherited, they cannot be overridden. Since abstract methods are meant to be overridden so that they can process objects based on their types, it would not make sense to declare a static method as abstract." ID="ID_1954754321" CREATED="1419902042671" MODIFIED="1419902444053"/>
+</node>
+</node>
+<node TEXT="Using Abstract Classes to Declare Variables" ID="ID_446718389" CREATED="1419902725147" MODIFIED="1419902726953">
+<node TEXT="we can use abstract superclasses to declare variables that can hold references to objects of any concrete class derived from those abstract superclasses. Programs typically use such variables to manipulate subclass objects polymorphically. You also can use abstract superclass names to invoke static methods declared in those abstract superclasses" ID="ID_1243439775" CREATED="1419902744539" MODIFIED="1419902757209">
+<node TEXT="If I define a variable in abstract method super class, then all its subclasses must implment method and variable to make them concrete." ID="ID_621022645" CREATED="1419902960456" MODIFIED="1419903210989"/>
+</node>
+</node>
+<node TEXT="Layered Software Systems" ID="ID_1896669188" CREATED="1419903211553" MODIFIED="1419903213447">
+<node TEXT="wrtie is same in all device drivers program" ID="ID_1024727631" CREATED="1419903214773" MODIFIED="1419903653742"/>
+</node>
+</node>
+<node TEXT="10.5 Case Study: Payroll System Using Polymorphism" ID="ID_572062978" CREATED="1419904766985" MODIFIED="1419904769068">
+<node TEXT="Overview" ID="ID_642260810" CREATED="1420547012629" MODIFIED="1420547018035" MOVED="1420547020645">
+<node TEXT="A hierarchy designer can demand that each concrete subclass provide an appropriate method implementation by including an abstract method in a superclass." ID="ID_1700818724" CREATED="1420547028036" MODIFIED="1420547036161"/>
+<node TEXT="Most method calls are resolved at execution time, based on the type of the object being manipulated. This process is known as dynamic binding (p. 416) or late binding." ID="ID_1711626374" CREATED="1420547036333" MODIFIED="1420547042693"/>
+<node TEXT="A superclass variable can be used to invoke only methods declared in the superclass." ID="ID_638570144" CREATED="1420547048349" MODIFIED="1420547053646"/>
+<node TEXT="Operator instanceof (p. 416) determines if an object has the is-a relationship with a specific type." ID="ID_1941856632" CREATED="1420547054427" MODIFIED="1420547061006"/>
+<node TEXT="Every object in Java knows its own class and can access it through Object method getClass&#xa;(p. 417), which returns an object of type Class (package java.lang)." ID="ID_1565156413" CREATED="1420547061225" MODIFIED="1420547067881"/>
+<node TEXT="The is-a relationship applies only between the subclass and its superclasses, not vice versa" ID="ID_1163962784" CREATED="1420547068194" MODIFIED="1420547188919"/>
+</node>
+<node TEXT="Java_5952859669472687899.png" ID="ID_1190109892" CREATED="1419904792674" MODIFIED="1419904792674">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5952859669472687899.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_1982445694211459919.png" ID="ID_1149657922" CREATED="1419904809105" MODIFIED="1419904809105">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1982445694211459919.png" SIZE="0.8733624" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="10.5.1 Abstract Superclass Employee" ID="ID_1508086760" CREATED="1419904831553" MODIFIED="1419904833461">
+<node TEXT="Java_5111753793077715669.png" ID="ID_1532024386" CREATED="1419904848814" MODIFIED="1419904848814">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5111753793077715669.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_7797502131859356673.png" ID="ID_488522354" CREATED="1419904907033" MODIFIED="1419904907033" MOVED="1419905030963">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7797502131859356673.png" SIZE="0.9244992" NAME="ExternalObject"/>
+<node TEXT="To produce a complete String representation of a SalariedEmployee, the subclass&#x2019;s toString method returns &quot;salaried employee: &quot; followed by the superclass Employee-specific information (i.e., first name, last name and social security number) obtained by invoking the superclass&#x2019;s toString method &#x2014;this is a nice example of code reuse." ID="ID_1749575847" CREATED="1419905346282" MODIFIED="1419905366403"/>
+</node>
+</node>
+</node>
+<node TEXT="10.5.2 Concrete Subclass SalariedEmployee" ID="ID_1897709477" CREATED="1419904918988" MODIFIED="1419904921346">
+<node TEXT="Java_4535374147961719090.png" ID="ID_15176388" CREATED="1419905000110" MODIFIED="1419905000110">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4535374147961719090.png" SIZE="0.9389671" NAME="ExternalObject"/>
+<node TEXT="Java_6701965927412737604.png" ID="ID_1597308091" CREATED="1419905291998" MODIFIED="1419905291998">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6701965927412737604.png" SIZE="0.90361446" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="10.5.3 Concrete Subclass HourlyEmployee" ID="ID_372298459" CREATED="1419905048452" MODIFIED="1419905095805">
+<node TEXT="Java_8539178702671545320.png" ID="ID_210057390" CREATED="1419905166445" MODIFIED="1419905166445">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8539178702671545320.png" SIZE="0.97402596" NAME="ExternalObject"/>
+<node TEXT="Java_7984422562565899214.png" ID="ID_776543537" CREATED="1419905191597" MODIFIED="1419905191597">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7984422562565899214.png" SIZE="0.84626234" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="10.5.4 Concrete Subclass CommissionEmployee" ID="ID_1383730462" CREATED="1419905555859" MODIFIED="1419905741195">
+<node TEXT="Java_7106309113320329205.png" ID="ID_1877015843" CREATED="1419905745105" MODIFIED="1419905745105">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7106309113320329205.png" SIZE="0.7662835" NAME="ExternalObject"/>
+<node TEXT="Java_4523892954776919411.png" ID="ID_1101485317" CREATED="1419905759261" MODIFIED="1419905759261">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4523892954776919411.png" SIZE="0.75949365" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="10.5.5 Indirect Concrete Subclass BasePlusCommissionEmployee" ID="ID_449961682" CREATED="1419905782927" MODIFIED="1419905784633">
+<node TEXT="Java_4846789184007449104.png" ID="ID_288007370" CREATED="1419905907590" MODIFIED="1419905907590">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4846789184007449104.png" SIZE="0.8032129" NAME="ExternalObject"/>
+<node TEXT="Java_5442443732451141367.png" ID="ID_15226767" CREATED="1419906058233" MODIFIED="1419906058233">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5442443732451141367.png" SIZE="0.72115386" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node ID="ID_364837201" CREATED="1419906524359" MODIFIED="1419906531842"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      10.5.6 Polymorphic Processing, Operator instanceof and <font color="#0000ff">Downcasting</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_2192994943592876080.png" ID="ID_57057651" CREATED="1419907198275" MODIFIED="1419907198275">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2192994943592876080.png" SIZE="0.77319586" NAME="ExternalObject"/>
+<node TEXT="Java_475126384938067608.png" ID="ID_804004237" CREATED="1419907242231" MODIFIED="1419907242231" MOVED="1419909111214">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_475126384938067608.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_4459879650085542885.png" ID="ID_558537559" CREATED="1419908534994" MODIFIED="1419908534994" MOVED="1419909093893">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4459879650085542885.png" SIZE="0.96463025" NAME="ExternalObject"/>
+<node TEXT="Java_5343541102660452934.png" ID="ID_1994970768" CREATED="1419908687255" MODIFIED="1419908687255" MOVED="1419909102493">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5343541102660452934.png" SIZE="0.913242" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1211888103" CREATED="1419909200397" MODIFIED="1419909280781"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This process is known as <font color="#0000ff">dynamic binding</font>&#160;or <font color="#0000ff">late binding. </font><font color="#000000">Java decides which class's toString method to call at execution time rather than at compile time.</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="A superclassreference can be used to invoke only methods of the superclass&#x2014;the subclass method implementations are invoked polymorphically." ID="ID_372427453" CREATED="1419909282953" MODIFIED="1419909290092"/>
+<node ID="ID_1423422373" CREATED="1419909482440" MODIFIED="1419909649098"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">downcast,</font>&#160;create BasePlusCommissionEmployee object to use setBaseSalary() and getBaseSalary() methods only exist in subclass
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="These assignments are allowed, because a SalariedEmployee is an Employee, all the rests are employees. we can assign the references of four objects to superclass Employee variables, even though Employee is an abstract class." ID="ID_458398110" CREATED="1419908971815" MODIFIED="1419909056968" MOVED="1419909108754"/>
+</node>
+</node>
+<node TEXT="10.5.7 Summary of the Allowed Assignments Between Superclass and Subclass Variables" ID="ID_1781252099" CREATED="1419909649919" MODIFIED="1419909655892">
+<node TEXT="1. Assigning a superclass reference to a superclass variable is straightforward." ID="ID_1358201609" CREATED="1419909719759" MODIFIED="1419909729021"/>
+<node TEXT="2. Assigning a subclass reference to a subclass variable is straightforward." ID="ID_1689559943" CREATED="1419909729930" MODIFIED="1419909736700"/>
+<node TEXT="3. Assigning a subclass reference to a superclass variable is safe, because the subclass object is an object of its superclass. However, the superclass variable can be used to refer only to superclass members. If this code refers to subclass-only members through the superclass variable, the compiler reports errors" ID="ID_355134630" CREATED="1419909737340" MODIFIED="1419909762788"/>
+<node ID="ID_783015017" CREATED="1419909763025" MODIFIED="1419909814551"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      4. Attempting to assign a superclass reference to a subclass variable is a compilation error. To avoid this error, the superclass reference must be cast to a subclass type explicitly. At execution time, if the object to which the reference refers is not a subclass object, an exception will occur.&#160;&#160;You should use the <font color="#0000ff">instanceof </font>operator to ensure that such a cast is performed only if the object is a subclass object.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="10.6 final Methods and Classes" ID="ID_285266202" CREATED="1419909826141" MODIFIED="1419909854259">
+<node TEXT="Final Variable" ID="ID_868004045" CREATED="1419909869340" MODIFIED="1419909875524" MOVED="1419909880266">
+<node TEXT="Constant" ID="ID_1519095910" CREATED="1419909875530" MODIFIED="1419909878113"/>
+</node>
+<node ID="ID_1687290644" CREATED="1419909854266" MODIFIED="1419909862607"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Final Method</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1768734572" CREATED="1419909858954" MODIFIED="1419910094142"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Final Methods</font>&#160;Cannot Be Overridden,, A final method in a superclass cannot be overridden in a subclass, this guarantees that the final method implementation will be used by all direct and indirect subclasses in the hierarchy
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_293538087" CREATED="1419909969258" MODIFIED="1419910001867"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Methods that are declared <font color="#0000ff">private</font>&#160;are implicitly final, because it's not possible to override them in a subclass.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_724359634" CREATED="1419909990800" MODIFIED="1419909998056"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Methods that are declared <font color="#0000ff">static</font>&#160;are also implicitly final.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1263447459" CREATED="1419910015747" MODIFIED="1419910039595"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A final method's declaration can never change, so all subclasses use the same method implementation, and calls to final methods are resolved at compile time&#8212;this is known as <font color="#0000ff">static</font>&#160;<font color="#0000ff">binding</font>.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_18636410" CREATED="1419910052174" MODIFIED="1419910069637"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Final Classes</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1980108652" CREATED="1419910071432" MODIFIED="1419910103411"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Final class</font>&#160;that's declared final cannot be a superclass (i.e., a class cannot extend a final class).
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="All methods in a final class are implicitly final" ID="ID_1535060754" CREATED="1419910117832" MODIFIED="1419910151865">
+<node TEXT="Class String is an example of a final class. No String subclass" ID="ID_1322192798" CREATED="1419910153007" MODIFIED="1419910183867"/>
+<node TEXT="Java API.Making the class final also prevents programmers from creating subclasses that might bypass security restrictions." ID="ID_506683435" CREATED="1419910184770" MODIFIED="1419910189309"/>
+</node>
+</node>
+</node>
+<node TEXT="10.7 Case Study: Creating and Using Interfaces" ID="ID_395820112" CREATED="1419910208719" MODIFIED="1420540762856">
+<node TEXT="Interface" ID="ID_1215497685" CREATED="1420540901581" MODIFIED="1420540908097">
+<node TEXT="Standardizing Interactions" ID="ID_1555557491" CREATED="1420541163077" MODIFIED="1420541164562">
+<node TEXT="Interfaces define and standardize the ways in which things such as people and systems can&#xa;interact with one another" ID="ID_1784391453" CREATED="1420540909066" MODIFIED="1420540911863" MOVED="1420541172031"/>
+<node TEXT="An interface (p. 419) specifies what operations are allowed but not how they&#x2019;re performed." ID="ID_987047155" CREATED="1420548240387" MODIFIED="1420548243716"/>
+<node TEXT="A Java interface describes a set of methods that can be called on an object" ID="ID_1679559987" CREATED="1420548255154" MODIFIED="1420548259904"/>
+</node>
+<node TEXT="Software Objects Communicate Via Interfaces" ID="ID_1249671780" CREATED="1420541121779" MODIFIED="1420541123122">
+<node ID="ID_1375920034" CREATED="1420540953537" MODIFIED="1420541152530" MOVED="1420541155702"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      An <font color="#0000ff">interface declaratio</font>n begins with the keyword <font color="#0000ff">interface</font>&#160;and contains only constants and abstract methods
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node TEXT="A Java interface describes a set of methods that can be called on an object to tell it, for example, to perform some task or return some piece of information." ID="ID_140528067" CREATED="1420541085714" MODIFIED="1420541091949" MOVED="1420541124966"/>
+<node TEXT="Unlike classes, all interface members must be public, and interfaces may not specify any implementation details, such as concrete method declarations and instance variables" ID="ID_672194890" CREATED="1420541030978" MODIFIED="1420541038119" MOVED="1420541126513"/>
+<node TEXT="All methods declared in an interface are implicitly public abstract methods, and all fields&#xa;are implicitly public, static and final" ID="ID_1901043606" CREATED="1420541047728" MODIFIED="1420541053526" MOVED="1420541127732"/>
+</node>
+<node TEXT="Using an interface" ID="ID_470318171" CREATED="1420541178188" MODIFIED="1420541184563">
+<node ID="ID_424148515" CREATED="1420541193563" MODIFIED="1420541252753"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      To use an interface, a concrete class must specify that it <font color="#0000ff">implements</font>&#160; the interface and must
+    </p>
+    <p>
+      declare each method in the interface with the signature specified in the interface declaration.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_1694697594" CREATED="1420541245956" MODIFIED="1420541300646"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      To specify that a class implements an interface add the <font color="#0000ff">implements</font>&#160; keyword and the
+    </p>
+    <p>
+      name of the interface to the end of your class declaration&#8217;s first line.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node TEXT="A class that does not implement all the methods of the interface is an abstract class and must be declared abstract." ID="ID_191222144" CREATED="1420541278833" MODIFIED="1420541285130"/>
+<node TEXT="Implementing an interface is like signing a contract with the compiler that states,&#xa;&#x201c;I will declare all themethods specified by the interface or I will declare my class abstract.&#x201d;" ID="ID_370712179" CREATED="1420541289927" MODIFIED="1420541292021"/>
+</node>
+<node TEXT="Relating Disparate Types" ID="ID_1848290622" CREATED="1420541325413" MODIFIED="1420541327210">
+<node TEXT="An interface is often used when disparate (i.e., unrelated) classes need to share common methods and constants." ID="ID_768231416" CREATED="1420541335742" MODIFIED="1420541366821"/>
+<node TEXT="This allows objects of unrelated classes to be processed polymorphically&#x2014; objects of classes that implement the same interface can respond to the same method calls." ID="ID_140312350" CREATED="1420541355024" MODIFIED="1420541361930"/>
+<node TEXT="You can create an interface that describes the desired functionality, then implement&#xa;this interface in any classes that require that functionality. For example, in the accounts&#xa;payable application developed in this section, we implement interface Payable in&#xa;any class that must be able to calculate a payment amount (e.g., Employee, Invoice)." ID="ID_685537225" CREATED="1420541388760" MODIFIED="1420541416073"/>
+</node>
+<node TEXT="Interfaces vs. Abstract Classes" ID="ID_1189762860" CREATED="1420541416730" MODIFIED="1420541418308">
+<node TEXT="An interface is often used in place of an abstract class when there&#x2019;s no default implementation&#xa;to inherit&#x2014;that is, no fields and no default method implementations." ID="ID_1487203339" CREATED="1420541434231" MODIFIED="1420541459060"/>
+<node TEXT="Like public abstract classes, interfaces are typically public types. Like a public class, a public interface must be declared in a file with the same name as the interface and the .java file-name extension." ID="ID_1904615244" CREATED="1420541459388" MODIFIED="1420541466545"/>
+<node ID="ID_473230847" CREATED="1420548775887" MODIFIED="1420548792544"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>Java does not allow subclasses to inherit from more than one superclass, but it does allow a class&#160; to inherit from a superclass and implement more than one interface.</b>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="All objects of a class that implement multiple interfaces have the is-a relationship with each implemented interface type." ID="ID_947318284" CREATED="1420548804810" MODIFIED="1420548823217"/>
+</node>
+<node TEXT="An interface can declare constants. The constants are implicitly public, static and final." ID="ID_266810614" CREATED="1420548833030" MODIFIED="1420548897768"/>
+</node>
+<node TEXT="Tagging Interfaces" ID="ID_270668201" CREATED="1420541498374" MODIFIED="1420541514016">
+<node TEXT="empty interfaces that have no methods or constant values. They&apos;re used to add is-a relationships to classes." ID="ID_874794160" CREATED="1420541514016" MODIFIED="1420541523032"/>
+</node>
+</node>
+<node TEXT="10.7.1 Developing a Payable Hierarchy" ID="ID_1416789902" CREATED="1420541555955" MODIFIED="1420541557955">
+<node ID="ID_677428091" CREATED="1420542163921" MODIFIED="1420542189937"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The UML expresses the relationship between a class and an interface
+    </p>
+    <p>
+      through a relationship known as <font color="#0000ff">realization. </font><font color="#000000">A class is said to &#8220;realize,&#8221; or implement, the </font>
+    </p>
+    <p>
+      <font color="#000000">methods of an interface</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="Java_4173622951841098858.png" ID="ID_1540664995" CREATED="1420542219314" MODIFIED="1420542219314">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4173622951841098858.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="10.7.2 Interface Payable" ID="ID_420358262" CREATED="1420542246377" MODIFIED="1420542247956">
+<node TEXT="Java_1113991297650356711.png" ID="ID_731356859" CREATED="1420542283989" MODIFIED="1420542283989">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1113991297650356711.png" SIZE="0.7518797" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="10.7.3 Class Invoice" ID="ID_1965144414" CREATED="1420542306287" MODIFIED="1420542307693">
+<node TEXT="Java_3398234178871212329.png" ID="ID_838523390" CREATED="1420543264480" MODIFIED="1420543264480">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3398234178871212329.png" SIZE="0.7782101" NAME="ExternalObject"/>
+<node TEXT="Java_1438282935270670843.png" ID="ID_1084779665" CREATED="1420543283809" MODIFIED="1420543283809">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1438282935270670843.png" SIZE="0.71428573" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="10.7.4 Modifying Class Employee to Implement Interface Payable" ID="ID_79731284" CREATED="1420543303623" MODIFIED="1420543455444">
+<node TEXT="Java_4310578461273358652.png" ID="ID_403698617" CREATED="1420543458585" MODIFIED="1420543458585">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4310578461273358652.png" SIZE="0.8595989" NAME="ExternalObject"/>
+<node TEXT="Java_6755878718879144103.png" ID="ID_85177317" CREATED="1420543478618" MODIFIED="1420543478618">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6755878718879144103.png" SIZE="0.6880734" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="10.7.5 Modifying Class SalariedEmployee for Use in the Payable Hierarchy" ID="ID_1587087216" CREATED="1420543773253" MODIFIED="1420543803707">
+<node TEXT="Java_5985737643080200076.png" ID="ID_1671966686" CREATED="1420543813125" MODIFIED="1420543813125">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5985737643080200076.png" SIZE="0.74165636" NAME="ExternalObject"/>
+<node TEXT="Java_1201865428223389998.png" ID="ID_1086213172" CREATED="1420543830954" MODIFIED="1420543830954">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1201865428223389998.png" SIZE="0.67873305" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="10.7.6 Using Interface Payable to Process Invoices and Employees Polymorphically" ID="ID_1591006241" CREATED="1420543964023" MODIFIED="1420543968289">
+<node TEXT="Java_8451551787591373216.png" ID="ID_865948830" CREATED="1420544027151" MODIFIED="1420544027151">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8451551787591373216.png" SIZE="0.8955224" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="10.7.7 Common Interfaces of the Java API" ID="ID_96566120" CREATED="1420544110061" MODIFIED="1420544111764">
+<node TEXT="Java_5074968359276802014.png" ID="ID_1390242326" CREATED="1420544168501" MODIFIED="1420544168501">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5074968359276802014.png" SIZE="0.77720207" NAME="ExternalObject"/>
+<node TEXT="Java_5554938288575751895.png" ID="ID_699089283" CREATED="1420544378321" MODIFIED="1420544378321">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5554938288575751895.png" SIZE="0.77720207" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="11. Exception Handling: A Deeper Look" POSITION="right" ID="ID_1205769994" CREATED="1420548904549" MODIFIED="1420548913065">
+<edge COLOR="#00ffff"/>
+<node TEXT="11.1 Introduction" ID="ID_1316967892" CREATED="1420548956942" MODIFIED="1420548990725">
+<node TEXT="an exception is an indication of a problem that occurs during a program&#x2019;s execution. Exception handling enables you to create applications that can resolve (or handle) exceptions." ID="ID_1296866967" CREATED="1420548991600" MODIFIED="1420549003444">
+<node TEXT="an exception is an indication of a problem that occurs during a program&#x2019;s execution. Exception handling enables you to create applications that can resolve (or handle) exceptions." ID="ID_375344498" CREATED="1420549047478" MODIFIED="1420549053478"/>
+</node>
+</node>
+<node TEXT="11.2 Example: Divide by Zero without Exception Handling" ID="ID_1432708216" CREATED="1420549063416" MODIFIED="1420549068463"/>
 </node>
 <node TEXT="Java mindmap" POSITION="left" ID="ID_395131511" CREATED="1401559811759" MODIFIED="1401559816948">
 <edge COLOR="#00ff00"/>
