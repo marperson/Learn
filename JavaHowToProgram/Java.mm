@@ -1,4 +1,4 @@
-<map version="docear 1.1" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a">
+<map version="docear 1.1" dcr_id="1401558845115_cvij0ywp1wzuz6zzk98a2as5a" project="14511523C412GLQETB9STFHLXSSC26QZT6ND" project_last_home="file:/C:/Users/hefang/Desktop/">
 <!--To view this file, download Docear - The Academic Literature Suite from http://www.docear.org -->
 <node TEXT="Java" FOLDED="false" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1401558886544"><hook NAME="MapStyle" zoom="0.91">
     <properties show_note_icons="true"/>
@@ -4602,7 +4602,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -4628,7 +4627,7 @@
 </richcontent>
 <node TEXT="public abstract void draw();" ID="ID_897984301" CREATED="1419901839090" MODIFIED="1419901840670"/>
 </node>
-<node ID="ID_394111157" CREATED="1419901925388" MODIFIED="1419901967080" MOVED="1420545568291"><richcontent TYPE="NODE">
+<node ID="ID_394111157" CREATED="1419901925388" MODIFIED="1426836124584" MOVED="1420545568291"><richcontent TYPE="NODE">
 
 <html>
   <head>
@@ -4636,16 +4635,17 @@
   </head>
   <body>
     <p>
-      Abstract methods do not provide implementations. <b>A class that contains any abstract </b>
+      Abstract methods do not provide implementations. <b><font color="#ff0000">A class that contains any abstract </font></b>
     </p>
     <p>
-      <b>methods must be explicitly declared abstract</b>&#160;even if that class contains some concrete
+      <b><font color="#ff0000">methods must be explicitly declared abstract</font></b>&#160;even if that class contains some concrete
     </p>
     <p>
       (nonabstract) methods.
     </p>
   </body>
 </html>
+
 </richcontent>
 </node>
 <node ID="ID_1491116687" CREATED="1419901968120" MODIFIED="1419901976253" MOVED="1420545570213"><richcontent TYPE="NODE">
@@ -4950,7 +4950,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="A Java interface describes a set of methods that can be called on an object to tell it, for example, to perform some task or return some piece of information." ID="ID_140528067" CREATED="1420541085714" MODIFIED="1420541091949" MOVED="1420541124966"/>
@@ -4973,7 +4972,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1694697594" CREATED="1420541245956" MODIFIED="1420541300646"><richcontent TYPE="NODE">
@@ -4991,7 +4989,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="A class that does not implement all the methods of the interface is an abstract class and must be declared abstract." ID="ID_191222144" CREATED="1420541278833" MODIFIED="1420541285130"/>
@@ -5017,7 +5014,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="All objects of a class that implement multiple interfaces have the is-a relationship with each implemented interface type." ID="ID_947318284" CREATED="1420548804810" MODIFIED="1420548823217"/>
 </node>
@@ -5046,7 +5042,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Java_4173622951841098858.png" ID="ID_1540664995" CREATED="1420542219314" MODIFIED="1420542219314">
 <hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4173622951841098858.png" SIZE="1.0" NAME="ExternalObject"/>
@@ -5104,7 +5099,695 @@
 <node TEXT="an exception is an indication of a problem that occurs during a program&#x2019;s execution. Exception handling enables you to create applications that can resolve (or handle) exceptions." ID="ID_375344498" CREATED="1420549047478" MODIFIED="1420549053478"/>
 </node>
 </node>
-<node TEXT="11.2 Example: Divide by Zero without Exception Handling" ID="ID_1432708216" CREATED="1420549063416" MODIFIED="1420549068463"/>
+<node TEXT="11.2 Example: Divide by Zero without Exception Handling" ID="ID_1432708216" CREATED="1420549063416" MODIFIED="1420549068463">
+<node TEXT="Java_6078190023596985152.png" ID="ID_1907205608" CREATED="1426839407307" MODIFIED="1426839407307" MOVED="1426839414698">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6078190023596985152.png" SIZE="0.7159904" NAME="ExternalObject"/>
+<node ID="ID_1114954673" CREATED="1426839476856" MODIFIED="1426839479622"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">throw point</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_1821983638" CREATED="1426839450167" MODIFIED="1426839536057" MOVED="1426839481200"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#ff0000">Method Quotient line 10</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Java_577783728766529960.png" ID="ID_1450030823" CREATED="1426839629887" MODIFIED="1426839629887" MOVED="1426839636027">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_577783728766529960.png" SIZE="0.7125891" NAME="ExternalObject"/>
+<node ID="ID_1036424909" CREATED="1426839476856" MODIFIED="1426839479622"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">throw point</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1796335382" CREATED="1426839450167" MODIFIED="1426839779715" MOVED="1426839481200"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#ff0000">Method main line 20</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node ID="ID_768597452" CREATED="1426839232656" MODIFIED="1426839250723"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">stack trace</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="Includes the name of the exception (i.e. java.lang.ArithmeticException) in a descriptive&#xa;message that indicates the problem that occurred and the method-call stack (i.e., the call&#xa;chain) at the time it occurred" ID="ID_1299861074" CREATED="1426839268549" MODIFIED="1426839286025"/>
+<node TEXT="The stack trace includes the path of execution that led to the exception method by method." ID="ID_957948380" CREATED="1426839302651" MODIFIED="1426839307933"/>
+</node>
+<node TEXT="when exceptions occur and stack traces are displayed,&#xa;the program also exits" ID="ID_371683282" CREATED="1426839579573" MODIFIED="1426839599198"/>
+</node>
+<node TEXT="11.3 Example: Handling ArithmeticExceptions and InputMismatchExceptions" ID="ID_497776108" CREATED="1426839599949" MODIFIED="1426839618995">
+<node TEXT="Java_6469019623160361403.png" ID="ID_588973017" CREATED="1426839826886" MODIFIED="1426839826886">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6469019623160361403.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_2815951658935914730.png" ID="ID_1734676779" CREATED="1426839961355" MODIFIED="1426839961355">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2815951658935914730.png" SIZE="0.9852217" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1144052741" CREATED="1426840521839" MODIFIED="1426840623229"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">try block</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="Encloses the code that might throw an exception and the code that should not execute if an exception occurs" ID="ID_1563326389" CREATED="1426840532197" MODIFIED="1426840538635"/>
+<node TEXT="A try block consists of the keyword try followed by a block of code enclosed in curly braces" ID="ID_342953399" CREATED="1426840567949" MODIFIED="1426840575448"/>
+<node ID="ID_891206141" CREATED="1426841788846" MODIFIED="1426841797682"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">try statement</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_1431158222" CREATED="1426841800078" MODIFIED="1426841843232"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Only contains try, <b>try block</b>&#160;contains try block as well as the following catch blocks and/or finally block
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node ID="ID_675615390" CREATED="1426840605809" MODIFIED="1426840649996"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">catch block</font>&#160;(also called a <font color="#0000ff">catch clause</font>&#160;or <font color="#0000ff">exception handler</font>)
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="catches (i.e., receives) and handles an exception. A catch block begins with the keyword catch and is followed by a parameter in parentheses (called the exception parameter, discussed shortly)&#xa;and a block of code enclosed in curly braces." ID="ID_1087163304" CREATED="1426840651082" MODIFIED="1426840666838"/>
+<node TEXT="Each catch block can have only one paramter" ID="ID_1356216593" CREATED="1426841359322" MODIFIED="1426841371479"/>
+</node>
+<node ID="ID_625089816" CREATED="1426840723576" MODIFIED="1426840745884"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">finally block</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="must immediately follow the try block. Each catch block specifies in parentheses an exception&#xa;parameter that identifies the exception type the handler can process. When an exception&#xa;occurs in a try block, the catch block that executes is the first one whose type matches the&#xa;type of the exception that occurred" ID="ID_1887199457" CREATED="1426840745900" MODIFIED="1426840796714"/>
+<node ID="ID_1402871357" CREATED="1426840819276" MODIFIED="1426840843371"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Notice that we use the <font color="#0000ff">System.err</font>&#160;(<font color="#0000ff">standard error stream</font>) <font color="#0000ff">object</font>&#160; to output error messages. By default, System.err&#8217;s print methods, like those of System.out, display data to the command prompt.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node ID="ID_991556700" CREATED="1426841305746" MODIFIED="1426841340878"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">uncaught exception</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="which there are no matching catch" ID="ID_1994857420" CREATED="1426841343307" MODIFIED="1426841358426"/>
+<node ID="ID_1665746664" CREATED="1426841412387" MODIFIED="1426841415638"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Thread</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="Java uses a &#x201c;multithreaded&#x201d; model of program execution&#x2014;each thread is a parallel activity. One program can have many threads." ID="ID_217281002" CREATED="1426841424451" MODIFIED="1426841438916"/>
+<node TEXT="If a program has only one thread, an uncaught exception will cause the program to terminate." ID="ID_1964842858" CREATED="1426841439374" MODIFIED="1426841451573"/>
+<node ID="ID_1847123382" CREATED="1426841452041" MODIFIED="1426841481542"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If a program has multiple threads, an uncaught exception will terminate <b>only</b>&#160; the thread where the exception occurred.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="In such programs, however, certain threads may rely on others, and if one thread terminates due&#xa;to an uncaught exception, there may be adverse effects to the rest of the program" ID="ID_1433658369" CREATED="1426841482574" MODIFIED="1426841487480"/>
+</node>
+</node>
+</node>
+<node ID="ID_1273941953" CREATED="1426841943930" MODIFIED="1426841972774"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">throws clause</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="It specifies the exceptions the method throws. This clause appears after the method&#x2019;s parameter list and before the method&#x2019;s body. It contains a comma-separated list of the exceptions that the method will throw if various problems occur. Such exceptions may be thrown by statements in the method&#x2019;s body or by methods called from the body." ID="ID_1134073557" CREATED="1426841973700" MODIFIED="1426842052182"/>
+</node>
+<node TEXT="Note" ID="ID_1842795665" CREATED="1426841603693" MODIFIED="1426841606293">
+<node TEXT="Java programmers often simply use the letter e as the name of their exception parameters." ID="ID_614280633" CREATED="1426841607504" MODIFIED="1426841629840"/>
+<node TEXT="If an exception occurs in a try block, the try block terminates immediately and program control transfers to the first of the following catch blocks in which the exception parameter&#x2019;s type matches the thrown exception&#x2019;s type." ID="ID_309251086" CREATED="1426841630174" MODIFIED="1426841647297"/>
+<node ID="ID_168632383" CREATED="1426841669686" MODIFIED="1426841713227"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      After the exception is handled, program control does not return to the throw point, because the try block has expired. Rather,control resumes after the last catch block. This is known as the <font color="#0000ff">termination model of exception handling</font>. Some languages use the<font color="#0000ff">&#160;resumption model of exception handling</font>, in which, after an exception is handled, control resumes just after the throw point.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node TEXT="After executing a catch block, this program&#x2019;s flow of control proceeds to the first statement after the last catch block" ID="ID_1268032528" CREATED="1426841736774" MODIFIED="1426841745344"/>
+<node ID="ID_1506762673" CREATED="1426841866918" MODIFIED="1426841922030"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      when a try block terminates, local variables declared in the block go out of scope and are no longer accessible; thus, <b>the local variables of a try block are not accessible in the corresponding catch blocks. Same as Catch and Finally block</b>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="11.4 When to Use Exception Handling" ID="ID_1539977067" CREATED="1426842061592" MODIFIED="1426842077526">
+<node ID="ID_1334140313" CREATED="1426842077532" MODIFIED="1426842089972"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Exception handling is designed to process <font color="#0000ff">synchronous errors</font>, which occur when a statement executes
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="out-of-range array indices, arithmetic overflow (i.e., a value outside the representable range of values), division by zero, invalid method parameters, thread interruption  and unsuccessful memory allocation (due to lack of memory)." ID="ID_684612768" CREATED="1426842153618" MODIFIED="1426842172306"/>
+</node>
+<node ID="ID_1802394235" CREATED="1426842181803" MODIFIED="1426842205214"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Exception handling is not designed to process problems associated with <font color="#0000ff">asynchronous events</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_436592495" CREATED="1426842206202" MODIFIED="1426842405200"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      disk I/O completions, network message arrivals, mouse clicks and keystrokes. Which occur in parallel with, and <b>independent of, the program&#8217;s flow of control</b>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="11.5 Java Exception Hierarchy" ID="ID_675478639" CREATED="1426842405854" MODIFIED="1426842441032">
+<node ID="ID_572836058" CREATED="1426842478082" MODIFIED="1426842485652"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      All Java exception classes inherit directly or indirectly from class <font color="#0000ff">Exception</font>, forming an inheritance hierarchy. You can extend this hierarchy with your own exception classes
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="Java_8679879222259707629.png" ID="ID_1650992375" CREATED="1426842560398" MODIFIED="1426842560398" MOVED="1426842564752">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8679879222259707629.png" SIZE="0.77220076" NAME="ExternalObject"/>
+</node>
+<node TEXT="Small portion of the inheritance hierarchy for class Throwable (a subclass of Object), which is the superclass of class Exception" ID="ID_1698437065" CREATED="1426842524918" MODIFIED="1426842551910"/>
+<node ID="ID_1090803968" CREATED="1426842583468" MODIFIED="1426842603071"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>Only</b>&#160;Throwable objects can be used with the exception-handling mechanism.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node ID="ID_1030312671" CREATED="1426842603904" MODIFIED="1426842638926"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Class Throwable has two subclasses: <font color="#0000ff">Exception</font>&#160;and <font color="#0000ff">Error</font>.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_65021431" CREATED="1426842640236" MODIFIED="1426842671468"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Class Exception and its subclasses&#8212;for instance, <font color="#0000ff">RuntimeException</font>
+    </p>
+    <p>
+      (package java.lang) and <font color="#0000ff">IOException</font>&#160;(package java.io)&#8212;represent exceptional
+    </p>
+    <p>
+      situations that can occur in a Java program and that can be caught by the application
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node ID="ID_1079344545" CREATED="1426842672328" MODIFIED="1426842692632"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Class <font color="#0000ff">Error</font>&#160;and its subclasses represent abnormal situations that happen in the JVM. Most Errors happen infrequently and should <b>not</b>&#160; be caught by applications&#8212;it&#8217;s usually not possible for applications to recover from Errors.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node ID="ID_815921009" CREATED="1426842733744" MODIFIED="1426842776431"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Java distinguishes between <font color="#0000ff">checked exceptions</font>&#160;and <font color="#0000ff">unchecked exceptions</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="checked exceptions" ID="ID_1144268170" CREATED="1426842777824" MODIFIED="1426842789121">
+<node TEXT="All classes that inherit from class Exception but not class RuntimeException are considered to be checked exceptions" ID="ID_632731635" CREATED="1426842888165" MODIFIED="1426842893916" MOVED="1426843700295">
+<node TEXT="Such exceptions are typically caused by conditions that are not under the control of the program, for example, in file processing, the program can&#x2019;t open a file because the file does not exist" ID="ID_1140807500" CREATED="1426842905361" MODIFIED="1426842927358"/>
+</node>
+<node ID="ID_1173641699" CREATED="1426842789127" MODIFIED="1426842814702"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Java compiler enforces a <font color="#0000ff">catch-or-declare</font>&#160;requirement
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node ID="ID_218285365" CREATED="1426843517387" MODIFIED="1426843635208" MOVED="1426843540647"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The compiler checks each method call and method declaration to determine whether the method throws checked exceptions. If so, the compiler verifies that the checked exception is caught or is declared in a <b>throws clause</b>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="If a subclass method overrides a superclass method, it&#x2019;s an error for the subclass method to&#xa;list more exceptions in its throws clause than the overridden superclass method does. However,&#xa;a subclass&#x2019;s throws clause can contain a subset of a superclass&#x2019;s throws list." ID="ID_865645013" CREATED="1426843710088" MODIFIED="1426843728499"/>
+<node TEXT="If your method calls other methods that throw checked exceptions, those exceptions must&#xa;be caught or declared in your method. If an exception can be handled meaningfully in a&#xa;method, the method should catch the exception rather than declare it." ID="ID_53863215" CREATED="1426843729630" MODIFIED="1426843731462"/>
+</node>
+<node TEXT="To satisfy the catch part of the catch-or-declare requirement, the code that generates the exception must be wrapped in a try block and must provide a catch handler for the checked-exception type (or one of its superclass types)." ID="ID_287356248" CREATED="1426843424566" MODIFIED="1426843470741"/>
+<node TEXT="To satisfy the declare part of the catch-or-declare requirement, the method containing the code that generates the exception must provide a throws clause containing the checked-exception type after its parameter list and before its method body." ID="ID_247396229" CREATED="1426843436256" MODIFIED="1426843446342" MOVED="1426843455582"/>
+<node TEXT="If the catch-or-declare requirement is not satisfied, the compiler will issue an error message indicating that the exception must be caught or declared. This forces you to think about the problems that may occur when a method that throws checked exceptions is called." ID="ID_1197325738" CREATED="1426843367810" MODIFIED="1426843384692" MOVED="1426843454162"/>
+</node>
+</node>
+<node TEXT="unchecked exceptions" ID="ID_449976831" CREATED="1426842815400" MODIFIED="1426842816732">
+<node ID="ID_1113572940" CREATED="1426842823566" MODIFIED="1426842854819"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      All exception types that are direct or indirect subclasses of class <font color="#0000ff">RuntimeException</font>&#160; (package java.lang) are unchecked exceptions.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="These are typically caused by defects in your program&#x2019;s code. i.e. ArrayIndexOutOfBoundsExceptions" ID="ID_183117120" CREATED="1426842855896" MODIFIED="1426842871687"/>
+</node>
+<node TEXT="Classes that inherit from class Error are considered to be unchecked" ID="ID_629297019" CREATED="1426842936946" MODIFIED="1426842959880"/>
+<node TEXT="Unlike checked exceptions, the Java compiler does not check the code to determine whether an unchecked exception is caught or declared. Unchecked exceptions typically can be prevented by proper coding." ID="ID_676481053" CREATED="1426843581582" MODIFIED="1426843613916">
+<node ID="ID_380537956" CREATED="1426843616850" MODIFIED="1426843628549"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Unchecked exceptions are <b>not</b>&#160;required to be listed in a method&#8217;s throws clause&#8212;even if
+    </p>
+    <p>
+      they are, it&#8217;s not required that such exceptions be caught by an application.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Catching Subclass Exceptions" ID="ID_1430999159" CREATED="1426843820541" MODIFIED="1426843831218">
+<node TEXT="If a catch handler is written to catch superclass-type exception objects, it can also catch all objects of that class&#x2019;s subclasses. This enables catch to handle related errors with a concise notation and allows for polymorphic processing of related exceptions. You can certainly catch each subclass type individually if those exceptions require different processing." ID="ID_681247141" CREATED="1426843831243" MODIFIED="1426843847778"/>
+</node>
+<node TEXT="Only the First Matching catch Executes" ID="ID_1733486320" CREATED="1426843875137" MODIFIED="1426843893061">
+<node TEXT="If there are multiple catch blocks that match a particular exception type, only the first&#xa;matching catch block executes when an exception of that type occurs." ID="ID_1033908508" CREATED="1426843894698" MODIFIED="1426843902000"/>
+<node TEXT=" It&#x2019;s a compilation error to catch the exact same type in two different catch blocks associated with a particular try block." ID="ID_182860920" CREATED="1426843902897" MODIFIED="1426844268345"/>
+<node ID="ID_734161519" CREATED="1426844269669" MODIFIED="1426844310020"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Catching subclass types individually is subject to error if you forget to test for one or more
+    </p>
+    <p>
+      of the subclass types explicitly; catching the superclass guarantees that objects of all subclasses
+    </p>
+    <p>
+      will be caught. Positioning a catch block for the <b>superclass</b>&#160;type after all other subclass
+    </p>
+    <p>
+      catch blocks ensures that all subclass exceptions are eventually caught.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+<node TEXT="Placing a catch block for a superclass exception type before other catch blocks that catch&#xa;subclass exception types would prevent those catch blocks from executing, so a compilation&#xa;error occurs." ID="ID_308973908" CREATED="1426844311962" MODIFIED="1426844314699"/>
+</node>
+</node>
+<node TEXT="11.6 finally Block" ID="ID_472195238" CREATED="1426844327013" MODIFIED="1426844341544">
+<node ID="ID_1750978656" CREATED="1426844341550" MODIFIED="1426844355770"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">resource leaks</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="Programs that obtain certain types of resources must return them to the system explicitly" ID="ID_889288339" CREATED="1426844355776" MODIFIED="1426844379028">
+<node TEXT="C and C++, the most common kind of resource leak is a memory leak." ID="ID_382903710" CREATED="1426844391460" MODIFIED="1426844406037"/>
+</node>
+<node TEXT="Java performs automatic garbage collection of memory no longer used by programs, thus avoiding most memory leaks" ID="ID_1560360245" CREATED="1426844413429" MODIFIED="1426844417256">
+<node TEXT="However, other types of resource leaks can occur. For example, files, database connections and network connections that are not closed properly after they&#x2019;re no longer needed might not be&#xa;available for use in other programs." ID="ID_1961178032" CREATED="1426844430806" MODIFIED="1426844436434"/>
+<node ID="ID_558098391" CREATED="1426844605353" MODIFIED="1426844685238"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A subtle issue is that Java does not entirely eliminate memory leaks. Java will not garbagecollect
+    </p>
+    <p>
+      an object until there are no remaining references to it. Thus, if you erroneously keep references to unwanted objects, memory leaks can occur. To help avoid this problem, <b>set reference-type variables to null when they&#8217;re no longer needed.</b>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Java_3225039248825208500.png" ID="ID_1517270150" CREATED="1426846547763" MODIFIED="1426846547763" MOVED="1426846579403">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3225039248825208500.png" SIZE="0.81411123" NAME="ExternalObject"/>
+<node TEXT="Java_7637279600543253688.png" ID="ID_263062145" CREATED="1426846787765" MODIFIED="1426846787765">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7637279600543253688.png" SIZE="0.9244992" NAME="ExternalObject"/>
+</node>
+<node ID="ID_881219941" CREATED="1426846808013" MODIFIED="1426846986356"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">throw statement</font>&#8212;it&#8217;s executed to indicate that an exception has occurred. You can throw exceptions yourself by using the throw statement
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node ID="ID_931152" CREATED="1426844709104" MODIFIED="1426844724726"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">finally clause</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="The finally block (which consists of the finally keyword, followed by code enclosed in curly braces), sometimes referred to as the finally clause, is optional. If it&#x2019;s present, it&#x2019;s placed after the last catch block. If there are no catch blocks, the finally block immediately follows the try block." ID="ID_496396124" CREATED="1426844725508" MODIFIED="1426844735539">
+<node TEXT="The finally block will execute whether or not an exception is thrown in the corresponding try block." ID="ID_1041788921" CREATED="1426844774648" MODIFIED="1426844784574" MOVED="1426844829998"/>
+<node TEXT="The finally block also will execute if a try block exits by using a return, break or continue statement or simply by reaching its closing right brace" ID="ID_1243751405" CREATED="1426844784776" MODIFIED="1426844798494" MOVED="1426844828559"/>
+<node ID="ID_1585807909" CREATED="1426844798997" MODIFIED="1426844841838" MOVED="1426844831755"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The finally block will <b>not</b>&#160;execute if the application exits early from a try block by calling method <font color="#0000ff">System.exit</font>. This method, which we demonstrate in Chapter 17, immediately terminates an application.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+</node>
+</node>
+<node TEXT="Because a finally block almost always executes, it typically contains resource-release code." ID="ID_412682943" CREATED="1426844912900" MODIFIED="1426844920823">
+<node TEXT="The finally block is an ideal place to release resources acquired in a try block (such as opened files), which helps eliminate resource leaks" ID="ID_123900280" CREATED="1426844956703" MODIFIED="1426844970136"/>
+<node TEXT="Always release a resource explicitly and at the earliest possible moment at which it&#x2019;s no longer needed. This makes resources available for reuse as early as possible, thus improving resource utilization" ID="ID_117876070" CREATED="1426844970591" MODIFIED="1426844976766"/>
+</node>
+</node>
+<node ID="ID_982837407" CREATED="1426846631529" MODIFIED="1426846654634"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">System.out</font>&#160;and <font color="#0000ff">System.err</font>&#160;are <font color="#0000ff">streams</font>&#160;- sequences of bytes.
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="System.out (known as the standard output stream) displays a program&#x2019;s output." ID="ID_1069150169" CREATED="1426846655610" MODIFIED="1426846733608">
+<node TEXT="data output from System.out can be displayed on the screen" ID="ID_1635320092" CREATED="1426846733614" MODIFIED="1426846763949"/>
+</node>
+<node TEXT="System.err (known as the standard error stream) displays a program&#x2019;s errors." ID="ID_1183793749" CREATED="1426846665531" MODIFIED="1426846668780">
+<node TEXT="data output from System.err could be sent to a log file" ID="ID_425015556" CREATED="1426846719642" MODIFIED="1426846721611"/>
+</node>
+<node TEXT="Output from these streams can be redirected (i.e., sent to somewhere other than the command prompt, such as to a file). Using two different streams enables you to easily separate errormessages from other output." ID="ID_161761045" CREATED="1426846700135" MODIFIED="1426846718471"/>
+</node>
+</node>
+<node TEXT="11.7 Stack Unwinding and Obtaining Information from an Exception Object" ID="ID_1350222982" CREATED="1426846994877" MODIFIED="1426846999590">
+<node ID="ID_316553365" CREATED="1426847023916" MODIFIED="1426847026692"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">stack unwinding</font>
+    </p>
+  </body>
+</html>
+
+</richcontent>
+<node TEXT="" ID="ID_206495558" CREATED="1426847036203" MODIFIED="1426847036203"/>
+</node>
+</node>
 </node>
 <node TEXT="Java mindmap" POSITION="left" ID="ID_395131511" CREATED="1401559811759" MODIFIED="1401559816948">
 <edge COLOR="#00ff00"/>
