@@ -50,7 +50,7 @@
 </stylenode>
 </map_styles>
 </hook>
-<hook NAME="AutomaticEdgeColor" COUNTER="5"/>
+<hook NAME="AutomaticEdgeColor" COUNTER="7"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties" VALUE="ALL"/>
 <node TEXT="1. Intro" POSITION="right" ID="ID_681498878" CREATED="1401558866369" MODIFIED="1401558875917">
 <edge COLOR="#ff0000"/>
@@ -4645,7 +4645,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1491116687" CREATED="1419901968120" MODIFIED="1419901976253" MOVED="1420545570213"><richcontent TYPE="NODE">
@@ -5114,7 +5113,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_1821983638" CREATED="1426839450167" MODIFIED="1426839536057" MOVED="1426839481200"><richcontent TYPE="NODE">
 
@@ -5128,7 +5126,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5160,7 +5157,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5177,7 +5173,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Includes the name of the exception (i.e. java.lang.ArithmeticException) in a descriptive&#xa;message that indicates the problem that occurred and the method-call stack (i.e., the call&#xa;chain) at the time it occurred" ID="ID_1299861074" CREATED="1426839268549" MODIFIED="1426839286025"/>
 <node TEXT="The stack trace includes the path of execution that led to the exception method by method." ID="ID_957948380" CREATED="1426839302651" MODIFIED="1426839307933"/>
@@ -5203,7 +5198,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Encloses the code that might throw an exception and the code that should not execute if an exception occurs" ID="ID_1563326389" CREATED="1426840532197" MODIFIED="1426840538635"/>
 <node TEXT="A try block consists of the keyword try followed by a block of code enclosed in curly braces" ID="ID_342953399" CREATED="1426840567949" MODIFIED="1426840575448"/>
@@ -5219,7 +5213,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_1431158222" CREATED="1426841800078" MODIFIED="1426841843232"><richcontent TYPE="NODE">
 
@@ -5233,7 +5226,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5250,7 +5242,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="catches (i.e., receives) and handles an exception. A catch block begins with the keyword catch and is followed by a parameter in parentheses (called the exception parameter, discussed shortly)&#xa;and a block of code enclosed in curly braces." ID="ID_1087163304" CREATED="1426840651082" MODIFIED="1426840666838"/>
 <node TEXT="Each catch block can have only one paramter" ID="ID_1356216593" CREATED="1426841359322" MODIFIED="1426841371479"/>
@@ -5267,7 +5258,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="must immediately follow the try block. Each catch block specifies in parentheses an exception&#xa;parameter that identifies the exception type the handler can process. When an exception&#xa;occurs in a try block, the catch block that executes is the first one whose type matches the&#xa;type of the exception that occurred" ID="ID_1887199457" CREATED="1426840745900" MODIFIED="1426840796714"/>
 <node ID="ID_1402871357" CREATED="1426840819276" MODIFIED="1426840843371"><richcontent TYPE="NODE">
@@ -5282,7 +5272,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5298,7 +5287,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="which there are no matching catch" ID="ID_1994857420" CREATED="1426841343307" MODIFIED="1426841358426"/>
 <node ID="ID_1665746664" CREATED="1426841412387" MODIFIED="1426841415638"><richcontent TYPE="NODE">
@@ -5313,7 +5301,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Java uses a &#x201c;multithreaded&#x201d; model of program execution&#x2014;each thread is a parallel activity. One program can have many threads." ID="ID_217281002" CREATED="1426841424451" MODIFIED="1426841438916"/>
 <node TEXT="If a program has only one thread, an uncaught exception will cause the program to terminate." ID="ID_1964842858" CREATED="1426841439374" MODIFIED="1426841451573"/>
@@ -5329,7 +5316,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="In such programs, however, certain threads may rely on others, and if one thread terminates due&#xa;to an uncaught exception, there may be adverse effects to the rest of the program" ID="ID_1433658369" CREATED="1426841482574" MODIFIED="1426841487480"/>
 </node>
@@ -5347,7 +5333,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="It specifies the exceptions the method throws. This clause appears after the method&#x2019;s parameter list and before the method&#x2019;s body. It contains a comma-separated list of the exceptions that the method will throw if various problems occur. Such exceptions may be thrown by statements in the method&#x2019;s body or by methods called from the body." ID="ID_1134073557" CREATED="1426841973700" MODIFIED="1426842052182"/>
 </node>
@@ -5366,7 +5351,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="After executing a catch block, this program&#x2019;s flow of control proceeds to the first statement after the last catch block" ID="ID_1268032528" CREATED="1426841736774" MODIFIED="1426841745344"/>
@@ -5382,7 +5366,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5400,7 +5383,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="out-of-range array indices, arithmetic overflow (i.e., a value outside the representable range of values), division by zero, invalid method parameters, thread interruption  and unsuccessful memory allocation (due to lack of memory)." ID="ID_684612768" CREATED="1426842153618" MODIFIED="1426842172306"/>
 </node>
@@ -5416,7 +5398,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_436592495" CREATED="1426842206202" MODIFIED="1426842405200"><richcontent TYPE="NODE">
 
@@ -5430,7 +5411,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5448,7 +5428,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Java_8679879222259707629.png" ID="ID_1650992375" CREATED="1426842560398" MODIFIED="1426842560398" MOVED="1426842564752">
 <hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8679879222259707629.png" SIZE="0.77220076" NAME="ExternalObject"/>
@@ -5466,7 +5445,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node ID="ID_1030312671" CREATED="1426842603904" MODIFIED="1426842638926"><richcontent TYPE="NODE">
@@ -5481,7 +5459,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_65021431" CREATED="1426842640236" MODIFIED="1426842671468"><richcontent TYPE="NODE">
 
@@ -5501,7 +5478,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5517,7 +5493,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5533,7 +5508,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="checked exceptions" ID="ID_1144268170" CREATED="1426842777824" MODIFIED="1426842789121">
 <node TEXT="All classes that inherit from class Exception but not class RuntimeException are considered to be checked exceptions" ID="ID_632731635" CREATED="1426842888165" MODIFIED="1426842893916" MOVED="1426843700295">
@@ -5551,7 +5525,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node ID="ID_218285365" CREATED="1426843517387" MODIFIED="1426843635208" MOVED="1426843540647"><richcontent TYPE="NODE">
 
@@ -5565,7 +5538,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="If a subclass method overrides a superclass method, it&#x2019;s an error for the subclass method to&#xa;list more exceptions in its throws clause than the overridden superclass method does. However,&#xa;a subclass&#x2019;s throws clause can contain a subset of a superclass&#x2019;s throws list." ID="ID_865645013" CREATED="1426843710088" MODIFIED="1426843728499"/>
 <node TEXT="If your method calls other methods that throw checked exceptions, those exceptions must&#xa;be caught or declared in your method. If an exception can be handled meaningfully in a&#xa;method, the method should catch the exception rather than declare it." ID="ID_53863215" CREATED="1426843729630" MODIFIED="1426843731462"/>
@@ -5588,7 +5560,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="These are typically caused by defects in your program&#x2019;s code. i.e. ArrayIndexOutOfBoundsExceptions" ID="ID_183117120" CREATED="1426842855896" MODIFIED="1426842871687"/>
 </node>
@@ -5609,7 +5580,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5642,7 +5612,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 <node TEXT="Placing a catch block for a superclass exception type before other catch blocks that catch&#xa;subclass exception types would prevent those catch blocks from executing, so a compilation&#xa;error occurs." ID="ID_308973908" CREATED="1426844311962" MODIFIED="1426844314699"/>
@@ -5661,7 +5630,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="Programs that obtain certain types of resources must return them to the system explicitly" ID="ID_889288339" CREATED="1426844355776" MODIFIED="1426844379028">
 <node TEXT="C and C++, the most common kind of resource leak is a memory leak." ID="ID_382903710" CREATED="1426844391460" MODIFIED="1426844406037"/>
@@ -5683,7 +5651,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5705,7 +5672,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5721,7 +5687,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="The finally block (which consists of the finally keyword, followed by code enclosed in curly braces), sometimes referred to as the finally clause, is optional. If it&#x2019;s present, it&#x2019;s placed after the last catch block. If there are no catch blocks, the finally block immediately follows the try block." ID="ID_496396124" CREATED="1426844725508" MODIFIED="1426844735539">
 <node TEXT="The finally block will execute whether or not an exception is thrown in the corresponding try block." ID="ID_1041788921" CREATED="1426844774648" MODIFIED="1426844784574" MOVED="1426844829998"/>
@@ -5738,7 +5703,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 </node>
 </node>
@@ -5759,7 +5723,6 @@
     </p>
   </body>
 </html>
-
 </richcontent>
 <node TEXT="System.out (known as the standard output stream) displays a program&#x2019;s output." ID="ID_1069150169" CREATED="1426846655610" MODIFIED="1426846733608">
 <node TEXT="data output from System.out can be displayed on the screen" ID="ID_1635320092" CREATED="1426846733614" MODIFIED="1426846763949"/>
@@ -5783,9 +5746,967 @@
     </p>
   </body>
 </html>
-
 </richcontent>
-<node TEXT="" ID="ID_206495558" CREATED="1426847036203" MODIFIED="1426847036203"/>
+<node TEXT="When an exception is thrown but not caught in a particular scope, the method-call stack&#xa;is &#x201c;unwound,&#x201d; and an attempt is made to catch the exception in the next outer try block." ID="ID_206495558" CREATED="1426847036203" MODIFIED="1426950403555" MOVED="1426950819264"/>
+<node TEXT="Java_3816206582378889138.png" ID="ID_7789643" CREATED="1426950759932" MODIFIED="1426950759932">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_3816206582378889138.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_8623597844502464700.png" ID="ID_238909779" CREATED="1426950799200" MODIFIED="1426950799200">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8623597844502464700.png" SIZE="1.0" NAME="ExternalObject"/>
+<node ID="ID_1660226827" CREATED="1426950880908" MODIFIED="1426950895478"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">printStackTrace</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="method that outputs to the standard error stream the stack trace" ID="ID_687464932" CREATED="1426950908184" MODIFIED="1426950909885"/>
+</node>
+<node ID="ID_284952994" CREATED="1426950920274" MODIFIED="1426950924790"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">getStackTrace</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="method that retrieves the stack-trace information that might be printed by printStackTrace." ID="ID_428416962" CREATED="1426950932009" MODIFIED="1426950937564"/>
+</node>
+<node ID="ID_1661975784" CREATED="1426950946432" MODIFIED="1426950955472"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">getMessage</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="method returns the descriptive string stored in an exception." ID="ID_896997179" CREATED="1426950956482" MODIFIED="1426950960394"/>
+</node>
+<node ID="ID_525247663" CREATED="1426951152844" MODIFIED="1426951175748"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      array of <font color="#0000ff">StackTraceElement</font>&#160;objects
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1147534781" CREATED="1426951177216" MODIFIED="1426951232472"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">getClassName</font>, <font color="#0000ff">getFileName</font>, <font color="#0000ff">getLineNumber</font>&#160;and <font color="#0000ff">getMethodName</font>&#160; to get the class name, file name, line number and method name
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="Unwinding the method-call stack means that the method in which the exception was not caught terminates, all local variables in that method go out of scope and control returns to the statement that originally invoked that method." ID="ID_1562876183" CREATED="1426950484371" MODIFIED="1426950492825" MOVED="1426950805278"/>
+<node ID="ID_1468037519" CREATED="1426951234308" MODIFIED="1426951249952"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>Never</b>&#160;provide a catch handler with an empty body&#8212;this effectively ignores the exception. At least use printStackTrace to output an error message to indicate that a problem exists.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="11.8 Chained Exceptions" ID="ID_944613737" CREATED="1426951250683" MODIFIED="1426951252464">
+<node ID="ID_1891311009" CREATED="1426951383236" MODIFIED="1426951399578"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Chained exceptions</font>&#160;enable an exception object to maintain the complete stack-trace information from the original exception.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Sometimes a method responds to an exception by throwing a different exception type that&#x2019;s specific to the current application. If a catch block throws a new exception, the original exception&#x2019;s information and stack trace are lost." ID="ID_660568847" CREATED="1426951412748" MODIFIED="1426951426314">
+<node TEXT="Java_1493796974318255412.png" ID="ID_1864620931" CREATED="1426952224631" MODIFIED="1426952224631">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1493796974318255412.png" SIZE="0.8733624" NAME="ExternalObject"/>
+<node TEXT="Java_2699077031863170010.png" ID="ID_615147685" CREATED="1426952276616" MODIFIED="1426952276616">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2699077031863170010.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+<node TEXT="Also notice that, as you read the output in reverse, it shows how many more chained exceptions remain" ID="ID_740733009" CREATED="1426952330214" MODIFIED="1426952337700"/>
+</node>
+</node>
+<node TEXT="11.9 Declaring New Exception Types" ID="ID_199588857" CREATED="1426952348700" MODIFIED="1426952352672">
+<node TEXT="A new exception classmust extend an existing exception class to ensure that the class can be used with the exception-handling mechanism." ID="ID_915189608" CREATED="1426952384490" MODIFIED="1426952414376"/>
+<node TEXT="typical new exception class contains only four constructors:" ID="ID_1344200974" CREATED="1426952414896" MODIFIED="1426952417082">
+<node TEXT="one that takes no arguments and passes a default error message String to the superclass constructor" ID="ID_421348107" CREATED="1426952425695" MODIFIED="1426952438023"/>
+<node TEXT="one that receives a customized error message as a String and passes it to the superclass constructor" ID="ID_1223086703" CREATED="1426952438258" MODIFIED="1426952444269"/>
+<node TEXT="one that receives a customized error message as a String and a Throwable (for chaining exceptions) and passes both to the superclass constructor" ID="ID_379811120" CREATED="1426952450861" MODIFIED="1426952457113"/>
+<node TEXT="one that receives a Throwable (for chaining exceptions) and passes it to the superclass constructor" ID="ID_1626831793" CREATED="1426952464369" MODIFIED="1426952468224"/>
+</node>
+</node>
+<node TEXT="11.10 Preconditions and Postconditions" ID="ID_1060912287" CREATED="1426952574292" MODIFIED="1426952575758">
+<node TEXT="Definition" ID="ID_797182247" CREATED="1426953085503" MODIFIED="1426953087859">
+<node TEXT="Programmers spend significant amounts of time maintaining and debugging code. To facilitate these tasks and to improve the overall design, you can specify the expected states before and after a method&#x2019;s execution" ID="ID_1968117576" CREATED="1426953054853" MODIFIED="1426953066964" MOVED="1426953089826"/>
+<node TEXT="When their preconditions or postconditions are not met, methods typically throw exceptions." ID="ID_1145219305" CREATED="1426953148323" MODIFIED="1426953172278"/>
+<node TEXT="Typically, a method&#x2019;s preconditions and postconditions are described as part of its specification. When designing your own methods, you should state the preconditions and postconditions in a comment before the method declaration." ID="ID_1524186219" CREATED="1426953172471" MODIFIED="1426953182781"/>
+</node>
+<node ID="ID_971435739" CREATED="1426952919090" MODIFIED="1426952921496"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">precondition</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="must be true when a method is invoked." ID="ID_1171143283" CREATED="1426952941495" MODIFIED="1426952942855"/>
+<node TEXT="Preconditions describe constraints on method parameters and any other expectations the method has about the current state of a program just before it begins executing" ID="ID_984052077" CREATED="1426952961680" MODIFIED="1426952967693"/>
+<node TEXT="If the preconditions are not met, then the method&#x2019;s behavior is undefined&#x2014;it may throw an exception, proceed with an illegal value or attempt to recover from the error. You should not expect consistent behavior if the preconditions are not satisfied." ID="ID_44792115" CREATED="1426952988526" MODIFIED="1426952994402"/>
+</node>
+<node ID="ID_1815332283" CREATED="1426952929268" MODIFIED="1426952931444"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">postcondition</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="is true after the method successfully returns" ID="ID_1462347852" CREATED="1426953001036" MODIFIED="1426953013591"/>
+<node TEXT="Postconditions describe constraints on the return value and any other side effects the method may have" ID="ID_998298351" CREATED="1426953014005" MODIFIED="1426953020422"/>
+<node TEXT="When defining a method, you should document all postconditions so that others know what to expect when they call your method, and you should make certain that your method honors all its postconditions if its preconditions are indeed met." ID="ID_1553508852" CREATED="1426953030502" MODIFIED="1426953042978"/>
+</node>
+</node>
+<node TEXT="11.11 Assertions" ID="ID_197665307" CREATED="1426953188974" MODIFIED="1426953200656">
+<node ID="ID_792409688" CREATED="1426953200662" MODIFIED="1426953217893"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">assertions</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="state conditions that should be true at a particular point in a method" ID="ID_1735907594" CREATED="1426953218770" MODIFIED="1426953232773"/>
+<node ID="ID_871320007" CREATED="1426953233571" MODIFIED="1426953238447"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Preconditions</font>&#160;and <font color="#0000ff">postconditions</font>&#160;are two types of assertions
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1659359260" CREATED="1426953283558" MODIFIED="1426953509667"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Java includes <b>two</b>&#160;versions of the <font color="#0000ff">assert</font>&#160;statement for validating assertions programatically. The assert statement evaluates a boolean expression and, if false, throws an <font color="#0000ff">AssertionError</font>&#160;(a subclass of Error)
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_518421943" CREATED="1426953342227" MODIFIED="1426953480258"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000"><b>assert expression;</b></font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="which throws an AssertionError if expression is false." ID="ID_1539177907" CREATED="1426953356125" MODIFIED="1426953357496"/>
+</node>
+<node ID="ID_389159135" CREATED="1426953378762" MODIFIED="1426953488251"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000"><b>assert expression1 : expression2;</b></font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="which evaluates expression1 and throws an AssertionError with expression2 as the error message if expression1 is false" ID="ID_17207102" CREATED="1426953394999" MODIFIED="1426953400251"/>
+</node>
+</node>
+<node TEXT="Java_7668205881319929787.png" ID="ID_1629777248" CREATED="1426953566132" MODIFIED="1426953566132">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7668205881319929787.png" SIZE="0.67264575" NAME="ExternalObject"/>
+</node>
+<node ID="ID_849889385" CREATED="1426953611105" MODIFIED="1426953622936"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      You must explicitly <b>enable</b>&#160;assertions when executing a program, because they reduce
+    </p>
+    <p>
+      performance and are unnecessary for the program&#8217;s user. To do so, use the java command&#8217;s
+    </p>
+    <p>
+      -ea command-line option
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="java -ea ClassName" ID="ID_1407133403" CREATED="1426953627507" MODIFIED="1426953637284"/>
+</node>
+</node>
+</node>
+<node TEXT="11.12 Multi-catch: Handling Multiple Exceptions in One catch" ID="ID_647878864" CREATED="1426953669416" MODIFIED="1426953681142">
+<node ID="ID_228618855" CREATED="1426953750239" MODIFIED="1426953767741"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">multi-catch</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="catch those exception types in a single catch handler and perform the same task." ID="ID_206279909" CREATED="1426953788963" MODIFIED="1426953794528" MOVED="1426953795759"/>
+<node ID="ID_854305015" CREATED="1426953768577" MODIFIED="1426953771218"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>catch ( Type1 | Type2 | Type3 e )</b>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="11.13 Try-with-Resources: Automatic Resource Deallocation" ID="ID_788840199" CREATED="1426953816067" MODIFIED="1426953845728">
+<node ID="ID_1862639844" CREATED="1426953846610" MODIFIED="1426953850298"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">try-with-resources</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Typically resource-release code should be placed in a finally block to ensure that a resource&#xa;is released, regardless of whether there were exceptions when the resource was used&#xa;in the corresponding try block." ID="ID_1431710340" CREATED="1426953895147" MODIFIED="1426953897698" MOVED="1426953898736"/>
+<node TEXT="This alternative new feature simplifies writing code in which you obtain one or&#xa;more resources, use them in a try block and release them in a corresponding finally&#xa;block." ID="ID_493324913" CREATED="1426953876668" MODIFIED="1426953970533"/>
+<node ID="ID_166874619" CREATED="1426954017420" MODIFIED="1426954025737"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Each resource must be an object of a class that implements the <font color="#0000ff">AutoCloseable </font>interface&#8212;such a class has a close method.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node TEXT="Java_2967508222147139773.png" ID="ID_987480384" CREATED="1426953976722" MODIFIED="1426953976722">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2967508222147139773.png" SIZE="0.85227275" NAME="ExternalObject"/>
+<node TEXT="where ClassName is a class that implements the AutoCloseable interface. This code creates an object of type ClassName and uses it in the try block, then calls its close method to release any resources used by the object. The try-with-resources statement implicitly calls the theObject&#x2019;s close method at the end of the try block." ID="ID_1794871936" CREATED="1426954041020" MODIFIED="1426954072882"/>
+<node TEXT="" ID="ID_53021380" CREATED="1426954073768" MODIFIED="1426954073768"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Chapter 12 ATM Case Study, Part 1: Object-Oriented Design with the UML" POSITION="right" ID="ID_806923669" CREATED="1427041175027" MODIFIED="1427041197465">
+<edge COLOR="#ffff00"/>
+<node TEXT="12.1 Case Study Introduction" ID="ID_379146060" CREATED="1427041197481" MODIFIED="1427041253790">
+<node TEXT="Design and implement an object-oriented automated teller machine (ATM) software system." ID="ID_801383191" CREATED="1427041266666" MODIFIED="1427041282917"/>
+<node TEXT="Object-oriented design (OOD)" ID="ID_32816922" CREATED="1427041283245" MODIFIED="1427041294574"/>
+<node TEXT="UML" ID="ID_18302058" CREATED="1427041294761" MODIFIED="1427041317294">
+<node TEXT="six popular types" ID="ID_160316088" CREATED="1427041317309" MODIFIED="1427041318981"/>
+</node>
+</node>
+<node TEXT="12.2 Examining the Requirements Document" ID="ID_802969425" CREATED="1427041344514" MODIFIED="1427041346076">
+<node ID="ID_1780525309" CREATED="1427041365921" MODIFIED="1427041368452"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">requirements document</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Describe the purpose of the ATM system and what it must do." ID="ID_675119114" CREATED="1427041377156" MODIFIED="1427041386469"/>
+<node TEXT="Function" ID="ID_1175779863" CREATED="1427041610526" MODIFIED="1427041614839" MOVED="1427044054389">
+<node TEXT="only one account" ID="ID_1817645493" CREATED="1427041571196" MODIFIED="1427041578337" MOVED="1427041617214"/>
+<node TEXT="view their account balance" ID="ID_1513704425" CREATED="1427041578712" MODIFIED="1427041580509" MOVED="1427041618917"/>
+<node TEXT="withdraw cash" ID="ID_1206257024" CREATED="1427041594135" MODIFIED="1427041599104" MOVED="1427041620495"/>
+<node TEXT="deposit funds" ID="ID_1032078620" CREATED="1427041599494" MODIFIED="1427041601198" MOVED="1427041621917"/>
+</node>
+<node TEXT="User interface" ID="ID_48980275" CREATED="1427041631262" MODIFIED="1427041634887" MOVED="1427044059343">
+<node TEXT="a screen that displays messages to the user" ID="ID_694450601" CREATED="1427041639871" MODIFIED="1427041645153"/>
+<node TEXT="a keypad that receives numeric input from the user" ID="ID_379547391" CREATED="1427041645325" MODIFIED="1427041649872">
+<node TEXT="The keypad does not contain a decimal point or a dollar sign, so the user cannot type a real dollar&#xa;amount (e.g., $27.25). Instead, the user must enter a deposit amount as a number&#xa;of cents (e.g., 2725). The ATM then divides this number by 100 to obtain a&#xa;number representing a dollar amount" ID="ID_1041699660" CREATED="1427042485323" MODIFIED="1427042545623"/>
+</node>
+<node TEXT="a cash dispenser that dispenses cash to the user and" ID="ID_969068110" CREATED="1427041650169" MODIFIED="1427041656560">
+<node TEXT="The screen prompts the user to enter a deposit amount or type 0 (zero) to cancel" ID="ID_988253174" CREATED="1427042464338" MODIFIED="1427042464338"/>
+<node TEXT="The screen displays a message telling the user to insert a deposit envelope." ID="ID_629208211" CREATED="1427042687333" MODIFIED="1427042767337"/>
+<node TEXT="If the deposit slot receives a deposit envelope within two minutes, the ATM credits the deposit amount to the user&#x2019;s account in the bank&#x2019;s database" ID="ID_1162679391" CREATED="1427042768258" MODIFIED="1427042774931">
+<node TEXT="This money is not immediately available for withdrawal. The bank first must physically verify the amount of cash in the deposit envelope, and any checks in the envelope must clear" ID="ID_470962242" CREATED="1427042804073" MODIFIED="1427042845700"/>
+<node TEXT="If the deposit slot does not receive a deposit envelope within this time period, the screen displays a message that the system has canceled the transaction due to inactivity." ID="ID_820274267" CREATED="1427042881451" MODIFIED="1427042887936"/>
+</node>
+</node>
+<node TEXT="a deposit slot that receives deposit envelopes from the user." ID="ID_278457892" CREATED="1427041656763" MODIFIED="1427041658466">
+<node TEXT="The cash dispenser begins each day loaded with 500 $20 bills" ID="ID_432485791" CREATED="1427041685702" MODIFIED="1427041687967"/>
+<node TEXT="If the withdrawal amount chosen is greater than the user&#x2019;s account balance, the screen displays a message stating this and telling the user to choose a smaller amount." ID="ID_414243293" CREATED="1427042264906" MODIFIED="1427042291236"/>
+<node TEXT="If the cash dispenser does not contain enough cash, the screen displays a message indicating the problem and telling the user to choose a smaller withdrawal amount" ID="ID_1969203494" CREATED="1427042292111" MODIFIED="1427042427070"/>
+</node>
+<node TEXT="Java_157558693813002793.png" ID="ID_1006129194" CREATED="1427041716219" MODIFIED="1427041716219">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_157558693813002793.png" SIZE="0.7915567" NAME="ExternalObject"/>
+<node TEXT="Java_2545540379948400770.png" ID="ID_1820195139" CREATED="1427042150760" MODIFIED="1427042150760">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_2545540379948400770.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_7453803442591856014.png" ID="ID_612586690" CREATED="1427042202700" MODIFIED="1427042202700">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7453803442591856014.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Analyzing the ATM System" ID="ID_378809714" CREATED="1427044034529" MODIFIED="1427044035982" MOVED="1427044143190">
+<node ID="ID_1943299197" CREATED="1427042945220" MODIFIED="1427042967205" MOVED="1427044095344"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">requirements gathering</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="interviews with possible users of the system" ID="ID_609194115" CREATED="1427042968659" MODIFIED="1427042981534"/>
+<node TEXT="specialists in fields related to the system" ID="ID_586142618" CREATED="1427042982409" MODIFIED="1427043028396"/>
+<node ID="ID_1943485183" CREATED="1427043029615" MODIFIED="1427043047631"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The analyst would use the information gained to compile a list of <font color="#0000ff">system requirements</font>&#160;to guide systems designers as they design the system.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1849263704" CREATED="1427043079164" MODIFIED="1427043083992"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">software life cycle</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="analysis, design, implementation, testing and debugging, deployment, maintenance and retirement" ID="ID_1013673347" CREATED="1427043097540" MODIFIED="1427043105728"/>
+<node ID="ID_1209477132" CREATED="1427043126104" MODIFIED="1427043142651"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Waterfall models</font>&#160;perform each stage once in succession
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1332547103" CREATED="1427043143589" MODIFIED="1427043244750"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Iterative models</font>&#160;may repeat one or more stages several times throughout a product&#8217;s life cycle
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_1618703365" CREATED="1427043245469" MODIFIED="1427043528420"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      To capture what a proposed system should do, developers often employ a technique known as <font color="#0000ff">use</font>&#160;<font color="#0000ff">case modeling</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1690939803" CREATED="1427043264548" MODIFIED="1427043276908"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This process identifies the <font color="#0000ff">use cases</font>&#160;of the system, each representing a different capability that the system provides to its clients.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="For example, ATMs typically have several use cases, such as &#x201c;View Account Balance,&#x201d; &#x201c;Withdraw Cash,&#x201d;&#x201c;Deposit Funds,&#x201d; &#x201c;Transfer Funds Between Accounts&#x201d; and &#x201c;Buy Postage Stamps.&#x201d; The simplified ATM system we build in this case study allows only the first three." ID="ID_1578744236" CREATED="1427043364678" MODIFIED="1427043374787"/>
+<node TEXT="Each use case describes a typical scenario for which the user uses the system" ID="ID_200395815" CREATED="1427043513106" MODIFIED="1427043525341"/>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="Use Case Diagrams" ID="ID_709475812" CREATED="1427044144956" MODIFIED="1427044153003">
+<node ID="ID_390663552" CREATED="1427043546764" MODIFIED="1427043561859" MOVED="1427044177911"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      UML - <font color="#0000ff">use case diagram</font>&#160;to model the interactions between a system&#8217;s clients (in this case study, bank customers) and its use cases.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_8917034301782813365.png" ID="ID_753864040" CREATED="1427043625924" MODIFIED="1427043625924">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_8917034301782813365.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+<node ID="ID_285742424" CREATED="1427043643160" MODIFIED="1427043651582" MOVED="1427044009981"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The stick figure represents an <font color="#0000ff">actor</font>, which defines the roles that an external entity&#8212;such as a person or another system&#8212;plays when interacting with the system.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_80110619" CREATED="1427072925775" MODIFIED="1427072956939"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Software engineers (more precisely, systems designers) must analyze the requirements
+    </p>
+    <p>
+      document or a set of use cases and design the system before programmers implement it in
+    </p>
+    <p>
+      a particular programming language.The output of the design stage&#8212;a <font color="#0000ff">design specification</font>&#8212;should specify clearly how the system should be constructed to satisfy these requirements.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Designing the ATM System" ID="ID_350057950" CREATED="1427073391272" MODIFIED="1427073671466">
+<node ID="ID_125780305" CREATED="1427073672794" MODIFIED="1427073690577"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      A <font color="#0000ff">system</font>&#160;is a set of components that interact to solve a problem
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_926968455" CREATED="1427073690889" MODIFIED="1427073707312"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">System structure</font>&#160;describes the system&#8217;s objects and their interrelationships
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1814955921" CREATED="1427073799691" MODIFIED="1427073812004"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Use case diagrams</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="interactions between a system and its external entities (actors) in terms of use cases" ID="ID_1209710301" CREATED="1427073883883" MODIFIED="1427073908884"/>
+</node>
+<node ID="ID_847733187" CREATED="1427073812254" MODIFIED="1427073819661"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Class diagrams</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Class diagrams help us specify the structural relationships between parts of the system" ID="ID_629148051" CREATED="1427073910962" MODIFIED="1427073929151"/>
+</node>
+<node ID="ID_1613777441" CREATED="1427073819911" MODIFIED="1427073826661"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">State machine diagrams</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_1057994531" CREATED="1427073929869" MODIFIED="1427073937651"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      An object&#8217;s <font color="#0000ff">state</font>&#160;is indicated by the values of all its attributes at a given time.When an object changes state, itmay behave differently in the system.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_367326753" CREATED="1427073826864" MODIFIED="1427073832443"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Activity diagrams</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node ID="ID_237916574" CREATED="1427073953761" MODIFIED="1427074017264"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      model an object&#8217;s <font color="#0000ff">activity</font>&#8212;is workflow (sequence of events) during program execution. An activity
+    </p>
+    <p>
+      diagram models the actions the object performs and specifies the order in which it performs them.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node ID="ID_107909394" CREATED="1427073832724" MODIFIED="1427074033124"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Communication diagrams </font><font color="#000000">(called </font><font color="#0000ff">collaboration diagrams</font><font color="#000000">&#160; in earlier versions of </font>
+    </p>
+    <p>
+      <font color="#000000">the UML)</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="model the interactions among objects in a system, with an emphasis on what interactions occur" ID="ID_39908177" CREATED="1427074046235" MODIFIED="1427074049953"/>
+</node>
+<node ID="ID_1249702321" CREATED="1427073839459" MODIFIED="1427073883117"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">Sequence diagrams</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="model the interactions among the objects in a system, but unlike communication diagrams, they emphasize when interactions occur" ID="ID_178349525" CREATED="1427074063251" MODIFIED="1427074067345"/>
+</node>
+</node>
+<node ID="ID_545608062" CREATED="1427073699608" MODIFIED="1427073710234"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">System behavior </font>describes how the system changes as its objects interact with one another.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node TEXT="12.3 Identifying the Classes in a Requirements Document" ID="ID_986261948" CREATED="1427074365178" MODIFIED="1427074368100">
+<node TEXT="Identifying the Classes in a System" ID="ID_245349332" CREATED="1427074389664" MODIFIED="1427075100573">
+<node TEXT="Java_6597397436664980780.png" ID="ID_662114665" CREATED="1427075105480" MODIFIED="1427075105480">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_6597397436664980780.png" SIZE="0.807537" NAME="ExternalObject"/>
+<node TEXT="ATM" ID="ID_1098275517" CREATED="1427075197844" MODIFIED="1427075197844"/>
+<node TEXT="screen" ID="ID_1752981603" CREATED="1427075197844" MODIFIED="1427075202422"/>
+<node TEXT="keypad" ID="ID_673648594" CREATED="1427075197844" MODIFIED="1427075204141"/>
+<node TEXT="cashdispenser" ID="ID_1120572785" CREATED="1427075197844" MODIFIED="1427075206094"/>
+<node TEXT="deposit slot" ID="ID_1053053299" CREATED="1427075197844" MODIFIED="1427075207579"/>
+<node TEXT="account" ID="ID_570799580" CREATED="1427075197844" MODIFIED="1427075208922"/>
+<node TEXT="bank database" ID="ID_1235720078" CREATED="1427075197844" MODIFIED="1427075210188"/>
+<node TEXT="balance inquiry" ID="ID_206662480" CREATED="1427075197844" MODIFIED="1427075211985"/>
+<node TEXT="withdrawal" ID="ID_1904803152" CREATED="1427075197844" MODIFIED="1427075213266"/>
+<node TEXT="deposit" ID="ID_1805157686" CREATED="1427075197844" MODIFIED="1427075227767"/>
+</node>
+</node>
+<node TEXT="Modeling Classes" ID="ID_1156811346" CREATED="1427075228517" MODIFIED="1427075541535">
+<node ID="ID_283849967" CREATED="1427075541535" MODIFIED="1427075545348"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#0000ff">class diagrams</font>
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_9138817305467560775.png" ID="ID_1456636478" CREATED="1427075688289" MODIFIED="1427075688289">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_9138817305467560775.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="Java_7201719605247206436.png" FOLDED="true" ID="ID_236004496" CREATED="1427075705375" MODIFIED="1427075705375">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_7201719605247206436.png" SIZE="0.83682007" NAME="ExternalObject"/>
+<node TEXT="Java_5330487738806265134.png" ID="ID_145151300" CREATED="1427075723552" MODIFIED="1427075723552">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_5330487738806265134.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1800239796" CREATED="1427075928656" MODIFIED="1427075961756" MOVED="1427075972225"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      the solid line that connects the two classes represents an <font color="#0000ff">association</font>&#8212;a relationship between classes.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_260363968" CREATED="1427079430820" MODIFIED="1427079444446"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The UML allows the suppression of class attributes and operations in this manner to create more readable diagrams, when appropriate. Such a diagram is said to be an <font color="#0000ff">elided diagram</font>&#8212;one in which some information, such as the contents of the second and third compartments, is not modeled.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1398165829" CREATED="1427075949561" MODIFIED="1427075966686" MOVED="1427075970168"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The numbers near each end of the line are <font color="#0000ff">multiplicity</font>&#160;values, which indicate how many objects of each class participate in the association.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="Java_1793700974239395960.png" ID="ID_277254051" CREATED="1427075992016" MODIFIED="1427075992016">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_1793700974239395960.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node ID="ID_1140849339" CREATED="1427075894762" MODIFIED="1427075938899" MOVED="1427075967988"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The word currentTransaction at the Withdrawal end of the association line in Fig. 12.7 is a <font color="#0000ff">role name</font>, identifying the role the Withdrawal object plays in its relationship with the ATM.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Java_4483905124361724385.png" ID="ID_1395706770" CREATED="1427076227291" MODIFIED="1427076227291">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4483905124361724385.png" SIZE="0.7623888" NAME="ExternalObject"/>
+<node ID="ID_1726819809" CREATED="1427076252619" MODIFIED="1427076269636"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      the <font color="#0000ff">solid diamonds </font>attached to the ATM class&#8217;s association lines indicate
+    </p>
+    <p>
+      that ATM has a <font color="#0000ff">composition</font>&#160;relationship with classes Screen, Keypad, CashDispenser and
+    </p>
+    <p>
+      DepositSlot.
+    </p>
+  </body>
+</html>
+</richcontent>
+<node TEXT="composition relationships have the following properties" ID="ID_883037375" CREATED="1427078449994" MODIFIED="1427078475096">
+<node TEXT="Only one class in the relationship can represent the whole" ID="ID_1430599413" CREATED="1427078468971" MODIFIED="1427078471837"/>
+<node TEXT="The parts in the composition relationship exist only as long as the whole does, and the whole is responsible for the creation and destruction of its parts." ID="ID_22789328" CREATED="1427078488696" MODIFIED="1427078496136"/>
+<node TEXT="A part may belong to only one whole at a time, although it may be removed and attached to another whole, which then assumes responsibility for the part." ID="ID_701839021" CREATED="1427078508112" MODIFIED="1427078512557"/>
+</node>
+<node ID="ID_586115713" CREATED="1427078571583" MODIFIED="1427078632751"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      If a has-a relationship does <b>not</b>&#160;satisfy one or more of these criteria,
+    </p>
+    <p>
+      the UML specifies that <font color="#0000ff">hollow diamonds</font>&#160;be attached to the ends of association lines to indicate <font color="#0000ff">aggregation</font>&#8212;a weaker form of composition
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Composition implies a whole/part relationship. The class that has the composition symbol (the solid diamond) on its end of the association line is the whole (in this case, ATM), and the classes on the other end of the association lines are the parts&#x2014;in this case, Screen, Keypad, ashDispenser and DepositSlot." ID="ID_548776045" CREATED="1427076289622" MODIFIED="1427076310834"/>
+<node ID="ID_1404132984" CREATED="1427076374380" MODIFIED="1427076426887"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      An object of class ATM is formed from one object of class Screen, one object of class CashDispenser, one object of class Keypad and one object of class DepositSlot.<b>&#160;The ATM has a screen, a keypad, a cash dispenser and a deposit slot.</b>
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node TEXT="Java_63457912249560817.png" ID="ID_1997994214" CREATED="1427078677562" MODIFIED="1427078677562">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_63457912249560817.png" SIZE="0.8174387" NAME="ExternalObject"/>
+<node ID="ID_500351489" CREATED="1427078737919" MODIFIED="1427078785519"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Class ATM has a <font color="#0000ff">one-to-one</font>&#160;relationship with class BankDatabase&#8212;one ATM object authenticates users against one BankDatabase object
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_194434548" CREATED="1427078786373" MODIFIED="1427078799412"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Class BankDatabase has a <font color="#0000ff">one-to-many</font>&#160;relationship
+    </p>
+    <p>
+      with class Account&#8212;the BankDatabase can contain many Accounts.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node ID="ID_1721648134" CREATED="1427078806649" MODIFIED="1427079182977"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Class Account has a <font color="#0000ff">many-to-one</font>&#160;relationship with class BankDatabase
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node TEXT="12.4 Identifying Class Attributes" ID="ID_435645461" CREATED="1427079480948" MODIFIED="1427079482417">
+<node TEXT="Identifying Attributes" ID="ID_1857425989" CREATED="1427079496636" MODIFIED="1427079497996">
+<node TEXT="Java_236257016825883625.png" ID="ID_386586743" CREATED="1427080110369" MODIFIED="1427080110369">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_236257016825883625.png" SIZE="1.0" NAME="ExternalObject"/>
+</node>
+</node>
+<node TEXT="Modeling Attributes" ID="ID_1083662774" CREATED="1427080165169" MODIFIED="1427080168747">
+<node TEXT="Java_4523903812408699947.png" ID="ID_345935041" CREATED="1427080232844" MODIFIED="1427080232844">
+<hook URI="project://14511523C412GLQETB9STFHLXSSC26QZT6ND/../../../GitHub/Learn/JavaHowToProgram/docearPic/Java_4523903812408699947.png" SIZE="1.0" NAME="ExternalObject"/>
+<node TEXT="userAuthenticated : Boolean = false" ID="ID_1226534110" CREATED="1427080268861" MODIFIED="1427080270815" MOVED="1427080273018">
+<node TEXT="We list each attribute&#x2019;s name and type separated by a colon (:), followed in some cases by an equal sign (=) and an initial value." ID="ID_1588296449" CREATED="1427080288206" MODIFIED="1427080292300" MOVED="1427080293784"/>
+<node ID="ID_1171561559" CREATED="1427080240094" MODIFIED="1427080253689" MOVED="1427080275987"><richcontent TYPE="NODE">
+
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      The <font color="#0000ff">attribute name</font>&#160;is userAuthenticated. The <font color="#0000ff">attribute type</font>&#160; is Boolean.
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
 </node>
 </node>
 </node>
