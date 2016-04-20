@@ -1,0 +1,23 @@
+!!!!----------------Creating a wfc_install toolbar-------------!!!!
+
+This Read me file will allow you to create a Windows Toolbar with wfc_install icons for running common wfc_install commands.
+
+The following example will allow you to create an icon for using the wfc.restage command. There are many ways to do the following. This is just a guide.
+
+1- Create a folder in the wfc_install folder called "Shortcuts"
+2- Right-click "batch\restage.bat" and select "Create a shortcut"
+3- Right-click the shortcut and select "Properties"
+4- On the "Shortcut" tab, click on the "Change Icon" button;
+5- Select an icon and click on "OK".
+6- Close the properties dialog;
+7- Move the shortcut to the "Shortcuts" folder;
+8- Right-click on the Windows toolbar;
+9- Select the "Toolbars" item;
+10- Click on the "New Toolbar" item;
+11- Select the "Shortcuts" folder in the wfc_install workspace folder;
+12- Right-click on the Windows toolbar and uncheck the "Lock the Toolbar" item;
+13- Right-click on the new toolbar (not an item of the toolbar) and unselect "Show Text" and "Show Title";
+14- Right-click on the Windows toolbar and check the "Lock the Toolbar" item;
+
+You should now have a new toolbar with an icon allowing you to stop the server restage your db and restart you server.
+You can do the same thing to create other icons such as stop the server, start the server, etc. 

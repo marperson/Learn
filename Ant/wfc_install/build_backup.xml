@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="backup" default="help" basedir="." xmlns:props="antlib:org.apache.ant.props">
+
+	<description>
+	This script is intended to backup the db created in Jenkins to
+	the backup DB repository depending on if the backup db is
+	MSS or Oracle.
+	</description>
+	
+	<import file="${basedir}/build_db.xml" />
+	
+	<property name="testresults" value="${basedir}\..\..\..\testresults" />
+	<property name="db.mss.root" value="SQL Server" />
+	<property name="db.oracle.root" value="Oracle" />
+	<property name="db.repository.root" value="${/}${/}kvsca-qmfile01${/}wfc${/}Engineering${/}Database${/}Database Builds" />
+
+	<!--	Get DB backup name in Workspace	-->
+	<target name="copy.db">
+		<path id="backup.db.id">
+				<fileset dir="${testresults}\${ExpessSetup_BUILD_ID}">
+						<include name="**\*${db.backup.file.post}*"/>
+				</fileset>
+		</path>
+		<property name="backup.db.path" refid="backup.db.id"/>
+		
+		<echo message="Backup DB to copy is ${backup.db.path}" />
+		<antcall target="copy.db.${DEFAULT_DBPLATFORM}" />
+	</target>
+
+	<!-- Copy mss db to \\kvsca-qmfile01\WFC\Engineering\Database\Database Builds\SQL Server -->
+	<target name="copy.db.mss">
+		<copy verbose="true" file="${backup.db.path}" todir="${db.repository.root}${/}${db.mss.root}"/>
+	</target>
+	
+	<!-- Copy oracle db to \\kvsca-qmfile01\WFC\Engineering\Database\Database Builds\Oracle\v"WFC major version"\"WFC DB version" -->
+	<target name="copy.db.oracle">
+		<loadresource property="wfc.backup.db.version">
+			<propertyresource name="backup.db.path" />
+			<filterchain>
+				<linecontainsregexp>
+					<regexp pattern=".*${db.backup.file.post}.*"/>
+				</linecontainsregexp>
+				<replaceregex pattern=".*sql_\d+_(\d{3}).*" replace="\1" />
+			</filterchain>
+		</loadresource>
+		<copy verbose="true" file="${backup.db.path}" tofile="${db.repository.root}${/}${db.oracle.root}${/}v${wfc.ver.major}${wfc.ver.minor}${/}b${wfc.backup.db.version}${/}${db.backup.file.post}.DMP"/>
+	</target>
+</project>

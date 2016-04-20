@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="robocopy" default="help" basedir="." xmlns:props="antlib:org.apache.ant.props">
+
+	<description>
+	This script is intended to contain robocopy tasks for faster  / m ore reliable file copying
+	
+	You should change the properties in robocopy.properties to suit your needs.
+	
+	</description>
+
+	<target name="robocopy.set.paths.wfp">
+		<property name="robocopy.wfp.source.dir"  value="${wfp.kits.dir}/${wfp.kits.dir.lastbuildused}/wfp_win_${build.type}"/>
+
+		<property name="robocopy.wfp.source.dir.jenkins"  value="${wfp.kits.dir.jenkins}\\${wfp.kits.dir.jenkins.lastbuildused}\\archive\\DIST\\"/>
+		<property name="robocopy.wfp.source.file.jenkins"  value="wfpInstall_${build.type}bit.zip"/>
+	</target>
+	<target name="robocopy.set.paths.wtk">
+		<property name="robocopy.wtk.source.dir"  value="${wtk.kits.dir}/${wtk.kits.dir.lastbuildused}/wtk_win_${build.type}"/>
+		<property name="robocopy.wfs.source.dir"  value="${wtk.kits.dir}/${wtk.kits.dir.lastbuildused}/wfs_win_${build.type}"/>
+		<property name="robocopy.wfso.source.dir" value="${wtk.kits.dir}/${wtk.kits.dir.lastbuildused}/wfso_win_${build.type}"/>
+		<property name="robocopy.wfop.source.dir" value="${wtk.kits.dir}/${wtk.kits.dir.lastbuildused}/wfop_win_${build.type}"/>
+
+		<property name="robocopy.wtk.source.dir.jenkins"  value="${wtk.kits.dir.jenkins}\\${wtk.kits.dir.jenkins.lastbuildused}\\archive\\DIST\\"/>
+		<property name="robocopy.wtk.source.file.jenkins"  value="wtkInstall_${build.type}bit.zip"/>
+		<property name="robocopy.wfs.source.dir.jenkins"  value="${wtk.kits.dir.jenkins}\\${wtk.kits.dir.jenkins.lastbuildused}\\archive\\DIST\\"/>
+		<property name="robocopy.wfs.source.file.jenkins"  value="wfsInstall_${build.type}bit.zip"/>
+		<property name="robocopy.wfso.source.dir.jenkins" value="${wtk.kits.dir.jenkins}\\${wtk.kits.dir.jenkins.lastbuildused}\\archive\\DIST\\"/>
+		<property name="robocopy.wfso.source.file.jenkins" value="wfsoInstall_${build.type}bit.zip"/>
+		<property name="robocopy.wfop.source.dir.jenkins" value="${wtk.kits.dir.jenkins}\\${wtk.kits.dir.jenkins.lastbuildused}\\archive\\DIST\\"/>
+		<property name="robocopy.wfop.source.file.jenkins" value="wfopInstall_${build.type}bit.zip"/>
+	</target>
+	<target name="robocopy.set.paths.wfa">
+		<property name="robocopy.wfa.source.dir"  value="${wfa.kits.dir}/${wfa.kits.dir.lastbuildused}/wfa_win_${build.type}"/>
+
+		<property name="robocopy.wfa.source.dir.jenkins"  value="${wfa.kits.dir.jenkins}\\${wfa.kits.dir.jenkins.lastbuildused}\\archive\\DIST\\"/>
+		<property name="robocopy.wfa.source.file.jenkins"  value="watInstall_${build.type}bit.zip"/>
+	</target>
+	<target name="robocopy.set.paths.eou">
+		<property name="robocopy.eou.source.dir"  value="${eou.kits.dir}/${eou.kits.dir.lastbuildused}/eou_win_${build.type}"/>
+
+		<property name="robocopy.eou.source.dir.jenkins"  value="${eou.kits.dir.jenkins}\\${eou.kits.dir.jenkins.lastbuildused}\\archive\\DIST\\"/>
+		<property name="robocopy.eou.source.file.jenkins"  value="eouInstall_${build.type}bit.zip"/>
+	</target>
+	
+<!-- START Robocopy files for faster, more reliable copying (like auto resume after a failure x -->
+	<target name="robocopy.products" description="copies all kits to the local computer using robocopy with auto resume">
+		<antcall target="robocopy.wfp" />
+		<antcall target="robocopy.wtk" />
+		<antcall target="robocopy.wfs" />
+		<antcall target="robocopy.wff" />
+		<antcall target="robocopy.wfop" />
+		<antcall target="robocopy.wfa" />
+		<antcall target="robocopy.eou" />
+	</target>
+
+	<target name="robocopy.wfp" depends="robocopy.set.paths.wfp">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wfp.kits.dir" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.dir">
+			<param name="file" value="${robocopy.wfp.source.dir}" />
+			<param name="dest.dir" value="${localdir}/wfpInstall_${build.type}bit/" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wtk" if="install.wtk" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wtk.kits.dir" />
+		</antcall>
+
+		<antcall target="generic.robocopy.dir">
+			<param name="file" value="${robocopy.wtk.source.dir}" />
+			<param name="dest.dir" value="${localdir}/wtkInstall_${build.type}bit/" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wfs" if="install.wfs" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wtk.kits.dir" />
+		</antcall>
+
+		<antcall target="generic.robocopy.dir">
+			<param name="file" value="${robocopy.wfs.source.dir}" />
+			<param name="dest.dir" value="${localdir}/wfsInstall_${build.type}bit/" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wff" if="install.wff" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wtk.kits.dir" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.dir">
+			<param name="file" value="${robocopy.wfso.source.dir}" />
+			<param name="dest.dir" value="${localdir}/wfsoInstall_${build.type}bit/" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wfop" if="install.wfop" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wtk.kits.dir" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.dir">
+			<param name="file" value="${robocopy.wfop.source.dir}" />
+			<param name="dest.dir" value="${localdir}/wfopInstall_${build.type}bit/" />
+		</antcall>
+	</target>
+
+	<target name="robocopy.wfa" if="install.wfa" depends="robocopy.set.paths.wfa">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wfa.kits.dir" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.dir">
+			<param name="file" value="${robocopy.wfa.source.dir}" />
+			<param name="dest.dir" value="${localdir}/wfaInstall_${build.type}bit/" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.eou" depends="robocopy.set.paths.eou">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="eou.kits.dir" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.dir">
+			<param name="file" value="${robocopy.eou.source.dir}" />
+			<param name="dest.dir" value="${localdir}/eouInstall_${build.type}bit/" />
+		</antcall>
+	</target>
+	
+<!-- START Robocopy files for faster, more reliable copying (like auto resume after a failure x -->
+	<target name="robocopy.products.jenkins" description="copies all kits to the local computer using robocopy and jenkins paths with auto resume">
+		<antcall target="robocopy.wfp.jenkins" />
+		<antcall target="robocopy.wtk.jenkins" />
+		<antcall target="robocopy.wfs.jenkins" />
+		<antcall target="robocopy.wff.jenkins" />
+		<antcall target="robocopy.wfop.jenkins" />
+		<antcall target="robocopy.wfa.jenkins" />
+		<antcall target="robocopy.eou.jenkins" />
+	</target>
+	
+	<target name="robocopy.wfp.jenkins" depends="robocopy.set.paths.wfp">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wfp.kits.dir.jenkins" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.file">
+			<param name="file.source.dir" value="${robocopy.wfp.source.dir.jenkins}" />
+			<param name="file" value="${robocopy.wfp.source.file.jenkins}" />
+			<param name="dest.dir" value="${localdir}\\" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wtk.jenkins" if="install.wtk" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wtk.kits.dir.jenkins" />
+		</antcall>
+
+		<antcall target="generic.robocopy.file">
+			<param name="file.source.dir" value="${robocopy.wtk.source.dir.jenkins}" />
+			<param name="file" value="${robocopy.wtk.source.file.jenkins}" />
+			<param name="dest.dir" value="${localdir}\\" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wfs.jenkins" if="install.wfs" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wtk.kits.dir.jenkins" />
+		</antcall>
+
+		<antcall target="generic.robocopy.file">
+			<param name="file.source.dir" value="${robocopy.wfs.source.dir.jenkins}" />
+			<param name="file" value="${robocopy.wfs.source.file.jenkins}" />
+			<param name="dest.dir" value="${localdir}\\" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wff.jenkins" if="install.wff" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wtk.kits.dir.jenkins" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.file">
+			<param name="file.source.dir" value="${robocopy.wfso.source.dir.jenkins}" />
+			<param name="file" value="${robocopy.wfso.source.file.jenkins}" />
+			<param name="dest.dir" value="${localdir}\\" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.wfop.jenkins" if="install.wfop" depends="robocopy.set.paths.wtk">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wtk.kits.dir.jenkins" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.file">
+			<param name="file.source.dir" value="${robocopy.wfop.source.dir.jenkins}" />
+			<param name="file" value="${robocopy.wfop.source.file.jenkins}" />
+			<param name="dest.dir" value="${localdir}\\" />
+		</antcall>
+	</target>
+
+	<target name="robocopy.wfa.jenkins" if="install.wfa" depends="robocopy.set.paths.wfa">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wfa.kits.dir.jenkins" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.file">
+			<param name="file.source.dir" value="${robocopy.wfa.source.dir.jenkins}" />
+			<param name="file" value="${robocopy.wfa.source.file.jenkins}" />
+			<param name="dest.dir" value="${localdir}\\" />
+		</antcall>
+	</target>
+	
+	<target name="robocopy.eou.jenkins" depends="robocopy.set.paths.eou">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="eou.kits.dir.jenkins" />
+		</antcall>
+	
+		<antcall target="generic.robocopy.file">
+			<param name="file.source.dir" value="${robocopy.eou.source.dir.jenkins}" />
+			<param name="file" value="${robocopy.eou.source.file.jenkins}" />
+			<param name="dest.dir" value="${localdir}\\" />
+		</antcall>
+	</target>
+	
+	<target name="generic.robocopy.dir">
+		<available file="${dest.dir}" type="dir" property="dir.exists" />
+		<antcall target="-create.dir" />
+	
+	    <echo>Copying '${file}' to '${dest.dir}'...</echo>
+		<echo>${robocopy.path} ${file} ${dest.dir} /s /z /xo</echo>
+	
+		<exec executable="cmd" resultproperty="robocopy_errorcode" failonerror="false">
+			<arg line="/c ${robocopy.path} ${file} ${dest.dir} /s /z /xo" />
+		</exec>
+		<fail message="Robocopy failed to copy the requested failed: ${robocopy_errorcode}">
+			<condition>
+				 <equals arg1="${robocopy_errorcode}" arg2="8"/>
+			 </condition>
+		</fail>
+		
+<!--	
+		<antcall target="generic.execute">
+		    <param name="exe" value="cmd" />
+			<param name="cmdline" value='/c ${robocopy.path} ${file} ${dest.dir} /s /z /xo'/>
+		</antcall>
+-->		
+	</target>
+
+	<target name="generic.robocopy.file">
+		<available file="${dest.dir}" type="dir" property="dir.exists" />
+		<antcall target="-create.dir" />
+	
+	    <echo>Copying '${file.source.dir}' file: '${file}' to '${dest.dir}'...</echo>
+		<echo>${robocopy.path} ${file.source.dir} ${dest.dir} ${file} /s /z /xo</echo>
+
+		<exec executable="cmd" resultproperty="robocopy_errorcode" failonerror="false">
+			<arg line="/c ${robocopy.path} ${file.source.dir} ${dest.dir} ${file} /s /z /xo" />
+		</exec>
+		<fail message="Robocopy failed to copy the requested failed: ${robocopy_errorcode}">
+			<condition>
+				 <equals arg1="${robocopy_errorcode}" arg2="8"/>
+			 </condition>
+		</fail>
+		
+<!--		
+		<antcall target="generic.execute">
+		    <param name="exe" value="cmd" />
+			<param name="cmdline" value='/c ${robocopy.path} ${file.source.dir} ${localdir} ${file} /s /z /xo'/>
+		</antcall>
+-->		
+	</target>
+	
+<!-- END Robocopy files for faster, more reliable copying (like auto resume after a failure -->
+
+</project>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="wfc" default="help" basedir="." xmlns:props="antlib:org.apache.ant.props">
+
+	<description>
+	This script contains targets for starting and stopping WFC.
+	
+	You should copy server.properties to '${user.properties}'
+	and change the properties to suit your needs.
+	</description>
+	
+	<import file="${basedir}/build_common.xml" />
+	
+	<property name="wfc.startup.log" value="${installLocation}/${DEFAULT_DSN_NAME}/logs/StartupInfo.log" />
+	<property name="wfc.log" value="${installLocation}/${DEFAULT_DSN_NAME}/logs/WFC.log" />
+	<property name="startup.timeout" value="10"/>
+	<property name="shutdown.timeout" value="4"/>
+	
+	<!--	This target wraps wfc.start. It will only start wfc if 'start.wfc.all' is set to true
+	-->
+	<target name="-wfc.start" if="${start.wfc.all}">
+		<antcall target="wfc.start" />
+	</target>
+	
+	<!--	This target will start the web server (IIS or Apache)
+	-->
+	<target name="webserver.start" if="${WEB_SERVER}">
+		<echo>Attempting to start web server: net start ${default.web.server.platform.servicename}</echo>
+		<exec executable="net" resultproperty="webserv.result" outputproperty="webserv.start.output">
+			<arg value="start" />
+			<arg value="${default.web.server.platform.servicename}" />
+		</exec>
+		<!-- fail unless zero is returned or the service is already started -->
+		<condition property="webserv.succeeded">
+			<or>
+				<equals arg1="${webserv.result}" arg2="0" />
+				<and>
+					<equals arg1="${webserv.result}" arg2="2" />
+					<contains string="${webserv.start.output}" substring="The requested service has already been started." />
+				</and>
+			</or>
+		</condition>
+		<echo message="${webserv.start.output}" />
+		<fail unless="webserv.succeeded">Error starting ${default.web.server.platform.servicename}. Error code returned was '${webserv.result}'.</fail>	
+	</target>
+	
+	<target name="notification.start" if="${NS_SERVER}">
+		<!-- start the notification server -->
+		<echo>Attempting to start notification server: net start Openfire_ns</echo>
+		<exec executable="net" resultproperty="notif.result" outputproperty="notif.start.output">
+			<arg value="start" />
+			<arg value="Openfire_ns" />
+		</exec>
+
+		<!-- fail unless zero is returned or the service is already started -->
+		<condition property="notif.succeeded">
+			<or>
+				<equals arg1="${notif.result}" arg2="0" />
+				<and>
+					<equals arg1="${notif.result}" arg2="2" />
+					<contains string="${notif.start.output}" substring="The requested service has already been started." />
+				</and>
+			</or>
+		</condition>
+		<echo message="${notif.start.output}" />
+		<fail unless="notif.succeeded">Error starting Openfire_ns. Error code returned was '${notif.result}'.</fail>	
+	</target>
+	
+	<!--	This target will start both the web server (IIS or Apache), notification server and WFC. It will not finish
+			until it determines that Jboss is fully started by parsing the jboss startup log file.
+			It will not fail if WFC is already started when it is called.
+	-->
+	<target name="wfc.start" description="start wfc service" depends="webserver.start,notification.start,appserver.start" />
+
+	<!--	This target will start jboss. It will not finish
+			until it determines that Jboss is fully started by parsing the jboss startup log file.
+			It will not fail if jboss is already started when it is called.
+	-->
+	<target name="appserver.start" if="${APP_SERVER}">
+		<!-- get a timestamp before trying to start jboss -->
+		<tstamp>
+			<format property="time.before.stop" pattern="MM/dd/yyyy hh:mm aa" />
+		</tstamp>
+
+		<echo>Attempting to start jboss at ${time.before.stop}...</echo>
+		<exec executable="net" resultproperty="jboss.result" outputproperty="jboss.start.output">
+			<arg line="start ${jboss.service}" />
+		</exec>
+		
+		<!-- is jboss already started? -->
+		<condition property="jboss.already.started">
+			<and>
+				<equals arg1="${webserv.result}" arg2="2" />
+				<contains string="${jboss.start.output}" substring="The requested service has already been started." />
+			</and>
+		</condition>
+		<!-- fail unless zero is returned or the service is already started -->
+		<condition property="jboss.succeeded">
+			<or>
+				<equals arg1="${jboss.result}" arg2="0" />
+				<isset property="jboss.already.started" />
+			</or>
+		</condition>
+		<echo message="${jboss.start.output}" />
+		<fail unless="jboss.succeeded">Error starting jboss. Error code returned was '${jboss.result}'.</fail>
+		
+		<antcall target="jboss.start.wait" />
+	</target>
+
+	<!--	This target will wait until jboss has fully started before finishing. If the timeout is reached without
+			having determined that jboss came online propertly, this target will fail.
+			Precondition:	- if it was determined that jboss is already started (through the property
+							'jboss.already.start'), this target will not be executed.
+							- the caller can supply the number of minutes before a timeout occurs 
+							using the property 'startup.timeout'.
+	-->
+	<target name="jboss.start.wait" unless="jboss.already.started">
+		<!-- wait for jboss to come online, also make sure that the startup file has been modified after
+			theh startup command was issued. -->
+		<echo message="Waiting up to ${startup.timeout} minutes for jboss to come online..." />
+		<waitfor maxwait="${startup.timeout}" maxwaitunit="minute" checkevery="5" checkeveryunit="second" timeoutproperty="timedout">
+			<and>
+				<isfileselected file="${wfc.startup.log}">
+					<date datetime="${time.before.stop}" when="after"/>
+				</isfileselected>
+				<resourcecontains resource="${wfc.startup.log}" substring="** DeferredServices services started in ***" casesensitive="false"
+				/>
+			</and>
+		</waitfor>
+		
+		<!-- load the last 100 lines in the startup log file -->
+		<loadfile srcfile="${wfc.startup.log}" property="wfc.log.lines">
+			<filterchain>
+				<tailfilter lines="100" />
+			</filterchain>
+		</loadfile>
+		
+		<!-- fail if the timeout was reached -->
+		<fail if="timedout">${wfc.log.lines}
+		
+Error, a time out was reached when waiting for jboss to start. Above is the last 100 lines of log file ${wfc.startup.log}.
+		</fail>
+		
+		<echo>WFC started successfully.</echo>
+		
+	</target>
+	
+	<!--	This target will stop the web server (IIS or Apache).
+	-->
+	<target name="webserver.stop" if="${WEB_SERVER}">
+		<echo>Attempting to stop web server: net stop ${default.web.server.platform.servicename}</echo>
+		<exec executable="net" resultproperty="webserv.result" outputproperty="webserv.stop.output">
+			<arg value="stop" />
+			<arg value="${default.web.server.platform.servicename}" />
+		</exec>
+		
+		<!-- fail unless zero is returned or the service is not started -->
+		<condition property="webserv.succeeded">
+			<or>
+				<equals arg1="${webserv.result}" arg2="0" />
+				<and>
+					<equals arg1="${webserv.result}" arg2="2" />
+					<or>
+						<contains string="${webserv.stop.output}" substring="service is not started." />
+						<contains string="${webserv.stop.output}" substring="service name is invalid." />
+						<contains string="${webserv.stop.output}" substring="n'est pas lanc" />
+						<contains string="${webserv.stop.output}" substring="n'est pas valide." />
+					</or>
+				</and>
+			</or>
+		</condition>
+		<echo message="${webserv.stop.output}"/>
+		<echo message="Error code returned was '${webserv.result}'." />
+		<fail unless="webserv.succeeded">Error stopping ${default.web.server.platform.servicename}.</fail>
+	</target>
+
+	<target name="notification.stop" if="${NS_SERVER}">
+		<!-- attempting to close the notification using Windows services or even the stop.bat file
+			which ships with OpenFire is not reliable. Instead, kill all OpenFire processes
+			using WMIC. If you want to try using services, find the transaction when this line of 
+			code was introduced to see how it was previously implemented -->
+		<exec executable="WMIC" failonerror="true">
+			<arg line="process where &quot;commandline like '%openfire%'&quot; call terminate" />
+		</exec>
+	</target>
+	
+	<!--	This target will stop the web server (IIS or Apache), the notification server and WFC. It will not finish
+			until it determines that Jboss has completely stopped. 
+			It will not fail if WFC was not started when it was called.
+	-->
+	<target name="wfc.stop" description="stop wfc service" depends="webserver.stop,notification.stop,appserver.stop" />
+		
+	<target name="appserver.stop" if="${APP_SERVER}">
+		<echo>Attempting to stop ${jboss.service}...</echo>
+		<exec executable="net" resultproperty="jboss.result" outputproperty="jboss.stop.output">
+			<arg line="stop ${jboss.service}" />
+		</exec>
+		<!-- is the service stopped already -->
+		<condition property="jboss.stopped">
+			<and>
+				<equals arg1="${jboss.result}" arg2="2" />
+				<or>
+					<contains string="${jboss.stop.output}" substring="service is not started." />
+					<contains string="${jboss.stop.output}" substring="service name is invalid." />
+					<contains string="${jboss.stop.output}" substring="n'est pas lanc" />
+					<contains string="${jboss.stop.output}" substring="n'est pas valide." />
+				</or>
+			</and>			
+		</condition>
+		
+		<!-- Don't fail if was already stopped, is currently stopping or it returns zero -->
+		<condition property="jboss.succeeded">
+			<or>
+				<equals arg1="${jboss.result}" arg2="0" />
+				<and>
+					<equals arg1="${jboss.result}" arg2="2" />
+					<contains string="${jboss.stop.output}" substring="The service is starting or stopping.  Please try again later." />
+				</and>
+				<istrue value="${jboss.stopped}" />
+			</or>
+		</condition>
+		<echo message="${jboss.stop.output}" />
+		<echo message="Error code returned was '${jboss.result}'." />
+		<fail unless="jboss.succeeded">Error stopping jboss.</fail>
+
+		<!-- if jboss was not already stopped, wait for it to stop -->
+		<antcall target="service.stop.wait">
+			<param name="service.name" value="${jboss.service}" />
+			<param name="service.stopped" value="${jboss.stopped}" />
+		</antcall>
+	</target>
+	
+	<target name="get.javascript.engine">
+		<condition property="javascript.engine" value="nashorn">
+			<equals arg1="1.8" arg2="${ant.java.version}" />
+		</condition>
+		<property name="javascript.engine" value="rhino" />
+		<echo>Java version ${ant.java.version} detected. This version uses the '${javascript.engine}' javascript engine.</echo>
+	</target>
+	
+	<!--	This target will wait until a windows service has fully stopped before finishing. If the timeout is reached this target will fail.
+			Precondition:	- if it was determined that service is already stopped (through the property
+							'service.stopped'), this target will not be executed.
+							- the user can supply the number of minutes before a timeout occurs 
+							using the property 'shutdown.timeout'.
+	-->
+	<target name="service.stop.wait" depends="get.javascript.engine" unless="${service.stopped}">
+		
+		<!-- parse the output of "sc query SERVICE_NAME" to make sure service has stopped -->
+		<tempfile property="tmp" suffix=".txt" deleteonexit="true" createfile="true" />
+		<echo message="Waiting up to ${shutdown.timeout} minutes for ${service.name} to stop. Output being written to '${tmp}'." />
+		<waitfor maxwait="${shutdown.timeout}" maxwaitunit="minute" checkevery="5" checkeveryunit="second" timeoutproperty="timedout">
+			<and>
+				<!-- we can't run an exec task as a script condition normally, so execute
+					it from within a scriptcondition. Execute sc query and write the output to the tempfile -->
+				<scriptcondition language="javascript" src="${basedir}/stop.${javascript.engine}.js"/>
+				
+				<!-- parse the output file to make sure service has stopped -->
+				<resourcecontains resource="${tmp}" substring="STATE              : 1  STOPPED" casesensitive="false" />
+			</and>
+		</waitfor>
+
+		<!-- display the contents of the temp file. It should show that the state is 'STOPPED'. -->
+		<concat><fileset file="${tmp}"/></concat>
+
+		<!-- fail if the timeout was reached -->
+		<fail if="timedout">
+Error, a time out was reached when waiting for ${shutdown.timeout} minutes to shutdown
+the service ${service.name}.
+		</fail>
+		<echo>${service.name} stopped successfully.</echo>
+	</target>
+	
+</project>

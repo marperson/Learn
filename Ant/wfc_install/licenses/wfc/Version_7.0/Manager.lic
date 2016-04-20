@@ -1,0 +1,24 @@
+SERVER this_host ANY
+VENDOR kronos
+USE_SERVER
+INCREMENT mobile_manager_app kronos 6. permanent 1000 \
+	VENDOR_STRING="Order Number=OR723" ISSUER="Kronos \
+	Incorporated" ISSUED=14-Dec-2010 NOTICE="KRONOS, INC::Test \
+	License Kronos" SN=0002395 SIGN=8DC3482C7012
+   
+  INCREMENT tablet_manager_app kronos 6.00000 permanent 5500 \
+	VENDOR_STRING="Order Number=Tablet Test" ISSUER="Kronos \
+	Incorporated" ISSUED=03-dec-2012 NOTICE="Kronos::Test License" \
+	SN=12312-1 SIGN=15DC09DA5D5E
+  
+  INCREMENT tablet_employee_app kronos 6.00000 permanent 5500 \
+	VENDOR_STRING="Order Number=Tablet Test" ISSUER="Kronos \
+	Incorporated" ISSUED=03-dec-2012 NOTICE="Kronos::Test License" \
+	SN=12312-1 SIGN=EDD392E08B86
+	
+   INCREMENT Workforce_TaskManagement kronos 6. permanent 100000 \
+               VENDOR_STRING="Order Number=OR999" ISSUER="Kronos \
+               Incorporated" ISSUED=24-Jan-2013 NOTICE="Kronos \
+               Incorporated::NOT for KDEMO - ENGINEERING ONLY " ck=160 \
+               SIGN=9D833AF010A0
+

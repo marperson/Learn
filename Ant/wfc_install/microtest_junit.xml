@@ -1,0 +1,187 @@
+<project name="junit" basedir=".">
+
+  <taskdef name="junitee" classname="org.junitee.anttask.JUnitEETask">
+    <classpath>
+      <pathelement location="anttasks/lib/junitee-anttask.jar"/>
+    </classpath>
+  </taskdef>
+  <taskdef name="juniteewar" classname="org.junitee.anttask.JUnitEEWarTask">
+    <classpath>
+      <pathelement location="anttasks/lib/junitee-anttask.jar"/>
+    </classpath>
+  </taskdef>
+
+  <tstamp>
+      <format property="today.dirname" pattern="yyyy_MM_dd" />
+  </tstamp>
+  <tstamp>
+      <format property="today.name" pattern="MMM dd, yyyy" />
+  </tstamp>
+
+  <!-- save the hostname in a property -->
+  <exec executable="hostname" outputproperty="hostname"/>
+  <property environment="env"/>
+
+  <!-- Install directories -->
+  <property name="installed.dir" location="c:/kronos"/>
+  <property name="wfc.root.dir" location="${installed.dir}/wfc"/>
+  <property name="wfc.applications.dir" location="${wfc.root.dir}/applications"/>
+   <property name="wfcserver.root.dir" location="${installed.dir}/jboss/wfc"/>
+	<property name="wfc.deploy.dir" location="${wfcserver.root.dir}/deploy"/>
+	<property name="wfc.ear.dir" location="${wfc.deploy.dir}/wfc.ear"/>
+	<property name="wfc.war.dir" location="${wfc.ear.dir}/wfc.war"/>
+	<property name="wfc.deploy.lib" location="${wfc.war.dir}/WEB-INF/lib"/>
+	
+  <property name="junit.dir"  value="${wfc.applications.dir}/junit"/>
+  <property name="unittest.dir" value="${wfc.applications.dir}/unittest"/>
+
+  <property name="junitee.mail.sender" value="superuser@kronos.com" />
+  <!--<property name="junitee.mail.list"   value="tmaceachern@kronos.com" />-->
+  <property name="web.root.dir"        location="${installed.dir}/apache/htdocs" />
+
+  <!-- =================================================================== -->
+  <!-- Clean the results area -->
+  <!-- =================================================================== -->
+  <target name="clean" depends="clean-xml, clean-html">
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Clean the XML results area -->
+  <!-- =================================================================== -->
+  <target name="clean-xml">
+    <!-- cleanup the data from the last run -->
+    <delete dir="${junit.dir}/xml" failonerror="false"/>
+    <mkdir dir="${junit.dir}/xml"/>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Clean the HTML results area -->
+  <!-- =================================================================== -->
+  <target name="clean-html">
+    <!-- cleanup the data from the last run -->
+    <delete dir="${junit.dir}/html" failonerror="false"/>
+    <mkdir dir="${junit.dir}/html"/>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Run a suite of unit tests through Junitee  -->
+  <!-- =================================================================== -->
+  <target name="run" depends="clean">
+    <echo>Running a JUnitEE tests</echo>
+    <junitee url="http://localhost/wfc/TestServlet" printsummary="true">
+      <test name="${junitee.suite}" todir="${junit.dir}/xml"/>
+      <formatter type="xml"/>
+    </junitee>
+  </target>
+  
+  	
+ <!-- =================================================================== -->
+  <!-- Run a set of Micro Tests  -->
+  <!-- =================================================================== -->	
+  
+  <!-- Classpath for microtests -->
+	<path id="microtest.class.path">
+		<fileset dir="${wfc.applications.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${wfc.deploy.lib}">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="${java.class.path}"/>
+	</path>
+	
+	<!--<property name="testJar" value="test_wfl.jar"/>-->
+<!--	<property name="fileset" value="**/*MicroTest.class"/>-->
+	<property name="micro_classes.dir" value="${unittest.dir}/micro_classes/${testJar}"/>
+	
+	<target name="expand-test">
+		<mkdir dir="${micro_classes.dir}"/>
+		<unzip overwrite="true" src="${unittest.dir}/lib/${testJar}" dest="${micro_classes.dir}"/>
+	</target>
+	
+	<target name="run-microtests">
+		<echo>Running Micro tests</echo>
+		<delete dir="${junit.dir}/xml" failonerror="false"/>
+		<delete dir="${junit.dir}/html" failonerror="false"/>
+		<delete dir="${unittest.dir}/micro_classes" failonerror="false"/>
+		<mkdir dir="${unittest.dir}/micro_classes"/>
+		<mkdir dir="${junit.dir}/xml"/>
+		<mkdir dir="${junit.dir}/html"/>
+<mkdir dir="${micro_classes.dir}"/>
+		<unzip overwrite="true" src="${unittest.dir}/lib/${testJar}" dest="${micro_classes.dir}"/>		
+		
+		<junit reloading="false" haltonfailure="false" printsummary="true" errorproperty="tests.failed" failureproperty="tests.failed">
+			<batchtest fork="no" todir="${junit.dir}/xml">
+				<fileset dir="${micro_classes.dir}" includes="${fileset}"/>
+				
+			</batchtest>
+			<formatter type="plain" usefile="false"/>
+			<formatter type="xml"/>
+			<classpath refid="microtest.class.path"/>
+		</junit>
+		 <junitreport todir="${junit.dir}/html">
+      <fileset dir="${junit.dir}/xml">
+        <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="frames" todir="${junit.dir}/html"/>
+    </junitreport>
+	</target>
+
+  <!-- =================================================================== -->
+  <!-- Generate the Report -->
+  <!-- =================================================================== -->
+  <target name="report" depends="clean-html">
+    <echo>Creating report</echo>
+    <!-- Generate the report -->
+    <junitreport todir="${junit.dir}/html">
+      <fileset dir="${junit.dir}/xml">
+        <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="frames" todir="${junit.dir}/html"/>
+    </junitreport>
+  </target>
+  
+  <!-- =================================================================== -->
+  <!-- Copy and Archive Results -->
+  <!-- =================================================================== -->
+  <target name="archive-report" depends="report">
+    <!-- Copy the results to the webserver -->
+    <copy toDir="${web.root.dir}/junits/latest" overwrite="true">
+      <fileset dir="${junit.dir}/html" />
+    </copy>
+    <!-- archive the results on the webserver -->
+    <echo message="Archiving results to: http://${hostname}/junits/${today.dirname}"/>
+    <delete dir="${web.root.dir}/junits/${today.dirname}" failonerror="false"/>
+    <copy toDir="${web.root.dir}/junits/${today.dirname}" overwrite="true">
+      <fileset dir="${junit.dir}/html" />
+    </copy>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Mail Results -->
+  <!-- =================================================================== -->
+  <target name="mail-report" depends="archive-report">
+    <!-- Email the results. -->
+    <mail mailhost="smtp.kronos.com" subject="${junitee.mail.subject}"
+          tolist="${junitee.mail.list}">
+      <from address="${junitee.mail.sender}"/>
+      <message>JUnit Results for: ${today.name}
+   http://${hostname}/junits/latest
+   http://${hostname}/junits/${today.dirname}
+      </message>
+    </mail>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Generate Report, Copy and Archive Results and Mail Results -->
+  <!-- =================================================================== -->
+  <target name="junit-report" depends="mail-report">
+  </target>
+  
+  <!-- =================================================================== -->
+  <!-- Run one suite and generate its report -->
+  <!-- =================================================================== -->
+  <target name="run-suite" depends="run, report">
+  </target>
+</project>
+

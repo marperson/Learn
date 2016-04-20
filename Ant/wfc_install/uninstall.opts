@@ -1,0 +1,67 @@
+################################################################################
+#
+# InstallShield Options File
+#
+# Wizard name: Uninstall
+# Wizard source: assembly.dat
+# Created on: Wed Aug 30 10:26:03 EDT 2006
+# Created by: InstallShield Options File Generator
+#
+# This file contains values that were specified during a recent execution of
+# Uninstall. It can be used to configure Uninstall with the options specified
+# below when the wizard is run with the "-options" command line option. Read
+# each setting's documentation for information on how to change its value.
+# 
+# A common use of an options file is to run the wizard in silent mode. This lets
+# the options file author specify wizard settings without having to run the
+# wizard in graphical or console mode. To use this options file for silent mode
+# execution, use the following command line arguments when running the wizard:
+# 
+#    -options "c:\OptionsFiles\uninstall\uninstall.opts" -silent
+#
+################################################################################
+
+
+################################################################################
+#
+# Workforce Applications Feature
+#
+# The selection state of the Workforce Application feature. Legal values are:
+# 
+#    true  - Indicates that the feature is selected for uninstall
+#    false - Indicates that the feature is not selected for uninstall
+# 
+# For example, to select "Workforce Timekeeper" for uninstall, use
+# 
+#    -P wtkfeature.activeForUninstall=true
+#
+# NOTE: To do a complete uninstall, the activeForUninstall property for 
+#       all features must be set to true
+#
+
+-P suitefeature.activeForUninstall=true
+-P wtkfeature.activeForUninstall=true
+-P wfsfeature.activeForUninstall=true
+-P wfsofeature.activeForUninstall=true
+-P wfopfeature.activeForUninstall=true
+-P wflfeature.activeForUninstall=true
+-P watpfeature.activeForUninstall=true
+-P tidfeature.activeForUninstall=true
+-P wfafeature.activeForUninstall=true
+
+
+################################################################################
+#
+# Indicates if all files and directories in the install directory 
+# should be deleted.
+#
+# This includes files and directories that were not laid down by the installer
+# 
+#    true  - Delete all files and directories
+#    false - Only delete files laid down by the installer
+# 
+#
+# NOTE: This property is ignored unless 
+#       suitefeature.activeForUninstall=true
+
+-W FileDeleteDlgBean.deleteAllFiles=true

@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Switch Database Properties" basedir=".">
+
+	<!-- update.database.settings is the main target.  When it is called from copy-ear it does NOT 
+			use the db-switcher.properties database settings.  Instead copy-ear reads the database settings 
+			from the existing installation.  Since they are already set, the values set in the 
+			db-switcher.properties file are ignored
+	-->
+
+	<property environment="env"/>
+	<property name="kronos.dir" value="${installLocation}"/>
+
+	<property name="kronos.staging.applications.dir" value="wfc/applications"/>
+	<property name="kronos.staging.webinf.dir" value="${kronos.dir}/wfc/web-inf"/>
+	<property name="kronos.deploy.dir" value="jboss/wfc/deployments/wfc.ear/wfc.war/applications"/>
+	<property name="kronos.wfc.ear.dir" value="${kronos.dir}/jboss/wfc/deployments/wfc.ear"/>
+	<property name="kronos.encryption.jar" value="${kronos.dir}/deployments/release/wfp_staging/app_server/applications/wpk/lib/platform_persistence_framework.jar"/>
+	<property name="kronos.encryption.class" value="com.kronos.wfc.platform.persistence.framework.internal.KronosPassword"/>
+	<property name="site.db.properties.file" value="${kronos.dir}/wfc/applications/wpk/properties/WPKSite.properties"/>
+	<property name="wfc.ear.template.dir" value="./wfc.ear" />
+	<property name="staging.applications.template.dir" value="./applications" />
+	<property name="staging.webinf.template.dir" value="./web-inf" />
+	<property name="kronos.config.instances.path" value="configuration/instances" />
+	<property name="openfire.path" value="openfire" />
+	
+	<!-- verify that the required db property has been set -->
+	<condition property="db.to.switch" value="microsoft">
+		<istrue value="${switch.db.to.microsoft}" />
+	</condition>
+	<condition property="db.to.switch" value="oracle">
+		<istrue value="${switch.db.to.oracle}" />
+	</condition>
+
+	<condition property="configure.for.microsoft.database">
+		<istrue value="${switch.db.to.microsoft}" />
+	</condition>
+	<condition property="configure.for.oracle.database">
+		<istrue value="${switch.db.to.oracle}" />
+	</condition>
+
+    <fileset id="all.sqlserver.sql.strings.files.id"
+		dir="${kronos.dir}/wfc/applications">
+      	<include name="**/*SQLStringsS*.properties"/>
+    </fileset>
+  
+    <!-- <pathconvert pathsep="," property="all.sqlserver.sql.strings.files" refid="all.sqlserver.sql.strings.files.id"/> -->
+
+	<fileset id="HostInstance.files"
+		dir="${kronos.dir}">
+		<include name="${kronos.config.instances.path}/host.properties"/>
+		<include name="${kronos.config.instances.path}/wfc.properties"/>
+	</fileset>
+	
+	<fileset id="OpenFireProperties.files"
+		dir="${kronos.dir}">
+		<include name="openfire/configuration/ns.properties"/>
+	</fileset>
+	<fileset id="OpenFireXML.files"
+		dir="${kronos.dir}">
+		<include name="openfire/ns/conf/openfire.xml"/>
+	</fileset>
+
+	<fileset id="wpksite.files"
+		dir="${kronos.dir}">
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wpk/properties/wpksite.properties"/>
+		<include name="wfc/applications/wpk/properties/wpksite.properties"/>
+	</fileset>
+
+	<fileset id="SiteServer.files"
+		dir="${kronos.dir}">
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wpk/properties/SiteServer.properties"/>
+		<include name="wfc/applications/wpk/properties/SiteServer.properties"/>
+	</fileset>
+
+	<fileset id="SiteDsnname.files"
+		dir="${kronos.dir}">
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wpk/properties/SiteDsnname.properties"/>
+		<include name="wfc/applications/wpk/properties/SiteDsnname.properties"/>
+	</fileset>
+
+	<fileset id="WRM_ProductionDatabase.files"
+		dir="${kronos.dir}">
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wrm/properties/WRM_ProductionDatabase.properties"/>
+		<include name="wfc/applications/wrm/properties/WRM_ProductionDatabase.properties"/>
+	</fileset>
+
+	<fileset id="WRM_Site.files"
+		dir="${kronos.dir}">
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wrm/properties/WRM_Site.properties"/>
+		<include name="wfc/applications/wrm/properties/WRM_Site.properties"/>
+	</fileset>
+
+	<fileset id="deployed.Site.properties.files"
+		dir="${kronos.wfc.ear.dir}/wfc.war/applications"
+		includes="**/*Site.properties,**/*site.properties"/>
+
+  	<fileset id="staged.Site.properties.files"
+		dir="${kronos.dir}/${kronos.staging.applications.dir}"
+   		includes="**/*Site.properties"/>
+
+	<fileset id="sqlserver.sql.strings.files"
+		dir="${kronos.dir}/wfc/applications"
+		includes="*SQLStringsS*.properties"/>
+
+	<fileset id="oracle.sql.strings.files"
+		dir="${kronos.dir}/wfc/applications"
+		includes="*SQLStringsORACLE.properties"/>
+
+	<fileset id="SQLServer.strings.files"
+		dir="${kronos.dir}">
+		<include name="wfc/applications/abk/properties/ABKSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/abk/properties/ABKSite.properties"/>
+		<include name="wfc/applications/wsaaccruals/properties/WSAACCRUALSSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wsaaccruals/properties/WSAACCRUALSSite.properties"/>
+		<include name="wfc/applications/wat/properties/WATSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wat/properties/WATSite.properties"/>
+		<include name="wfc/applications/wfop/properties/WFOP_Site.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wfop/properties/WFOP_Site.properties"/>
+		<include name="wfc/applications/wfso/properties/WFSO_Site.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wfso/properties/WFSO_Site.properties"/>
+	</fileset>
+
+	<fileset id="SQLSvr.strings.files"
+		dir="${kronos.dir}">
+		<include name="wfc/applications/calendar/properties/CALENDARSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/calendar/properties/CALENDARSite.properties"/>
+		<include name="wfc/applications/ems/properties/EMSSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/ems/properties/EMSSite.properties"/>
+		<include name="wfc/applications/ta/properties/TRANSACTIONASSISTANTSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/ta/properties/TRANSACTIONASSISTANTSite.properties"/>
+		<include name="wfc/applications/wba/properties/WBASite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wba/properties/WBASite.properties"/>
+		<include name="wfc/applications/wdbi/properties/WDBISite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wdbi/properties/WDBISite.properties"/>
+		<include name="wfc/applications/wtd/properties/WTDSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wtd/properties/WTDSite.properties"/>
+		<include name="wfc/applications/wtk/properties/WTKSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wtk/properties/WTKSite.properties"/>
+		<include name="wfc/applications/wtrbs/properties/RBSSite.properties"/>
+		<include name="jboss/wfc/deployments/wfc.ear/wfc.war/applications/wtrbs/properties/RBSSite.properties"/>
+	</fileset>
+	
+	<fileset id="JBoss.run.bat.file"
+		dir="${kronos.dir}/jboss/bin">
+		<include name="run.bat"/>
+	</fileset>
+	
+	<property name="temp.file.for.db.properties" value="temp-dbproperties"/>
+	<property name="switch-db.properties" value="db-switcher.properties"/>
+	
+	<!--  ======================================================================  --> 
+	<!--  										Targets							  -->
+	<!--  ======================================================================  --> 
+
+	<target name="update.database.settings"
+		depends="set.start.time,
+				 switch.db.type,
+				 update.site.database.properties,
+				 update.jboss.run.bat.file,
+				 report.changed.files"
+		
+		if="site.db.properties.are.set">
+		<!-- description="Top level target that updates site.database properties AND switches database type (Oracle/SQL Server)" -->
+	</target>
+
+	<target name="set.start.time">
+		<tstamp>
+			<format property="formatted.start.time" pattern="MM/dd/yyyy hh:mm aa"
+				offset="-1" unit="minute"/>
+		</tstamp>
+		<echo message="Starting switch db at ${formatted.start.time}"/>
+	</target>
+
+	<target name="report.changed.files" depends="set.start.time">
+
+		<echo message="The following files were modified since ${formatted.start.time}:"/>
+		<pathconvert pathsep="${line.separator}" property="modified.files">
+			<fileset dir="${kronos.dir}/">
+				<date datetime="${formatted.start.time}" when="after"/>
+				<include name="${kronos.staging.applications.dir}/**/*.properties"/>
+				<!-- <include name="${kronos.staging.applications.dir}/**/*.xml"/> -->
+				<include name="${kronos.deploy.dir}/**/*.properties"/>
+				<include name="jboss/bin/run.bat"/>
+				<include name="${kronos.config.instances.path}/**/*.properties"/>
+				<include name="openfire/**/*.properties"/>
+				<include name="openfire/**/*.xml"/>
+			</fileset>
+		</pathconvert>
+		<echo message="${modified.files}" />
+
+	</target>
+
+	<!--  ======================================================================  --> 
+	<!--  Targets for switching between SQL Server and Oracle databases			  -->
+	<!--  ======================================================================  --> 
+	<target name="switch.db.type"
+		depends="load.desired.site.db.properties,
+				 translate.HostInstance.file,
+				 translate.OpenFireProperties.file,
+				 translate.OpenFireXML.file,
+				 set.SQL.strings.for.Oracle,
+				 set.SQL.strings.for.SQLServer,
+				 set.site.database.password,
+				 postprocess.sqlserver.refs.in.database.type.properties"
+		/>
+		<!-- description="Configures the database type based upon the configure.for.oracle.database property in ${switch-db.properties}" -->
+
+	<target name="process.database.type.properties"
+		>
+		<!-- description="Make sure each xxSite.properties file references the SQL Strings for the correct database" -->
+		<echo message="Changing SQLStrings${incorrect.sql.stmts.for.db}.properties to SQLStrings${correct.sql.stmts.for.db}.properties in deployed properties files"/>
+		<replaceregexp byline="true"
+			flags="gi"
+			match="(.*)=(.*)_${incorrect.sql.stmts.for.db}_sqlstrings(.*)"
+		  	replace="\1=\2_${correct.sql.stmts.for.db}_sqlstrings\3">
+			<fileset refid="deployed.Site.properties.files"/>
+		 </replaceregexp>
+		<echo message="Changing SQLStrings${incorrect.sql.stmts.for.db}.properties to SQLStrings${correct.sql.stmts.for.db}.properties in staging area's properties files"/>
+		<replaceregexp byline="true"
+			flags="gi"
+			match="(.*)=(.*)_${incorrect.sql.stmts.for.db}_sqlstrings(.*)"
+		  	replace="\1=\2_${correct.sql.stmts.for.db}_sqlstrings\3">
+			<fileset refid="staged.Site.properties.files"/>
+		 </replaceregexp>
+	</target>
+		
+	<target name="postprocess.sqlserver.refs.in.database.type.properties"
+		
+		depends="process.database.type.properties"
+		unless="configure.for.oracle.database">
+		<!-- description="Compensates for property files named *SQLStringsSQLServer and *SQLStringsSQLSvr" -->
+		
+		<echo message="Changing SQLStringsSQLSVR.properties to SQLStringsSQLServer.properties in xxSite.properties files"/>
+		<replaceregexp byline="true"
+			flags="g"
+			match="(.*)=(.*)SQLStringsSQLSVR(.*)"
+		  	replace="\1=\2SQLStringsSQLServer\3">
+		  	<fileset refid="SQLServer.strings.files"/>
+		 </replaceregexp>
+		<echo message="Changing SQLStringsSQLSVR.properties to SQLStringsSQLSvr.properties in xxSite.properties files"/>
+		<replaceregexp byline="true"
+			flags="gi"
+			match="(.*)=(.*)SQLStringsSQLSVR(.*)"
+		  	replace="\1=\2SQLStringsSQLSvr\3">
+		  	<fileset refid="SQLSvr.strings.files"/>
+		 </replaceregexp>
+	</target>
+
+	<target name="set.oracle.url.substring"
+		depends="get.database.properties"
+		if="database.type.is.oracle"
+		>
+		<!-- description="Sets the oracle.url.substring property" -->
+		<echoproperties destfile="temp.propertyfile">
+		    <propertyset>
+		      <propertyref prefix="site.database.url"/>
+		    </propertyset>
+		</echoproperties>
+		<replaceregexp byline="true"
+			file="temp.propertyfile"
+			flags="gi"
+			match="site.database.url=(.*)thin\\:@(.*)"
+		  	replace="site.oracle.url.substring=\2">
+		</replaceregexp>
+	  	<loadproperties srcfile="temp.propertyfile"/>
+	    <delete file="temp.propertyfile" failonerror="false"/>
+		<echo message="site.oracle.url.substring = ${site.oracle.url.substring}"/>
+	</target>
+	
+	<target name="get.database.properties"
+		>
+		<!-- description="Read the database type from wpksite.properties" -->
+		<loadproperties srcfile="${kronos.dir}/${kronos.deploy.dir}/wpk/properties/wpksite.properties">
+			<filterchain>
+		        <linecontainsregexp>
+		          	<regexp pattern="site.database.*="/>
+		        </linecontainsregexp>
+		    </filterchain>
+		</loadproperties>
+		<condition property="database.type.is.oracle">
+			<equals arg1="${site.database.drv}" arg2="oracle.jdbc.driver.OracleDriver" 
+				casesensitive="false" trim="true"/>
+		</condition>
+		<echo message="database.type.is.oracle is set to ${database.type.is.oracle}"/>
+	</target>
+
+	<target name="write.database.properties.to.file"
+		depends="write.common.database.properties.to.file,
+				 write.specific.database.properties.to.file"
+		>
+		<!-- description="Writes the current 'active' site db properties to temp-sitedatabase.properties" -->
+		<echo message="Writing database properties to ${temp.file.for.db.properties}"/>
+		<fixcrlf srcDir="." includes="${temp.file.for.db.properties}"/>
+	</target>
+	
+	<target name="write.common.database.properties.to.file"
+		depends="get.database.properties">
+	    <echoproperties destfile="${temp.file.for.db.properties}"
+			prefix="site.database."/>
+	</target>
+	
+	<target name="write.specific.database.properties.to.file"
+		depends="get.database.properties,
+				 set.oracle.url.substring"
+		if="database.type.is.oracle">
+		<echo file="${temp.file.for.db.properties}"
+			append="true">database.type.is.oracle=${database.type.is.oracle}"
+site.oracle.url.substring=${site.oracle.url.substring}</echo>
+	</target>
+	
+	<target name="read.desired.site.db.properties"
+		>
+		<!-- description="Reads the user's desired db settings from ${switch-db.properties}" -->
+		<loadproperties srcfile="${switch-db.properties}"></loadproperties>
+	</target>
+
+	<target name="load.desired.site.db.properties" 
+		depends="read.desired.site.db.properties,
+		 		 set.site.db.props.to.sqlserver,
+				 set.site.db.props.to.oracle"
+		>
+		<!-- description="Loads the site database properties from site.database.*.prop properties" -->
+		<echo message="database server:${site.database.server}"/>
+		<echo message="database port:${site.database.port}"/>
+		<echo message="database name:${site.database.names}"/>
+		<echo message="database dsn:${site.database.dsn}"/>
+		<echo message="database dsn.pwd.rsa:${site.database.dsn.pwd.rsa}"/>
+		<echo message="database user:${site.database.usr}"/>
+		<echo message="database password:${site.database.password}"/>
+		<echo message="database url:${site.database.url}"/>
+		<echo message="database driver:${site.database.drv}"/>
+	</target>
+
+	<target name="set.site.db.props.to.sqlserver"
+		unless="configure.for.oracle.database"
+		>
+		<!-- description="Sets site.database.* properties to correct values for SQL Server database" -->
+		<property name="site.database.server" value="${site.database.server.sqlsvr.prop}"/>
+		<property name="site.database.port" value="${site.database.port.sqlsvr.prop}"/>
+		<property name="site.database.names" value="${site.database.names.sqlsvr.prop}"/>
+		<property name="site.database.dsn" value="${site.database.dsn.sqlsvr.prop}"/>
+		<property name="site.database.dsn.pwd.rsa" value="${site.database.dsn.pwd.rsa.sqlsvr.prop}"/>
+		<property name="site.database.usr" value="${site.database.usr.sqlsvr.prop}"/>
+		<property name="site.database.password" value="${site.database.password.sqlsvr.prop}"/>
+		<property name="site.database.url" value="${site.database.url.sqlsvr.prop}"/>
+		<property name="site.database.drv" value="${site.database.drv.sqlsvr.prop}"/>
+	</target>
+	
+	<target name="set.site.db.props.to.oracle"
+		if="configure.for.oracle.database"
+		>
+		<!-- description="Sets site.database.* properties to correct values for Oracle database" -->
+		<property name="site.database.server" value="${site.database.server.oracle.prop}"/>
+		<property name="site.database.port" value="${site.database.port.oracle.prop}"/>
+		<property name="site.database.names" value="${site.database.names.oracle.prop}"/>
+		<property name="site.database.dsn" value="${site.database.dsn.oracle.prop}"/>
+		<property name="site.database.dsn.pwd.rsa" value="${site.database.dsn.pwd.rsa.oracle.prop}"/>
+		<property name="site.database.usr" value="${site.database.usr.oracle.prop}"/>
+		<property name="site.database.password" value="${site.database.password.oracle.prop}"/>
+		<property name="site.database.url" value="${site.database.url.oracle.prop}"/>
+		<property name="site.database.drv" value="${site.database.drv.oracle.prop}"/>
+	</target>
+	
+	<target name="set.SQL.strings.for.Oracle"
+		if="configure.for.oracle.database"
+		>
+		<!-- description="Sets property so that SQLStringsSQLSvr will be changed to SQLStringsORACLE" -->
+		
+		<!-- 12/4/2007 property name="incorrect.sql.stmts.for.db" value="SQLS[ERSV]*"/ -->
+		<!-- 12/4/2007 property name="correct.sql.stmts.for.db" value="ORACLE"/ -->
+		<property name="incorrect.sql.stmts.for.db" value="mss"/>
+		<property name="correct.sql.stmts.for.db" value="oracle"/>
+	</target>
+
+	<target name="set.SQL.strings.for.SQLServer"
+		unless="configure.for.oracle.database"
+		>
+		<!-- description="Sets property so that SQLStringsORACLE will be changed to SQLStringsSQLSvr" -->
+		
+		<!-- 12/4/2007 property name="incorrect.sql.stmts.for.db" value="ORACLE"/ -->
+		<!-- 12/4/2007 property name="correct.sql.stmts.for.db" value="SQLSVR"/ -->
+		<property name="incorrect.sql.stmts.for.db" value="oracle"/>
+		<property name="correct.sql.stmts.for.db" value="mss"/>
+	</target>
+
+	<target name="update.jboss.run.bat.file"
+		depends="update.jboss.run.bat.file.for.oracle,
+				 update.jboss.run.bat.file.for.sqlserver"
+		/>
+	<!-- description="Adds/removes JAVA_OPTION that is only needed for Oracle" -->
+
+	<target name="update.jboss.run.bat.file.for.oracle"
+		if="configure.for.oracle.database"
+		>
+		<!-- description="Adds JAVA_OPTION that is needed only for Oracle" -->
+		<echo message="Editing ${kronos.dir}/jboss/bin/run.bat for oracle installation..."/>
+		<replaceregexp
+			match="set JAVA_OPTS=%JAVA_OPTS% -Xms128m -Xmx512m"
+			replace="set JAVA_OPTS=%JAVA_OPTS% -Xms128m -Xmx512m -Doracle.jdbc.V8Compatible=true">
+			<fileset refid="JBoss.run.bat.file"/>
+		</replaceregexp>
+	</target>
+
+	<target name="update.jboss.run.bat.file.for.sqlserver"
+		unless="configure.for.oracle.database"
+		>
+		<!-- description="Removes JAVA_OPTION that is needed only for Oracle" -->
+		<echo message="Editing ${kronos.dir}/jboss/bin/run.bat for SQL Server installation..."/>
+		<replaceregexp
+			match="set JAVA_OPTS=%JAVA_OPTS% -Xms128m -Xmx512m -Doracle.jdbc.V8Compatible=true"
+			replace="set JAVA_OPTS=%JAVA_OPTS% -Xms128m -Xmx512m">
+			<fileset refid="JBoss.run.bat.file"/>
+		</replaceregexp>
+	</target>
+
+	<!--  ======================================================================  --> 
+	<!--  Targets for updating site.database properties                           -->
+    <!--  (Agnostic regarding SQL Server/Oracle issues)                           -->
+	<!--  ======================================================================  --> 
+	<target name="update.site.database.properties"
+		depends="check.site.db.properties,
+				 translate.wpksite.file"
+		if="site.db.properties.are.set"
+		/>
+		<!-- description="Substitutes site.database property values, agnostic regarding Oracle/SQL Server" -->
+	
+	<target name="translate.wpksite.file"
+		depends="translate.SiteServer.file"
+		>
+		<!-- description="Translate site.database.* properties in wpk/properties/wpksite.properties" -->
+		<replaceregexp  
+			match="(site.database.port)=(.*)" 
+			replace="\1=${site.database.port}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.database.names)=(.*)" 
+			replace="\1=${site.database.names}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.database.dsn)=(.*)" 
+			replace="\1=${site.database.dsn}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.database.usr)=(.*)" 
+			replace="\1=${site.database.usr}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.database.pwd)=(.*)" 
+			replace="\1=${encrypted.site.database.pwd}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.database.url)=(.*)" 
+			replace="\1=${site.database.url}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.database.drv)=(.*)" 
+			replace="\1=${site.database.drv}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.security.SSL.FQDN)=(.*)" 
+			replace="\1=${env.COMPUTERNAME}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp>
+		<!-- replaceregexp 
+			match="(site.database.server)=(.*)" 
+			replace="\1=${site.database.server}" byline="true">
+		  	<fileset refid="wpksite.files"/>
+		</replaceregexp> -->
+	</target>
+
+	<target name="translate.HostInstance.file"
+		depends="translate.HostInstance.file.to.oracle,
+				 translate.HostInstance.file.to.sqlserver"
+		>
+		<!-- description="Translate host properties to dbtype in configuration/instances/host.properties and wfc.properties" -->
+	</target>
+	<target name="translate.HostInstance.file.to.oracle"
+	    if="configure.for.oracle.database"
+		>
+		<!-- description="Translate host properties to oracle in configuration/instances/host.properties and wfc.properties" -->
+		<replaceregexp 
+			match="(install.dbplatform) = (.*)" 
+			replace="\1 = oracle" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.dbport) = (.*)" 
+			replace="\1 = ${site.database.port.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.usr) = (.*)" 
+			replace="\1 = ${site.database.usr.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.pwd) = (.*)" 
+			replace="\1 = ${site.database.password.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.url) = (.*)" 
+			replace="\1 = ${site.database.url.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.names) = (.*)" 
+			replace="\1 = ${site.database.names.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.dbserver) = (.*)" 
+			replace="\1 = ${site.database.server.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.drv) = (.*)" 
+			replace="\1 = ${site.database.drv.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.dotnetDBConnection) = (.*)" 
+			replace="\1 = ${site.database.dotnetDBConnection.oracle.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		
+<!--		
+install.dbport = 1433
+install.site.database.usr = sa
+install.site.database.pwd = 1526243F27303A3C213074
+install.site.database.url = jdbc:sqlserver://kdt-ca-vejvoda2:1433;databaseName=wfc_mv;
+install.site.database.names = wfc_mv
+install.dbserver = kdt-ca-vejvoda2
+install.site.database.drv = com.microsoft.sqlserver.jdbc.SQLServerDriver
+install.site.database.dotnetDBConnection = Data Source=kdt-ca-vejvoda2,1433;Initial Catalog=wfc_mv;
+install.dbplatform = mss
+
+install.dbport = 1521
+install.site.database.usr = sa
+install.site.database.pwd = 1526243F27303A3C213074
+install.site.database.url = jdbc:oracle:thin:@kdt-ca-vejvoda2:1521:wfc_mv
+install.site.database.names = wfc_mv
+install.dbserver = kdt-ca-vejvoda2
+install.site.database.drv = oracle.jdbc.OracleDriver
+install.site.database.dotnetDBConnection = Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=kdt-ca-vejvoda2)(PORT=1521))(CONNECT_DATA=(SID=wfc_mv)));Unicode=true;
+install.dbplatform = oracle
+
+-->
+		
+	</target>
+	<target name="translate.HostInstance.file.to.sqlserver"
+	    unless="configure.for.oracle.database"
+		>
+		<!-- description="Translate host properties to mss in configuration/instances/host.properties and wfc.properties" -->
+		<replaceregexp 
+			match="(install.dbplatform) = (.*)" 
+			replace="\1 = mss" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.dbport) = (.*)" 
+			replace="\1 = ${site.database.port.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.usr) = (.*)" 
+			replace="\1 = ${site.database.usr.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.pwd) = (.*)" 
+			replace="\1 = ${site.database.password.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.url) = (.*)" 
+			replace="\1 = ${site.database.url.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.names) = (.*)" 
+			replace="\1 = ${site.database.names.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.dbserver) = (.*)" 
+			replace="\1 = ${site.database.server.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.drv) = (.*)" 
+			replace="\1 = ${site.database.drv.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(install.site.database.dotnetDBConnection) = (.*)" 
+			replace="\1 = ${site.database.dotnetDBConnection.sqlsvr.prop}" byline="true">
+			<fileset refid="HostInstance.files"/>
+		</replaceregexp>
+		
+	</target>
+	
+	<target name="translate.OpenFireProperties.file"
+		depends="translate.OpenFireProperties.file.to.oracle,
+				 translate.OpenFireProperties.file.to.sqlserver"
+		>
+		<!-- description="Translate openfire properties to dbtype" -->
+	</target>
+	<target name="translate.OpenFireProperties.file.to.oracle"
+	    if="configure.for.oracle.database"
+		>
+		<!-- description="Translate openfire properties to oracle" -->
+
+<!--		
+@site.database.drv@ = oracle.jdbc.OracleDriver
+@site.database.url@ = jdbc:oracle:thin:@kdt-ca-vejvoda2:1521:wfc_mv
+@dbserver@ = kdt-ca-vejvoda2
+@site.database.names@ = wfc_mv
+@site.database.usr@ = sa
+@site.database.pwd@ = 1526243F27303A3C213074
+		-->
+		<replaceregexp 
+			match="(\@site.database.drv\@) = (.*)" 
+			replace="\1 = ${site.database.drv.oracle.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.url\@) = (.*)" 
+			replace="\1 = ${site.database.url.oracle.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@dbserver\@) = (.*)" 
+			replace="\1 = ${site.database.server.oracle.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.names\@) = (.*)" 
+			replace="\1 = ${site.database.names.oracle.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.usr\@) = (.*)" 
+			replace="\1 = ${site.database.usr.oracle.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.pwd\@) = (.*)" 
+			replace="\1 = ${site.database.password.oracle.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		
+	</target>
+	<target name="translate.OpenFireProperties.file.to.sqlserver"
+	    unless="configure.for.oracle.database"
+		>
+		<!-- description="Translate openfire properties to sqlserver" -->
+
+<!--		
+@site.database.drv@ = com.microsoft.sqlserver.jdbc.SQLServerDriver
+@site.database.url@ = jdbc:sqlserver://kdt-ca-vejvoda2:1433;databaseName=wfc_mv;
+@dbserver@ = kdt-ca-vejvoda2
+@site.database.names@ = wfc_mv
+@site.database.usr@ = sa
+@site.database.pwd@ = 1526243F27303A3C213074
+		-->
+		<replaceregexp 
+			match="(\@site.database.drv\@) = (.*)" 
+			replace="\1 = ${site.database.drv.sqlsvr.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.url\@) = (.*)" 
+			replace="\1 = ${site.database.url.sqlsvr.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@dbserver\@) = (.*)" 
+			replace="\1 = ${site.database.server.sqlsvr.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.names\@) = (.*)" 
+			replace="\1 = ${site.database.names.sqlsvr.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.usr\@) = (.*)" 
+			replace="\1 = ${site.database.usr.sqlsvr.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(\@site.database.pwd\@) = (.*)" 
+			replace="\1 = ${site.database.password.sqlsvr.prop}" byline="true">
+			<fileset refid="OpenFireProperties.files"/>
+		</replaceregexp>
+	</target>
+	
+	<target name="translate.OpenFireXML.file"
+		depends="translate.OpenFireXML.file.to.oracle,
+				 translate.OpenFireXML.file.to.sqlserver"
+		>
+		<!-- description="Translate openfire XML to dbtype" -->
+	</target>
+	<target name="translate.OpenFireXML.file.to.oracle"
+	    if="configure.for.oracle.database"
+		>
+		<!-- description="Translate openfire XML to oracle" -->
+
+<!--		
+  <database> 
+    <driver>oracle.jdbc.OracleDriver</driver>  
+    <url>jdbc:oracle:thin:@kdt-ca-vejvoda2:1521:wfc_mv</url>  
+    <username>sa</username>  
+    <password>1526243F27303A3C213074</password>  
+		-->
+		<replaceregexp 
+			match="(\s*)(&lt;database&gt;)(\s*)(&lt;driver&gt;)(.*)(&lt;\/driver&gt;)(\s*)(&lt;url&gt;)(.*)(&lt;\/url&gt;)(\s*)(&lt;username&gt;)(.*)(&lt;\/username&gt;)(\s*)(&lt;password&gt;)(.*)(&lt;\/password&gt;)"  
+			flags="gim"
+			replace="\1\2\3\4${site.database.drv.oracle.prop}\6\7\8${site.database.url.oracle.prop}\10\11\12${site.database.usr.oracle.prop}\14\15\16${site.database.password.oracle.prop}\18" 
+			byline="false">
+			<fileset refid="OpenFireXML.files"/>
+		</replaceregexp>
+	</target>
+	<target name="translate.OpenFireXML.file.to.sqlserver"
+	    unless="configure.for.oracle.database"
+		>
+		<!-- description="Translate openfire XML to sqlserver" -->
+
+<!--		
+  <database> 
+    <driver>oracle.jdbc.OracleDriver</driver>  
+    <url>jdbc:oracle:thin:@kdt-ca-vejvoda2:1521:wfc_mv</url>  
+    <username>sa</username>  
+    <password>1526243F27303A3C213074</password>  
+-->
+		<replaceregexp 
+			match="(\s*)(&lt;database&gt;)(\s*)(&lt;driver&gt;)(.*)(&lt;\/driver&gt;)(\s*)(&lt;url&gt;)(.*)(&lt;\/url&gt;)(\s*)(&lt;username&gt;)(.*)(&lt;\/username&gt;)(\s*)(&lt;password&gt;)(.*)(&lt;\/password&gt;)"  
+			flags="gim"
+			replace="\1\2\3\4${site.database.drv.sqlsvr.prop}\6\7\8${site.database.url.sqlsvr.prop}\10\11\12${site.database.usr.sqlsvr.prop}\14\15\16${site.database.password.sqlsvr.prop}\18" 
+			byline="false">
+			<fileset refid="OpenFireXML.files"/>
+		</replaceregexp>
+	</target>
+	
+	<target name="translate.SiteServer.file"
+		depends="translate.SiteDsnname.file"
+		>
+		<!-- description="Translate server property in wpk/properties/SiteServer.properties" -->
+		<replaceregexp 
+			match="(server)=(.*)" 
+			replace="\1=${env.COMPUTERNAME}" byline="true">
+			<fileset refid="SiteServer.files"/>
+		</replaceregexp>
+	</target>
+
+	<target name="translate.SiteDsnname.file"
+		depends="translate.WRM_ProductionDatabase.file"
+		>
+		<!-- description="Translate properties in wpk/properties/SiteDsnname.properties" -->
+		<replaceregexp 
+			match="(dsnname.name)=(.*)" 
+			replace="\1=${site.database.dsn}" byline="true">
+			<fileset refid="SiteDsnname.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(dsnname.usr)=(.*)" 
+			replace="\1=${site.database.usr}" byline="true">
+			<fileset refid="SiteDsnname.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(dsnname.pwd.rsa)=(.*)" 
+			replace="\1=${site.database.dsn.pwd.rsa}" byline="true">
+			<fileset refid="SiteDsnname.files"/>
+		</replaceregexp>
+	</target> 
+
+	<target name="translate.WRM_ProductionDatabase.file"
+		depends="translate.WRM_Site.file.to.oracle"
+		>
+		<!-- description="Translate properties in wrm/properties/WRM_ProductionDatabase.properties" -->
+		<replaceregexp 
+			match="(site.master.url)=(.*)" 
+			replace="\1=${site.database.url}" byline="true">
+			<fileset refid="WRM_ProductionDatabase.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.master.usr)=(.*)" 
+			replace="\1=${site.database.usr}" byline="true">
+			<fileset refid="WRM_ProductionDatabase.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.master.pwd)=(.*)" 
+			replace="\1=${encrypted.site.database.pwd}" byline="true">
+			<fileset refid="WRM_ProductionDatabase.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.master.dsn)=(.*)" 
+			replace="\1=${site.database.dsn}" byline="true">
+			<fileset refid="WRM_ProductionDatabase.files"/>
+		</replaceregexp>
+		<replaceregexp 
+			match="(site.master.drv)=(.*)" 
+			replace="\1=${site.database.drv}" byline="true">
+			<fileset refid="WRM_ProductionDatabase.files"/>
+		</replaceregexp>
+	</target>
+
+	<target name="translate.WRM_Site.file.to.oracle"
+		depends="translate.WRM_Site.file.to.sqlserver"
+		if="configure.for.oracle.database"
+		>
+		<!-- description="Translate properties in wrm/properties/WRM_Site.properties" -->
+		<replaceregexp 
+			match="(wrm_site.service.sql.strings.file.second=WRM_SQLStrings_)mss(.*)" 
+			replace="\1oracle\2" byline="true">
+			<fileset refid="WRM_Site.files"/>
+		</replaceregexp>
+	</target>
+
+	<target name="translate.WRM_Site.file.to.sqlserver"
+		unless="configure.for.oracle.database"
+		>
+		<!-- description="Translate properties in wrm/properties/WRM_Site.properties" -->
+		<replaceregexp 
+			match="(wrm_site.service.sql.strings.file.second=WRM_SQLStrings_)oracle(.*)" 
+			replace="\1mss\2" byline="true">
+			<fileset refid="WRM_Site.files"/>
+		</replaceregexp>
+	</target>
+
+	<target name="add.sqlserver.strings.file.to.site.properties.file">
+		<basename property="sqlserver.strings.file.basename" file="${sqlserver.strings.file}"/>
+		<dirname property="sqlserver.strings.file.dirname" file="${sqlserver.strings.file}"/>
+		<!-- there will be only one of these -->
+		<fileset dir="${sqlserver.strings.file.dirname}" id="site.property.file.id">
+			<include name="*Site.properties"/>
+		</fileset>
+		<!-- convert the fileset to a property -->
+		<pathconvert targetos="windows" property="site.property.file" refid="site.property.file.id"/>
+		<echo message="Setting XXXSite.service.sql.strings.file.second=${sqlserver.strings.file.basename} in ${site.property.file}"/>
+		<replaceregexp file="${site.property.file}"
+			match="(.*)Site.service.sql.strings.file.second=(.*)"
+            replace="\1Site.service.sql.strings.file.second=${sqlserver.strings.file.basename}"
+            byline="true"/>
+	</target>
+
+	<!--  ======================================================================  --> 
+	<!-- Actions related to site database configuration -->
+	<!--  ======================================================================  --> 
+	<target name="check.site.db.properties" 
+		>
+		<!-- description="Checks that the site.database properties are set" -->
+		<echo message="database server:${site.database.server}"/>
+		<echo message="database port:${site.database.port}"/>
+		<echo message="database name:${site.database.names}"/>
+		<echo message="database dsn:${site.database.dsn}"/>
+		<echo message="database dsn.pwd.rsa:${site.database.dsn.pwd.rsa}"/>
+		<echo message="database user:${site.database.usr}"/>
+		<echo message="database password:${site.database.password}"/>
+		<echo message="database url:${site.database.url}"/>
+		<echo message="database driver:${site.database.drv}"/>
+		<echo message="configure.for.oracle.database is set to ${configure.for.oracle.database}"/>
+		<condition property="site.db.properties.are.set"
+			value="true">
+			<and>
+				<isset property="site.database.server"/>
+				<isset property="site.database.port"/>
+				<isset property="site.database.names"/>
+				<isset property="site.database.dsn"/>
+				<isset property="site.database.usr"/>
+				<isset property="site.database.password"/>
+				<isset property="site.database.url"/>
+				<isset property="site.database.drv"/>
+			</and>
+		</condition>
+		<echo message="site.db.properties.are.set = ${site.db.properties.are.set}"/>
+	</target>
+
+	<target name="encrypt.site.database.password" 
+		unless="encrypted.site.database.pwd">
+
+		<loadproperties srcFile="${kronos.dir}/${kronos.config.instances.path}/wfc.properties">
+		  <filterchain>
+			<linecontains>
+			  <contains value="install.random.value"/>
+			</linecontains>
+		  </filterchain>
+		</loadproperties>
+		
+		<!-- install.random.value = cdf3f0g3p47vt9dmrmv02jish8 -->
+		<echo message="Encrypting password using random value [${install.random.value}]"/>
+		
+		<!-- description="Encrypts the database password and stores it in the encrypted.site.database.pwd property" -->
+		<echo message="Encrypting password using ${kronos.encryption.class} from ${kronos.encryption.jar}"/>
+		
+	    <available classname="${kronos.encryption.class}" 
+	    	classpath="${kronos.encryption.jar}"
+	    	property="KronosPassword.class.is.present"/>
+			
+		<echo message="KronosPassword.class.is.present = ${KronosPassword.class.is.present}"/>
+		
+		<java classname="${kronos.encryption.class}" 
+			classpath="${kronos.encryption.jar}" 
+			outputproperty="encrypted.site.database.pwd"
+			errorproperty="encrypt.site.database.password.error">
+			<arg value="${site.database.password}"/> 
+			<arg value="${install.random.value}"/> 
+		</java>
+		
+		<echo message="Password encryption: ${site.database.password} -> ${encrypted.site.database.pwd}"/>
+	</target>
+			
+	<target name="test.encrypt.site.database.password.error.nonnull" 
+		depends="encrypt.site.database.password"
+		>
+		<!-- description="Tests whether a non-null error message resulted from encryption of the password" -->
+		<condition property="encrypt.site.database.password.error.nonnull"
+			value="true">
+			<and>
+				<isset property="encrypt.site.database.password.error"/>
+				<not>
+					<equals arg1="${encrypt.site.database.password.error}" 
+						arg2="" trim="true"/>
+				</not>
+			</and>
+		</condition>
+		<echo message="encrypt.site.database.password.error.nonnull=${encrypt.site.database.password.error.nonnull}"/>
+	</target>
+		
+	<target name="report.encrypt.site.database.password.error" 
+		depends="test.encrypt.site.database.password.error.nonnull"
+		if="encrypt.site.database.password.error.nonnull"
+		>
+		<!-- description="Outputs the error message if a problem occured during encryption of the password" -->
+		<echo message="Error: '${encrypt.site.database.password.error}' reported during target encrypt.site.database.password"/>
+	</target>
+	
+	<target name="set.site.database.password" 
+		depends="report.encrypt.site.database.password.error"
+		>
+		<!-- description="Encrypts the database password and stores it in the encrypted.site.database.pwd property" -->
+	</target>
+	
+	<target name="default" 
+		>
+		<!-- description="Gives usage information about the main targets in this file" -->
+		<echo>Usage: 
+			
+		</echo>
+	</target>
+	
+	<target name="update.database.settings.generic"
+		>
+		<!-- description="Top level target that updates site.database properties AND switches database type (Oracle/SQL Server)" -->
+
+		<echo>================== Switching to ${db.to.switch} ==================</echo>
+		<!-- <echo>DEBUG switch DB ...</echo> -->
+		<antcall target="update.database.settings" />
+		
+	</target>
+	
+	<target name="switch-db" description="Toggle wfc between mss - oracle using: -Dswitch.db.to.microsoft=true or -Dswitch.db.to.oracle=true">
+		
+		<fail unless="db.to.switch">Error determining which db type to switch to, set either: switch.db.to.microsoft or switch.db.to.oracle.</fail>
+		<!-- 
+		call "%kronosdir%\ant\bin\ant.bat" 
+		-Dkronos.dir="%kronosdir%" 
+		-Dkronos.instance=%kronosinstance% 
+		-Dconfigure.for.%1.database=true 
+		-f .\switch-db.xml 
+		update.database.settings
+		-->
+		
+		<!-- <echo>configure.for.oracle.database = ${configure.for.oracle.database}</echo> -->
+		<antcall target="update.database.settings.generic" />
+		
+	</target>
+</project>

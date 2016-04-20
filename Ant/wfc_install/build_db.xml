@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="db" default="help" basedir="." xmlns:props="antlib:org.apache.ant.props">
+
+	<description>
+	This script is intended to make it easy to restage databases
+	and run db scripts.
+	
+	You should copy server.properties to '${user.properties}'
+	and change the properties to suit your needs.
+	</description>
+	
+	<import file="${basedir}/build_common.xml" />
+
+	<path id="jdbc.class.path">
+		<pathelement path="${java.class.path}/"/>
+		<fileset dir="${basedir}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<!-- the following properties are all for the DB Manager -->
+	<property name="dbm.dir" value="${installLocation}/dbmanager" />
+	<path id="dbm.class.path">
+		<fileset dir="${dbm.dir}">
+			<include name="dbmanager.jar" />
+		</fileset>
+		<fileset dir="${dbm.dir}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<property name="dbdir" value="${basedir}/DBScripts" />
+	<property name="db.local.backup.dir" value="${basedir}${/}db_backups"/>
+	<property name="db.backup.root" value="${/}${/}kvsca-qmfile01${/}wfc${/}Engineering${/}Database${/}automatedDB" />
+	<property name="dbmanager.ignore.failure" value="false" />
+
+	<!-- DB util properties -->
+	<path id="dbutil.class.path">
+		<fileset dir="${dbutil.dir}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${dbutil.dir}/JDBC_Drivers">
+			<include name="ojdbc6_11.1.0.7.jar" />
+			<include name="orai18n_11.1.0.6.jar" />
+			<include name="sqljdbc4.jar" />
+		</fileset>
+	</path>
+	
+	<target name="-db.all" if="overlay.db">
+		<antcall target="db.all" />
+	</target>
+	
+	<target name="db.all" description="db.restage.xxx,db.run.scripts">
+		<antcall target="db.restage.${DEFAULT_DBPLATFORM}"/>
+		<antcall target="db.dbm.execute" />
+	</target>
+	
+	<!--	This target will restage a MSS database. It first deletes the existing database if it exists
+			and then uses the kron_overlay stored procedure to recreate the database.
+			Precondition:	- if the user supplies the property 'db.overlay.filename', then database backup file
+							contained in this property will be used by the kron_overlay stored procedure.
+							Otherwise, the two properties 'db.shared.dir' and 'default.db.overlay.type' will be used to 
+							generate the full path and filename	to the database backup which will be used by kron_overlay.
+							- WFC must be installed prior to running this target so that the wfc.db.version can be determined
+	-->
+	<target name="db.restage.mss" description="restages the db (wfc must be installed first)" depends="db.find.version.req.by.wfc">
+		<!-- delete the existing db -->
+		<antcall target="-db.run.script.mst">
+			<param name="sql.dir" value="${dbdir}" />
+			<param name="sql.files" value="cleanDB.${DEFAULT_DBPLATFORM}.sql" />
+		</antcall>
+		
+		<sleep seconds="10" />
+		
+		<!-- if a backup file was passed in, add '.bak' suffix to it -->
+		<condition property="actual.file" value="${db.overlay.filename}.bak">
+			<isset property="db.overlay.filename" />
+		</condition>
+		<!-- else, generate the path to the staging file -->
+		<property name="actual.file" 
+			value="${db.shared.dir}\sql_${wfc.ver.major}${wfc.ver.minor}0_${wfc.db.version}00_${default.db.overlay.type}" />
+		
+		<available file="${actual.file}" property="found.backup" />
+		<fail unless="found.backup" message="Error finding file '${actual.file}'" />
+		
+		<!-- restage the db -->
+		<echo message="Overlaying MSS database with file '${actual.file}'" />
+		<antcall target="-db.run.script.mst">
+			<param name="sql.dir" value="${dbdir}" />
+			<param name="sql.files" value="restageDB.${DEFAULT_DBPLATFORM}.sql" />
+		</antcall>
+	</target>
+	
+	<target name="db.restage.oracle" description="restages the db (wfc must be installed first)" depends="-db.restage.oracle.staging,-db.restage.oracle.file" />
+	
+	<!--	This target will restage a staging Oracle database using KronosDBUtilities.
+			Precondition:	- WFC must be installed prior to running this target so that the wfc.db.version can be determined
+							- The user specified by property 'DEFAULT_DB_USERNAME' must have been created already using 
+							KronosDBUtilities in order for this target to succeed.
+	-->
+		
+	<target name="-db.restage.oracle.staging" unless="db.overlay.filename" depends="db.find.version.req.by.wfc" >
+		<property name="dbutil.args" value="${dbutil.properties} 1 ${DEFAULT_DBSERVER_NAME}:${DEFAULT_ORA_DBPORT}:${DEFAULT_DB_OR_SID_NAME} ${DEFAULT_DB_USERNAME} ${wfc.ver.major}${wfc.ver.minor} ${default.db.overlay.type} ${wfc.db.version}" />
+		<echo message="Executing 'KronosDBUtilities' in '${dbutil.dir}' with args '${dbutil.args}'" />
+
+		<java classname="com.kronos.dba.utilities.CommandLine" failonerror="true" fork="true" 
+				classpathref="dbutil.class.path" dir="${dbutil.dir}">
+			<arg line="${dbutil.args}" />
+		</java>	
+	</target>
+	
+		<!--	This target will restage customer Oracle database using KronosDBUtilities.
+			Precondition:	- WFC must be installed prior to running this target so that the wfc.db.version can be determined
+							- The user specified by property 'DEFAULT_DB_USERNAME' must have been created already using 
+							KronosDBUtilities in order for this target to succeed.
+	-->
+
+	<target name="-db.restage.oracle.file" if="db.overlay.filename" depends="db.find.version.req.by.wfc">
+		<property name="actual.file" value="${db.overlay.filename}.DMP" />
+		<available file="${actual.file}" property="found.backup" />
+		<fail unless="found.backup" message="Error finding file '${actual.file}'" />
+		
+		<property name="dbutil.args" value="${dbutil.properties} 2 ${DEFAULT_DBSERVER_NAME}:${DEFAULT_ORA_DBPORT}:${DEFAULT_DB_OR_SID_NAME} ${DEFAULT_DB_USERNAME} &quot;${actual.file}&quot; TKCSOWNER" />
+		<echo message="Executing 'KronosDBUtilities' in '${dbutil.dir}' with args '${dbutil.args}'" />
+
+		<java classname="com.kronos.dba.utilities.CommandLine" failonerror="true" fork="true" 
+				classpathref="dbutil.class.path" dir="${dbutil.dir}">
+			<arg line="${dbutil.args}" />
+		</java>	
+	</target>
+	
+	<!--	This target will determine the database version which is required by WFC.
+			Precondition:	- WFC must be installed prior to running this target so that the wfc.db.version can be determined
+	-->
+	<target name="db.find.version.req.by.wfc">
+		<property name="wpk.properties" 
+			value="${installLocation}/deployments/release/wfp_staging/app_server/applications/wpk/properties/wpk.properties" />
+		<loadfile srcfile="${wpk.properties}" failonerror="true" property="wfc.db.version">
+			<filterchain>
+				<linecontainsregexp>
+					<regexp pattern="site.database.all.dbMajorVer\s*=\s*(\d+)"/>
+				</linecontainsregexp>
+				<tokenfilter>
+					<replaceregex pattern="site.database.all.dbMajorVer\s*=\s*(\d+)" replace="\1"/>
+					<trim/>
+				</tokenfilter>
+				<striplinebreaks/>
+			</filterchain>
+		</loadfile>
+		<fail unless="wfc.db.version" message="Error finding a wfc.db.version for property 'site.database.all.dbMajorVer' in ${wpk.properties}" />
+		<echo message="wfc.db.version is ${wfc.db.version}" />
+	</target>
+	
+	<target name="db.dbm.execute">
+		<condition property="db" value="ora" else="${DEFAULT_DBPLATFORM}">
+			<equals arg1="${DEFAULT_DBPLATFORM}" arg2="oracle" />
+		</condition>
+		
+		<!-- run dbMgr -->
+		<property name="dbm.cmdline" value="-T ${db} -S ${DEFAULT_DBSERVER_NAME} -D ${DEFAULT_DB_OR_SID_NAME}  -U ${DEFAULT_DB_USERNAME} -P ${DEFAULT_DB_PASSWORD} -V ${wfc.ver.major}.${wfc.ver.minor}.${wfc.ver.rev} -silent" />
+		<echo>Executing DB Manager in directory '${dbm.dir}' with command line '${dbm.cmdline}'</echo>
+		<java classname="com.kronos.wfc.dbmanager.control.DBManager" failonerror="false" fork="true" 
+				classpathref="dbm.class.path" dir="${dbm.dir}" outputproperty="dbm.output" resultproperty="dbm.result">
+			<arg line="${dbm.cmdline}" />	
+		</java>
+		
+		<echo message="${dbm.output}" />
+		
+		<condition property="dbm.failed">
+			<or>
+				<contains string="${dbm.output}" substring="Process Failed" />
+				<isfailure code="${dbm.result}" />
+			</or>
+		</condition>
+		
+		<antcall target="fail.dbm" />
+	</target>
+	
+	<target name="fail.dbm" if="dbm.failed">
+		<!-- a failure has occured. display the summary log file to the console -->
+		<concat>
+			<fileset dir="${installLocation}/dbmanager" includes="summary_*.log" /> 
+		</concat>
+		
+		<echo>
+Error, it appears the DB Manager failed. See output above.		
+		</echo>
+		
+		<fail unless="${dbmanager.ignore.failure}" message="Failing target because DB manager fails"/>
+	</target>
+	
+	<target name="-db.run.script" description="run sql contained in the property 'sql.query'">
+		
+		<!-- sql task can't route output directly into a property.
+			Direct the output to a tempfile and then read in the output -->
+		<fail unless="sql.query" message="Error, property 'sql.query' not set" />
+		<echo message="SQL Query: ${sql.query}" />
+		<tempfile property="sql.output" />
+		<echo>${jdbc.url}</echo>
+		<sql
+			driver="${jdbc.driver}"
+			url="${jdbc.url}"
+			userid="${DEFAULT_DB_USERNAME}"
+			password="${DEFAULT_DB_PASSWORD}"
+			expandProperties="true"
+			classpathref="jdbc.class.path"
+			strictDelimiterMatching="false"
+			delimiter="GO"
+			output="${sql.output}"
+			print="true" showheaders="false" showtrailers="false"
+			>
+			${sql.query}
+		</sql>
+	</target>
+	
+	<!--	This target uses Ant's sql task to run sql contained in files.
+	-->
+	<target name="-db.run.script.mst">
+		<condition property="owner" value="${DEFAULT_DBOWNER_USERNAME}">
+			<equals arg1="${DEFAULT_DBPLATFORM}" arg2="mss" />
+		</condition>
+		<property name="owner" value="${DEFAULT_DB_USERNAME}" />
+		
+		<condition property="pw" value="${DEFAULT_DBOWNER_PASSWORD}">
+			<equals arg1="${DEFAULT_DBPLATFORM}" arg2="mss" />
+		</condition>
+		<property name="pw" value="${DEFAULT_DB_PASSWORD}" />
+		
+		<echo>The jdbc url is '${jdbc.url}'
+The db account used to execute the SQL is '${owner}'
+The db owner/sid is '${DEFAULT_DB_OR_SID_NAME}'
+		</echo>
+		
+		<sql
+			driver="${jdbc.driver}"
+			url="${jdbc.url}"
+			userid="${owner}"
+			password="${pw}"
+			expandProperties="true"
+			classpathref="jdbc.class.path"
+			strictDelimiterMatching="false"
+			delimiter="GO"
+			>
+			
+			<sort>
+				<fileset dir="${sql.dir}" includes="${sql.files}" />
+			</sort>
+		</sql>
+	</target>
+	
+	<target name="db.backup" depends="db.find.version.req.by.wfc">
+		<property name="db.backup.file.pre" value="sql_${wfc.ver.major}${wfc.ver.minor}0_${wfc.db.version}00" />
+		<property name="db.backup.file.post" value="${default.db.overlay.type}"/>
+		<property name="db.backup.file" value="${db.backup.file.pre}_${db.backup.file.post}" />
+		<property name="db.backup.path" value="${db.backup.root}${/}${DEFAULT_DBPLATFORM}" />
+
+		<mkdir dir="${db.local.backup.dir}" />		
+		<antcall target="db.backup.${DEFAULT_DBPLATFORM}" />
+	</target>
+	
+	<target name="db.backup.mss">
+		<antcall target="-db.run.script.mst">
+			<param name="sql.dir" value="${dbdir}" />
+			<param name="sql.files" value="backupDB.${DEFAULT_DBPLATFORM}.sql" />
+		</antcall>
+		<copy verbose="true" file="${db.backup.path}${/}${db.backup.file}" todir="${db.local.backup.dir}"/>
+		<delete file="${db.backup.path}${/}${db.backup.file}"/>
+	</target>
+
+	<target name="db.backup.oracle">
+		<echo message="Backing up oracle database..."/>
+		<property name="dbutil.args" value="9 ${DEFAULT_DBSERVER_NAME}:${DEFAULT_ORA_DBPORT}:${DEFAULT_DB_OR_SID_NAME} ${DEFAULT_DB_USERNAME} ${db.local.backup.dir}${/}${db.backup.file}" />
+		<echo message="Executing 'KronosDBUtilities' with args '${dbutil.args}'" />
+
+		<java classname="com.kronos.dba.utilities.CommandLine" failonerror="true" fork="true" 
+				classpathref="dbutil.class.path" dir="${dbutil.dir}">
+			<arg line="${dbutil.args}" />
+		</java>	
+	</target>
+
+</project>

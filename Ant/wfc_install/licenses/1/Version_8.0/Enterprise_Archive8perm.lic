@@ -1,0 +1,7 @@
+SERVER this_host ANY
+VENDOR kronos
+USE_SERVER
+INCREMENT Enterprise_Archive kronos 8.00000 permanent 1 \
+	VENDOR_STRING="Order Number=KE001" ISSUER="Kronos \
+	Incorporated" ISSUED=03-April-2014 NOTICE="Kronos \
+	Incorporated::Engineering" ck=130 SIGN=1AA6E2D62C38

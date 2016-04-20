@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="dynatrace" default="help" basedir="." xmlns:props="antlib:org.apache.ant.props">
+
+	<description>
+	This script is intended to make it easy use dynatrace with a WFC server.
+	
+	You should copy server.properties to '${user.properties}'
+	and change the properties to suit your needs.
+	</description>
+	
+	<import file="${basedir}/build_common.xml" />
+
+	<property environment="env"/> 
+	
+	<condition property="os" value="windows">
+		<os family="windows" />
+	</condition>
+	<property name="os" value="not.windows" />
+	
+	<property name="dynatrace.logs.dir" value="${basedir}/dynatraceLogs" />
+	<property name="dynatrace.protocol" value="http" />
+	<property name="dynatrace.collector.port" value="9998" />
+	<property name="dynatrace.server" value="perf288" />
+	<property name="dynatrace.server.port" value="8020" />
+	<property name="dynatrace.server.user" value="admin" />
+	<property name="dynatrace.server.pwd" value="admin" />
+	<property name="dynatrace.rest.url" value="${dynatrace.protocol}://${dynatrace.server}:${dynatrace.server.port}/rest/management" />
+	
+	<target name="verify.dynatrace.lib">
+		<available file="dtagent.dll" property="dynatrace.lib">
+			<filepath path="${env.Path}" />
+		</available>
+		<fail unless="dynatrace.lib">Error, unable to resolve dynatrace library dtagent.dll. Please ensure that $DYNATRACE_HOME/agent/lib64 is on your path.</fail>
+	</target>
+
+	<target name="verify.dynatrace.props">
+		<fail unless="dynatrace.collector">Error, property 'dynatrace.collector' is not set. Please set it to the dynatrace collector.</fail>
+		<fail unless="dynatrace.server">Error, property 'dynatrace.server' is not set. Please set it to the dynatrace server.</fail>
+		<fail unless="dynatrace.profile">Error, property 'dynatrace.profile' is not set. Please set it to the dynatrace profile configuration.</fail>
+		<fail unless="dynatrace.agent.name">Error, property 'dynatrace.agent.name' is not set. Please set it to the name of the dynatrace agent.</fail>
+	</target>
+	
+	<target name="verify.dynatrace.credentials">
+		<fail unless="dynatrace.server.user">Error, property 'dynatrace.server.user' is not set. Please set it to the dynatrace user name.</fail>	
+		<fail unless="dynatrace.server.pwd">Error, property 'dynatrace.server.pwd' is not set. Please set it to the dynatrace password.</fail>	
+	</target>
+	
+	<target name="dynatrace.enable.wfc" depends="dynatrace.disable.wfc" description="enable dynatrace JVM parameters in WFC">
+
+		<property name="dynatrace.params" value='-agentlib:dtagent=name=${dynatrace.agent.name},server=${dynatrace.collector}:${dynatrace.collector.port}' />
+		<echo message="Enabling dynatrace JVM by adding '${dynatrace.params}' to ${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat..." />
+		
+		<replaceregexp file="${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat" flags="is" byline="true"
+               match='(\s*set\s+JVM_PARAMS=.*)'
+               replace='\1 ${dynatrace.params}' />
+	</target>
+	
+	<target name="dynatrace.disable.wfc" depends="verify.dynatrace.lib,verify.dynatrace.props" description="remove dynatrace JVM parameters from WFC">
+		
+		<property name="dynatrace.regex" value="-agentlib:.+=name=.+,server=.+" />
+		<echo message="Removing dynatrace JVM parameters (if they exist) in ${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat..." />
+		<replaceregexp file="${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat" flags="i" byline="true"
+               match='(.*)${dynatrace.regex}(.*)'
+               replace='\1\2' />
+	</target>
+	
+	<target name="dynatrace.start.rec" depends="verify.dynatrace.credentials,verify.dynatrace.props" description="starts recording in a dynatrace profile">
+		<tstamp>
+			<format property="current.time" pattern="yyyyMMdd_HHmmss" />
+		</tstamp>
+		<property name="test.name" value="${dynatrace.profile}_${current.time}" />
+	
+		<property name="curl.params" value="-d presentableName=${test.name} -disTimeStampAllowed=false -u ${dynatrace.server.user}:${dynatrace.server.pwd} ${dynatrace.rest.url}/profiles/${dynatrace.profile}/startrecording" />
+		<echo>'${test.name}' is the test name. Starting to record with dynatrace...</echo>
+		<antcall target="run.curl.${os}" />
+	</target>
+	
+	<target name="dynatrace.stop.rec" depends="verify.dynatrace.credentials,verify.dynatrace.props" description="stops recording a dynatrace profile">
+		<property name="curl.params" value="-u ${dynatrace.server.user}:${dynatrace.server.pwd} ${dynatrace.rest.url}/profiles/${dynatrace.profile}/stoprecording" />
+		<antcall target="run.curl.${os}" />
+	</target>
+	
+	<target name="dynatrace.get.pdf" depends="verify.dynatrace.credentials,verify.dynatrace.props" description="downloads a developer overview pdf report from dynatrace">
+		<fail unless="test.name">Error, please supply property 'test.name' which contains the name of the test</fail>
+		<mkdir dir="${dynatrace.logs.dir}" />
+		<property name="output.file" value="${dynatrace.logs.dir}/${test.name}.pdf" />
+		<property name="curl.params" value='-o ${output.file} -i -X GET --user ${dynatrace.server.user}:${dynatrace.server.pwd} "${dynatrace.rest.url}/reports/create/Developer%20Overview?type=PDF&amp;format=PDF+Report&amp;source=stored:${test.name}"' />
+		<antcall target="run.curl.${os}" />
+	</target>
+	
+	<target name="run.curl.windows">
+		<property name="curl.dir" value="${basedir}/lib" />
+		<property name="curl.exe" value="curl.exe" />
+		<echo>Executing '${curl.dir}/${curl.exe} ${curl.params}'...</echo>
+		<exec dir="${curl.dir}" executable="${curl.dir}/${curl.exe}" failonerror="true">
+			<arg line="${curl.params}" />
+		</exec>
+	</target>
+	
+	<target name="run.curl.not.windows">
+		<fail>Error. This script does not support non-windows operating systems</fail>
+	</target>
+	
+</project>

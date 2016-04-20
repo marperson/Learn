@@ -1,0 +1,153 @@
+<project basedir="." default="microtest_getAll" name="GetStuff">
+  <property file="microtest_stream.properties" /> 
+  <property name="installed.dir" location="${installLocation}" /> 
+  <property name="wfc.root.dir" location="${installed.dir}/${DEFAULT_DSN_NAME}" /> 
+  <property name="wfc.bin.dir" location="${installed.dir}/${DEFAULT_DSN_NAME}/bin" /> 
+  <property name="wfc.applications.dir" location="${wfc.root.dir}/applications" /> 
+<!-- user passes in thirdparty.root.dir, wfp.stream.dir,latest.*jars.dir s
+  --> 
+  <property name="thirdparty.junit.dir" location="${thirdparty.root.dir}\Development\staging_files\app_sever\applications" /> 
+  <property name="wfp.unittest.dir" location="${wfp.stream.dir}/app_server/applications/unittest" /> 
+  <property name="junit.dir" location="${wfc.applications.dir}/junit" /> 
+  <property name="unittest.dir" location="${wfc.applications.dir}/unittest" /> 
+  <property name="appserver.root.dir" location="${installed.dir}/jboss" /> 
+  <property name="wfcserver.root.dir" location="${appserver.root.dir}/${DEFAULT_DSN_NAME}" /> 
+  <property name="wfc.deploy.dir" location="${wfcserver.root.dir}/deployments" /> 
+  <property name="wfc.ear.dir" location="${wfc.deploy.dir}/${DEFAULT_DSN_NAME}.ear" /> 
+  <property name="wfc.war.dir" location="${wfc.ear.dir}/${DEFAULT_DSN_NAME}.war" /> 
+  <property name="war.applications.dir" location="${wfc.ear.dir}/${DEFAULT_DSN_NAME}.war/applications" /> 
+  <property name="deploy.lib.dir" location="${wfc.war.dir}/WEB-INF/lib" /> 
+  <property name="junit.properties.dir" location="${wfc.applications.dir}/junit/properties" /> 
+  <property name="temp.dir" location="${installed.dir}" /> 
+  
+<target name="microtest_installJUnit" unless="enable.gradle.mode">
+  <copy toDir="${wfc.applications.dir}" includeEmptyDirs="true" verbose="true" preservelastmodified="true">
+  <fileset dir="${thirdparty.junit.dir}" /> 
+  </copy>
+  <copy toDir="${war.applications.dir}/junit" includeEmptyDirs="true" verbose="true" preservelastmodified="true">
+  <fileset dir="${wfc.applications.dir}/junit" excludes="*.jar" /> 
+  </copy>
+</target>
+
+<target name="microtest_installUnitTest" unless="enable.gradle.mode">
+  <copy toDir="${unittest.dir}" includeEmptyDirs="true" verbose="true" preservelastmodified="true">
+  <fileset dir="${wfp.unittest.dir}" /> 
+  </copy>
+  <copy toDir="${war.applications.dir}/unittest" includeEmptyDirs="true" verbose="true" preservelastmodified="true">
+  <fileset dir="${unittest.dir}" excludes="*.jar" /> 
+  </copy>
+</target>
+
+<target name="microtest_getTestJars" unless="enable.gradle.mode">
+  <copy todir="${wfc.applications.dir}/unittest/lib" flatten="true" verbose="true" preservelastmodified="true">
+  <fileset dir="${latest.wfpjars.dir}" includes="**/test*.jar" /> 
+  <fileset dir="${latest.wtkjars.dir}" includes="**/test*.jar" /> 
+  </copy>
+</target>
+
+<target name="microtest_substJUnitWebXml" unless="enable.gradle.mode">
+	<!--  Change the jar name to test_wtk.jar ... using a tempfile 
+	  --> 
+	<move todir="${temp.dir}" overwrite="true">
+		<fileset dir="${junit.properties.dir}">
+		  <include name="web.xml" /> 
+		</fileset>
+		<filterchain>
+			<tokenfilter>
+			  <replacestring from="test_wfp.jar" to="test_wat.jar" /> 
+			</tokenfilter>
+		</filterchain>
+	</move>
+	<!--  Do this to copy the file back to the original name/location ... 
+	  --> 
+	<move todir="${junit.properties.dir}" overwrite="true">
+		<fileset dir="${temp.dir}">
+		  <include name="web.xml" /> 
+		</fileset>
+	</move>
+ </target>
+ 
+ <target name="microtest_deployEar">
+	<delete quiet="true" file="${wfc.ear.dir}" /> 
+	<delete quiet="true" dir="${wfc.ear.dir}" /> 
+	<exec dir="C:" executable="${wfc.bin.dir}/DeployEar.bat" os="Windows XP, Windows 2003, Windows 2000, Windows NT" /> 
+	<copy file="${wfc.bin.dir}/wfc.ear" toDir="${wfc.deploy.dir}/" /> 
+ </target>
+
+ <target name="microtest_explodeEar" if="working.from.ear">
+	<!-- description="Expand the WFC EAR file if is hasn't already been expanded" -->
+	<!--   expand the war file 
+	  --> 
+	  <echo message="Expanding wfc.ear" /> 
+	  <move overwrite="true" file="${wfc.ear.dir}" tofile="${wfc.deploy.dir}/${DEFAULT_DSN_NAME}_orig.ear" /> 
+	  <mkdir dir="${wfc.ear.dir}" /> 
+	  <unzip overwrite="true" src="${wfc.deploy.dir}/${DEFAULT_DSN_NAME}_orig.ear" dest="${wfc.ear.dir}" /> 
+	<!--   expand the war file 
+	  --> 
+	  <echo message="Expanding wfc.war" /> 
+	  <move file="${wfc.war.dir}" tofile="${wfc.ear.dir}/${DEFAULT_DSN_NAME}_orig.war" /> 
+	  <mkdir dir="${wfc.war.dir}" /> 
+	  <unzip overwrite="true" src="${wfc.ear.dir}/${DEFAULT_DSN_NAME}_orig.war" dest="${wfc.war.dir}" /> 
+	<!--   move the original ear out of the deploy area 
+	  --> 
+	  <move overwrite="true" file="${wfc.deploy.dir}/${DEFAULT_DSN_NAME}_orig.ear" tofile="${wfc.deploy.dir}/../${DEFAULT_DSN_NAME}_orig.ear" /> 
+	  <delete quiet="true" file="${wfc.ear.dir}/${DEFAULT_DSN_NAME}_orig.war" /> 
+  </target>
+  
+  <target name="microtest_copyJUnitEE" unless="enable.gradle.mode">
+	<copy file="microtest_junit.xml" toDir="${wfc.applications.dir}/unittest/bin/" /> 
+  </target>
+  
+  <target name="microtest_copyJarsToDeployLib" unless="enable.gradle.mode">
+	  <copy toDir="${deploy.lib.dir}" includeEmptyDirs="true">
+		<fileset dir="${unittest.dir}/lib" /> 
+	  </copy>
+	  <copy toDir="${deploy.lib.dir}" includeEmptyDirs="true">
+		<fileset dir="${junit.dir}/lib" /> 
+	  </copy>
+  </target>
+
+  <target name="microtest_copyJarsToDeployLib_gradle" if="${enable.gradle.mode}">
+	  <echo>In Gradle copy micros</echo>
+	  <get src="${gradle.junit.kronos.jar}" dest="${deploy.lib.dir}"/>
+  </target>
+
+  <target name="microtest_copyJars">
+	  <echo>Copy ${jarStream} micros</echo>
+	  <mkdir dir="${localdir}/${jarStream}Jars" /> 
+	  <get src="${${jarStream}.junit.kronos.jar}" dest="${localdir}/${jarStream}Jars"/>
+  </target>
+  
+  <target name="microtest_buildWebXml">
+    <taskdef name="xmldocmerge" classname="com.kronos.wfc.tools.deploygen.framework.XMLInstanceDocumentMergerTask">
+      <classpath>
+        <pathelement location="${installed.dir}/configuration/deployGen/tools_deploygen_framework.jar"/>
+           <pathelement location="${installed.dir}/configuration/boms/bin/tools_bom_framework.jar"/>
+      </classpath>
+    </taskdef>
+     <xmldocmerge outFile="${wfc.deploy.dir}/${DEFAULT_DSN_NAME}.ear/${DEFAULT_DSN_NAME}.war/WEB-INF/web.xml" instancename="${DEFAULT_DSN_NAME}" servicePack="6.2.0" deploymentdir="${installed.dir}/deployments" products="*_staging">
+        <!--fileset file="${wfc.deploy.dir}/wfc.ear/wfc.war/WEB-INF/web.xml"/-->
+        <!--fileset file="${wfc.deploy.dir}/wfc.ear/wfc.war/applications/junit/properties/web.xml"/-->
+      </xmldocmerge>  
+  </target>    
+  
+  <target name="microtest_updateUnitTestProperties" unless="enable.gradle.mode">
+    <copy file="microtest_UNITTEST.properties" toDir="${war.applications.dir}/unittest/properties" overwrite="true" /> 
+  </target>
+
+  <target name="microtest_init">
+    <echo>Gradle mode: ${enable.gradle.mode}</echo>
+	<echo message="Using latest.wfpjars.dir = [${latest.wfpjars.dir}]"/>
+	<echo message="Using latest.wtkjars.dir = [${latest.wtkjars.dir}]"/>
+	
+	<!--   the next file is either a file or a folder. If it's a file then the ear hasn't been exploded yet 
+	--> 
+	<available file="${wfc.deploy.dir}/${DEFAULT_DSN_NAME}.ear" type="file" property="working.from.ear" /> 
+  </target>
+  
+  <target name="microtest_getAll" depends="microtest_init,microtest_explodeEar, microtest_installJUnit,microtest_installUnitTest, microtest_getTestJars,microtest_copyJarsToDeployLib, microtest_copyJarsToDeployLib_gradle, microtest_substJUnitWebXml, microtest_copyJUnitEE, microtest_updateUnitTestProperties" /> 
+  <!-- description="Copy and install microtest developer jars" x -->
+   <!-- for debugging
+   <target name="microtest_getAll" depends="microtest_init" />
+   -->
+</project>

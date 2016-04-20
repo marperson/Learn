@@ -1,0 +1,8 @@
+SERVER this_host ANY
+VENDOR kronos
+USE_SERVER
+INCREMENT mobile_employee_app kronos 6. permanent 1000 \
+	VENDOR_STRING="Order Number=OR723" ISSUER="Kronos \
+	Incorporated" ISSUED=14-Dec-2010 NOTICE="KRONOS, INC::Test \
+	License Kronos" SN=0002394 SIGN=EA5E69E41BD6
+

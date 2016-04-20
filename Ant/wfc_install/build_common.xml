@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common" default="help" basedir="." xmlns:props="antlib:org.apache.ant.props"  xmlns:if="ant:if" xmlns:unless="ant:unless">
+
+	<description>
+	This script contains common validations that are used in other ant files.
+	
+	You should copy server.properties to '${user.properties}'
+	and change the properties to suit your needs.
+	</description>
+
+	<!-- confirm ant version is at least 1.9.1-->
+	<property name="min.ant" value="1.9.1" />
+	<antversion property="required.ant" atleast="${min.ant}"/>
+	<fail unless="required.ant" message="Error. Your ant version is ${ant.version}. Please install ant ${min.ant} or higher." />
+	
+	<!-- load user properties first and then server.properties -->
+	<property environment="env" />
+	<dirname property="common.basedir" file="${ant.file.common}"/>
+	<property name="user.properties" value="${env.COMPUTERNAME}.properties" />
+	<property file="${common.basedir}/${user.properties}" />
+	<property file="${common.basedir}/server.properties" />
+	<property file="${common.basedir}/robocopy.properties" />
+	
+	<!-- use 3rd party jar to unzip 7z compress file-->	
+	<taskdef uri="antlib:org.apache.ant.compress" resource="org/apache/ant/compress/antlib.xml">
+        <classpath>
+          <pathelement location="${common.basedir}/lib/ant-compress-1.4.jar"/>
+		  <pathelement location="${common.basedir}/lib/commons-compress-1.7.jar"/>
+        </classpath>
+	</taskdef>
+	
+	<!-- use better ant property expander so that we can nest properties -->
+	<typedef uri="antlib:org.apache.ant.props" resource="org/apache/ant/props/antlib.xml" classpath="${common.basedir}/lib/ant-props-1.0Alpha.jar"/>      
+	<propertyhelper>
+		<props:nested />
+	</propertyhelper>
+	
+	<property name="/" value="${file.separator}" />
+	
+	<property name="localdir" value="${common.basedir}${/}..${/}..${/}..${/}artifacts" />
+	<property name="wget.link" value="http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe" />
+		
+	<!-- determine web.server.platform properties from DEFAULT_WEB_SERVER_PLATFORM -->
+	<condition property="default.web.server.platform.servicename" value="World Wide Web Publishing Service">
+		<equals arg1="${DEFAULT_WEB_SERVER_PLATFORM}" arg2="iis" />
+	</condition>
+	<condition property="default.web.server.platform.servicename" value="Apache">
+		<equals arg1="${DEFAULT_WEB_SERVER_PLATFORM}" arg2="apache" />
+	</condition>
+	
+	<fail unless="default.web.server.platform.servicename" 
+		message="Error. '${DEFAULT_WEB_SERVER_PLATFORM}' was specified for property 'DEFAULT_WEB_SERVER_PLATFORM'. You must specify 'iis' or 'apache'." />
+
+	<!-- determine jdbc properties from db -->
+	<condition property="isOracle">
+		<equals arg1="${DEFAULT_DBPLATFORM}" arg2="oracle" />
+	</condition>
+	<condition property="isMSS">
+		<equals arg1="${DEFAULT_DBPLATFORM}" arg2="mss" />
+	</condition>
+	
+	<property name="jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" if:true="${isMSS}" />
+	<property name="jdbc.driver" value="oracle.jdbc.driver.OracleDriver" if:true="${isOracle}" />
+	<fail unless="jdbc.driver" 
+		message="Error, DEFAULT_DBPLATFORM property is set to '${DEFAULT_DBPLATFORM}'. It must be either 'mss' or 'oracle'." />
+	
+	<property name="jdbc.port" value="${DEFAULT_MSS_DBPORT}" if:true="${isMSS}" />
+	<property name="jdbc.port" value="${DEFAULT_ORA_DBPORT}" />
+	
+	<property name="jdbc.url" if:true="${isMSS}" value="jdbc:sqlserver://${DEFAULT_DBSERVER_NAME}\${DEFAULT_DB_OR_SID_NAME}:${jdbc.port}" />
+	<property name="jdbc.url" value="jdbc:oracle:thin:@//${DEFAULT_DBSERVER_NAME}:${jdbc.port}/${DEFAULT_DB_OR_SID_NAME}" />
+	
+	<!-- validate high availability database properties -->
+	<fail message="Error. Cannot use property MULTI_SUBNET_FAILOVER_CHECKED with Oracle">
+		<condition>
+			<and>
+				<istrue value="${MULTI_SUBNET_FAILOVER_CHECKED}" />
+				<istrue value="$isOracle}" />
+			</and>
+		</condition>
+	</fail>
+	<fail message="Error. Cannot use property FCF_ENABLED_CHECKED with SQL Server">
+		<condition>
+			<and>
+				<istrue value="${FCF_ENABLED_CHECKED}" />
+				<istrue value="${isMSS}" />
+			</and>
+		</condition>
+	</fail>
+	<fail message="Error. Enabled FCF_ENABLED_CHECKED is set to true but ONS_CONFIG not specified">
+		<condition>
+			<and>
+				<istrue value="${FCF_ENABLED_CHECKED}" />
+				<not><isset property="ONS_CONFIG"/></not>
+			</and>
+		</condition>
+	</fail>
+	
+	<!-- the user can specify to install dev binaries or RTM/Service Pack binaries.
+		Verify the selections to ensure that both aren't being installed. -->
+	<condition property="invalid.binaries">
+		<and>
+			<istrue value="${install.dev}" />
+			<or>
+				<istrue value="${install.rtm}" />
+				<istrue value="${install.sp}" />
+			</or>
+		</and>
+	</condition>
+	<fail if="invalid.binaries">Error, you cannot install both dev and RTM/SP binaries. Double check install.dev, install.rtm and install.sp properties</fail>
+	
+	<!-- the user can specify to install language packs or the pseudo-translator.
+		Verify the selections to ensure that both aren't being installed. -->
+	<condition property="invalid.languages">
+		<and>
+			<istrue value="${install.tct}" />
+			<or>
+				<istrue value="${install.lp}" />
+			</or>
+		</and>
+	</condition>
+	<fail if="invalid.languages">Error, you cannot install both language packs and TCT. Double check install.lp and install.tct properties</fail>
+
+	<!-- determine wtk products to install from server.properties -->
+	<condition property="install.wfop" else="false">
+		<istrue value="${wfopfeature.active}" />
+	</condition>
+	<condition property="install.wff" else="false">
+		<or>
+			<istrue value="${wfffeature.active}" />
+			<istrue value="${install.wfop}" />
+		</or>
+	</condition>
+	<condition property="install.wfs" else="false">
+		<or>
+			<istrue value="${wfsfeature.active}" />
+			<istrue value="${install.wff}" />
+		</or>
+	</condition>
+	<condition property="install.wtk" else="false">
+		<or>
+			<istrue value="${wtkfeature.active}" />
+			<istrue value="${watfeature.active}" />
+			<istrue value="${wflfeature.active}" />
+			<istrue value="${wfafeature.active}" />
+			<istrue value="${install.wfs}" />
+		</or>
+	</condition>
+	
+	<!-- should the db get overlayed? -->
+	<condition property="overlay.db">
+		<istrue value="${enable.db.overlay}" />
+	</condition>
+	
+	<!-- should we disable windows autostart? -->
+	<condition property="autostart.disabled">
+		<istrue value="${disable.wfc.autostart.service}" />
+	</condition>
+	
+	<!-- should the all targets start wfc? -->
+	<condition property="start.wfc.all">
+		<istrue value="${start.wfc.when.finished}" />
+	</condition>
+	
+	<target name="help" description="display help">
+		<java classname="org.apache.tools.ant.Main">
+			<arg line="-projecthelp -buildfile &quot;${ant.file}&quot;" />
+		</java>
+	</target>
+	
+
+	
+	<!--	This target actually performs the copy operation.
+			Parameters:		Manditory: the property source.kit must be passed in by the caller
+							Optional: the caller can pass in kit.name if the product name is different from source.kit 
+										(for example, the wfs binaries are contained in the wtk source kit
+							Optional: the caller can pass in the property 'file' if the generated filename is not valid.
+	-->
+	<macrodef name="m_generic_copy">
+		<attribute name="source.kit" />
+		<attribute name="jnks.job" default="@{source.kit}.${default.version}.${@{source.kit}.stream}" />
+		<attribute name="kit.name" default="@{source.kit}" />
+		<attribute name="file" default="@{kit.name}Install_${build.type}bit.zip" />
+		
+		<sequential>
+			<available file="${localhost}" type="dir" property="dir.exists" />
+			<antcall target="-create.dir" />
+			
+			<property name="default.version" value="0${wfc.ver.major}.0${wfc.ver.minor}" />
+
+			<!-- <echo>Mode Flags: Gradle: ${enable.gradle.mode} TeamCity: ${enable.teamcity.mode}</echo> -->
+			
+			<condition property="process.gradle.urls">
+				<and>
+					<istrue value="${enable.gradle.mode}" />
+				</and>
+			</condition>
+			<condition property="gradle.url.path" value="${gradle.suite.installer.url}">
+				<isset property="gradle.suite.installer.url" />
+			</condition>
+			<condition property="gradle.url.path" value="http://${publish.server}/job/${jenkins.installer.stream}/lastSuccessfulBuild/artifact/DIST/@{file}">
+				<not>
+					<isset property="gradle.suite.installer.url" />
+				</not>
+			</condition>
+			
+			<condition property="process.teamcity.urls">
+				<and>
+					<istrue value="${enable.teamcity.mode}" />
+				</and>
+			</condition>
+			<condition property="process.jenkins.urls">
+				<and>
+					<isfalse value="${process.gradle.urls}" />
+					<isfalse value="${process.teamcity.urls}" />
+				</and>
+			</condition>
+			
+			<!-- <echo>Condition Flags: Gradle: ${process.gradle.urls} TeamCity: ${process.teamcity.urls} Jenkins: ${process.jenkins.urls}</echo> -->
+			<echo if:true="${process.gradle.urls}">About to get gradle file: ${gradle.url.path}</echo>
+			<echo if:true="${process.jenkins.urls}">About to get jenkins file: http://${publish.server}/job/@{jnks.job}/${copy.@{source.kit}.build}/artifact/DIST/@{file}</echo>
+			<echo if:true="${process.teamcity.urls}">About to teamcity get file: http://${publish.server}/job/@{jnks.job}/${copy.@{source.kit}.build}/artifact/DIST/@{file}</echo>
+			<!-- <fail message="Testing."/> -->
+			
+			<!-- Download the actual kit from gradle Jenkins job http://kvh-ca-qmtstmst.ca.kronos.com/job/GetBinaries.Installer%20Astra%20-%20Atlas/lastSuccessfulBuild/artifact/DIST/WorkForce_Suite_Windows_CD_64.zip  -->
+			<antcall if:true="${process.gradle.urls}" target="generic.ant.get.kit">
+				<!-- http://kvh-ca-qmtstmst.ca.kronos.com/job/GetBinaries.Installer%20Astra%20-%20Atlas/lastSuccessfulBuild/artifact/DIST/WorkForce_Suite_Windows_CD_64.zip -->
+				<param name="dl.link" value="${gradle.url.path}" />
+			</antcall>
+			<antcall if:true="${process.jenkins.urls}" target="generic.ant.get.kit">
+				<param name="dl.link" value="http://${publish.server}/job/@{jnks.job}/${copy.@{source.kit}.build}/artifact/DIST/@{file}" />
+			</antcall>
+			<antcall if:true="${process.teamcity.urls}" target="generic.ant.get.kit">
+				<param name="dl.link" value="http://${teamcity.publish.server}/${teamcity.publish.server.downloads}/${teamcity.publish.server.downloads.basekits}_@{source.kit}/${teamcity.publish.server.downloads.basekits.latest.artifacts}/@{file}" />
+			</antcall>
+			
+			<!-- extract the version.txt from the binary -->
+			<basename file="@{file}" property="base" suffix=".zip" />
+			<basename file="@{file}" property="filename" />
+			<unzip dest="${localdir}" src="${localdir}/${filename}">
+				<patternset>
+					<include name="version.txt" />
+				</patternset>
+			</unzip>
+			<echo file="${localdir}/version.txt" append="true">
+	@{file}</echo>
+			<move file="${localdir}/version.txt" tofile="${localdir}/${base}.txt" />
+			
+			<!-- display the contents of the file -->
+			<concat><fileset file="${localdir}/${base}.txt"/></concat>
+
+			
+			<!-- try to get the changelist from Jenkins or TeamCity -->
+			<loadfile unless:true="${process.gradle.urls}" srcfile="${localdir}/${base}.txt" failonerror="false" property="build.version">
+				<filterchain>
+					<linecontainsregexp>
+						<regexp pattern=".*${wfc.ver.major}.${wfc.ver.minor}.${wfc.ver.rev}.(\d+)"/>
+					</linecontainsregexp>
+					<tokenfilter>
+						<containsregex pattern=".*${wfc.ver.major}.${wfc.ver.minor}.${wfc.ver.rev}.(\d+)" replace="\1"/>
+						<trim/>
+					</tokenfilter>
+					<striplinebreaks/>
+				</filterchain>
+			</loadfile>
+			
+			<echo if:set="build.version">Obtaining change list...</echo>
+			<antcall if:true="${process.jenkins.urls}" target="generic.ant.get.changes">
+				<param name="dl.changes.link" value="http://${publish.server}/job/@{jnks.job}/${build.version}/api/xml?xpath=//changeSet" />
+			</antcall>
+			<antcall if:true="${process.teamcity.urls}" target="generic.ant.get.changes">
+				<param name="dl.changes.link" value="http://${teamcity.publish.server}/${teamcity.publish.server.downloads}/${teamcity.publish.server.downloads.basekits}_@{source.kit}/${teamcity.publish.server.downloads.basekits.latest.artifacts}${teamcity.publish.server.downloads.basekits.latest.artifacts.changes}" />
+			</antcall>
+			
+		</sequential>
+		
+	</macrodef>
+	
+
+	<!--
+	Copy the Jumbo Jars to the artifacts directory
+		Mandatory attributes from property file:
+		- ${publish.server.jumbo}: the server on which are published the jumbo jars. For example "ce-devblds.int.kronos.com:8080"
+		- ${default.stream.jumbo}: the stream to use. For example "work"
+		
+		Mandatory parameters of the macro:
+		- @{source.kit}: the source kit name. For example "wfp"
+		- @{zip.file.name}: the name of the zip file to copy. For example "wfpJars.zip"
+	-->
+	<macrodef name="m_copy_jumbos_jars">
+		<attribute name="source.kit" />
+		<attribute name="zip.file.name" />
+		
+		<sequential>
+			<echo>************************************** Copy Jumbo Jar for @{source.kit} **************************************</echo>
+
+			<property name="source" value="http://${publish.server.jumbo}/view/8.0/view/${default.stream.jumbo}/job/@{source.kit}.${default.stream.jumbo}/lastSuccessfulBuild/artifact/DIST/@{zip.file.name}" />
+			<property name="destination" value="${localdir}" />
+			
+			<!--
+			<echo>publish.server.jumbo: '${publish.server.jumbo}'</echo>
+			<echo>default.stream.jumbo: '${default.stream.jumbo}'</echo>
+			<echo>source: '${source}'</echo>
+			<echo>destination: '${destination}'</echo>
+			-->
+			
+			<get src="${source}" dest="${destination}" usetimestamp="true" verbose="on" />
+			
+		</sequential>
+	</macrodef>
+	
+	
+	<!--
+	Directly copy file to the artifacts directory (For example "Executable files") and rename it as "install.exe"
+		Parameters:
+		- ${dl.link}: Full file path. For example "http://ce-devblds:8080/view/8.0%20TASK%20BUILDS/view/HKJC/job/suiteServicePack.develop.hkjc/lastSuccessfulBuild/artifact/DIST/WFC_8.0.9.exe")
+		- ${destination}: Desired destination location. For example "$WORKSPACE/artifacts/install.exe"
+	
+	-->
+	<macrodef name="m_directly_copy_file">	
+		<sequential>
+			<available file="${localhost}" type="dir" property="dir.exists" />
+				<antcall target="-create.dir" />
+			<property name="destination" value="${localdir}/SPInstall_${build.type}bit.7z" />
+			<echo message="Directly copy file from '@{dl.link}' to '@{destination}'" />
+			<get src="${dl.link}" dest="${destination}" usetimestamp="true" verbose="on" />
+		</sequential>
+	</macrodef>
+
+	
+	<target name="generic.ant.get.changes">
+		<echo if:set="build.version">Get build CHANGES ['${dl.changes.link}]'</echo>
+		<get if:set="build.version" src="${dl.changes.link}" dest="${localdir}/${base}_changelist.xml" ignoreerrors="true" />
+	</target>
+	
+	<target name="generic.ant.get.kit">
+		<echo>Get build KIT ['${dl.link}]'</echo>
+		
+		<antcall unless:true="${get.uses.wget}" target="generic.ant.get">
+			<param name="dl.link" value="${dl.link}" />
+		</antcall>
+		<antcall if:true="${get.uses.wget}" target="generic.ant.wget">
+			<param name="dl.link" value="${dl.link}" />
+		</antcall>
+	</target>
+
+	<target name="generic.ant.get" unless="${get.uses.wget}">
+	    <echo>Ant Copying '${dl.link}' to '${localdir}'...</echo>
+		<condition property="get.verbose">
+			<istrue value="${copy.verbose}" />
+		</condition>
+		<property name="get.verbose" value="false" />
+		
+		<get src="${dl.link}" dest="${localdir}" usetimestamp="true" verbose="${get.verbose}" />
+	</target>
+	
+	<target name="generic.ant.wget" if="${get.uses.wget}">
+		<antcall target="wget">
+			<param name="from" value="${dl.link}"/>
+			<param name="to" value="${localdir}"/>
+		</antcall>
+	</target>
+	
+	<target name="generic.unzip">
+		<basename file="${file}" property="base.file.no.ext" suffix=".zip" />
+		<mkdir dir="${localdir}/${base.file.no.ext}" />
+		<unzip dest="${localdir}/${base.file.no.ext}" src="${file}" />
+		
+		<concat><fileset file="${localdir}/${base.file.no.ext}/version.txt"/></concat>
+	</target>
+	
+	<target name="generic.un7z">
+		<basename file="${file}" property="base.file.no.ext" suffix=".7z" />
+		<mkdir dir="${localdir}/${base.file.no.ext}" />
+		<!--<cmp:un7z dest="${localdir}/${base.file.no.ext}" src="${file}" xmlns:cmp="antlib:org.apache.ant.compress"/>-->
+		<exec executable="C:/Program Files/7-Zip/7z.exe">
+			<arg value="e" /> 
+			<arg value="${localdir}/${file}" />  			
+			<arg value="-o${localdir}/${base.file.no.ext}" />
+			<arg value="-y" />       
+		</exec>
+		
+		<concat><fileset file="${localdir}/${base.file.no.ext}/version.txt"/></concat>
+	</target>
+	
+	<target name="-create.dir" unless="dir.exists">
+		<mkdir dir="${localdir}" />
+	</target>
+	
+	<!-- 	This target wraps generic.execute.
+			Precondtion:	the property generic.execute.does.exist must be set in order for the target to run
+	-->
+	<target name="generic.execute.if.exists" if="generic.execute.does.exist">
+		<antcall target="generic.execute" />
+	</target>
+	
+	<!--	This target executes install and uninstall binaries using properties that are passed in by the caller.
+			Note that it will always add the command line parameter '-silent' so that it execute a silent install.
+			Parameters:		- Required: the property 'exe' must point to the executable that is being run.
+							if 'exe' does not point to a valid file, the target will fail.
+							- Optional: the caller can supply the property 'cmdline' which will contain 
+							the command line options to be used with 'exe'
+	-->
+	<target name="generic.execute">
+		<available file="${exe}" property="found.product"/>
+		<fail unless="found.product" message="Error, unable to find the file '${exe}'." />
+		<tstamp>
+			<format property="current.time" pattern="yyyyMMdd_HH:mm:ss" />
+		</tstamp>
+		
+		<property name="cmdline" value="" />
+		<property name="fullCmdLine" value="${cmdline} -silent"/>
+		<echo message='${current.time}:Executing "${exe}" with cmd line "${fullCmdLine}".' />
+		<exec executable="${exe}" failonerror="false" resultproperty="ret.code">
+			<arg line="${fullCmdLine}" />
+		</exec>
+		<condition property="exec.passed">
+			<equals arg1="${ret.code}" arg2="0" />
+		</condition>
+		
+		<fail unless="exec.passed">Error, installer returned '${ret.code}'. 
+You can see a list of error code descriptions at:
+https://collaborate.kronos.com/sites/wfm/ProductEngineering/tools/Tools%20Wiki/ISMP%2011.5Error%20Codes.aspx
+
+In order to debug this failure, please execute the following command line. It will start the GUI installer and 
+you will see that it will be pre-populated with your properties. Hopefully, the GUI will provide better feedback than the 
+silent installer and you'll be able to resolve the problem.
+
+"${exe}" ${cmdline}
+		</fail>
+	</target>
+
+    <!-- ======================================================================
+       This target finds the newest product kit folders
+       ====================================================================== -->
+	<target name="find.newest.kits.all" 
+			depends="find.newest.kits.wfp,find.newest.kits.wtk,find.newest.kits.wfa,find.newest.kits.eou"
+	/>
+	<target name="find.newest.kits.wfp">
+		<!-- <echo message="BEFORE WFP newest.kit.build.path = [${wfp.kits.dir.lastbuildused}]"/> -->
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wfp.kits.dir" />
+		</antcall>
+		<!-- <echo message="AFTER WFP newest.kit.build.path = [${wfp.kits.dir.lastbuildused}]"/> -->
+	</target>
+	<target name="find.newest.kits.wtk">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wtk.kits.dir" />
+		</antcall>
+	</target>
+	<target name="find.newest.kits.wfa" if="install.wfa">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="wfa.kits.dir" />
+		</antcall>
+	</target>
+	<target name="find.newest.kits.eou">
+		<antcall target="find.newest.kits">
+			<param name="find.newest.kits.dir" value="eou.kits.dir" />
+		</antcall>
+	</target>
+
+	<target name="find.newest.kits.jenkins.all" 
+			depends="find.newest.kits.jenkins.wfp,find.newest.kits.jenkins.wtk,find.newest.kits.jenkins.wfa,find.newest.kits.jenkins.eou"
+	/>
+	
+	<target name="find.newest.kits.jenkins.wfp">
+		<!-- <echo message="BEFORE WFP newest.kit.build.path = [${wfp.kits.dir.lastbuildused}]"/> -->
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wfp.kits.dir.jenkins" />
+		</antcall>
+		<!-- <echo message="AFTER WFP newest.kit.build.path = [${wfp.kits.dir.lastbuildused}]"/> -->
+	</target>
+	<target name="find.newest.kits.jenkins.wtk">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wtk.kits.dir.jenkins" />
+		</antcall>
+	</target>
+	<target name="find.newest.kits.jenkins.wfa" if="install.wfa">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="wfa.kits.dir.jenkins" />
+		</antcall>
+	</target>
+	<target name="find.newest.kits.jenkins.eou">
+		<antcall target="find.newest.kits.jenkins">
+			<param name="find.newest.kits.jenkins.dir" value="eou.kits.dir.jenkins" />
+		</antcall>
+	</target>
+	
+	<target name="-find.most.recent.dir">
+		<fail unless="source.dir" message="Error, you must supply the property 'source.dir'."/>
+		<fail unless="source.dir.pattern" message="Error, you must supply the property 'source.dir.pattern'."/>
+		<echo>source.dir: ${source.dir} source.dir.pattern: ${source.dir.pattern}</echo>
+		
+		<first id="first.id" count="1">
+			<sort>
+				<dirset dir="${source.dir}" includes="${source.dir.pattern}" />
+				<reverse xmlns="antlib:org.apache.tools.ant.types.resources.comparators">
+					<date />
+				</reverse>
+			</sort>
+		</first>
+		<property name="newest.dir" value="${toString:first.id}"/>
+		<basename property="newest.dir.basename" file="${newest.dir}"/>
+		<echo>The most recent directory in ${source.dir} is ${newest.dir} basename ${newest.dir.basename}</echo>
+		
+		<!-- fail if "." is returned because the directory is empty -->
+		<condition property="no.directory.found">
+			<equals arg1="${newest.dir}" arg2="." trim="true" />
+		</condition>
+		<fail if="no.directory.found" message="Error, the directory found was '${newest.dir}'."/>
+	</target>
+	
+	<target name="find.newest.kits.check">
+		<condition property="find.newest.kits.check.run">
+			<or>
+				<not>
+					<isset property="skip.newest.kits.check" />
+				</not>
+				<isset property="force.newest.kits.check" />
+			</or>
+		</condition>
+	</target>
+	
+	<target name="find.newest.kits" depends="find.newest.kits.check" if="find.newest.kits.check.run">
+		<property name="source.dir" value="${${find.newest.kits.dir}}/"/>
+		<property name="source.dir.lastbuildused" value="${find.newest.kits.dir}.lastbuildused"/>
+		<property name="source.dir.pattern" value="*_build.*"/>
+		<antcall target="find.newest.kits2"/>
+		<!-- <echo message="#2 newest.dir = [${newest.dir.basename}]"/> -->
+	</target>
+	<target name="find.newest.kits2" depends="-find.most.recent.dir">
+		<echo message="Kits newest.dir = [${newest.dir}] basename [[${newest.dir.basename}]]"/>
+		<!-- <echo message="source.dir.lastbuildused = [${source.dir.lastbuildused}]"/> -->
+		<!-- <echo message="user.properties = ${user.properties}"/> -->
+		<replaceregexp byline="true">
+			<regexp pattern="${source.dir.lastbuildused}=(.*)"/>
+			<substitution expression="${source.dir.lastbuildused}=${newest.dir.basename}"/>
+			<fileset dir="." casesensitive="false" includes="**/${user.properties}"/>
+		</replaceregexp>
+		<replaceregexp byline="true">
+			<regexp pattern="${source.dir.lastbuildused}=(.*)"/>
+			<substitution expression="${source.dir.lastbuildused}=${newest.dir.basename}"/>
+			<fileset dir="." casesensitive="false" includes="**/robocopy.properties"/>
+		</replaceregexp>
+	</target>
+	
+	<target name="find.newest.kits.jenkins.check">
+		<condition property="find.newest.kits.jenkins.check.run">
+			<or>
+				<not>
+					<isset property="skip.newest.kits.jenkins.check" />
+				</not>
+				<isset property="force.newest.kits.jenkins.check" />
+			</or>
+		</condition>
+	</target>
+	<target name="find.newest.kits.jenkins" depends="find.newest.kits.jenkins.check" if="find.newest.kits.jenkins.check.run">
+		<property name="source.dir" value="${${find.newest.kits.jenkins.dir}}/"/>
+		<property name="source.dir.lastbuildused" value="${find.newest.kits.jenkins.dir}.lastbuildused"/>
+		<property name="source.dir.pattern" value="*_*"/>
+		<antcall target="find.newest.kits2.jenkins"/>
+		<!-- <echo message="#2 newest.dir = [${newest.dir.basename}]"/> -->
+	</target>
+	<target name="find.newest.kits2.jenkins" depends="-find.most.recent.dir">
+		<echo message="Kits newest.dir = [${newest.dir}] basename [[${newest.dir.basename}]]"/>
+		<!-- <echo message="source.dir.lastbuildused = [${source.dir.lastbuildused}]"/> -->
+		<!-- <echo message="user.properties = ${user.properties}"/> -->
+		<replaceregexp byline="true">
+			<regexp pattern="${source.dir.lastbuildused}=(.*)"/>
+			<substitution expression="${source.dir.lastbuildused}=${newest.dir.basename}"/>
+			<fileset dir="." casesensitive="false" includes="**/${user.properties}"/>
+		</replaceregexp>
+		<replaceregexp byline="true">
+			<regexp pattern="${source.dir.lastbuildused}=(.*)"/>
+			<substitution expression="${source.dir.lastbuildused}=${newest.dir.basename}"/>
+			<fileset dir="." casesensitive="false" includes="**/robocopy.properties"/>
+		</replaceregexp>
+	</target>
+
+	<target name="curl">
+		<available property="curl.found" file="${common.basedir}/bin/curl.exe" />
+		
+		<condition property="curl.verbose">
+			<istrue value="${copy.verbose}" />
+		</condition>
+		
+		<!-- <antcall target="curl.install" /> -->
+		<antcall target="curl.start" />	
+	</target>
+
+	<target name="curl.verbose.enabled" if="get.verbose">
+	    <!-- wget -c http://ftp.ussg.iu.edu/linux/ubuntu-releases/5.10/ubuntu-5.10-install-i386.iso -->
+		<echo>CURL is Copying '${dl.link}' to '${localdir}'...</echo>
+		<echo>curl.exe -v -L -C -# --retry 10</echo>
+		<echo>${from}</echo>
+		<echo>-P ${to}</echo>
+		<echo>bin/curl.exe -v -L -c -# --retry 10 -O ${from}</echo>
+		<exec executable="cmd" resultproperty="curl_errorcode" failonerror="false"> 
+			<arg line="/c cd ${to} &amp; ${common.basedir}/bin/curl.exe -v -L -c -# --retry 10 -O ${from}"/>
+		</exec>
+
+		<fail message="curl failed to copy the requested path: ${from} errorcode: ${curl_errorcode}">
+			<condition>
+				<not>
+					<equals arg1="${curl_errorcode}" arg2="0"/>
+				</not>
+			 </condition>
+		</fail>
+	</target>
+	<target name="curl.verbose.disabled" unless="get.verbose">
+	    <!-- wget -c http://ftp.ussg.iu.edu/linux/ubuntu-releases/5.10/ubuntu-5.10-install-i386.iso -->
+		<echo>CURL is Copying '${dl.link}' to '${localdir}'...</echo>
+		<exec executable="cmd" resultproperty="curl_errorcode" failonerror="false"> 
+			<arg line="/c cd ${to} &amp; ${common.basedir}/bin/curl.exe -L -c -# --retry 10 -O ${from}"/>
+		</exec>
+
+		<fail message="curl failed to copy the requested path: ${from} errorcode: ${curl_errorcode}">
+			<condition>
+				<not>
+					<equals arg1="${curl_errorcode}" arg2="0"/>
+				</not>
+			 </condition>
+		</fail>
+	</target>
+	<target name="curl.start" depends="curl.verbose.enabled,curl.verbose.disabled" />
+	
+	<target name="wget">
+		<available property="wget.found" file="${common.basedir}/bin/wget.exe" />
+		
+		<condition property="get.verbose">
+			<istrue value="${copy.verbose}" />
+		</condition>
+		
+		<antcall target="curl" if:true="${get.uses.curl}"/>
+		<antcall target="wget.install" unless:true="${get.uses.curl}" />
+		<antcall target="wget.start"   unless:true="${get.uses.curl}" />	
+	</target>
+
+	<target name="wget.install" unless="wget.found">
+	    <echo>Ant Copying '${wget.link}' to '${common.basedir}/bin/'...</echo>
+		<mkdir dir="${common.basedir}/bin/" />
+		<get src="${wget.link}" dest="${common.basedir}/bin/wget.exe" usetimestamp="true" verbose="true" />
+	</target>
+
+	<target name="wget.verbose.enabled" if="get.verbose">
+	    <!-- wget -c http://ftp.ussg.iu.edu/linux/ubuntu-releases/5.10/ubuntu-5.10-install-i386.iso -->
+		<echo>wget is Copying '${dl.link}' to '${localdir}'...</echo>
+		<echo>wget.exe -v -c -N -t 100</echo>
+		<echo>${from}</echo>
+		<echo>-P ${to}</echo>
+		<exec executable="cmd" resultproperty="wget_errorcode" failonerror="false"> 
+			<arg line="/c ${common.basedir}/bin/wget.exe -v -c -N -t 100 ${from} -P ${to}"/>
+		</exec>
+
+		<fail message="wget failed to copy the requested path: ${from} errorcode: ${wget_errorcode}">
+			<condition>
+				<not>
+					<equals arg1="${wget_errorcode}" arg2="0"/>
+				</not>
+			 </condition>
+		</fail>
+	</target>
+	<target name="wget.verbose.disabled" unless="get.verbose">
+	    <!-- wget -c http://ftp.ussg.iu.edu/linux/ubuntu-releases/5.10/ubuntu-5.10-install-i386.iso -->
+		<echo>wget is Copying '${dl.link}' to '${localdir}'...</echo>
+		<exec executable="cmd" resultproperty="wget_errorcode" failonerror="false"> 
+			<arg line="/c ${common.basedir}/bin/wget.exe -nv -c -N -t 100 ${from} -P ${to}"/>
+		</exec>
+
+		<fail message="wget failed to copy the requested path: ${from} errorcode: ${wget_errorcode}">
+			<condition>
+				<not>
+					<equals arg1="${wget_errorcode}" arg2="0"/>
+				</not>
+			 </condition>
+		</fail>
+	</target>
+	<target name="wget.start" depends="wget.verbose.enabled,wget.verbose.disabled" />
+	
+</project>

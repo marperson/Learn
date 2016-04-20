@@ -1,0 +1,1386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="wfcinstall" default="help" basedir="." xmlns:props="antlib:org.apache.ant.props"  xmlns:if="ant:if" xmlns:unless="ant:unless">
+
+	<description>
+	This script is intended to make it easy to install/uninstall wfc. It imports
+	functionality from build_db.xml which contains functionality for 
+	restaging databases and running SQL scripts through the DBPatcher.
+	
+	You should copy server.properties to '${user.properties}'
+	and change the properties to suit your needs.
+	</description>
+	
+	<import file="${basedir}/build_common.xml" />
+	<import file="${basedir}/build_db.xml" />
+	<import file="${basedir}/build_wfc.xml" />
+	<import file="${basedir}/build_microtest.xml" />
+	<import file="${basedir}/build_db_switcher.xml" />
+	<import file="${basedir}/build_dynatrace.xml" />
+	<import file="${basedir}/build_backup.xml" />
+	<import file="${basedir}/robocopy_tasks.xml" />
+
+	<property environment="env"/> 
+	<property name="installation.opts" value="${localdir}${/}install.opts" />
+	<property name="sp.installation.opts" value="${localdir}/sp.install.opts" />
+	<property name="sp.uninstallation.opts" value="${localdir}/sp.uninstall.opts" />
+	<property name="rtm.dir" value="\\kvsca-qmfile01\wfc\Engineering\Builds\${wfc.ver.major}.${wfc.ver.minor}\RTM\Kronos" />
+	<property name="rtm.filename" value="WorkForce_Suite_${wfc.target}_CD_${build.type}.zip" />
+	<property name="unique.sp.name" value="false" />
+	<property name="uninstall.opts" value="${basedir}/uninstall.opts" />
+	<property name="jboss.service" value="JBoss_${DEFAULT_DSN_NAME}" />
+	<property name="msdtc" value="MSDTC" />
+	<property name="installshield.files" value="${env.CommonProgramFiles}/InstallShield/Universal/_Kronos_" />
+	<property name="jboss-deploy-path-root" value="${installLocation}/jboss/${DEFAULT_DSN_NAME}/deployments/" />
+	<property name="jboss-web-inf-path" value="${war.file}/web-inf/" />
+	<property name="jboss-loose-path-root" value="${jboss-web-inf-path}classes/" />
+	<property name="jboss-loose-path" value="${jboss-loose-path-root}/com" />
+	<property name="creation.log" value="${install.configuration.dir}/instance_creation_${DEFAULT_DSN_NAME}.log" />
+	<property name="last.good.build" value="lastSuccessfulBuild" />
+	<property name="jboss-config-path" value="${installLocation}/jboss/${DEFAULT_DSN_NAME}/configuration" />
+	<property name="jboss-wfc-applications-path" value="${war.file}/applications/" />
+	<property name="lp.job.name" value="Create_LP_CDIMAGE_WINDOWS.0${wfc.ver.major}.0${wfc.ver.minor}.${default.stream}" />
+	<!--
+	<echo>installLocation = ${installLocation}</echo>
+	<echo>DEFAULT_DSN_NAME = ${DEFAULT_DSN_NAME}</echo>
+	<echo>ear.file = ${ear.file}</echo>
+	<echo>war.file = ${war.file}</echo>
+	<echo>jboss-wfc-applications-path = ${jboss-wfc-applications-path}</echo>
+	-->
+	<property name="local.tct.dir" value="c:\\TCT" />
+	<property name="tct.extras.dir" value="${basedir}/pseudoTranslator" />
+	<property name="tct.filename" value="TranslationCustomizationToolkit" />
+	<property name="tct.filename.zip" value="${tct.filename}.zip" />
+	<property name="tct.job.name" value="tct.08.00.qa.int" />
+	<property name="lp.filename" value="WorkForce_Langpack_Windows_CD_${build.type}" />
+	<property name="lp.filename.zip" value="${lp.filename}.zip" />
+	<property name="tct.flex.sdk" value="flex_sdk_4.6.zip" />
+	<property name="tct.flex.sdk.dir" value="C:\flex_sdk" />
+	<property name="java.installer" value="jre-7u60-windows-i586.exe" />
+	
+	<property name="disable.ear" value='add HKEY_CURRENT_USER\Software\KronosDev /v DeployEar /t REG_SZ /d "TRUE" /f' />
+	<property name="enable.ear" value='add HKEY_CURRENT_USER\Software\KronosDev /v DeployEar /t REG_SZ /d "FALSE" /f' />
+	
+	<!-- set product streams -->
+	<property name="install.stream" value="${default.stream}"/>
+	<property name="wfp.stream" value="${default.stream}"/>
+	<property name="wtk.stream" value="${default.stream}"/>
+	<property name="wat.stream" value="${default.stream}"/>
+	<property name="wfl.stream" value="${default.stream}"/>
+	<property name="act.stream" value="${default.stream}"/>
+	<property name="eou.stream" value="${default.stream}"/>
+	<property name="SP.stream" value="${default.stream}"/>
+	<property name="tct.stream" value="${default.stream}"/>
+	
+	<!-- pseudo-translator classpath -->
+	<path id="tct.class.path">
+		<fileset dir="${local.tct.dir}/tools/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="cfgmgr.class.path">
+		<fileset dir="${install.configuration.dir}/boms/bin">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${ant.home}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean" description="deletes the local directory where the binaries were copied">
+		<delete dir="${localdir}" />
+	</target>
+	
+	<target name="all" depends="clean,copy.products,unzip.products,wfc.stop,uninstall.all,install.all,-db.all,install.tct,disable.auto.start,-wfc.start"
+			description="clean,copy.products,unzip.products,wfc.stop,uninstall.all,install.all,db.all,install.tct,disable.auto.start,wfc.start"
+	/>
+	
+	<target name="eou.all" depends="clean,copy.eou,unzip.eou,wfc.stop,uninstall.eou,install.eou,-db.all,install.tct,disable.auto.start,-wfc.start"
+			description="clean,copy.eou,unzip.eou,wfc.stop,uninstall.eou,install.eou,db.all,install.tct,disable.auto.start,wfc.start"
+	/>
+	<target name="dev.all" depends="clean,copy.products,unzip.products,copy.jars,unzip.jars,wfc.stop,uninstall.all,install.all,dev.tasks,-db.all,disable.auto.start,-wfc.start"
+			description="clean,copy.products,unzip.products,copy.jars,unzip.jars,wfc.stop,uninstall.all,install.all,dev.tasks,db.all,disable.auto.start,wfc.start"
+	/>
+	
+	<target name="sp.all" depends="clean,copy.sp,unzip.sp,wfc.stop,uninstall.sp,install.sp,-db.all,disable.auto.start,-wfc.start"
+			description="clean,copy.sp,unzip.sp,wfc.stop,uninstall.sp,install.sp,db.all,disable.auto.start,wfc.start"
+	/>
+	
+	<target name="wfc.restage" depends="wfc.stop,-db.all,wfc.start"
+			description="wfc.stop,db.all,wfc.start"
+	/>
+	
+	<!-- 	This target copies binaries from a jenkins server to the local computer.
+			Note that if suite.active is set to true, only the suite installer is copied. Also
+			note that when the suite installer is not being used, only the products which are 
+			configured to be installed will be copied to the local computer.
+	-->
+	<target name="copy.products" description="copies all the installation binaries to the local computer via Jenkins">
+		<antcall target="copy.dev" />
+		<antcall target="copy.rtm" />
+		<antcall target="copy.sp" />
+	</target>
+	
+	<target name="copy.dev" if="${install.dev}">
+		<antcall target="copy.suite"/>
+		<antcall target="copy.wfp" />
+		<antcall target="copy.wtk" />
+		<antcall target="copy.wfs" />
+		<antcall target="copy.wff" />
+		<antcall target="copy.wfop" />
+		<antcall target="copy.wat" />
+		<antcall target="copy.wfl" />
+		<antcall target="copy.act" />
+		<antcall target="copy.eou" />
+		<antcall target="copy.tct" />
+	</target>
+	
+	<target name="copy.rtm" if="${install.rtm}">
+		<copy file="${rtm.dir}\${rtm.filename}" todir="${localdir}" />
+	</target>
+	
+	<target name="copy.sp" if="${install.sp}">
+		<property name="copy.SP.build" value="${last.good.build}" />
+		
+		<condition property="job.name" else="Service%20Pack%200${wfc.ver.major}.0${wfc.ver.minor}.0${wfc.ver.rev}.${default.stream}" 
+									value="Service%20Pack%200${wfc.ver.major}.0${wfc.ver.minor}.0${wfc.ver.rev}">
+			<or>
+				<equals arg1="${default.stream}" arg2="" />
+				<not><isset property="default.stream" /></not>
+			</or>
+		</condition>
+		
+		<m_generic_copy unless:true="${unique.sp.name}" source.kit="SP" jnks.job="${job.name}" />
+		<m_directly_copy_file if:true="${unique.sp.name}" />
+	</target>
+	
+	<!--	This target will copy the suite installer.
+			Precondition: the property suite.active must be set to true.
+	-->
+	<target name="copy.suite" if="${suite.active}" description="Copies the suite installer">
+		<property name="copy.install.build" value="${last.good.build}" />
+
+		<m_generic_copy unless:true="${enable.gradle.mode}" source.kit="install" file="install_${build.type}bit.zip" />
+		<m_generic_copy if:true="${enable.gradle.mode}" source.kit="" file="${gradle.published.suite.installer.name}.zip" />
+	</target>
+
+	<!--	This target will copy the suite installer for Falcon.
+			Precondition: the property suite.active must be set to true.
+	-->
+	<target name="copy.suite.falcon" if="${suite.active}" description="Copies the Falcon suite installer">
+		<property name="copy.install.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="install" jnks.job="install.08.00.qa.int.falconcloud.int_KIT_WIN" file="WorkForce_Suite_Windows_CD_${build.type}.zip" />
+	</target>
+	
+	<target name="determine.version">
+		<!-- is this a service pack deployment?
+			If so, specify a different version which is used in the jenkins job name -->
+		<condition property="default.version" value="0${wfc.ver.major}.0${wfc.ver.minor}.0${wfc.ver.rev}" >
+			<istrue value="${install.sp}" />
+		</condition>
+	</target>
+	
+	<target name="copy.jars" description="copies jumbo jars to the local computer">
+		<antcall target="copy.jars.wfp"/>
+		<antcall target="copy.jars.wtk"/>
+		<antcall target="copy.jars.eou"/>
+	</target>
+	
+	<target name="copy.jars.wfp" depends="determine.version">
+		<property name="copy.wfp.build" value="${last.good.build}" />
+		<m_copy_jumbos_jars source.kit="wfp" zip.file.name="wfpJars.zip" />
+	</target>
+	
+	<target name="copy.jars.wtk" if="${install.wtk}" depends="determine.version">
+		<property name="copy.wtk.build" value="${last.good.build}" />
+		<m_copy_jumbos_jars source.kit="wtk" zip.file.name="wtkJars.zip" />
+	</target>
+	
+	<target name="copy.jars.eou" depends="determine.version">
+		<property name="copy.eou.build" value="${last.good.build}" />
+		<m_copy_jumbos_jars source.kit="eou" zip.file.name="eouJars.zip" />
+	</target>
+
+	<!--	This target will copy the wfp installer to the local computer.
+			Precondition: the property suite.active must not be set to true.
+	-->
+	<target name="copy.wfp" unless="${suite.active}">
+		<property name="copy.wfp.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="wfp"/>
+	</target>
+	
+	<!--	This target will copy the wtk installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wtk must be set to true
+	-->
+	<target name="copy.wtk" if="${install.wtk}" unless="${suite.active}">
+		<property name="copy.wtk.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="wtk"/>
+	</target>
+	
+	<!--	This target will copy the wfs installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wfs must be set to true
+	-->
+	<target name="copy.wfs" if="${install.wfs}" unless="${suite.active}">
+		<property name="copy.wtk.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="wtk" kit.name="wfs" />
+	</target>
+	
+	<!--	This target will copy the wff installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wff must be set to true
+	-->
+	<target name="copy.wff" if="${install.wff}" unless="${suite.active}">
+		<property name="copy.wtk.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="wtk" kit.name="wfso" />
+	</target>
+	
+	<!--	This target will copy the wfop installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wfop must be set to true
+	-->
+	<target name="copy.wfop" if="${install.wfop}" unless="${suite.active}">
+		<property name="copy.wtk.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="wtk" kit.name="wfop" />
+	</target>
+
+	<!--	This target will copy the act installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.act must be set to true
+	-->
+	<target name="copy.act" if="${wfafeature.active}" unless="${suite.active}">
+		<property name="copy.act.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="act" file="wfaInstall_${build.type}bit.zip" />
+	</target>
+	
+	<!--	This target will copy the workforce leave installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+	-->
+	<target name="copy.wfl" if="${wflfeature.active}" unless="${suite.active}">
+		<property name="copy.wfl.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="wfl"/>
+	</target>
+	
+	<!--	This target will copy the workforce attendence installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+	-->
+	<target name="copy.wat" if="${watfeature.active}" unless="${suite.active}">
+		<property name="copy.wat.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="wat"/>
+	</target>
+	
+	<!--	This target will copy the eou installer to the local computer.
+			Precondition:	the property suite.active must not be set to true.
+	-->
+	<target name="copy.eou" unless="${suite.active}">
+		<property name="copy.eou.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="eou"/>
+	</target>
+	
+	<target name="copy.tct" if="${install.tct}">
+		<property name="copy.tct.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="tct" jnks.job="${tct.job.name}" kit.name="${last.good.build}" file="${tct.filename.zip}" />
+	</target>
+
+	<target name="copy.lp" if="${install.lp}">
+		<property name="copy.lp.build" value="${last.good.build}" />
+		<m_generic_copy source.kit="lp" jnks.job="${lp.job.name}" kit.name="${last.good.build}" file="${lp.filename.zip}" />
+	</target>
+	
+	<target name="unzip.products" description="unzips all the installation binaries on the local computer" >
+		<antcall target="unzip.dev" />
+		<antcall target="unzip.rtm" />
+		<antcall target="unzip.sp" />
+	</target>
+	
+	<target name="unzip.dev" if="${install.dev}">
+		<antcall target="unzip.suite" />
+		<antcall target="unzip.wfp" />
+		<antcall target="unzip.wtk" />
+		<antcall target="unzip.wfs" />
+		<antcall target="unzip.wff" />
+		<antcall target="unzip.wfop" />
+		<antcall target="unzip.act" />
+		<antcall target="unzip.wat" />
+		<antcall target="unzip.wfl" />
+		<antcall target="unzip.eou" />
+		<antcall target="unzip.tct" />
+	</target>
+	
+	<target name="unzip.rtm" if="${install.rtm}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/${rtm.filename}" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.sp" if="${install.sp}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/SPInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="un7z.sp" if="${install.sp}">
+		<antcall target="generic.un7z">
+			<param name="file" value="${localdir}/SPInstall_${build.type}bit.7z" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.jars" description="unzips jumbo jars on the local computer">
+		<antcall target="unzip.jars.wfp" />
+		<antcall target="unzip.jars.wtk" />
+		<antcall target="unzip.jars.eou" />
+	</target>
+	
+	<target name="unzip.jars.wfp">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wfpJars.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.jars.wtk" if="${install.wtk}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wtkJars.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.jars.eou">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/eouJars.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.suite" if="${suite.active}">
+	
+		<!-- <echo>Mode Flags: Gradle: ${enable.gradle.mode} TeamCity: ${enable.teamcity.mode}</echo> -->
+		
+		<antcall target="generic.unzip" unless:true="${enable.gradle.mode}">
+			<param name="file" value="${localdir}/install_${build.type}bit.zip" />
+		</antcall>
+		<antcall target="generic.unzip" if:true="${enable.gradle.mode}">
+			<param name="file" value="${localdir}/${gradle.published.suite.installer.name}.zip" />
+		</antcall>
+		
+	</target>
+	
+	<target name="unzip.wfp" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wfpInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.wtk" if="${install.wtk}" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wtkInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.wfs" if="${install.wfs}" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wfsInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.wff" if="${install.wff}" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wfsoInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+
+	<target name="unzip.wfop" if="${install.wfop}" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wfopInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.act" if="${wfafeature.active}" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wfaInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.wfl" if="${wflfeature.active}" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/wflInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.wat" if="${watfeature.active}" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/watInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.eou" unless="${suite.active}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/eouInstall_${build.type}bit.zip" />
+		</antcall>
+	</target>
+	
+	<target name="unzip.tct" if="${install.tct}">
+		<delete dir="${local.tct.dir}" quiet="true" />
+		<unzip src="${localdir}/${tct.filename.zip}" dest="${local.tct.dir}" />
+	</target>
+
+	<target name="unzip.lp" if="${install.lp}">
+		<antcall target="generic.unzip">
+			<param name="file" value="${localdir}/${lp.filename.zip}" />
+		</antcall>
+	</target>
+	
+	<!-- 	Creates the options file which is used when installing WFP/WTK. 
+			Edit these properties in server.properties NOT here.
+	-->	
+	<target name="create.installer.opts">
+		<echo file="${installation.opts}">-P installLocation="${installLocation}"
+-P wtkfeature.active=${install.wtk}
+-P wfsfeature.active=${install.wfs}
+-P wfffeature.active=${install.wff}
+-P wfopfeature.active=${install.wfop}
+-P wflfeature.active=${wflfeature.active}
+-P watfeature.active=${watfeature.active}
+-P wfafeature.active=${wfafeature.active}
+-P wdmfeature.active=${wdmfeature.active}
+-P wimfeature.active=${wimfeature.active}
+-P wtmfeature.active=${wtmfeature.active}
+
+-V APP_SERVER="${APP_SERVER}"
+-V WEB_SERVER="${WEB_SERVER}"
+-V NS_SERVER="${NS_SERVER}"
+
+-V DEFAULT_NS_DOMAIN="${DEFAULT_NS_DOMAIN}"
+-V DEFAULT_XML_USER="${DEFAULT_XML_USER}"
+-V DEFAULT_XML_PASSWORD="${DEFAULT_XML_PASSWORD}"
+
+-V DEFAULT_ENV_TYPE="${DEFAULT_ENV_TYPE}"
+-V DEFAULT_SETUP_TYPE="${DEFAULT_SETUP_TYPE}"
+-V DEFAULT_WEB_SERVER_NAME="${DEFAULT_WEB_SERVER_NAME}"
+-V DEFAULT_WEB_SERVER_PLATFORM="${DEFAULT_WEB_SERVER_PLATFORM}"
+-V DEFAULT_WEB_SERVER_SSL="${DEFAULT_WEB_SERVER_SSL}"
+-V DEFAULT_CERTIFICATE_FILE="${DEFAULT_CERTIFICATE_FILE}"
+-V DEFAULT_KEY_FILE="${DEFAULT_KEY_FILE}"
+-V RUN_SILENT=${RUN_SILENT}
+-V DEFAULT_APP_SERVER_NAME="${DEFAULT_APP_SERVER_NAME}"
+-V DEFAULT_APP_SERVER_PORT=${DEFAULT_APP_SERVER_PORT}
+-V DEFAULT_DBPLATFORM="${DEFAULT_DBPLATFORM}"
+-V DEFAULT_DBSERVER_NAME="${DEFAULT_DBSERVER_NAME}"
+-V DEFAULT_ORA_DBPORT="${DEFAULT_ORA_DBPORT}"
+-V DEFAULT_MSS_DBPORT="${DEFAULT_MSS_DBPORT}"
+-V DEFAULT_DBTIMEZONE="${DEFAULT_DBTIMEZONE}"
+-V DEFAULT_DSN_NAME="${DEFAULT_DSN_NAME}"
+-V DEFAULT_DB_OR_SID_NAME="${DEFAULT_DB_OR_SID_NAME}"
+-V DEFAULT_DB_USERNAME="${DEFAULT_DB_USERNAME}"
+-V DEFAULT_DB_PASSWORD="${DEFAULT_DB_PASSWORD}"
+-V DEFAULT_DBOWNER_USERNAME="${DEFAULT_DBOWNER_USERNAME}"
+-V DEFAULT_DBOWNER_PASSWORD="${DEFAULT_DBOWNER_PASSWORD}"
+-V DEFAULT_BGP_ON_OFF_ONLY="${DEFAULT_BGP_ON_OFF_ONLY}"
+-V DEFAULT_JMX_PASSWORD="${DEFAULT_JMX_PASSWORD}"
+-V SERVER_LIST_PORT="${SERVER_LIST_PORT}"
+-V CLIENT_LIST_PORT="${CLIENT_LIST_PORT}"
+-V CLIENT_LIST_SSL_PORT="${CLIENT_LIST_SSL_PORT}"
+-V CONNECTION_MGR_PORT="${CONNECTION_MGR_PORT}"
+-V ADMIN_CONSOLE_PORT="${ADMIN_CONSOLE_PORT}"
+-V ADMIN_CONSOLE_SECURE_PORT="${ADMIN_CONSOLE_SECURE_PORT}"
+-V FILE_TRANSFER_PROXY_PORT="${FILE_TRANSFER_PROXY_PORT}"
+-V HTTP_BINDING_PORT="${HTTP_BINDING_PORT}"
+-V HTTP_BINDING_SECURE_PORT="${HTTP_BINDING_SECURE_PORT}"
+-V FLASH_CROSS_DOMAIN_PORT="${FLASH_CROSS_DOMAIN_PORT}"
+-V NS_AJP_PORT="${NS_AJP_PORT}"
+</echo>
+
+	<!-- MSS specific properties -->
+	<echo file="${installation.opts}" append="true" if:true="${isMSS}">-V MULTI_SUBNET_FAILOVER_CHECKED="${MULTI_SUBNET_FAILOVER_CHECKED}"
+</echo>
+	<!-- Oracle specific properties -->
+	<echo file="${installation.opts}" append="true" if:true="${isOracle}">-V FCF_ENABLED_CHECKED="${FCF_ENABLED_CHECKED}"
+-V ONS_CONFIG="${ONS_CONFIG}"
+</echo>
+
+	<!-- verify that all properties which must be customized actually
+		have been customized. Fail if any have not. -->
+	<loadfile srcFile="${installation.opts}" property="props.not.customized">
+		<filterchain>
+			<linecontains>
+				<contains value="REPLACE_ME"/>
+			</linecontains>
+		</filterchain>
+	</loadfile>
+	<fail if="props.not.customized">
+Error, the following properties in ${installation.opts} have not been customized for your environment:
+
+${props.not.customized}
+
+Please update your local properties file '${user.properties}'.
+	</fail>
+	
+	<concat><fileset file="${installation.opts}"/></concat>
+	
+	</target>
+	
+		<!-- 	Creates the options file which is used when installing WFP/WTK. 
+			Edit these properties in server.properties NOT here.
+	-->	
+	<target name="create.sp.installer.opts">
+		<echo file="${sp.installation.opts}">-V RUN_CONFIGURATION_MANAGER="${RUN_CONFIGURATION_MANAGER}"
+-V RUN_DBMANAGER="${RUN_DBMANAGER_INSTALL}"
+-V SILENT_DATABASE_OWNER="${DEFAULT_DB_USERNAME}"
+-V SILENT_DATABASE_PASSWORD="${DEFAULT_DB_PASSWORD}"
+</echo>
+
+	<!-- verify that all properties which must be customized actually
+		have been customized. Fail if any have not. -->
+	<loadfile srcFile="${sp.installation.opts}" property="props.not.customized">
+		<filterchain>
+			<linecontains>
+				<contains value="REPLACE_ME"/>
+			</linecontains>
+		</filterchain>
+	</loadfile>
+	<fail if="props.not.customized">
+Error, the following properties in ${sp.installation.opts} have not been customized for your environment:
+
+${props.not.customized}
+
+Please update your local properties file '${user.properties}'.
+	</fail>
+	
+	</target>
+
+			<!-- 	Creates the options file which is used when installing WFP/WTK. 
+			Edit these properties in server.properties NOT here.
+	-->	
+	<target name="create.sp.uninstaller.opts">
+		<echo file="${sp.uninstallation.opts}">-V RUN_CONFIGURATION_MANAGER="${RUN_CONFIGURATION_MANAGER}"
+-V RUN_DBMANAGER="${RUN_DBMANAGER_UNINSTALL}"
+-V SILENT_DATABASE_OWNER="${DEFAULT_DB_USERNAME}"
+-V SILENT_DATABASE_PASSWORD="${DEFAULT_DB_PASSWORD}"
+</echo>
+
+	<!-- verify that all properties which must be customized actually
+		have been customized. Fail if any have not. -->
+	<loadfile srcFile="${sp.uninstallation.opts}" property="props.not.customized">
+		<filterchain>
+			<linecontains>
+				<contains value="REPLACE_ME"/>
+			</linecontains>
+		</filterchain>
+	</loadfile>
+	<fail if="props.not.customized">
+Error, the following properties in ${sp.uninstallation.opts} have not been customized for your environment:
+
+${props.not.customized}
+
+Please update your local properties file '${user.properties}'.
+	</fail>
+	
+	</target>
+	
+	<!-- 	This target installs the products.
+			Note that if suite.active is set to true, the suite installer is used. Otherwise,
+			the products specified to be installed in the properties file will be installed.
+	-->
+	<target name="install.all" description="installs all the products">
+		<antcall target="install.dev" />
+		<antcall target="install.rtm" />
+		<antcall target="install.sp" />
+		<antcall target="copy.custom" />
+	</target>
+	
+	<target name="install.dev" if="${install.dev}">
+		<antcall target="install.suite" />
+		<antcall target="install.wfp" />
+		<antcall target="install.wtk.products" />
+		<antcall target="install.wat" />
+		<antcall target="install.act" />
+		<antcall target="install.wfl" />
+		<antcall target="install.eou" />
+	</target>
+	
+	<target name="install.rtm" if="${install.rtm}" depends="create.installer.opts">
+		<echo message="Installing RTM..." />
+		
+		<!-- enable ear explosion since this is the last product installed -->
+		<echo message="Executing 'reg ${enable.ear}'..."/>
+		<exec executable="reg" failonerror="true">
+			<arg line="${enable.ear}" />
+		</exec>
+		
+		<delete file="${creation.log}" />
+		<basename file="${rtm.filename}" property="base.file.no.ext" suffix=".zip" />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\${base.file.no.ext}\install.exe" />
+			<param name="cmdline" value='-options "${installation.opts}"'/>
+		</antcall>
+		<antcall target="verify.product.installed" />	
+		
+		<!-- copy the license files -->
+		<copy todir="${installLocation}/${DEFAULT_DSN_NAME}/licensing" verbose="true" >		
+			<fileset dir="${basedir}/licenses/${DEFAULT_DSN_NAME}/Version_${wfc.ver.major}.${wfc.ver.minor}">
+				<include name="*.lic"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="install.sp" if="${install.sp}" depends="create.sp.installer.opts">
+		<echo message="Installing Service Pack ${wfc.ver.major}.${wfc.ver.minor}.${wfc.ver.rev}..." />
+		
+		<!-- enable ear explosion since this is the last product installed -->
+		<echo message="Executing 'reg ${enable.ear}'..."/>
+		<exec executable="reg" failonerror="true">
+			<arg line="${enable.ear}" />
+		</exec>
+		
+		<delete file="${creation.log}" />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\SPInstall_${build.type}bit\install.exe" />
+			<param name="cmdline" value='-options "${sp.installation.opts}"'/>
+		</antcall>
+		<antcall target="verify.product.installed" />		
+	</target>
+	
+	<!--	This target attempts to verify that the EAR file was properly deployed by 
+			looking at the information in the creation log file.
+			This file is typically named instance_creation_wfc.log.
+	-->
+	<target name="verify.product.installed">
+		
+		<!-- verify that instance_creation_wfc.log exists -->
+		<condition property="install.failed">
+			<not>
+				<available file="${creation.log}" />			
+			</not>
+		</condition>
+		<antcall target="product.install.failed">
+			<param name="msg" value="Error, could not find log '${creation.log}'. The installation appears to have failed" />
+		</antcall>
+		
+		<!-- was it successful? -->
+		<condition property="install.failed">
+			<not>
+				<resourcecontains resource="${creation.log}" substring="BUILD SUCCESSFUL"/>
+			</not>
+		</condition>
+		<antcall target="product.install.failed">
+			<param name="msg" value="Error, '${creation.log}' indicates that the installation failed" />
+		</antcall>
+	</target>
+	
+	<target name="product.install.failed" if="install.failed">
+		<property name="config.err" value="${install.configuration.dir}/boms/bin/configmgr.err" />
+		<echo message="Outputting contents of '${config.err}'..." />
+		<concat><fileset file="${config.err}"/></concat>
+		
+		<fail message="${msg}. See output above from '${config.err}'." />
+		
+	</target>
+	
+	<!-- 	This target uses the suite installer to install wfc.
+			Precondition:	the property suite.active must be set to true.
+	-->
+	<target name="install.suite" if="${suite.active}" depends="create.installer.opts">
+		<!-- make sure that the ear gets exploded since this is the last product installed -->
+		<echo message="Executing 'reg ${enable.ear}'..."/>
+		<exec executable="reg" failonerror="true">
+			<arg line="${enable.ear}" />
+		</exec>
+	
+		<property name="exe" value="${localdir}\install_${build.type}bit\install.exe" unless:true="${enable.gradle.mode}"/>
+		<property name="exe" value="${localdir}\${gradle.published.suite.installer.name}\install.exe" if:true="${enable.gradle.mode}"/>
+
+		<echo>Mode Flags: Gradle: ${enable.gradle.mode} TeamCity: ${enable.teamcity.mode} EXE: ${exe}</echo>
+		
+		<echo message="Installing suite..." />
+		<antcall target="generic.execute">
+			<param name="cmdline" value='-options "${installation.opts}"'/>
+		</antcall>
+		<antcall target="verify.product.installed" />	
+		
+		<!-- copy the license files -->
+		<copy todir="${installLocation}/${DEFAULT_DSN_NAME}/licensing" verbose="true" >		
+			<fileset dir="${basedir}/licenses/Version_${wfc.ver.major}.${wfc.ver.minor}">
+				<include name="*.lic"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<!-- 	This target uses the wfp installer to install wfp.
+			Precondition:	the property suite.active must not be set to true.
+	-->
+	<target name="install.wfp" depends="create.installer.opts" unless="${suite.active}">
+		<!-- reduce time by disabling ear explosion until EOU installation -->
+		<echo message="Executing 'reg ${disable.ear}'..."/>
+		<exec executable="reg" failonerror="true">
+			<arg line="${disable.ear}" />
+		</exec>
+	
+		<property name="exe" value="${localdir}${/}wfpInstall_${build.type}bit${/}install.exe" />
+		<echo message="Installing WFP..." />
+		<antcall target="generic.execute">
+			<param name="cmdline" value='-options "${installation.opts}"'/>
+		</antcall>
+		
+		<!-- copy the license files -->
+		<copy todir="${installLocation}/${DEFAULT_DSN_NAME}/licensing" verbose="true" >		
+			<fileset dir="${basedir}/licenses/Version_${wfc.ver.major}.${wfc.ver.minor}">
+				<include name="*.lic"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- 	This is a high level target that will install the various wtk products as configured by the user
+			Precondition:	the property suite.active must not be set to true.
+	-->
+	<target name="install.wtk.products">
+		<antcall target="install.wtk" />
+		<antcall target="install.wfs" />
+		<antcall target="install.wff" />
+		<antcall target="install.wfop" />
+	</target>	
+	
+	<!-- 	This target uses the wtk installer to install wtk.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wtk must be set
+	-->
+	<target name="install.wtk" if="${install.wtk}" depends="create.installer.opts" unless="${suite.active}">
+		
+		<echo message="Installing WTK..." />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\wtkInstall_${build.type}bit\install.exe" />
+			<param name="cmdline" value='-options "${installation.opts}"'/>
+		</antcall>
+	</target>
+
+	<!-- 	This target uses the wfs installer to install wfs.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wfs must be set
+	-->
+	<target name="install.wfs" if="${install.wfs}" unless="${suite.active}">
+		<echo message="Installing WFS..." />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\wfsInstall_${build.type}bit\install.exe" />
+		</antcall>
+	</target>
+	
+	<!-- 	This target uses the wff installer to install wff.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wff must be set
+	-->
+	<target name="install.wff" if="${install.wff}" unless="${suite.active}">
+		<echo message="Installing WFF..." />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\wfsoInstall_${build.type}bit\install.exe" />
+		</antcall>
+	</target>
+	
+	<!-- 	This target uses the wfop installer to install wfop.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wfop must be set
+	-->
+	<target name="install.wfop" if="${install.wfop}" unless="${suite.active}">
+		<echo message="Installing WFOP..." />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\wfopInstall_${build.type}bit\install.exe" />
+		</antcall>
+	</target>
+
+	<!-- 	This target uses the workforce leave installer to install wfl.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wfl must be set
+	-->
+	<target name="install.wfl" if="${wflfeature.active}" unless="${suite.active}">
+		<echo message="Installing Workforce Leave..." />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\wflInstall_${build.type}bit\install.exe" />
+		</antcall>
+	</target>
+	
+	<!-- 	This target uses the workforce attendence installer to install wat.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.wat must be set
+	-->
+	<target name="install.wat" if="${watfeature.active}" unless="${suite.active}">
+		<echo message="Installing Workforce Attendence..." />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\watInstall_${build.type}bit\install.exe" />
+		</antcall>
+	</target>
+	
+	<!-- 	This target uses the act installer to install act.
+			Precondition:	the property suite.active must not be set to true.
+							the property install.act must be set
+	-->
+	<target name="install.act" if="${wfafeature.active}" unless="${suite.active}">
+		<echo message="Installing Activities..." />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\wfaInstall_${build.type}bit\install.exe" />
+		</antcall>
+	</target>
+	
+	<!-- 	This target uses the eou installer to install eou.
+			Precondition:	the property suite.active must not be set to true.
+	-->
+	<target name="install.eou" unless="${suite.active}">
+		<echo message="Installing EOU..." />
+		
+		<!-- enable ear explosion since this is the last product installed -->
+		<echo message="Executing 'reg ${enable.ear}'..."/>
+		<exec executable="reg" failonerror="true">
+			<arg line="${enable.ear}" />
+		</exec>
+		
+		<delete file="${creation.log}" />
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\eouInstall_${build.type}bit\install.exe" />
+		</antcall>
+		<antcall target="verify.product.installed" />		
+	</target>
+	
+	<target name="install.tct" if="${install.tct}">
+		<echo message="Installing TCT..." />
+		
+		<!-- install 32 bit Java if it's not installed -->
+		<loadproperties srcFile="${tct.extras.dir}/jvm.config" prefix="jvm." />
+		<condition property="found.32bit.java">
+			<available file="${jvm.java.home}" type="dir" />
+		</condition>
+		
+		<echo unless:true="${found.32bit.java}">Installing 32 Bit Java...</echo>
+		<exec unless:true="${found.32bit.java}" executable="cmd" dir="${tct.extras.dir}">
+			<arg line="/C ${java.installer} /s" />
+		</exec>
+
+		<!-- setup flex sdk -->
+		<unzip src="${tct.extras.dir}/${tct.flex.sdk}" dest="${tct.flex.sdk.dir}" />
+		<copy file="${tct.extras.dir}/jvm.config" todir="${tct.flex.sdk.dir}/bin" />
+		
+		<!-- copy a properties file -->
+		<copy file="${tct.extras.dir}/pseudoTranslator.properties"
+				todir="${local.tct.dir}/tools/bin" />
+		
+		<!-- run setup.bat to generate batch files (even though this script doesn't use them) -->
+		<java classname="com.kronos.wfc.tools.tct.framework.app.TCTSetUp" failonerror="true" fork="true" 
+				classpathref="tct.class.path" dir="${local.tct.dir}/tools/bin">
+			<arg line='${local.tct.dir}' />
+		</java>
+
+		<!-- create various languages -->
+		<execute.tct if:true="${tct.gen.zh}" tct.prod="zh" tct.args='"${installLocation}" en zh "${local.tct.dir}/tools/workspace_zh"' />
+		<execute.tct if:true="${tct.gen.de}" tct.prod="de" tct.args='"${installLocation}" en de "${local.tct.dir}/tools/workspace_de"' />
+		<execute.tct if:true="${tct.gen.es}" tct.prod="es" tct.args='"${installLocation}" en es "${local.tct.dir}/tools/workspace_es"' />
+		<execute.tct if:true="${tct.gen.fr}" tct.prod="fr" tct.args='"${installLocation}" en fr "${local.tct.dir}/tools/workspace_fr"' />
+		<execute.tct if:true="${tct.gen.nl}" tct.prod="nl" tct.args='"${installLocation}" en nl "${local.tct.dir}/tools/workspace_nl"' />
+		<execute.tct if:true="${tct.gen.pt}" tct.prod="pt" tct.args='"${installLocation}" en pt "${local.tct.dir}/tools/workspace_pt"' />
+		<execute.tct if:true="${tct.gen.it}" tct.prod="it" tct.args='"${installLocation}" en it "${local.tct.dir}/tools/workspace_it"' />
+		<execute.tct if:true="${tct.gen.zh_HK}" tct.prod="zh_HK" tct.args='"${installLocation}" en zh_HK "${local.tct.dir}/tools/workspace_zh_HK"' />
+		
+		<!-- set the theme to global with a custom file -->
+		<copy file="${tct.extras.dir}/custom_wpksite.properties" todir="${installLocation}/${DEFAULT_DSN_NAME}/applications/wpk/properties" />
+		
+		<!-- execute SQL to activate the languages -->
+		<antcall target="-db.run.script.mst" >
+			<param name="sql.dir" value="${tct.extras.dir}"/>
+			<param if:true="${isMSS}" name="sql.files" value="enableLanguages.sql" />
+			<param if:true="${isOracle}" name="sql.files" value="EnableLanguageORA.sql" />
+		</antcall>
+
+		<!-- run the configuration manager -->
+		<antcall target="run.cfgmgr" />
+	</target>
+	
+	<!-- 	This target uses the language pack installer to install them.
+			Precondition:	the property install.lp must not be set to true.
+	-->
+	<target name="install.lp" if="${install.lp}">
+		<!-- generate options file -->
+		<tempfile property="cfg.file" suffix=".properties" deleteonexit="true"/>
+		<echo file="${cfg.file}">-P chineseFeature.active="true"
+-P dutchFeature.active="true"
+-P frenchFeature.active="true"
+-P frenchFranceFeature.active="true"
+-P germanFeature.active="true"
+-P Italian.active="true"
+-P Korean.active="true"
+-P Polish.active="true"
+-P portugeseFeature.active="true"
+-P spanishFeature.active="true"
+-P traditionalChineseFeature.active="true"
+-V RUN_CONFIGURATION_MANAGER="false"
+-V RUN_SILENT=true</echo>
+		<concat><fileset file="${cfg.file}"/></concat>
+
+		<!-- use the exe file to launch language pack installer -->
+		<antcall target="generic.execute">
+			<param name="exe" value="${localdir}\${lp.filename}\install.exe" />
+			<param name="cmdline" value="-options ${cfg.file}" />
+		</antcall>
+
+		<!-- execute SQL to activate the languages -->
+		<antcall target="-db.run.script.mst" >
+			<param name="sql.dir" value="${tct.extras.dir}"/>
+			<param if:true="${isMSS}" name="sql.files" value="enableLanguages.sql" />
+			<param if:true="${isOracle}" name="sql.files" value="EnableLanguageORA.sql" />
+		</antcall>
+
+		<!-- run the configuration manager -->
+		<antcall target="run.cfgmgr" />
+	</target>
+
+	<target name="run.cfgmgr">
+		<!-- generate options file -->
+		<tempfile property="cfg.file" suffix=".opts" deleteonexit="true"/>
+		<echo file="${cfg.file}">productList=wfp_staging/ngui_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${install.wtk}">/wtk_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${install.wfs}">/wfs_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${install.wff}">/wfso_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${install.wfop}">/wfop_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${wflfeature.active}">/wfl_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${watfeature.active}">/wat_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${wfafeature.active}">/wfa_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${wdmfeature.active}">/wdm_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${wimfeature.active}">/wim_staging</echo>
+		<echo append="true" file="${cfg.file}" if:true="${wtmfeature.active}">/wtm_staging</echo>
+		<echo append="true" file="${cfg.file}">
+languageList=en</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.zh}">/zh</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.de}" >/de</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.es}" >/es</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.fr}" >/fr</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.nl}" >/nl</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.pt}" >/pt</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.it}" >/it</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.zh_HK}" >/zh_HK</echo>
+		<echo append="true" file="${cfg.file}" if:true="${tct.gen.fr_FR}" >/fr_FR</echo>
+		<echo append="true" file="${cfg.file}">
+patchesList=
+@hrms.servicepack@=
+hrmsServicePack=
+lus =
+ServicePack=${wfc.ver.major}.${wfc.ver.minor}.${wfc.ver.rev}
+update.database=false
+update.database.user=${DEFAULT_DB_USERNAME}
+update.database.password=${DEFAULT_DB_PASSWORD}</echo>
+
+		<concat><fileset file="${cfg.file}"/></concat>
+
+		<!-- use the batch file to launch config manager, since I can't get it to work with
+				the plain java task -->
+		<property name="cmd.args" value="/c configmgr.bat -modify ${DEFAULT_DSN_NAME} -options ${cfg.file}" />
+		<echo>Executing 'cmd  ${cmd.args}' in directory '${install.configuration.dir}/boms/bin'</echo>
+		<exec executable="cmd" failonerror="true" dir="${install.configuration.dir}/boms/bin">
+			<arg line='${cmd.args}' />
+		</exec>
+		
+		<!-- The following should work, but it's not for some reason. Maybe a problem with newer version
+			of Java. See http://stackoverflow.com/a/16890476
+		
+		<property name="cmd.args" value="-reconfigureinstance ${DEFAULT_DSN_NAME} -options ${cfg.file}" />
+		<echo>Executing 'java  ${cmd.args}' in directory '${install.configuration.dir}/boms/bin'</echo>
+		<java classname="com.kronos.wfc.tools.bom.framework.configuration.cli.Main" failonerror="true" 
+				classpathref="cfgmgr.class.path" dir="${install.configuration.dir}/boms/bin">
+			<arg line='${cmd.args}' />
+			<sysproperty key="install.dir" value="${installLocation}" />
+		</java>-->
+	</target>
+
+	
+	
+	<macrodef name="execute.tct">
+		<attribute name="tct.args" />
+		<attribute name="tct.prod" />
+		<sequential>
+			<!-- run pseudoTranslator.bat to create language strings -->
+			<echo message='Executing pseudo-translator with arguments "@{tct.args}"...'/>
+			
+			<!-- delete the workspace directory if it already exists -->
+			<delete dir="${local.tct.dir}/tools/workspace_@{tct.prod}" quiet="true" />
+
+			<java classname="com.kronos.wfc.tools.tct.framework.pseudotranslator.PseudoTranslator" failonerror="true" fork="true" 
+					classpathref="tct.class.path" dir="${local.tct.dir}/tools/bin">
+				<arg line='@{tct.args}' />
+				<sysproperty key="tct.dir" value="${local.tct.dir}/tools" />
+				<sysproperty key="tct.app.install.dir" value="${installDir}" />
+				<env key="TCT_FLEX_SDK_HOME" value="${tct.flex.sdk.dir}" />
+			</java>
+		</sequential>
+	</macrodef>
+	
+	<!-- 	This target uninstalls eou and wfc. It also deletes c:\kronos and 
+			the kronos installshield directory.
+	-->
+	<target name="uninstall.all" description="Uninstalls all the products">
+		<!-- sometimes there is a lock on an Oracle .dll through Distributed Transaction Coordinator (msdtc).
+			Stop the service to get rid of the lock -->
+		<echo>Stopping ${msdtc} to get rid of Oracle lock (WFM-56758)...</echo>
+		<exec executable="net">
+			<arg line="stop ${msdtc}" />
+		</exec>
+		<sleep seconds="5" />
+
+		<!-- since we're uninstalling everything, no need to run db manager with service pack uninstallation -->
+		<antcall target="uninstall.sp">
+			<param name="RUN_DBMANAGER_UNINSTALL" value="false" />
+		</antcall>
+		
+		<antcall target="uninstall.eou"/>
+		<antcall target="uninstall.wfc"/>
+		
+		<!-- try 3 times to delete c:\kronos directory -->
+		<retry retrycount="60" retrydelay="2000">
+			<delete dir="${installLocation}" failonerror="true" />
+		</retry>
+		
+		<!-- delete installshield files which are left behind -->
+		<available property="delete.installshield.files" type="dir" file="${installshield.files}" />
+		<antcall target="uninstall.delete.installshield.files" />
+	</target>
+	
+	<target name="uninstall.delete.installshield.files" if="delete.installshield.files">
+		<delete dir="${installshield.files}" />
+	</target>
+
+	<!-- 	This target uninstalls wfc. Note that if it is run on a system
+			where wfc is not installed, it will not fail.
+	-->
+	<target name="uninstall.wfc">
+		<echo message="Uninstalling WFC..." />
+		<available file="${installLocation}/uninstall/main" type="dir" property="generic.execute.does.exist" />
+		<antcall target="generic.execute.if.exists">
+
+			<param name="exe" value="${installLocation}/uninstall/main/uninstaller.exe" />
+			<param name="cmdline" value='-options "${uninstall.opts}"'/>
+		</antcall>
+		
+		<!-- it appears that the uninstallation may generate a ping that acts as a sleep for 3 minutes
+			and locks c:\kronos. Kill the ping process outright to save 3 minutes -->
+		<exec executable="WMIC" failonerror="true">
+			<arg line="process where &quot;name='ping.exe'&quot; call terminate" />
+		</exec>
+	</target>
+
+	<!-- 	This target uninstalls eou. Note that if it is run on a system
+			where eou is not installed, it will not fail.
+	-->
+	<target name="uninstall.eou">
+		<echo message="Uninstalling EOU..." />
+		<property name="uninstall.file" value="${installLocation}/uninstall/ngui/uninstaller.exe" />
+		<available file="${uninstall.file}" property="generic.execute.does.exist" />
+		<antcall target="generic.execute.if.exists">
+			<param name="exe" value="${uninstall.file}" />
+			<param name="cmdline" value='-options "${uninstall.opts}"'/>
+		</antcall>
+	</target>
+	
+	<target name="find.sp.dir">
+		<available type="dir" file="${installLocation}/uninstall/servicepack" property="found.service.pack.dir" />
+	</target>
+	
+	<!-- 	This target uninstalls the service pack. Note that if it is run on a system
+			where a service pack has not been installed, it will not fail.
+	-->
+	<target name="uninstall.sp" depends="find.sp.dir, create.sp.uninstaller.opts" if="found.service.pack.dir">
+		
+		<sort id="service.pack.files">
+			<reverse />
+			<fileset dir="${installLocation}/uninstall/servicepack" includes="*/uninstaller.exe"  />
+		</sort>
+		<pathconvert pathsep="${line.separator}" property="file.list" refid="service.pack.files"/>
+		<echo>Found the following service packs to uninstall:${line.separator}${file.list}</echo> 
+
+		<apply executable="cmd" failonerror="false">
+			<arg value="/c" />
+			<srcfile/>
+			<arg value="-options" />
+			<arg value='"${sp.uninstallation.opts}"' />
+			<arg value="-silent" />
+			<sort refid="service.pack.files" />
+		</apply>
+	</target>
+
+	<target name="disable.auto.start" description="disables the auto-start in windows" if="autostart.disabled">
+		<!-- set windows service to manual startup -->
+		<exec executable="sc.exe" failonerror="true">
+			<arg line="config ${jboss.service} start= demand" />
+		</exec>
+	</target>
+
+	<target name="set.jboss.heap.max.4gb" description="set jboss max heap size to 4gb">
+		<!-- Quick hack to set max heap size to 4gb. Works only on Windows... -->
+		<echo message="Change default heap size in file ${installLocation}/wfc/bin/wfc_vars.bat..." />
+		<replaceregexp file="${installLocation}/wfc/bin/wfc_vars.bat" flags="i"
+               match='set JBOSS_HEAP_MAX=8192m'
+               replace='set JBOSS_HEAP_MAX=4096m'/>
+	</target>
+    
+	<target name="dev.tasks" description="dev.explode.ear,dev.enable.debug,dev.enable.jsp.dev,dev.enable.silverdata.loadateachstartup,dev.loosejars,dev.enable.hotswap.debugger,dev.install.microtest.jars">
+		<antcall target="dev.explode.ear" />
+		<antcall target="dev.enable.debug" />
+		<antcall target="dev.enable.jsp.dev" />
+		<antcall target="dev.enable.silverdata.loadateachstartup" />
+		<antcall target="dev.loosejars" />
+		<antcall target="dev.enable.ngui.dev" />
+		<!-- DCE JVM does not work anymore since we moved to JDK 8... Disable for now. -->
+		<!-- <antcall target="dev.enable.hotswap.debugger" />  -->
+		<antcall target="dev.install.microtest.jars" />
+	</target>
+
+	<target name="falcon.dev.tasks" description="dev.explode.ear,dev.enable.debug,dev.enable.jsp.dev,dev.enable.silverdata.loadateachstartup,dev.loosejars,dev.enable.hotswap.debugger,dev.install.microtest.jars">
+		<antcall target="dev.explode.ear" />
+		<antcall target="dev.enable.debug" />
+		<antcall target="dev.enable.jsp.dev" />
+		<antcall target="dev.enable.silverdata.loadateachstartup" />
+		<antcall target="dev.loosejars" />
+		<antcall target="dev.enable.ngui.dev" />
+		<!-- DCE JVM does not work anymore since we moved to JDK 8... Disable for now. -->
+		<!-- <antcall target="dev.enable.hotswap.debugger" />  -->
+		<antcall target="falcon.dev.install.microtest.jars" />
+	</target>
+	
+	<target name="dev.loosejars" description="create path for jboss files and setup virtual folder in webserver">
+	    <echo message="Creating physical folder for loose files in [${jboss-loose-path}]" />
+		<mkdir dir="${jboss-loose-path}" />
+
+		<antcall target="dev.${DEFAULT_WEB_SERVER_PLATFORM}.tasks" />
+	</target>
+
+	<target name="dev.iis.tasks" description="create iis virtual directory for jboss files">
+		<echo message="Creating IIS virtual folder for loose files" />
+		<exec executable="cmd" failonerror="false" dir="${env.SystemRoot}/System32/inetsrv">
+			<arg line="/c appcmd.exe add vdir /app.name:'Default Web Site/' /path:/${DEFAULT_DSN_NAME}static/com /physicalPath:'${jboss-loose-path}'" />
+		</exec>
+	</target>
+	<target name="dev.apache.tasks" description="create Apache virtual directory for jboss files">
+		<echo message="Creating Apache virtual folder for loose files" />
+
+		<loadfile srcFile="${installLocation}/apache/conf/${DEFAULT_DSN_NAME}.conf" property="apache.has.loose.jboss.alias">
+			<filterchain>
+				<linecontains>
+					<contains value="Alias /${DEFAULT_DSN_NAME}static/ "/>
+				</linecontains>
+			</filterchain>
+		</loadfile>
+		<antcall target="dev.apache.tasks.concat" />
+	</target>
+	<target name="dev.apache.tasks.concat" unless="apache.has.loose.jboss.alias">
+		<echo message="Appending alias to Apache conf file" />
+		
+		<concat append="true" destfile="${installLocation}/apache/conf/${DEFAULT_DSN_NAME}.conf">
+&lt;IfModule mod_alias.c&gt;
+	Alias /${DEFAULT_DSN_NAME}static/ "${jboss-loose-path-root}"
+	&lt;Directory "${jboss-loose-path-root}"&gt;
+	  AllowOverride None
+	  Require all granted
+	&lt;/Directory&gt;
+&lt;/IfModule&gt;
+		</concat>		
+	</target>
+	
+	<target name="dev.deploygen" description="explode ear files if required">
+		<available file="${ear.file}" type="file" property="working.from.ear" /> 
+		<antcall target="dev.deploygen.internal" />
+	</target>
+	<target name="dev.deploygen.internal" if="working.from.ear">
+		<exec executable="cmd" failonerror="true" dir="${install.configuration.dir}/boms/bin">
+			<arg line="/c configmgr -earexplode ${DEFAULT_DSN_NAME}" />
+		</exec>
+	</target>
+
+	<target name="dev.explode.ear">
+		<available file="${ear.file}" type="file" property="working.from.ear" /> 
+		<antcall target="dev.explode.ear.internal" />
+	</target>
+	<target name="dev.explode.ear.internal" if="working.from.ear">
+		<unzip src="${ear.file}" dest="${ear.file}_"/>
+		<move file="${ear.file}" tofile="${ear.file}_bkp"/>
+		<move file="${ear.file}_" tofile="${ear.file}"/>
+		<unzip src="${war.file}" dest="${war.file}_"/>
+		<delete file="${war.file}"/>
+		<move file="${war.file}_" tofile="${war.file}"/>
+	</target>
+
+	<target name="dev.enable.debug" description="enable debugging in jboss">
+		<!-- enable debugging -->
+		<echo message="Enabling debugging by uncommenting a line in ${installLocation}/jboss/bin/standalone.conf.bat..." />
+		<replaceregexp file="${installLocation}/jboss/bin/standalone.conf.bat" flags="i"
+               match='rem set "JAVA_OPTS=%JAVA_OPTS% -agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n"'
+               replace='set "JAVA_OPTS=%JAVA_OPTS% -agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n"' />
+	</target>
+
+	<target name="dev.enable.jsp.dev" description="enable jsp developer mode in jboss">
+		<!-- enable dev mode jsp recompiling -->
+		<echo message="Enabling developer jsp mode in standalone.xml..." />
+		<replaceregexp file="${jboss-config-path}/standalone.xml" flags="i"
+               match='&lt;jsp-configuration development="false"/&gt;'
+               replace='&lt;jsp-configuration development="true"/&gt;' />
+	</target>
+
+	<target name="dev.enable.silverdata.loadateachstartup" description="enable loading of silverdata every time wfc starts up">
+		<echo message="Enabling silver data load at each startup..." />
+		<replaceregexp file="${jboss-wfc-applications-path}/wpk/properties/wpk.properties" flags="i"
+               match='com.kronos.wfc.wfp.silverdata.loadateachstartup = false'
+               replace='com.kronos.wfc.wfp.silverdata.loadateachstartup = true' />
+	</target>
+
+	<target name="dev.disable.silverdata.loadateachstartup">
+		<echo message="Disabling silver data load at each startup..." />
+		<replaceregexp file="${jboss-wfc-applications-path}/wpk/properties/wpk.properties" flags="i"
+               match='com.kronos.wfc.wfp.silverdata.loadateachstartup = true'
+               replace='com.kronos.wfc.wfp.silverdata.loadateachstartup = false' />
+	</target>
+
+	<target name="dev.install.microtest.jars" description="install latest microtest jars" unless="dev.install.microtest.jars.skip">
+
+		<condition property="disabled_gradle">
+			<and>
+				<isfalse value="${enable.gradle.mode}" />
+			</and>
+		</condition>
+	
+		<antcall target="microtest_getAll.jenkins" if:true="${disabled_gradle}"/>
+		<antcall target="microtest_getAll.no_jenkins" if:true="${disabled_gradle}" />
+		<antcall target="microtest_getAll.gradle" />
+		
+	</target>
+
+	<target name="falcon.dev.install.microtest.jars" description="install latest microtest jars" unless="dev.install.microtest.jars.skip">
+		<antcall target="microtest_copyJars">
+		    <param name="jarStream" value="wfp"/>
+		</antcall>
+		<antcall target="microtest_copyJars">
+		    <param name="jarStream" value="wtk"/>
+		</antcall>
+		<antcall target="microtest_copyJars">
+		    <param name="jarStream" value="eou"/>
+		</antcall>
+
+		<antcall target="microtest_getAll">
+			<param name="latest.wfpjars.dir" value="${localdir}/wfpJars" />
+			<param name="latest.wtkjars.dir" value="${localdir}/wtkJars" />
+		</antcall>
+	</target>
+
+	<target name="microtest_getAll.jenkins" unless="microtest.no.jenkins">
+		<echo>Getting microtest jars from jenkins...</echo>
+		
+		<available file="${localdir}/wfpJars" type="dir" property="wfpjars.dir.exists" />
+		<antcall target="copy.jars.wfp.microtest" />
+		<available file="${localdir}/wtkJars" type="dir" property="wtkjars.dir.exists" />
+		<antcall target="copy.jars.wtk.microtest" />
+		<antcall target="unzip.jars.wfp.microtest"></antcall>
+		<antcall target="unzip.jars.wtk.microtest"></antcall>
+		<echo>Installing microtest jars from jenkins...</echo>
+		<antcall target="microtest_getAll">
+			<param name="latest.wfpjars.dir" value="${localdir}/wfpJars" />
+			<param name="latest.wtkjars.dir" value="${localdir}/wtkJars" />
+		</antcall>
+	</target>
+
+	<target name="microtest_getAll.no_jenkins" if="microtest.no.jenkins">
+		<echo>Getting microtest jars from live kit folder...</echo>
+		
+		<property name="force.newest.kits.check" value="true" />
+		<antcall target="find.newest.kits.wfp" />
+		<antcall target="find.newest.kits.wtk" />
+
+		<antcall target="microtest_getAll">
+			<param name="latest.wfpjars.dir" value="${wfp.kits.dir}/${wfp.kits.dir.lastbuildused}/wfp_jars" />
+			<param name="latest.wtkjars.dir" value="${wtk.kits.dir}/${wtk.kits.dir.lastbuildused}/wtk_jars" />
+		</antcall>
+
+	</target>
+
+	<target name="microtest_getAll.gradle" if="enable.gradle.mode">
+		<echo>Getting microtest jars from artifactory...</echo>
+
+		<antcall target="microtest_getAll">
+			<param name="latest.wfpjars.dir" value="${wfp.kits.dir}/${wfp.kits.dir.lastbuildused}/wfp_jars" />
+			<param name="latest.wtkjars.dir" value="${wtk.kits.dir}/${wtk.kits.dir.lastbuildused}/wtk_jars" />
+		</antcall>
+
+	</target>
+	
+	<target name="unzip.jars.wfp.microtest" unless="wfpjars.dir.exists">
+		<echo>wfpjars.dir.exists = ${wfpjars.dir.exists}</echo>
+		<antcall target="unzip.jars.wfp"></antcall>
+	</target>
+	<target name="copy.jars.wfp.microtest" unless="wfpjars.dir.exists">
+		<echo>wfpjars.dir.exists = ${wfpjars.dir.exists}</echo>
+		<antcall target="copy.jars.wfp" />
+	</target>
+	<target name="unzip.jars.wtk.microtest" unless="wtkjars.dir.exists">
+		<echo>wtkjars.dir.exists = ${wtkjars.dir.exists}</echo>
+		<antcall target="unzip.jars.wtk"></antcall>
+	</target>
+	<target name="copy.jars.wtk.microtest" unless="wtkjars.dir.exists">
+		<echo>wtkjars.dir.exists = ${wtkjars.dir.exists}</echo>
+		<antcall target="copy.jars.wtk" />
+	</target>
+
+	<target name="dev.enable.ngui.dev" description="enable ngui developer mode in jboss">
+		<!-- enable dev mode jsp recompiling -->
+		<echo message="Enabling developer ngui mode in [${jboss-web-inf-path}web.xml]..." />
+	
+	<!--		
+		<param-name>enableFrameworkControls</param-name>
+		<param-value>false</param-value>
+	-->
+		<replaceregexp file="${jboss-web-inf-path}/web.xml" 
+				match="(\s*)(&lt;param-name&gt;enableFrameworkControls&lt;/param-name&gt;)(\s*)(&lt;param-value&gt;)(.*)(&lt;/param-value&gt;)"  
+				flags="gim"
+				replace="\1\2\3\4true\6" 
+				byline="false">
+		</replaceregexp>
+		
+		<!-- enable dev mode for REST services (disable logon auth) -->
+		<echo message="Enabling developer REST sErvices mode in [${jboss-wfc-applications-path}/navigator/properties/MOBILE.properties and NAVIGATOR.properties]..." />
+
+		<replaceregexp file="${jboss-wfc-applications-path}/navigator/properties/MOBILE.properties" flags="i"
+               match='com.kronos.wfc.eou.security.framework.EnableRESTLogonAuthorizedFilter=true'
+               replace='com.kronos.wfc.eou.security.framework.EnableRESTLogonAuthorizedFilter=false' />
+		<replaceregexp file="${jboss-wfc-applications-path}/navigator/properties/NAVIGATOR.properties" flags="i"
+               match='com.kronos.wfc.eou.security.framework.EnableRESTLogonAuthorizedFilter=true'
+               replace='com.kronos.wfc.eou.security.framework.EnableRESTLogonAuthorizedFilter=false' />
+		
+	</target>
+
+	<target name="dev.enable.hotswap.debugger" description="enable the dce vm for flexible hotswap debugging">
+		<!-- enable dce vm for hotswap debugging without server restart -->
+		<echo message="Enabling developer hotswap debugging..." />
+
+		<available file="${installLocation}/jdk/jre/bin/server/jvm.dll_orig" type="file" property="jvm_orig.does.exist" />
+		<antcall target="dev.enable.hotswap.debugger.backup_orig" />
+		
+		<copy file="${common.basedir}/lib/jvm.dll" todir="${installLocation}/jdk/jre/bin/server/" />
+		
+		<echo message="Updating wfc startup parameters in: ${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat" />
+		<replaceregexp file="${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat" flags="i"
+               match='set JVM_PARAMS=-XX:\+UseParallelOldGC -XX:\+UseCompressedOops'
+               replace='set JVM_PARAMS=-XX:\+UseSerialGC' />
+	</target>
+
+	<target name="dev.disable.hotswap.debugger" description="disable the dce vm for flexible hotswap debugging">
+		<!-- disable dce vm for hotswap debugging without server restart -->
+		<echo message="Disabling developer hotswap debugging..." />
+
+		<available file="${installLocation}/jdk/jre/bin/server/jvm.dll_orig" type="file" property="jvm_orig.does.exist" />
+		<antcall target="dev.enable.hotswap.debugger.backup_restore" />
+		
+		<echo message="Updating wfc startup parameters in: ${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat" />
+		<replaceregexp file="${installLocation}/${DEFAULT_DSN_NAME}/bin/start.bat" flags="i"
+               match='set JVM_PARAMS=-XX:\+UseSerialGC'
+               replace='set JVM_PARAMS=-XX:\+UseParallelOldGC -XX:\+UseCompressedOops' />
+	</target>
+
+	<target name="dev.enable.hotswap.debugger.backup_orig" unless="jvm_orig.does.exist">
+		<echo message="Backing up original jvm.dll..." />
+		<move file="${installLocation}/jdk/jre/bin/server/jvm.dll" tofile="${installLocation}/jdk/jre/bin/server/jvm.dll_orig"/>
+	</target>
+	<target name="dev.enable.hotswap.debugger.backup_restore" if="jvm_orig.does.exist">
+		<echo message="Restoring original jvm.dll..." />
+		<move file="${installLocation}/jdk/jre/bin/server/jvm.dll_orig" tofile="${installLocation}/jdk/jre/bin/server/jvm.dll"/>
+	</target>
+	
+	<target name="copy.custom" if="custom.file">
+		<ant dir="${custom.dir}" target="setup" />
+	</target>
+	
+</project>

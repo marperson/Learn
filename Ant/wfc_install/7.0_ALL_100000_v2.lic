@@ -1,0 +1,76 @@
+SERVER this_host ANY
+VENDOR kronos
+USE_SERVER
+INCREMENT wfc_Timekeeper_Emp kronos 7. permanent 100000 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=01-Jan-2005 NOTICE="Kronos \
+	Incorporated::NOT for KDEMO - ENGINEERING ONLY " ck=179 \
+	SIGN=CAD5BBB646FA
+INCREMENT wfc_Scheduler_Emp kronos 7. permanent 100000 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=01-Jan-2005 NOTICE="Kronos \
+	Incorporated::NOT for KDEMO - ENGINEERING ONLY " ck=168 \
+	SIGN=B045AA6EACB4
+INCREMENT wfc_Professional_Emp kronos 7. permanent 100000 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=01-Jan-2005 NOTICE="Kronos \
+	Incorporated::NOT for KDEMO - ENGINEERING ONLY " ck=211 \
+	SIGN=1F61B9BA494C
+INCREMENT wfc_Manager kronos 7. permanent 100000 VENDOR_STRING="Order \
+	Number=OR197" ISSUER="Kronos Incorporated" ISSUED=01-Jan-2005 \
+	NOTICE="Kronos Incorporated::NOT for KDEMO - ENGINEERING ONLY \
+	" ck=155 SIGN=0F4D9CA42C18
+INCREMENT wfc_Accruals_Emp kronos 7. permanent 100000 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=01-Jan-2005 NOTICE="Kronos \
+	Incorporated::NOT for KDEMO - ENGINEERING ONLY " ck=183 \
+	SIGN=C6CDAF983006
+INCREMENT wfc_Activities_Emp kronos 7. permanent 100000 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=01-Jan-2005 NOTICE="Kronos \
+	Incorporated::NOT for KDEMO - ENGINEERING ONLY " ck=226 \
+	SIGN=EF2F53D4A286
+INCREMENT wfc_Attendance_Emp kronos 7. permanent 100000 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=01-Jan-2005 NOTICE="Kronos \
+	Incorporated::Demonstration Only" ck=245 SIGN=90770BEC9184
+INCREMENT wfc_Leave_Emp kronos 7. permanent 100000 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=01-Jan-2005 NOTICE="Kronos \
+	Incorporated::Demonstration Only" ck=148 SIGN=73E38DA856D4
+INCREMENT wfc_Record_Manager kronos 7. permanent 1 \
+	VENDOR_STRING="Order Number=OR197" ISSUER="Kronos \
+	Incorporated" ISSUED=12-Jul-2002 NOTICE="Kronos \
+	Incorporated::NOT for KDEMO - ENGINEERING ONLY " ck=213 \
+	SIGN=55CEAE165AD2
+INCREMENT knx_interface kronos 7. permanent 10000 \
+	VENDOR_STRING="Order Number=OR416" ISSUER="Kronos \
+	Incorporated" ISSUED=09-Aug-2004 NOTICE="KRONOS, INC .::Test" \
+	SN=0001169 SIGN=DB238D020938
+INCREMENT knx_employee kronos 7. permanent 1000 VENDOR_STRING="Order \
+	Number=OR416" ISSUER="Kronos Incorporated" ISSUED=09-Aug-2004 \
+	NOTICE="KRONOS, INC .::Test" SN=0001169 SIGN=478ADD5EDEFA
+INCREMENT wfc_HumanResource_Emp kronos 7. permanent 1750 \
+	VENDOR_STRING="Order Number=OR2007" ISSUER="Kronos \
+	Incorporated" ISSUED=1-Jan-2007 NOTICE="Kronos \
+	Engineering::For Internal Use Only" SN=0001169 \
+	SIGN=975227D24D6C
+INCREMENT wfc_HR_Professional_Emp kronos 7. permanent 1750 \
+	VENDOR_STRING="Order Number=OR2007" ISSUER="Kronos \
+	Incorporated" ISSUED=1-Jan-2007 NOTICE="Kronos \
+	Engineering::For Internal Use Only" SN=0001169 \
+	SIGN=52D1165A7D58
+INCREMENT knx_demo_employee kronos 7. permanent 25 \
+	VENDOR_STRING="Order Number=OR2007" ISSUER="Kronos \
+	Incorporated" ISSUED=1-Jan-2007 NOTICE="Kronos \
+	Engineering::For Internal Use Only" SN=0001169 \
+	SIGN=91D880484296
+INCREMENT knx_demo_interface kronos 7. permanent 1 \
+	VENDOR_STRING="Order Number=OR2007" ISSUER="Kronos \
+	Incorporated" ISSUED=1-Jan-2007 NOTICE="Kronos \
+	Engineering::For Internal Use Only" SN=0001169 \
+	SIGN=14FB6BE2AEC4
+INCREMENT wfc_integration_Manager_Emp kronos 7. permanent 1500 \
+	VENDOR_STRING="Order Number=OR532" ISSUER="Kronos \
+	Incorporated" ISSUED=06-Aug-2008 NOTICE="KRONOS, INC::Test \
+	License" SN=0001840 SIGN=BAF501DAB20A
