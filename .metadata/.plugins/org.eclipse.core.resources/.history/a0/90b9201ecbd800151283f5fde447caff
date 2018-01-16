@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+package chapter1BuildingBlock;
+
+/**
+ * @author marpe
+ *
+ */
+public class JavaTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		float f1 = 2.456f;
+		System.out.println(f1);
+
+	}
+
+}

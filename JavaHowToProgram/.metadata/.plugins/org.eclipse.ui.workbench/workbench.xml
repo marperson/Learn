@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="42" version="2.0">
+<workbench progressCount="41" version="2.0">
 <workbenchAdvisor/>
-<window height="738" maximized="true" width="1024" x="130" y="0">
+<window height="738" maximized="true" width="1024" x="-8" y="0">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -34,20 +34,86 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+<part id="10"/>
+<part id="11"/>
+<part id="12"/>
+<part id="13"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Calculation.java" partName="Calculation.java" path="C:/GitHub/Learn/JavaHowToProgram/CH2/src/Exercise_2_5/Calculation.java" title="Calculation.java" tooltip="CH2/src/Exercise_2_5/Calculation.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH2/src/Exercise_2_5/Calculation.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="109" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="652" selectionTopPixel="51"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Dialog1.java" partName="Dialog1.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/GUI_3_8/Dialog1.java" title="Dialog1.java" tooltip="CH3/src/GUI_3_8/Dialog1.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Dialog1.java" partName="Dialog1.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/GUI_3_8/Dialog1.java" title="Dialog1.java" tooltip="CH3/src/GUI_3_8/Dialog1.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/GUI_3_8/Dialog1.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="342" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="30" selectionOffset="18" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GradeBook.java" partName="GradeBook.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_11/GradeBook.java" title="GradeBook.java" tooltip="CH3/src/Exercise_3_11/GradeBook.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_11/GradeBook.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="566" selectionTopPixel="51"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GradeBookTest.java" partName="GradeBookTest.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_11/GradeBookTest.java" title="GradeBookTest.java" tooltip="CH3/src/Exercise_3_11/GradeBookTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_11/GradeBookTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="941" selectionTopPixel="153"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Account.java" partName="Account.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_12/Account.java" title="Account.java" tooltip="CH3/src/Exercise_3_12/Account.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_12/Account.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1071" selectionTopPixel="153"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AccountTest.java" partName="AccountTest.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_12/AccountTest.java" title="AccountTest.java" tooltip="CH3/src/Exercise_3_12/AccountTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_12/AccountTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="78" selectionOffset="1794" selectionTopPixel="561"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Invoice.java" partName="Invoice.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_13/Invoice.java" title="Invoice.java" tooltip="CH3/src/Exercise_3_13/Invoice.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_13/Invoice.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="520" selectionTopPixel="1173"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvoiceTest.java" partName="InvoiceTest.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_13/InvoiceTest.java" title="InvoiceTest.java" tooltip="CH3/src/Exercise_3_13/InvoiceTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_13/InvoiceTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="487" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Employee.java" partName="Employee.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_14/Employee.java" title="Employee.java" tooltip="CH3/src/Exercise_3_14/Employee.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_14/Employee.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="353" selectionTopPixel="102"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EmployeeTest.java" partName="EmployeeTest.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_14/EmployeeTest.java" title="EmployeeTest.java" tooltip="CH3/src/Exercise_3_14/EmployeeTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_14/EmployeeTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="712" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Date.java" partName="Date.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_15/Date.java" title="Date.java" tooltip="CH3/src/Exercise_3_15/Date.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_15/Date.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="248" selectionTopPixel="17"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DateTest.java" partName="DateTest.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_15/DateTest.java" title="DateTest.java" tooltip="CH3/src/Exercise_3_15/DateTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_15/DateTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="191" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HeartRates.java" partName="HeartRates.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_16/HeartRates.java" title="HeartRates.java" tooltip="CH3/src/Exercise_3_16/HeartRates.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_16/HeartRates.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="737" selectionTopPixel="408"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HeartRatesTest.java" partName="HeartRatesTest.java" path="C:/GitHub/Learn/JavaHowToProgram/CH3/src/Exercise_3_16/HeartRatesTest.java" title="HeartRatesTest.java" tooltip="CH3/src/Exercise_3_16/HeartRatesTest.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/CH3/src/Exercise_3_16/HeartRatesTest.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="24" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
+<view id="org.eclipse.search.ui.views.SearchView" partName="Search">
+<viewState isPinned="false">
+<view IMemento.internal.id="" org.eclipse.search.lastActivation="0"/>
+<view IMemento.internal.id="org.eclipse.jdt.ui.JavaSearchResultPage" org.eclipse.jdt.search.resultpage.grouping="3" org.eclipse.jdt.search.resultpage.limit="1000" org.eclipse.jdt.search.resultpage.limit_enabled="TRUE" org.eclipse.jdt.search.resultpage.sorting="1" org.eclipse.search.lastActivation="1" org.eclipse.search.resultpage.layout="2"/>
+</viewState>
+</view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
@@ -71,6 +137,11 @@
 <view id="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" partName="Data Source Explorer"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (1 item)"/>
+<category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -135,7 +206,7 @@
 <view id="org.eclipse.wst.server.ui.ServersView" partName="Servers"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -318,6 +389,7 @@
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.search.ui.views.SearchView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
 <fastViewBars/>
@@ -344,12 +416,12 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.2496318" ratioLeft="339" ratioRight="1019" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.75" ratioLeft="474" ratioRight="158" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.search.ui.views.SearchView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -357,6 +429,7 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -385,41 +458,167 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH2/src/Exercise_2_5/Calculation.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/GUI_3_8/Dialog1.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_11/GradeBookTest.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_12/Account.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_12/AccountTest.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_13/Invoice.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_13/InvoiceTest.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_14/Employee.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_14/EmployeeTest.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_15/Date.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_15/DateTest.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_16/HeartRates.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/CH3/src/Exercise_3_16/HeartRatesTest.java"/>
 </editors>
-<item historyLabel="Calculation.java" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Calculation.java" index="0">
-<position info="not_deleted" x="279" y="0"/>
-</item>
-<item historyLabel="Calculation.java" index="0">
-<position info="not_deleted" x="574" y="0"/>
-</item>
-<item historyLabel="Calculation.java" index="0">
-<position info="not_deleted" x="640" y="0"/>
-</item>
-<item historyLabel="Calculation.java" index="0">
-<position info="not_deleted" x="648" y="0"/>
-</item>
-<item historyLabel="Calculation.java" index="0">
-<position info="not_deleted" x="313" y="0"/>
-</item>
-<item historyLabel="Dialog1.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Dialog1.java" index="1">
+<item historyLabel="GradeBookTest.java" index="0">
 <position/>
 </item>
-<item historyLabel="Dialog1.java" index="1">
-<position info="not_deleted" x="232" y="0"/>
+<item historyLabel="GradeBookTest.java" index="0">
+<position info="not_deleted" x="941" y="0"/>
 </item>
-<item historyLabel="Dialog1.java" index="1">
-<position info="not_deleted" x="342" y="0"/>
+<item historyLabel="Account.java" index="1">
+<position info="not_deleted" x="0" y="2185"/>
 </item>
-<item active="true" historyLabel="Dialog1.java" index="1">
-<position info="not_deleted" x="398" y="0"/>
+<item historyLabel="AccountTest.java" index="2">
+<position info="not_deleted" x="2352" y="0"/>
+</item>
+<item historyLabel="Account.java" index="1">
+<position info="not_deleted" x="1071" y="0"/>
+</item>
+<item historyLabel="AccountTest.java" index="2">
+<position info="not_deleted" x="2352" y="0"/>
+</item>
+<item historyLabel="AccountTest.java" index="2">
+<position info="not_deleted" x="1872" y="0"/>
+</item>
+<item historyLabel="Account.java" index="1">
+<position info="not_deleted" x="1071" y="0"/>
+</item>
+<item historyLabel="Account.java" index="1">
+<position info="not_deleted" x="1071" y="0"/>
+</item>
+<item historyLabel="AccountTest.java" index="2">
+<position info="not_deleted" x="1794" y="78"/>
+</item>
+<item historyLabel="Invoice.java" index="3">
+<position/>
+</item>
+<item historyLabel="Account.java" index="1">
+<position info="not_deleted" x="1071" y="0"/>
+</item>
+<item historyLabel="Invoice.java" index="3">
+<position info="not_deleted" x="430" y="0"/>
+</item>
+<item historyLabel="Invoice.java" index="3">
+<position info="not_deleted" x="396" y="0"/>
+</item>
+<item historyLabel="Invoice.java" index="3">
+<position info="not_deleted" x="520" y="0"/>
+</item>
+<item historyLabel="InvoiceTest.java" index="4">
+<position info="not_deleted" x="201" y="1"/>
+</item>
+<item historyLabel="Invoice.java" index="3">
+<position info="not_deleted" x="520" y="0"/>
+</item>
+<item historyLabel="InvoiceTest.java" index="4">
+<position info="not_deleted" x="201" y="1"/>
+</item>
+<item historyLabel="InvoiceTest.java" index="4">
+<position info="not_deleted" x="227" y="0"/>
+</item>
+<item historyLabel="InvoiceTest.java" index="4">
+<position info="not_deleted" x="231" y="0"/>
+</item>
+<item historyLabel="InvoiceTest.java" index="4">
+<position info="not_deleted" x="487" y="0"/>
+</item>
+<item historyLabel="Invoice.java" index="3">
+<position info="not_deleted" x="520" y="0"/>
+</item>
+<item historyLabel="Employee.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Employee.java" index="5">
+<position info="not_deleted" x="353" y="0"/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="204" y="0"/>
+</item>
+<item historyLabel="Employee.java" index="5">
+<position/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="202" y="0"/>
+</item>
+<item historyLabel="Employee.java" index="5">
+<position/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="202" y="0"/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="218" y="0"/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="224" y="0"/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="430" y="0"/>
+</item>
+<item historyLabel="EmployeeTest.java" index="6">
+<position info="not_deleted" x="712" y="0"/>
+</item>
+<item historyLabel="Date.java" index="7">
+<position info="not_deleted" x="1186" y="0"/>
+</item>
+<item historyLabel="Date.java" index="7">
+<position/>
+</item>
+<item historyLabel="Date.java" index="7">
+<position/>
+</item>
+<item historyLabel="Date.java" index="7">
+<position info="not_deleted" x="474" y="0"/>
+</item>
+<item historyLabel="DateTest.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="DateTest.java" index="8">
+<position/>
+</item>
+<item historyLabel="Date.java" index="7">
+<position info="not_deleted" x="248" y="0"/>
+</item>
+<item historyLabel="DateTest.java" index="8">
+<position info="not_deleted" x="258" y="0"/>
+</item>
+<item historyLabel="Date.java" index="7">
+<position info="not_deleted" x="248" y="0"/>
+</item>
+<item historyLabel="DateTest.java" index="8">
+<position info="not_deleted" x="191" y="0"/>
+</item>
+<item historyLabel="HeartRates.java" index="9">
+<position/>
+</item>
+<item historyLabel="HeartRatesTest.java" index="10">
+<position info="not_deleted" x="212" y="0"/>
+</item>
+<item historyLabel="HeartRates.java" index="9">
+<position/>
+</item>
+<item historyLabel="HeartRatesTest.java" index="10">
+<position info="not_deleted" x="24" y="0"/>
+</item>
+<item active="true" historyLabel="HeartRates.java" index="9">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -439,6 +638,42 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HeartRatesTest.java" tooltip="CH3/src/Exercise_3_16/HeartRatesTest.java">
+<persistable path="/CH3/src/Exercise_3_16/HeartRatesTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HeartRates.java" tooltip="CH3/src/Exercise_3_16/HeartRates.java">
+<persistable path="/CH3/src/Exercise_3_16/HeartRates.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DateTest.java" tooltip="CH3/src/Exercise_3_15/DateTest.java">
+<persistable path="/CH3/src/Exercise_3_15/DateTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Date.java" tooltip="CH3/src/Exercise_3_15/Date.java">
+<persistable path="/CH3/src/Exercise_3_15/Date.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EmployeeTest.java" tooltip="CH3/src/Exercise_3_14/EmployeeTest.java">
+<persistable path="/CH3/src/Exercise_3_14/EmployeeTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Employee.java" tooltip="CH3/src/Exercise_3_14/Employee.java">
+<persistable path="/CH3/src/Exercise_3_14/Employee.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="InvoiceTest.java" tooltip="CH3/src/Exercise_3_13/InvoiceTest.java">
+<persistable path="/CH3/src/Exercise_3_13/InvoiceTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Invoice.java" tooltip="CH3/src/Exercise_3_13/Invoice.java">
+<persistable path="/CH3/src/Exercise_3_13/Invoice.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AccountTest.java" tooltip="CH3/src/Exercise_3_12/AccountTest.java">
+<persistable path="/CH3/src/Exercise_3_12/AccountTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Account.java" tooltip="CH3/src/Exercise_3_12/Account.java">
+<persistable path="/CH3/src/Exercise_3_12/Account.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GradeBookTest.java" tooltip="CH3/src/Exercise_3_11/GradeBookTest.java">
+<persistable path="/CH3/src/Exercise_3_11/GradeBookTest.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GradeBook.java" tooltip="CH3/src/Exercise_3_11/GradeBook.java">
+<persistable path="/CH3/src/Exercise_3_11/GradeBook.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Dialog1.java" tooltip="CH3/src/GUI_3_8/Dialog1.java">
 <persistable path="/CH3/src/GUI_3_8/Dialog1.java"/>
 </file>

@@ -1,0 +1,9 @@
+package Exercise_3_13;
+
+public class Invoice {
+	private String partNumber;
+	private String partDescription;
+	private int number;
+	private double price;
+	
+}

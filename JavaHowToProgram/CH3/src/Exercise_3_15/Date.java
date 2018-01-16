@@ -18,13 +18,13 @@ public class Date {
 			this.year = year;
 		}
 
-		if (month <= 0 || month > 12) {
+		if (month <= 0 && month > 12) {
 			System.out.println("Wrong month");
 		} else {
 			this.month = month;
 		}
 
-		if (date <= 0 || date > 31) {
+		if (date <= 0 && date > 31) {
 			System.out.println("Wrong Date");
 		} else {
 			this.date = date;
