@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.frankhe.java.ocp"},{"l":"com.frankhe.java.ocp.lab2_primitive_operators_flow_control"},{"l":"com.frankhe.java.ocp.lab3_primitive_operator_flow.control"},{"l":"com.frankhe.java.ocp.lab4_Shop"},{"l":"com.frankhe.java.ocp.lab4_Shop.data"}];updateSearchResults();

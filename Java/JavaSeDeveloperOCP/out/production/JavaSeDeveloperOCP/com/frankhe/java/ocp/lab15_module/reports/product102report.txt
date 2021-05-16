@@ -1,0 +1,4 @@
+Coffee, price_ru: 1,00 ₽, Rating_ru: one star, best Before_ru" 18.04.2021
+Review_ru:one star	Nice coffee!
+Review_ru:two stars	Nice coffee- one star!
+Review_ru:on star	Bad coffee - no stars!
