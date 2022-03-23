@@ -1,4 +1,5 @@
 # coding=utf-8
+from marshmallow import Schema, fields
 
 from datetime import datetime
 from sqlalchemy import create_engine, Column, String, Integer, DateTime
@@ -25,3 +26,11 @@ class Entity():
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         self.last_updated_by = created_by
+
+class ExamSchema(Schema):
+    id = fields.Number()
+    title = fields.Str()
+    description = fields.Str()
+    created_at = fields.DateTime()
+    updated_at = fields.DateTime()
+    last_updated_by = fields.Str()
