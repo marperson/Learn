@@ -27,6 +27,7 @@ class Entity():
         self.updated_at = datetime.now()
         self.last_updated_by = created_by
 
+#serialization
 class ExamSchema(Schema):
     id = fields.Number()
     title = fields.Str()
