@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaSeDeveloperOCP:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaSeDeveloperOCP_jar</output-path>
+    <root id="archive" name="JavaSeDeveloperOCP.jar">
+      <element id="module-output" name="JavaSeDeveloperOCP" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,5 @@
+Coffee, price: £1.00, Rating: one star, best Before" 18/04/2021
+Review:one star	Nice coffee!
+Review:two stars	Nice coffee- one star!
+Review:on star	Bad coffee - no stars!
+ coffee - no stars!
