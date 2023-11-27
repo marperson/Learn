@@ -65,11 +65,12 @@ ROBOTSTXT_OBEY = False
 #ITEM_PIPELINES = {
 #    "stack.pipelines.StackPipeline": 300,
 #}
-# ITEM_PIPELINES = [ "stack.pipelines.MongoDBPipeline", ]
-# MONGODB_SERVER = "localhost"
-# MONGODB_PORT = 27017
-# MONGODB_DB = "stackoverflow"
-# MONGODB_COLLECION = "questions"
+ITEM_PIPELINES = { "stack.pipelines.MongoDBPipeline":300 }
+MONGODB_SERVER = "localhost"
+MONGODB_PORT = 27017
+MONGODB_DB = "stackoverflow"
+# MONGODB_COLLECTION = "questions"
+MONGODB_COLLECTION = "food"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

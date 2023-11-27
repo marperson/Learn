@@ -73,6 +73,22 @@ $ scrapy crawl stack -o items.json -t json  //to a json
 
 update setting.py, insert mongo setup
 
+install mongo on localhost
+docker pull mongo
+sudo docker run --rm --name stackoverflow -it -p 27017:27017 -d mongo:latest
+sudo docker container ps
+sudo docker exec -it stackoverflow bash
+
+run in contrainer
+mongosh
+test> show dbs
+admin   40.00 KiB
+config  12.00 KiB
+local   40.00 KiB
+test> help
+
+follow container log: sudo docker logs stackoverflow --follow
+
 ### Installation
 ```console
 git clone $REPO
