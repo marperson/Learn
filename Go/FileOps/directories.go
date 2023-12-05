@@ -1,5 +1,6 @@
 package main
 
+// https://gobyexample.com/directories
 import (
 	"fmt"
 	"io/fs"
