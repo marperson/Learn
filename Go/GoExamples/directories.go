@@ -19,7 +19,7 @@ func main() {
 	err := os.Mkdir("subdir", 0755)
 	check(err)
 
-	defer os.RemoveAll("subdir")
+	// defer os.RemoveAll("subdir")
 
 	createEmptyFile := func(name string) {
 		d := []byte("")
