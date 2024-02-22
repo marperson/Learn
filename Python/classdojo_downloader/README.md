@@ -56,7 +56,7 @@ python3 classdojo_downloader.py
 <!-- USAGE EXAMPLES -->
 ## Usage:
 - Use Google Chrome login http://www.classdojo.com, open child page, load it till the end
-- F12 open developer tools -> network -> (optiaonl)filter the data by img and media -> right click, copy -> copy all as HAR
+- F12 open developer tools -> network -> (optional)filter the data by img and media -> right click, copy -> copy all as HAR
 - Save it to [./data/schema.json](./data/schema.json)
 - Run script, image and video will be saved to [./download](./download) folder
 
