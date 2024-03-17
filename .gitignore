@@ -1,2 +1,8 @@
 .venv
 *.pyc
+
+# IDE
+.idea/
+
+# Gradle
+.metadata/
