@@ -3,6 +3,14 @@
 
 # IDE
 .idea/
+*.project
 
 # Gradle
 .metadata/
+
+# Java
+*.class
+
+# node
+node_modules/
+npm-debug.log
