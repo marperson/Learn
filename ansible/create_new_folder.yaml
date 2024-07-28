@@ -1,0 +1,28 @@
+# ---
+
+# - name: Create Folder
+#   file: 
+#     path: /etc/ansible_folder/
+#     owner: user 
+#     group: user 
+#     mode: 0755 
+#     state: directory
+
+
+
+# - name: Change file ownership, group and permissions
+#   ansible.builtin.file:
+#     path: /etc/foo.conf
+#     owner: foo
+#     group: foo
+#     mode: '0644'
+
+
+---
+
+- hosts: all
+  tasks:
+  - name: Creating an empty file
+    file:
+      path: "/tmp/ansible_tmp"
+      state: touch
