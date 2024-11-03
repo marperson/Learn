@@ -16,4 +16,3 @@ http://localhost:8081/hello?name=Amy
 This is a simple sprintboot application follows offcial guide https://spring.io/quickstart
 
 1. Bootstrap project with SpringBoot initializer http://start.spring.io/
-
