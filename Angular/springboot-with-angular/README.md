@@ -1,5 +1,9 @@
 # SpringbootWithAngular
 
+This project is sample to pair with Learn/Java/SprintBoot/springDemoArtifactAngular project, sample UI just to generate static file then copy to springboot resoucrc/static folder instead of run a dedicate nginx server
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
 
 ## Development server
