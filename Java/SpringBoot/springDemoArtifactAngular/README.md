@@ -1,5 +1,7 @@
 # Sprint boot demo
 Springboot application with Anuglar static file in resource/static folder, use one tomcat instead of tomcat + nginx server
+Check sample Anuglar code in Learn/Angular/springboot-with-angular folder which generates this static code
+
 Spring boot project follows spring boot tutorial https://spring.io/quickstart
 
 
