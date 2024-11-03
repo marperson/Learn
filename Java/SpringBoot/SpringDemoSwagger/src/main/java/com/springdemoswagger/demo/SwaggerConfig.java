@@ -1,4 +1,4 @@
-package com.springdemo.springDemoArtifactAngular;
+package com.springdemoswagger.demo;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.springdemo.springDemoArtifactAngular.controller")) // Replace with your controller package
+                .apis(RequestHandlerSelectors.basePackage("com.springdemoswagger.demo.controllers")) // Replace with your controller package
                 .paths(PathSelectors.any())
                 .build();
     }
